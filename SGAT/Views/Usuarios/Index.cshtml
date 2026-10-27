@@ -1,0 +1,238 @@
+@model IReadOnlyList<SGAT.Application.DTOs.Usuario.UsuarioListDto>
+@{
+    ViewData["Title"] = "Usuarios";
+    var totalUsuarios = Model.Count;
+    var totalActivos = Model.Count(u => u.Activo);
+    var totalInactivos = totalUsuarios - totalActivos;
+}
+
+<div class="container mt-4">
+    <!-- Encabezado -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+        <div>
+            <h2 class="fw-bold text-secondary mb-1">
+                <i class="bi bi-people-fill me-2"></i>Administración de Usuarios
+            </h2>
+            <div class="text-muted small">
+                <span class="me-3"><i class="bi bi-person-lines-fill me-1"></i>Total: <strong>@totalUsuarios</strong></span>
+                <span class="me-3 text-success"><i class="bi bi-check-circle me-1"></i>Activos: <strong>@totalActivos</strong></span>
+                <span class="text-danger"><i class="bi bi-dash-circle me-1"></i>Inactivos: <strong>@totalInactivos</strong></span>
+            </div>
+        </div>
+        <a asp-action="Create" class="btn btn-primary shadow-sm">
+            <i class="bi bi-plus-circle me-1"></i> Nuevo Usuario
+        </a>
+    </div>
+
+    <!-- Mensajes de Notificación -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i> @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    }
+
+    <!-- Barra de búsqueda y filtros -->
+    <div class="card shadow-sm mb-3 border-0">
+        <div class="card-body py-3">
+            <div class="row g-2 align-items-center">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                        <input type="text" id="buscarUsuario" class="form-control" placeholder="Buscar por nombre o correo...">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select id="filtroEstado" class="form-select">
+                        <option value="">Todos los estados</option>
+                        <option value="activo">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select id="filtroRol" class="form-select">
+                        <option value="">Todos los roles</option>
+                        @foreach (var rol in Model.SelectMany(u => u.Roles).Distinct().OrderBy(r => r))
+                        {
+                            <option value="@rol.ToLower()">@rol</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabla de Usuarios -->
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-striped table-hover align-middle mb-0" id="tablaUsuarios">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col" class="text-center">Estado</th>
+                    <th scope="col">Roles</th>
+                    <th scope="col" class="text-center" style="width: 220px;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-5">
+                            <i class="bi bi-people-fill display-6 d-block mb-2"></i>
+                            No se encontraron usuarios registrados.
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var item in Model)
+                    {
+                        var estadoTexto = item.Activo ? "activo" : "inactivo";
+                        var rolesTexto = string.Join(",", item.Roles).ToLower();
+                        <tr class="fila-usuario"
+                            data-nombre="@item.NombreCompleto.ToLower()"
+                            data-email="@item.Email.ToLower()"
+                            data-estado="@estadoTexto"
+                            data-roles="@rolesTexto">
+                            <td class="fw-semibold">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="avatar-inicial rounded-circle bg-secondary-subtle text-secondary d-inline-flex align-items-center justify-content-center">
+                                        @(item.NombreCompleto.Length > 0 ? item.NombreCompleto.Substring(0, 1).ToUpper() : "?")
+                                    </span>
+                                    @item.NombreCompleto
+                                </div>
+                            </td>
+                            <td>@item.Email</td>
+                            <td class="text-center">
+                                @if (item.Activo)
+                                {
+                                    <span class="badge rounded-pill bg-success-subtle text-success border border-success">
+                                        <i class="bi bi-check-circle me-1"></i>Activo
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge rounded-pill bg-danger-subtle text-danger border border-danger">
+                                        <i class="bi bi-dash-circle me-1"></i>Inactivo
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                @foreach (var rol in item.Roles)
+                                {
+                                    var color = rol switch
+                                    {
+                                        "Administrador" => "bg-danger",
+                                        "Gerente" => "bg-primary",
+                                        "Tecnico" => "bg-success",
+                                        _ => "bg-secondary"
+                                    };
+                                    <span class="badge @color me-1">@rol</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                <div class="d-flex justify-content-center gap-1">
+                                    <!-- Ver Detalles -->
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info btn-sm" title="Ver Detalles" data-bs-toggle="tooltip">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+
+                                    <!-- Editar -->
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning btn-sm" title="Editar" data-bs-toggle="tooltip">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+
+                                    <!-- Cambiar Estado -->
+                                    @if (item.Activo)
+                                    {
+                                        <form asp-action="Inactivar" asp-route-id="@item.Id" method="post" class="m-0">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-outline-danger btn-sm" title="Inactivar" data-bs-toggle="tooltip" onclick="return confirm('¿Desea inactivar este usuario?')">
+                                                <i class="bi bi-dash-circle"></i>
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <form asp-action="Activar" asp-route-id="@item.Id" method="post" class="m-0">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-outline-success btn-sm" title="Activar" data-bs-toggle="tooltip" onclick="return confirm('¿Desea activar este usuario?')">
+                                                <i class="bi bi-check-circle"></i>
+                                            </button>
+                                        </form>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Mensaje cuando el filtro no encuentra resultados -->
+    <div id="sinResultados" class="text-center text-muted py-4 d-none">
+        <i class="bi bi-search display-6 d-block mb-2"></i>
+        No hay usuarios que coincidan con la búsqueda.
+    </div>
+</div>
+
+<style>
+    .avatar-inicial {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        flex-shrink: 0;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Activar tooltips de Bootstrap
+            var tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+            tooltipTriggerList.forEach(function (el) { new bootstrap.Tooltip(el); });
+
+            var inputBuscar = document.getElementById('buscarUsuario');
+            var filtroEstado = document.getElementById('filtroEstado');
+            var filtroRol = document.getElementById('filtroRol');
+            var filas = document.querySelectorAll('.fila-usuario');
+            var sinResultados = document.getElementById('sinResultados');
+
+            function aplicarFiltros() {
+                var texto = inputBuscar.value.trim().toLowerCase();
+                var estado = filtroEstado.value;
+                var rol = filtroRol.value;
+                var visibles = 0;
+
+                filas.forEach(function (fila) {
+                    var coincideTexto = !texto ||
+                        fila.dataset.nombre.includes(texto) ||
+                        fila.dataset.email.includes(texto);
+                    var coincideEstado = !estado || fila.dataset.estado === estado;
+                    var coincideRol = !rol || fila.dataset.roles.includes(rol);
+
+                    var visible = coincideTexto && coincideEstado && coincideRol;
+                    fila.classList.toggle('d-none', !visible);
+                    if (visible) visibles++;
+                });
+
+                sinResultados.classList.toggle('d-none', visibles !== 0 || filas.length === 0);
+            }
+
+            if (inputBuscar) inputBuscar.addEventListener('input', aplicarFiltros);
+            if (filtroEstado) filtroEstado.addEventListener('change', aplicarFiltros);
+            if (filtroRol) filtroRol.addEventListener('change', aplicarFiltros);
+        });
+    </script>
+}

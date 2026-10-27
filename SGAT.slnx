@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SGAT.Application/SGAT.Application.csproj" />
+  <Project Path="SGAT.Domain/SGAT.Domain.csproj" />
+  <Project Path="SGAT.Infrastructure/SGAT.Infrastructure.csproj" />
+  <Project Path="SGAT/SGAT.Web.csproj" />
+</Solution>

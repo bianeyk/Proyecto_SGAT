@@ -1,0 +1,105 @@
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.deps.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.runtimeconfig.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.AssemblyReference.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfoInputs.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfo.cs
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.sourcelink.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\refint\SGAT.Domain.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.genruntimeconfig.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\ref\SGAT.Domain.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.deps.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.runtimeconfig.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.pdb
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.AssemblyReference.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfoInputs.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfo.cs
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.CoreCompileInputs.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.sourcelink.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\refint\SGAT.Domain.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.pdb
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.genruntimeconfig.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\ref\SGAT.Domain.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.deps.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.runtimeconfig.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.AssemblyReference.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfoInputs.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfo.cs
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.sourcelink.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\refint\SGAT.Domain.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.genruntimeconfig.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\ref\SGAT.Domain.dll
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.deps.json
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.runtimeconfig.json
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.AssemblyReference.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfoInputs.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfo.cs
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.CoreCompileInputs.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.sourcelink.json
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.dll
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\refint\SGAT.Domain.dll
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.genruntimeconfig.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Domain\obj\Debug\net10.0\ref\SGAT.Domain.dll
+D:\SGAT\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.deps.json
+D:\SGAT\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.runtimeconfig.json
+D:\SGAT\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.dll
+D:\SGAT\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.pdb
+D:\SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.AssemblyReference.cache
+D:\SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfoInputs.cache
+D:\SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfo.cs
+D:\SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.CoreCompileInputs.cache
+D:\SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.dll
+D:\SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\refint\SGAT.Domain.dll
+D:\SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.pdb
+D:\SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.genruntimeconfig.cache
+D:\SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\ref\SGAT.Domain.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.deps.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.runtimeconfig.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.AssemblyReference.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfoInputs.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfo.cs
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.CoreCompileInputs.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\refint\SGAT.Domain.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.genruntimeconfig.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Domain\obj\Debug\net10.0\ref\SGAT.Domain.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.deps.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.runtimeconfig.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.runtimeconfig.dev.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.AssemblyReference.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfoInputs.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.AssemblyInfo.cs
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.csproj.CoreCompileInputs.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.sourcelink.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\refint\SGAT.Domain.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Domain.genruntimeconfig.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\ref\SGAT.Domain.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Domain\obj\Debug\net10.0\SGAT.Dom.D459F79F.Up2Date

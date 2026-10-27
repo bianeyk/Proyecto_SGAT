@@ -1,0 +1,82 @@
+﻿@model SGAT.Application.DTOs.Login.LoginDto
+
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+            <!-- Tarjeta de Login -->
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-body p-5">
+
+                    <!-- Encabezado/Logo -->
+                    <div class="text-center mb-4">
+                        <div class="bg-primary bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="bi bi-shield-lock-fill fs-3"></i>
+                        </div>
+                        <h3 class="fw-bold text-secondary m-0">SGAT</h3>
+                        <p class="text-muted small">Ingresa tus credenciales para continuar</p>
+                    </div>
+
+                    <!-- Formulario -->
+                    <form asp-action="Login" method="post" autocomplete="off">
+
+                        <!-- Usuario -->
+                        <div class="mb-3">
+                            <label asp-for="UserName" class="form-label fw-semibold text-secondary">Usuario o Correo</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted border-end-0">
+                                    <i class="bi bi-person-fill"></i>
+                                </span>
+                                <input asp-for="UserName" class="form-control bg-light border-start-0 ps-0" placeholder="ejemplo@correo.com" required />
+                            </div>
+                            <span asp-validation-for="UserName" class="text-danger small d-block mt-1"></span>
+                        </div>
+
+                        <!-- Contraseña -->
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label fw-semibold text-secondary">Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted border-end-0">
+                                    <i class="bi bi-lock-fill"></i>
+                                </span>
+                                <input asp-for="Password" type="password" class="form-control bg-light border-start-0 ps-0" placeholder="••••••••" required />
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger small d-block mt-1"></span>
+                        </div>
+
+                        <!-- Recordarme -->
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input asp-for="RememberMe" class="form-check-input cursor-pointer" type="checkbox" />
+                                <label asp-for="RememberMe" class="form-check-label text-muted small cursor-pointer">
+                                    Recordarme en este equipo
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Botón de Entrada -->
+                        <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold shadow-sm py-2">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Ingresar
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- Pie de página opcional -->
+            <p class="text-center text-muted small mt-4">&copy; @DateTime.Now.Year - Sistema SGAT</p>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

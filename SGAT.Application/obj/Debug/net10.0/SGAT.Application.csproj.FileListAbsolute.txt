@@ -1,0 +1,107 @@
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.deps.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.runtimeconfig.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.pdb
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.AssemblyReference.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfoInputs.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfo.cs
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.CoreCompileInputs.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.sourcelink.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\refint\SGAT.Application.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.pdb
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.genruntimeconfig.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\ref\SGAT.Application.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.deps.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.runtimeconfig.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.pdb
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.AssemblyReference.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfoInputs.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfo.cs
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.CoreCompileInputs.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.sourcelink.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\refint\SGAT.Application.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.pdb
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.genruntimeconfig.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\ref\SGAT.Application.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.deps.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.runtimeconfig.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.pdb
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.AssemblyReference.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfoInputs.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfo.cs
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.CoreCompileInputs.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.sourcelink.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\refint\SGAT.Application.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.pdb
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.genruntimeconfig.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\ref\SGAT.Application.dll
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.AssemblyReference.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfoInputs.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfo.cs
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.CoreCompileInputs.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.sourcelink.json
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.dll
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\refint\SGAT.Application.dll
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.pdb
+D:\SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.AssemblyReference.cache
+D:\SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfoInputs.cache
+D:\SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfo.cs
+D:\SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.CoreCompileInputs.cache
+D:\SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.dll
+D:\SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\refint\SGAT.Application.dll
+D:\SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.pdb
+D:\SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.deps.json
+D:\SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.runtimeconfig.json
+D:\SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.dll
+D:\SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.pdb
+D:\SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Domain.dll
+D:\SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Domain.pdb
+D:\SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.App.5A26050B.Up2Date
+D:\SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.genruntimeconfig.cache
+D:\SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\ref\SGAT.Application.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.AssemblyReference.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfoInputs.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfo.cs
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.CoreCompileInputs.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\refint\SGAT.Application.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.pdb
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.deps.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.runtimeconfig.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.pdb
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.App.5A26050B.Up2Date
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.genruntimeconfig.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT.Application\obj\Debug\net10.0\ref\SGAT.Application.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.deps.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.runtimeconfig.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.runtimeconfig.dev.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.pdb
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.AssemblyReference.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfoInputs.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfo.cs
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.CoreCompileInputs.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.sourcelink.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.App.5A26050B.Up2Date
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\refint\SGAT.Application.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.pdb
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.genruntimeconfig.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\ref\SGAT.Application.dll

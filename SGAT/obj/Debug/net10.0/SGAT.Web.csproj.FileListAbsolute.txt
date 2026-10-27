@@ -1,0 +1,1604 @@
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\appsettings.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.runtime.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.endpoints.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.exe
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.deps.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.runtimeconfig.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.pdb
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Azure.Core.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Azure.Identity.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Humanizer.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Build.Framework.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.SqlClient.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Server.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.Tools.Sql.BatchParser.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ConnectionInfo.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.Common.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Collector.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.CollectorEnum.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrData.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrModel.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.RegisteredServers.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.SqlScriptPublish.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEvent.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScoped.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventEnum.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.PolicyEnum.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ServiceBrokerEnum.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Smo.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SmoExtended.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SqlEnum.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Mono.TextTemplating.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Newtonsoft.Json.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.ClientModel.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.CodeDom.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.AttributedModel.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Convention.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Hosting.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Runtime.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.TypedParts.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Data.OleDb.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Management.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Memory.Data.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Security.Permissions.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Windows.Extensions.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\unix\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Data.OleDb.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Management.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.pdb
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.AssemblyReference.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfoInputs.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfo.cs
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.CoreCompileInputs.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cs
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.sourcelink.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\scopedcss\bundle\SGAT.Web.styles.css
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\scopedcss\projectbundle\SGAT.Web.bundle.scp.css
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\mf36xh9hu3-{0}-b9sayid5wm-b9sayid5wm.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\xwihbx6dys-{0}-61n19gt1b8-61n19gt1b8.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\jqwt5667l8-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\zf23e2miv8-{0}-t1cqhe9u97-t1cqhe9u97.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\7n38wsx2ut-{0}-c2jlpeoesf-c2jlpeoesf.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\2bnrmw9qtj-{0}-sejl45xvog-sejl45xvog.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\5hy2lhk3ov-{0}-aexeepp0ev-aexeepp0ev.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\bggj52u6jv-{0}-xvp3kq03qx-xvp3kq03qx.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\i9rmebnzgu-{0}-ausgxo2sd3-ausgxo2sd3.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\h70s66ld51-{0}-22vffe00uq-22vffe00uq.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\irxgbvw4rd-{0}-cosvhxvwiu-cosvhxvwiu.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\lo6j523wg2-{0}-qesaa3a1fm-qesaa3a1fm.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\ctfcahcm2q-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\clsdp1kdrh-{0}-tmc1g35s3z-tmc1g35s3z.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\z0tbnz9wu6-{0}-fsbi9cje9m-fsbi9cje9m.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\mfmd2n2clx-{0}-rxsg74s51o-rxsg74s51o.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\3cwr5h5vrm-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\o84jz2yetk-{0}-q9ht133ko3-q9ht133ko3.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\xqpunq8j7j-{0}-jd9uben2k1-jd9uben2k1.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\xlxjc46v5d-{0}-gye83jo8yx-gye83jo8yx.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\oiuq4f08a6-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\rj281bfbhd-{0}-wl58j5mj3v-wl58j5mj3v.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\x6m59ok45d-{0}-c2oey78nd0-c2oey78nd0.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\hrwl0iauza-{0}-d4r6k3f320-d4r6k3f320.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\7oomuxcq7g-{0}-j5mq2jizvt-j5mq2jizvt.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\no1ddwhnv3-{0}-keugtjm085-keugtjm085.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\0gmcjpj8nn-{0}-nvvlpmu67g-nvvlpmu67g.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\18plez0e3z-{0}-zub09dkrxp-zub09dkrxp.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pru2b03sdc-{0}-pj5nd1wqec-pj5nd1wqec.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\tizcn4u8t0-{0}-43atpzeawx-43atpzeawx.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\l1f58hxtie-{0}-v0zj4ognzu-v0zj4ognzu.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\g36dol17jl-{0}-ynyaa8k90p-ynyaa8k90p.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\p5sp6nkpnp-{0}-hrwsygsryq-hrwsygsryq.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pedoh1oszb-{0}-c63t5i9ira-c63t5i9ira.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pq25jq3sww-{0}-ft3s53vfgj-ft3s53vfgj.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\sxegwhybti-{0}-4094rpi4f9-4094rpi4f9.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\p78w9mj0z2-{0}-6pdc2jztkx-6pdc2jztkx.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\v0d40s0374-{0}-hd3gran6i8-hd3gran6i8.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\chkui68k1j-{0}-iovd86k7lj-iovd86k7lj.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\c1p6e5yrp6-{0}-ltid2c489k-ltid2c489k.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\55ia7fp9jp-{0}-kbrnm935zg-kbrnm935zg.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\mxw74mjyj3-{0}-8vyfqsqgz1-8vyfqsqgz1.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\tpcgfmmrrl-{0}-y7v9cxd14o-y7v9cxd14o.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\s76mfr022d-{0}-u9q1upor1n-u9q1upor1n.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\l6xj2gc6qo-{0}-h1s4sie4z3-h1s4sie4z3.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\36d8tgeftl-{0}-4d85u1mtcx-4d85u1mtcx.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pb8l1iqd2m-{0}-0j3bgjxly4-0j3bgjxly4.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\ug8rqqym9c-{0}-03hjc8e09r-03hjc8e09r.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\fm58ynw710-{0}-48y08845bh-48y08845bh.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\3oxsmdtf03-{0}-356vix0kms-356vix0kms.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\j1mijfohf2-{0}-83jwlth58m-83jwlth58m.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\5ieby1rt4y-{0}-mrlpezrjn3-mrlpezrjn3.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\4zxqfae6nt-{0}-worgj0nhwm-worgj0nhwm.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\l9pnyumv9t-{0}-gk0pw8i4co-gk0pw8i4co.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\ixqalriy1s-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\czrq1fnjc8-{0}-d6nrnj6jjx-d6nrnj6jjx.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\x1k45fz4ss-{0}-m9qm4tazc0-m9qm4tazc0.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\w21k9o42x2-{0}-ttgo8qnofa-ttgo8qnofa.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\t8vfj1lhxr-{0}-jjsuc0puko-jjsuc0puko.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\o27y10n6kd-{0}-9vr69e8ynj-9vr69e8ynj.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\731w9lcozn-{0}-87fc7y1x7t-87fc7y1x7t.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\rs5nsls1so-{0}-mlv21k5csn-mlv21k5csn.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\5hm8yhkvmq-{0}-pv58jnsg0w-pv58jnsg0w.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\eoxmikbth3-{0}-pv58jnsg0w-pv58jnsg0w.gz
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.Up2Date
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\refint\SGAT.Web.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.pdb
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.genruntimeconfig.cache
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\ref\SGAT.Web.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.dll
+C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.pdb
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\appsettings.Development.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\appsettings.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.endpoints.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.runtime.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.exe
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.deps.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.runtimeconfig.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.pdb
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Azure.Core.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Azure.Identity.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Humanizer.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Build.Framework.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.SqlClient.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Server.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.Tools.Sql.BatchParser.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ConnectionInfo.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.Common.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Collector.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.CollectorEnum.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrData.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrModel.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.RegisteredServers.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.SqlScriptPublish.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEvent.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScoped.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventEnum.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.PolicyEnum.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ServiceBrokerEnum.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Smo.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SmoExtended.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SqlEnum.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Mono.TextTemplating.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Newtonsoft.Json.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.ClientModel.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.CodeDom.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.AttributedModel.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Convention.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Hosting.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Runtime.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.TypedParts.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Data.OleDb.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Diagnostics.PerformanceCounter.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Management.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Memory.Data.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Security.Permissions.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Windows.Extensions.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\unix\lib\net9.0\Microsoft.Data.SqlClient.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net9.0\Microsoft.Data.SqlClient.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Data.OleDb.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Management.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.pdb
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.pdb
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.pdb
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.AssemblyReference.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfoInputs.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfo.cs
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.CoreCompileInputs.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.MvcApplicationPartsAssemblyInfo.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cs
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.sourcelink.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\scopedcss\bundle\SGAT.Web.styles.css
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\scopedcss\projectbundle\SGAT.Web.bundle.scp.css
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\mf36xh9hu3-{0}-b9sayid5wm-b9sayid5wm.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\xwihbx6dys-{0}-61n19gt1b8-61n19gt1b8.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\jqwt5667l8-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\zf23e2miv8-{0}-t1cqhe9u97-t1cqhe9u97.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\7n38wsx2ut-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\2bnrmw9qtj-{0}-sejl45xvog-sejl45xvog.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\5hy2lhk3ov-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\bggj52u6jv-{0}-xvp3kq03qx-xvp3kq03qx.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\i9rmebnzgu-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\h70s66ld51-{0}-22vffe00uq-22vffe00uq.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\irxgbvw4rd-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\lo6j523wg2-{0}-qesaa3a1fm-qesaa3a1fm.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\ctfcahcm2q-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\clsdp1kdrh-{0}-tmc1g35s3z-tmc1g35s3z.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\z0tbnz9wu6-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\mfmd2n2clx-{0}-rxsg74s51o-rxsg74s51o.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\3cwr5h5vrm-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\o84jz2yetk-{0}-q9ht133ko3-q9ht133ko3.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\xqpunq8j7j-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\xlxjc46v5d-{0}-gye83jo8yx-gye83jo8yx.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\oiuq4f08a6-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\rj281bfbhd-{0}-wl58j5mj3v-wl58j5mj3v.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\x6m59ok45d-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\hrwl0iauza-{0}-d4r6k3f320-d4r6k3f320.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\7oomuxcq7g-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\no1ddwhnv3-{0}-keugtjm085-keugtjm085.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\0gmcjpj8nn-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\18plez0e3z-{0}-zub09dkrxp-zub09dkrxp.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pru2b03sdc-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\tizcn4u8t0-{0}-43atpzeawx-43atpzeawx.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\l1f58hxtie-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\g36dol17jl-{0}-ynyaa8k90p-ynyaa8k90p.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\p5sp6nkpnp-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pedoh1oszb-{0}-c63t5i9ira-c63t5i9ira.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pq25jq3sww-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\sxegwhybti-{0}-4094rpi4f9-4094rpi4f9.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\p78w9mj0z2-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\v0d40s0374-{0}-hd3gran6i8-hd3gran6i8.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\chkui68k1j-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\c1p6e5yrp6-{0}-ltid2c489k-ltid2c489k.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\55ia7fp9jp-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\mxw74mjyj3-{0}-8vyfqsqgz1-8vyfqsqgz1.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\tpcgfmmrrl-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\s76mfr022d-{0}-u9q1upor1n-u9q1upor1n.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\l6xj2gc6qo-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\36d8tgeftl-{0}-4d85u1mtcx-4d85u1mtcx.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pb8l1iqd2m-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\ug8rqqym9c-{0}-03hjc8e09r-03hjc8e09r.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\fm58ynw710-{0}-48y08845bh-48y08845bh.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\3oxsmdtf03-{0}-356vix0kms-356vix0kms.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\j1mijfohf2-{0}-83jwlth58m-83jwlth58m.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\5ieby1rt4y-{0}-mrlpezrjn3-mrlpezrjn3.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\4zxqfae6nt-{0}-worgj0nhwm-worgj0nhwm.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\l9pnyumv9t-{0}-gk0pw8i4co-gk0pw8i4co.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\ixqalriy1s-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\czrq1fnjc8-{0}-d6nrnj6jjx-d6nrnj6jjx.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\x1k45fz4ss-{0}-m9qm4tazc0-m9qm4tazc0.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\w21k9o42x2-{0}-ttgo8qnofa-ttgo8qnofa.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\t8vfj1lhxr-{0}-jjsuc0puko-jjsuc0puko.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\o27y10n6kd-{0}-9vr69e8ynj-9vr69e8ynj.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\731w9lcozn-{0}-87fc7y1x7t-87fc7y1x7t.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\rs5nsls1so-{0}-mlv21k5csn-mlv21k5csn.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\5hm8yhkvmq-{0}-pv58jnsg0w-pv58jnsg0w.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\eoxmikbth3-{0}-pv58jnsg0w-pv58jnsg0w.gz
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.development.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\swae.build.ex.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.Up2Date
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\refint\SGAT.Web.dll
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.pdb
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.genruntimeconfig.cache
+D:\BIANEY\Desktop\PROYECTO\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\ref\SGAT.Web.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\appsettings.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.endpoints.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.runtime.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.exe
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.deps.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.runtimeconfig.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.pdb
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Azure.Core.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Azure.Identity.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Humanizer.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Build.Framework.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.SqlClient.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Server.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.Tools.Sql.BatchParser.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ConnectionInfo.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.Common.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Collector.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.CollectorEnum.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrData.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrModel.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.RegisteredServers.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.SqlScriptPublish.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEvent.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScoped.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventEnum.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.PolicyEnum.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ServiceBrokerEnum.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Smo.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SmoExtended.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SqlEnum.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Mono.TextTemplating.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\Newtonsoft.Json.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.ClientModel.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.CodeDom.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.AttributedModel.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Convention.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Hosting.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Runtime.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Composition.TypedParts.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Data.OleDb.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Management.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Memory.Data.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Security.Permissions.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\System.Windows.Extensions.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\unix\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Data.OleDb.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Management.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.pdb
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.pdb
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.AssemblyReference.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfoInputs.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfo.cs
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.CoreCompileInputs.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cs
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.sourcelink.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\scopedcss\bundle\SGAT.Web.styles.css
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\scopedcss\projectbundle\SGAT.Web.bundle.scp.css
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\mf36xh9hu3-{0}-b9sayid5wm-b9sayid5wm.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\xwihbx6dys-{0}-61n19gt1b8-61n19gt1b8.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\jqwt5667l8-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\zf23e2miv8-{0}-t1cqhe9u97-t1cqhe9u97.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\7n38wsx2ut-{0}-c2jlpeoesf-c2jlpeoesf.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\2bnrmw9qtj-{0}-sejl45xvog-sejl45xvog.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\5hy2lhk3ov-{0}-aexeepp0ev-aexeepp0ev.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\bggj52u6jv-{0}-xvp3kq03qx-xvp3kq03qx.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\i9rmebnzgu-{0}-ausgxo2sd3-ausgxo2sd3.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\h70s66ld51-{0}-22vffe00uq-22vffe00uq.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\irxgbvw4rd-{0}-cosvhxvwiu-cosvhxvwiu.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\lo6j523wg2-{0}-qesaa3a1fm-qesaa3a1fm.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\ctfcahcm2q-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\clsdp1kdrh-{0}-tmc1g35s3z-tmc1g35s3z.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\z0tbnz9wu6-{0}-fsbi9cje9m-fsbi9cje9m.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\mfmd2n2clx-{0}-rxsg74s51o-rxsg74s51o.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\3cwr5h5vrm-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\o84jz2yetk-{0}-q9ht133ko3-q9ht133ko3.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\xqpunq8j7j-{0}-jd9uben2k1-jd9uben2k1.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\xlxjc46v5d-{0}-gye83jo8yx-gye83jo8yx.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\oiuq4f08a6-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\rj281bfbhd-{0}-wl58j5mj3v-wl58j5mj3v.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\x6m59ok45d-{0}-c2oey78nd0-c2oey78nd0.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\hrwl0iauza-{0}-d4r6k3f320-d4r6k3f320.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\7oomuxcq7g-{0}-j5mq2jizvt-j5mq2jizvt.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\no1ddwhnv3-{0}-keugtjm085-keugtjm085.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\0gmcjpj8nn-{0}-nvvlpmu67g-nvvlpmu67g.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\18plez0e3z-{0}-zub09dkrxp-zub09dkrxp.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pru2b03sdc-{0}-pj5nd1wqec-pj5nd1wqec.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\tizcn4u8t0-{0}-43atpzeawx-43atpzeawx.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\l1f58hxtie-{0}-v0zj4ognzu-v0zj4ognzu.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\g36dol17jl-{0}-ynyaa8k90p-ynyaa8k90p.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\p5sp6nkpnp-{0}-hrwsygsryq-hrwsygsryq.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pedoh1oszb-{0}-c63t5i9ira-c63t5i9ira.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pq25jq3sww-{0}-ft3s53vfgj-ft3s53vfgj.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\sxegwhybti-{0}-4094rpi4f9-4094rpi4f9.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\p78w9mj0z2-{0}-6pdc2jztkx-6pdc2jztkx.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\v0d40s0374-{0}-hd3gran6i8-hd3gran6i8.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\chkui68k1j-{0}-iovd86k7lj-iovd86k7lj.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\c1p6e5yrp6-{0}-ltid2c489k-ltid2c489k.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\55ia7fp9jp-{0}-kbrnm935zg-kbrnm935zg.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\mxw74mjyj3-{0}-8vyfqsqgz1-8vyfqsqgz1.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\tpcgfmmrrl-{0}-y7v9cxd14o-y7v9cxd14o.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\s76mfr022d-{0}-u9q1upor1n-u9q1upor1n.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\l6xj2gc6qo-{0}-h1s4sie4z3-h1s4sie4z3.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\36d8tgeftl-{0}-4d85u1mtcx-4d85u1mtcx.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\pb8l1iqd2m-{0}-0j3bgjxly4-0j3bgjxly4.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\ug8rqqym9c-{0}-03hjc8e09r-03hjc8e09r.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\fm58ynw710-{0}-48y08845bh-48y08845bh.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\3oxsmdtf03-{0}-356vix0kms-356vix0kms.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\j1mijfohf2-{0}-83jwlth58m-83jwlth58m.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\5ieby1rt4y-{0}-mrlpezrjn3-mrlpezrjn3.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\4zxqfae6nt-{0}-worgj0nhwm-worgj0nhwm.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\l9pnyumv9t-{0}-gk0pw8i4co-gk0pw8i4co.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\ixqalriy1s-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\czrq1fnjc8-{0}-d6nrnj6jjx-d6nrnj6jjx.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\x1k45fz4ss-{0}-m9qm4tazc0-m9qm4tazc0.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\w21k9o42x2-{0}-ttgo8qnofa-ttgo8qnofa.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\t8vfj1lhxr-{0}-jjsuc0puko-jjsuc0puko.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\o27y10n6kd-{0}-9vr69e8ynj-9vr69e8ynj.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\731w9lcozn-{0}-87fc7y1x7t-87fc7y1x7t.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\rs5nsls1so-{0}-mlv21k5csn-mlv21k5csn.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\5hm8yhkvmq-{0}-pv58jnsg0w-pv58jnsg0w.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\compressed\eoxmikbth3-{0}-pv58jnsg0w-pv58jnsg0w.gz
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.Up2Date
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\refint\SGAT.Web.dll
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.pdb
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.genruntimeconfig.cache
+C:\Users\Sena CSET\source\repos\Prueba Final\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\ref\SGAT.Web.dll
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.AssemblyReference.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfoInputs.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfo.cs
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.CoreCompileInputs.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cache
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cs
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.sourcelink.json
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.dll
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\refint\SGAT.Web.dll
+C:\Users\CARLOS\Downloads\Proyecto-GAES (1)\Proyecto-GAES\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.pdb
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.AssemblyReference.cache
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfoInputs.cache
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfo.cs
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.CoreCompileInputs.cache
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.MvcApplicationPartsAssemblyInfo.cache
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cache
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cs
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.dll
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\refint\SGAT.Web.dll
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.pdb
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\appsettings.Development.json
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\appsettings.json
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.endpoints.json
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.runtime.json
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.exe
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.deps.json
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.runtimeconfig.json
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.pdb
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Azure.Core.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Azure.Identity.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Humanizer.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Build.Framework.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.SqlClient.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Server.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.Tools.Sql.BatchParser.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ConnectionInfo.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.Common.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Collector.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.CollectorEnum.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrData.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrModel.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.RegisteredServers.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.SqlScriptPublish.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEvent.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScoped.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventEnum.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.PolicyEnum.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ServiceBrokerEnum.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Smo.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SmoExtended.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SqlEnum.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Mono.TextTemplating.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\Newtonsoft.Json.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.ClientModel.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.CodeDom.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Composition.AttributedModel.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Convention.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Hosting.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Runtime.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Composition.TypedParts.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Data.OleDb.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Diagnostics.PerformanceCounter.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Management.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Memory.Data.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Security.Permissions.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Windows.Extensions.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\unix\lib\net9.0\Microsoft.Data.SqlClient.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net9.0\Microsoft.Data.SqlClient.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Data.OleDb.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Management.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.dll
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.pdb
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.pdb
+D:\SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.pdb
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\scopedcss\bundle\SGAT.Web.styles.css
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\scopedcss\projectbundle\SGAT.Web.bundle.scp.css
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\mf36xh9hu3-{0}-b9sayid5wm-b9sayid5wm.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\xwihbx6dys-{0}-61n19gt1b8-61n19gt1b8.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\jqwt5667l8-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\zf23e2miv8-{0}-t1cqhe9u97-t1cqhe9u97.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\7n38wsx2ut-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\2bnrmw9qtj-{0}-sejl45xvog-sejl45xvog.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\5hy2lhk3ov-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\bggj52u6jv-{0}-xvp3kq03qx-xvp3kq03qx.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\i9rmebnzgu-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\h70s66ld51-{0}-22vffe00uq-22vffe00uq.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\irxgbvw4rd-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\lo6j523wg2-{0}-qesaa3a1fm-qesaa3a1fm.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\ctfcahcm2q-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\clsdp1kdrh-{0}-tmc1g35s3z-tmc1g35s3z.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\z0tbnz9wu6-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\mfmd2n2clx-{0}-rxsg74s51o-rxsg74s51o.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\3cwr5h5vrm-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\o84jz2yetk-{0}-q9ht133ko3-q9ht133ko3.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\xqpunq8j7j-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\xlxjc46v5d-{0}-gye83jo8yx-gye83jo8yx.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\oiuq4f08a6-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\rj281bfbhd-{0}-wl58j5mj3v-wl58j5mj3v.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\x6m59ok45d-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\hrwl0iauza-{0}-d4r6k3f320-d4r6k3f320.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\7oomuxcq7g-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\no1ddwhnv3-{0}-keugtjm085-keugtjm085.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\0gmcjpj8nn-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\18plez0e3z-{0}-zub09dkrxp-zub09dkrxp.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\pru2b03sdc-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\tizcn4u8t0-{0}-43atpzeawx-43atpzeawx.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\l1f58hxtie-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\g36dol17jl-{0}-ynyaa8k90p-ynyaa8k90p.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\p5sp6nkpnp-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\pedoh1oszb-{0}-c63t5i9ira-c63t5i9ira.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\pq25jq3sww-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\sxegwhybti-{0}-4094rpi4f9-4094rpi4f9.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\p78w9mj0z2-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\v0d40s0374-{0}-hd3gran6i8-hd3gran6i8.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\chkui68k1j-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\c1p6e5yrp6-{0}-ltid2c489k-ltid2c489k.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\55ia7fp9jp-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\mxw74mjyj3-{0}-8vyfqsqgz1-8vyfqsqgz1.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\tpcgfmmrrl-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\s76mfr022d-{0}-u9q1upor1n-u9q1upor1n.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\l6xj2gc6qo-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\36d8tgeftl-{0}-4d85u1mtcx-4d85u1mtcx.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\pb8l1iqd2m-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\ug8rqqym9c-{0}-03hjc8e09r-03hjc8e09r.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\fm58ynw710-{0}-48y08845bh-48y08845bh.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\3oxsmdtf03-{0}-356vix0kms-356vix0kms.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\j1mijfohf2-{0}-83jwlth58m-83jwlth58m.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\5ieby1rt4y-{0}-mrlpezrjn3-mrlpezrjn3.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\4zxqfae6nt-{0}-worgj0nhwm-worgj0nhwm.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\l9pnyumv9t-{0}-gk0pw8i4co-gk0pw8i4co.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\ixqalriy1s-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\czrq1fnjc8-{0}-d6nrnj6jjx-d6nrnj6jjx.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\x1k45fz4ss-{0}-m9qm4tazc0-m9qm4tazc0.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\w21k9o42x2-{0}-ttgo8qnofa-ttgo8qnofa.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\t8vfj1lhxr-{0}-jjsuc0puko-jjsuc0puko.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\o27y10n6kd-{0}-9vr69e8ynj-9vr69e8ynj.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\731w9lcozn-{0}-87fc7y1x7t-87fc7y1x7t.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\rs5nsls1so-{0}-mlv21k5csn-mlv21k5csn.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\5hm8yhkvmq-{0}-pv58jnsg0w-pv58jnsg0w.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\eoxmikbth3-{0}-pv58jnsg0w-pv58jnsg0w.gz
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.development.json
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\swae.build.ex.cache
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.Up2Date
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.genruntimeconfig.cache
+D:\SGAT\SGAT\SGAT\obj\Debug\net10.0\ref\SGAT.Web.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.AssemblyReference.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfoInputs.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfo.cs
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.CoreCompileInputs.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cs
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\refint\SGAT.Web.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.pdb
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.endpoints.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\appsettings.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.runtime.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.exe
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.deps.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.runtimeconfig.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.pdb
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Azure.Core.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Azure.Identity.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Humanizer.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Build.Framework.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.SqlClient.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Server.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.Tools.Sql.BatchParser.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ConnectionInfo.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.Common.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Collector.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.CollectorEnum.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrData.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrModel.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.RegisteredServers.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.SqlScriptPublish.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEvent.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScoped.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventEnum.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.PolicyEnum.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ServiceBrokerEnum.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Smo.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SmoExtended.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SqlEnum.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Mono.TextTemplating.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\Newtonsoft.Json.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.ClientModel.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.CodeDom.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Composition.AttributedModel.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Convention.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Hosting.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Composition.Runtime.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Composition.TypedParts.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Data.OleDb.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Management.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Memory.Data.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Security.Permissions.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\System.Windows.Extensions.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\unix\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Data.OleDb.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Management.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.dll
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.pdb
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.pdb
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\scopedcss\bundle\SGAT.Web.styles.css
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\scopedcss\projectbundle\SGAT.Web.bundle.scp.css
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\mf36xh9hu3-{0}-b9sayid5wm-b9sayid5wm.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\xwihbx6dys-{0}-61n19gt1b8-61n19gt1b8.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\jqwt5667l8-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\zf23e2miv8-{0}-t1cqhe9u97-t1cqhe9u97.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\7n38wsx2ut-{0}-c2jlpeoesf-c2jlpeoesf.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\2bnrmw9qtj-{0}-sejl45xvog-sejl45xvog.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\5hy2lhk3ov-{0}-aexeepp0ev-aexeepp0ev.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\bggj52u6jv-{0}-xvp3kq03qx-xvp3kq03qx.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\i9rmebnzgu-{0}-ausgxo2sd3-ausgxo2sd3.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\h70s66ld51-{0}-22vffe00uq-22vffe00uq.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\irxgbvw4rd-{0}-cosvhxvwiu-cosvhxvwiu.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\lo6j523wg2-{0}-qesaa3a1fm-qesaa3a1fm.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\ctfcahcm2q-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\clsdp1kdrh-{0}-tmc1g35s3z-tmc1g35s3z.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\z0tbnz9wu6-{0}-fsbi9cje9m-fsbi9cje9m.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\mfmd2n2clx-{0}-rxsg74s51o-rxsg74s51o.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\3cwr5h5vrm-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\o84jz2yetk-{0}-q9ht133ko3-q9ht133ko3.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\xqpunq8j7j-{0}-jd9uben2k1-jd9uben2k1.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\xlxjc46v5d-{0}-gye83jo8yx-gye83jo8yx.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\oiuq4f08a6-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\rj281bfbhd-{0}-wl58j5mj3v-wl58j5mj3v.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\x6m59ok45d-{0}-c2oey78nd0-c2oey78nd0.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\hrwl0iauza-{0}-d4r6k3f320-d4r6k3f320.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\7oomuxcq7g-{0}-j5mq2jizvt-j5mq2jizvt.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\no1ddwhnv3-{0}-keugtjm085-keugtjm085.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\0gmcjpj8nn-{0}-nvvlpmu67g-nvvlpmu67g.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\18plez0e3z-{0}-zub09dkrxp-zub09dkrxp.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\pru2b03sdc-{0}-pj5nd1wqec-pj5nd1wqec.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\tizcn4u8t0-{0}-43atpzeawx-43atpzeawx.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\l1f58hxtie-{0}-v0zj4ognzu-v0zj4ognzu.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\g36dol17jl-{0}-ynyaa8k90p-ynyaa8k90p.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\p5sp6nkpnp-{0}-hrwsygsryq-hrwsygsryq.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\pedoh1oszb-{0}-c63t5i9ira-c63t5i9ira.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\pq25jq3sww-{0}-ft3s53vfgj-ft3s53vfgj.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\sxegwhybti-{0}-4094rpi4f9-4094rpi4f9.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\p78w9mj0z2-{0}-6pdc2jztkx-6pdc2jztkx.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\v0d40s0374-{0}-hd3gran6i8-hd3gran6i8.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\chkui68k1j-{0}-iovd86k7lj-iovd86k7lj.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\c1p6e5yrp6-{0}-ltid2c489k-ltid2c489k.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\55ia7fp9jp-{0}-kbrnm935zg-kbrnm935zg.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\mxw74mjyj3-{0}-8vyfqsqgz1-8vyfqsqgz1.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\tpcgfmmrrl-{0}-y7v9cxd14o-y7v9cxd14o.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\s76mfr022d-{0}-u9q1upor1n-u9q1upor1n.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\l6xj2gc6qo-{0}-h1s4sie4z3-h1s4sie4z3.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\36d8tgeftl-{0}-4d85u1mtcx-4d85u1mtcx.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\pb8l1iqd2m-{0}-0j3bgjxly4-0j3bgjxly4.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\ug8rqqym9c-{0}-03hjc8e09r-03hjc8e09r.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\fm58ynw710-{0}-48y08845bh-48y08845bh.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\3oxsmdtf03-{0}-356vix0kms-356vix0kms.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\j1mijfohf2-{0}-83jwlth58m-83jwlth58m.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\5ieby1rt4y-{0}-mrlpezrjn3-mrlpezrjn3.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\4zxqfae6nt-{0}-worgj0nhwm-worgj0nhwm.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\l9pnyumv9t-{0}-gk0pw8i4co-gk0pw8i4co.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\ixqalriy1s-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\czrq1fnjc8-{0}-d6nrnj6jjx-d6nrnj6jjx.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\x1k45fz4ss-{0}-m9qm4tazc0-m9qm4tazc0.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\w21k9o42x2-{0}-ttgo8qnofa-ttgo8qnofa.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\t8vfj1lhxr-{0}-jjsuc0puko-jjsuc0puko.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\o27y10n6kd-{0}-9vr69e8ynj-9vr69e8ynj.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\731w9lcozn-{0}-87fc7y1x7t-87fc7y1x7t.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\rs5nsls1so-{0}-mlv21k5csn-mlv21k5csn.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\5hm8yhkvmq-{0}-pv58jnsg0w-pv58jnsg0w.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\compressed\eoxmikbth3-{0}-pv58jnsg0w-pv58jnsg0w.gz
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.Up2Date
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.genruntimeconfig.cache
+C:\Users\BIANEY\Desktop\Proyecto SGAT\SGAT\SGAT\obj\Debug\net10.0\ref\SGAT.Web.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\appsettings.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.runtime.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.staticwebassets.endpoints.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.exe
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.deps.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.runtimeconfig.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.runtimeconfig.dev.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Web.pdb
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Azure.Core.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Azure.Identity.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Humanizer.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.Build.Framework.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.SqlClient.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.Broker.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.Identity.Client.NativeInterop.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Server.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.Data.Tools.Sql.BatchParser.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ConnectionInfo.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.Common.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Dmf.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Collector.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.CollectorEnum.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrData.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.HadrModel.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.RegisteredServers.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.SqlScriptPublish.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEvent.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScoped.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Management.XEventEnum.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.PolicyEnum.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.ServiceBrokerEnum.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.Smo.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SmoExtended.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SqlEnum.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.SqlWmiManagement.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.SqlServer.WmiEnum.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Mono.TextTemplating.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\Newtonsoft.Json.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.ClientModel.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.CodeDom.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Composition.AttributedModel.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Composition.Convention.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Composition.Hosting.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Composition.Runtime.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Composition.TypedParts.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Data.OleDb.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Management.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Memory.Data.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Security.Permissions.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\System.Windows.Extensions.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\cs\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pl\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\tr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\unix\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\linux-x64\native\libmsalruntime.so
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\osx-arm64\native\msalruntime_arm64.dylib
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\osx-x64\native\msalruntime.dylib
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\win-arm64\native\msalruntime_arm64.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x64\native\msalruntime.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\win-x86\native\msalruntime_x86.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Data.OleDb.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Management.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Application.pdb
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Infrastructure.pdb
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.AssemblyReference.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\dotnet-watch\Microsoft.NET.Sdk.BlazorWeb.DotNetWatch.lib.module.js
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\dotnet-watch\Microsoft.NET.Sdk.BlazorWeb.DotNetWatch.BrowserTools.js
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\dotnet-watch\Microsoft.NET.Sdk.BlazorWeb.DotNetWatch.BrowserTools.Config.js
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\dotnet-watch\browser-tools-key.public.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\dotnet-watch\browser-tools-key.private.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfoInputs.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.AssemblyInfo.cs
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.CoreCompileInputs.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.RazorAssemblyInfo.cs
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.sourcelink.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\jsmodules\jsmodules.build.manifest.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\scopedcss\scopedcss.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\scopedcss\bundle\SGAT.Web.styles.css
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\scopedcss\projectbundle\SGAT.Web.bundle.scp.css
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\rfwxt0lt87-{0}-s9y91u5nkn-s9y91u5nkn.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\ik2s2v59zf-{0}-6ori01dte5-6ori01dte5.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\mf36xh9hu3-{0}-b9sayid5wm-b9sayid5wm.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\xwihbx6dys-{0}-61n19gt1b8-61n19gt1b8.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\jqwt5667l8-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\zf23e2miv8-{0}-t1cqhe9u97-t1cqhe9u97.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\7n38wsx2ut-{0}-c2jlpeoesf-c2jlpeoesf.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\2bnrmw9qtj-{0}-sejl45xvog-sejl45xvog.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\5hy2lhk3ov-{0}-aexeepp0ev-aexeepp0ev.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\bggj52u6jv-{0}-xvp3kq03qx-xvp3kq03qx.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\i9rmebnzgu-{0}-ausgxo2sd3-ausgxo2sd3.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\h70s66ld51-{0}-22vffe00uq-22vffe00uq.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\irxgbvw4rd-{0}-cosvhxvwiu-cosvhxvwiu.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\lo6j523wg2-{0}-qesaa3a1fm-qesaa3a1fm.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\ctfcahcm2q-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\clsdp1kdrh-{0}-tmc1g35s3z-tmc1g35s3z.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\z0tbnz9wu6-{0}-fsbi9cje9m-fsbi9cje9m.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\mfmd2n2clx-{0}-rxsg74s51o-rxsg74s51o.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\3cwr5h5vrm-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\o84jz2yetk-{0}-q9ht133ko3-q9ht133ko3.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\xqpunq8j7j-{0}-jd9uben2k1-jd9uben2k1.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\xlxjc46v5d-{0}-gye83jo8yx-gye83jo8yx.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\oiuq4f08a6-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\rj281bfbhd-{0}-wl58j5mj3v-wl58j5mj3v.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\x6m59ok45d-{0}-c2oey78nd0-c2oey78nd0.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\hrwl0iauza-{0}-d4r6k3f320-d4r6k3f320.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\7oomuxcq7g-{0}-j5mq2jizvt-j5mq2jizvt.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\no1ddwhnv3-{0}-keugtjm085-keugtjm085.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\0gmcjpj8nn-{0}-nvvlpmu67g-nvvlpmu67g.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\18plez0e3z-{0}-zub09dkrxp-zub09dkrxp.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\pru2b03sdc-{0}-pj5nd1wqec-pj5nd1wqec.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\tizcn4u8t0-{0}-43atpzeawx-43atpzeawx.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\l1f58hxtie-{0}-v0zj4ognzu-v0zj4ognzu.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\g36dol17jl-{0}-ynyaa8k90p-ynyaa8k90p.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\p5sp6nkpnp-{0}-hrwsygsryq-hrwsygsryq.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\pedoh1oszb-{0}-c63t5i9ira-c63t5i9ira.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\pq25jq3sww-{0}-ft3s53vfgj-ft3s53vfgj.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\sxegwhybti-{0}-4094rpi4f9-4094rpi4f9.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\p78w9mj0z2-{0}-6pdc2jztkx-6pdc2jztkx.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\v0d40s0374-{0}-hd3gran6i8-hd3gran6i8.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\chkui68k1j-{0}-iovd86k7lj-iovd86k7lj.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\c1p6e5yrp6-{0}-ltid2c489k-ltid2c489k.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\55ia7fp9jp-{0}-kbrnm935zg-kbrnm935zg.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\mxw74mjyj3-{0}-8vyfqsqgz1-8vyfqsqgz1.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\tpcgfmmrrl-{0}-y7v9cxd14o-y7v9cxd14o.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\s76mfr022d-{0}-u9q1upor1n-u9q1upor1n.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\l6xj2gc6qo-{0}-h1s4sie4z3-h1s4sie4z3.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\36d8tgeftl-{0}-4d85u1mtcx-4d85u1mtcx.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\pb8l1iqd2m-{0}-0j3bgjxly4-0j3bgjxly4.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\ug8rqqym9c-{0}-03hjc8e09r-03hjc8e09r.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\fm58ynw710-{0}-48y08845bh-48y08845bh.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\3oxsmdtf03-{0}-356vix0kms-356vix0kms.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\j1mijfohf2-{0}-83jwlth58m-83jwlth58m.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\5ieby1rt4y-{0}-mrlpezrjn3-mrlpezrjn3.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\4zxqfae6nt-{0}-worgj0nhwm-worgj0nhwm.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\l9pnyumv9t-{0}-gk0pw8i4co-gk0pw8i4co.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\ixqalriy1s-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\czrq1fnjc8-{0}-d6nrnj6jjx-d6nrnj6jjx.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\x1k45fz4ss-{0}-m9qm4tazc0-m9qm4tazc0.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\w21k9o42x2-{0}-ttgo8qnofa-ttgo8qnofa.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\t8vfj1lhxr-{0}-jjsuc0puko-jjsuc0puko.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\o27y10n6kd-{0}-9vr69e8ynj-9vr69e8ynj.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\731w9lcozn-{0}-87fc7y1x7t-87fc7y1x7t.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\rs5nsls1so-{0}-mlv21k5csn-mlv21k5csn.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\9hjgrsn0ga-{0}-lvkpp2i49p-lvkpp2i49p.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\wsanj5g7oz-{0}-scyj3pnqhf-scyj3pnqhf.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\5hm8yhkvmq-{0}-frb0rgsb01-frb0rgsb01.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\compressed\eoxmikbth3-{0}-frb0rgsb01-frb0rgsb01.gz
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.csproj.Up2Date
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\refint\SGAT.Web.dll
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.pdb
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\SGAT.Web.genruntimeconfig.cache
+C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT\obj\Debug\net10.0\ref\SGAT.Web.dll

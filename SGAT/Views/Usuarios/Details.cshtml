@@ -1,0 +1,128 @@
+﻿@model SGAT.Application.DTOs.Usuario.UsuarioDetalleDto
+
+@{
+    ViewData["Title"] = "Detalle del Usuario";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Detalle del Usuario</h4>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row mb-3">
+                <div class="col-md-3 fw-bold">
+                    Nombre Completo
+                </div>
+
+                <div class="col-md-9">
+                    @Model.NombreCompleto
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3 fw-bold">
+                    Correo Electrónico
+                </div>
+
+                <div class="col-md-9">
+                    @Model.Email
+                </div>
+            </div>
+
+            <div class="row mb-3">
+
+                <div class="col-md-3 fw-bold">
+                    Estado
+                </div>
+
+                <div class="col-md-9">
+
+                    @if (Model.Activo)
+                    {
+                        <span class="badge bg-success">
+                            Activo
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">
+                            Inactivo
+                        </span>
+                    }
+
+                </div>
+
+            </div>
+
+            <div class="row mb-3">
+
+                <div class="col-md-3 fw-bold">
+                    Fecha de Creación
+                </div>
+
+                <div class="col-md-9">
+                    @Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")
+                </div>
+
+            </div>
+
+            <div class="row mb-3">
+
+                <div class="col-md-3 fw-bold">
+                    Último Acceso
+                </div>
+
+                <div class="col-md-9">
+
+                    @(Model.LastLoginAt?.ToString("dd/MM/yyyy HH:mm") ?? "Nunca ha iniciado sesión")
+
+                </div>
+
+            </div>
+
+            <div class="row mb-4">
+
+                <div class="col-md-3 fw-bold">
+                    Roles
+                </div>
+
+                <div class="col-md-9">
+
+                    @foreach (var rol in Model.Roles)
+                    {
+                        <span class="badge bg-primary me-1">
+                            @rol
+                        </span>
+                    }
+
+                </div>
+
+            </div>
+
+            <hr />
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-warning">
+
+                Editar
+
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+
+                Volver
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
