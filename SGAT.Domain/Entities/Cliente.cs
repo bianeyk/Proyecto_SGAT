@@ -7,20 +7,16 @@ namespace SGAT.Domain.Entities
     public class Cliente
     {
         public int IdCliente { get; set; }
-
         public string IdUsuarioCrea { get; set; } = string.Empty;
-
         public string NumDoc { get; set; } = string.Empty;
         public string Nombre { get; set; } = string.Empty;
         public string Telefono { get; set; } = string.Empty;
         public string? Email { get; set; }
         public string? Direccion { get; set; }
         public bool EsColaborador { get; set; } = false;
-
         public bool Activo { get; set; } = true;
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         // Navegacion
