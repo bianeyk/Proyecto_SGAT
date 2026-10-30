@@ -1,0 +1,26 @@
+@model SGAT.Web.ViewModels.Cliente.ClienteViewModel
+
+@{
+    ViewData["Title"] = "Crear cliente";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white"><h4 class="mb-0">Crear cliente</h4></div>
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <partial name="_ClienteForm" model="Model" />
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
