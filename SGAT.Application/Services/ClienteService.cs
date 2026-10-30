@@ -53,7 +53,9 @@ namespace SGAT.Application.Services
                 Nombre = dto.Nombre,
                 Telefono = dto.Telefono,
                 Email = dto.Email,
-                Direccion = dto.Direccion
+                Direccion = dto.Direccion,
+                EsColaborador = dto.EsColaborador,
+                Activo = dto.Activo
             };
 
             await _clienteRepo.AddAsync(cliente);
@@ -70,6 +72,8 @@ namespace SGAT.Application.Services
             cliente.Telefono = dto.Telefono;
             cliente.Email = dto.Email;
             cliente.Direccion = dto.Direccion;
+            cliente.EsColaborador = dto.EsColaborador;
+            cliente.Activo = dto.Activo;
             cliente.UpdatedAt = DateTime.Now;
 
             _clienteRepo.Update(cliente);
@@ -86,7 +90,10 @@ namespace SGAT.Application.Services
             Telefono = c.Telefono,
             Email = c.Email,
             Direccion = c.Direccion,
-            CreatedAt = c.CreatedAt
+            EsColaborador = c.EsColaborador,
+            Activo = c.Activo,
+            CreatedAt = c.CreatedAt,
+            UpdatedAt = c.UpdatedAt
         };
     }
 }
