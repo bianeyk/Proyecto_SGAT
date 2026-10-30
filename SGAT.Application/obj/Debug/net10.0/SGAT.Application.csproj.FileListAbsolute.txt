@@ -105,3 +105,21 @@ C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\re
 C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.pdb
 C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.genruntimeconfig.cache
 C:\Users\BIANEY\source\repos\Proyecto-SGAT\SGAT.Application\obj\Debug\net10.0\ref\SGAT.Application.dll
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.deps.json
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.runtimeconfig.json
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.dll
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Application.pdb
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Domain.dll
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\bin\Debug\net10.0\SGAT.Domain.pdb
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.AssemblyReference.cache
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfoInputs.cache
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.AssemblyInfo.cs
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.csproj.CoreCompileInputs.cache
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.sourcelink.json
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.App.5A26050B.Up2Date
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.dll
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\refint\SGAT.Application.dll
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.pdb
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\SGAT.Application.genruntimeconfig.cache
+C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT.Application\obj\Debug\net10.0\ref\SGAT.Application.dll

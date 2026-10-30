@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,10 +7,11 @@ namespace SGAT.Domain.Entities
 {
     public class Cliente
     {
+        
         public int IdCliente { get; set; }
 
         public string IdUsuarioCrea { get; set; } = string.Empty;
-
+       
         public string NumDoc { get; set; } = string.Empty;
         public string Nombre { get; set; } = string.Empty;
         public string Telefono { get; set; } = string.Empty;

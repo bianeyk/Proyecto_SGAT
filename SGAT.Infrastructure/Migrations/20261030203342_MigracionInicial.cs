@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SGAT.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class DB_Inicial : Migration
+    public partial class MigracionInicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -326,21 +326,23 @@ namespace SGAT.Infrastructure.Migrations
                 {
                     IdCliente = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdUsuario = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    IdUsuarioCrea = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
                     NumDoc = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
                     Direccion = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    IsTecnico = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
+                    EsColaborador = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clientes", x => x.IdCliente);
                     table.ForeignKey(
-                        name: "FK_Clientes_AspNetUsers_IdUsuario",
-                        column: x => x.IdUsuario,
+                        name: "FK_Clientes_AspNetUsers_IdUsuarioCrea",
+                        column: x => x.IdUsuarioCrea,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
@@ -932,12 +934,12 @@ namespace SGAT.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clientes_IdUsuario",
+                name: "IX_Clientes_IdUsuarioCrea",
                 table: "Clientes",
-                column: "IdUsuario");
+                column: "IdUsuarioCrea");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clientes_NumDoc",
+                name: "UQ_Cliente_NumDoc",
                 table: "Clientes",
                 column: "NumDoc",
                 unique: true);

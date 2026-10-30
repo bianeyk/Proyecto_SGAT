@@ -17,7 +17,7 @@ namespace SGAT.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.9")
+                .HasAnnotation("ProductVersion", "10.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -382,15 +382,15 @@ namespace SGAT.Infrastructure.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("IdUsuarioCrea")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<bool>("EsColaborador")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
+
+                    b.Property<string>("IdUsuarioCrea")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -417,7 +417,8 @@ namespace SGAT.Infrastructure.Migrations
                     b.HasIndex("IdUsuarioCrea");
 
                     b.HasIndex("NumDoc")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("UQ_Cliente_NumDoc");
 
                     b.ToTable("Clientes");
                 });

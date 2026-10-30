@@ -20,41 +20,65 @@ build_property.TargetFrameworkVersion = v10.0
 build_property.EntryPointFilePath = 
 build_property.RootNamespace = SGAT.Web
 build_property.RootNamespace = SGAT.Web
-build_property.ProjectDir = C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT\
+build_property.ProjectDir = C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 10.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Sena CSET\source\repos\Proyecto-GAES\SGAT\SGAT
+build_property.MSBuildProjectDirectory = C:\Users\sena cset\source\repos\Proyecto_SGAT\SGAT
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Sena CSET/source/repos/Proyecto-GAES/SGAT/SGAT/Views/Home/Index.cshtml]
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sena CSET/source/repos/Proyecto-GAES/SGAT/SGAT/Views/Home/Privacy.cshtml]
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sena CSET/source/repos/Proyecto-GAES/SGAT/SGAT/Views/Shared/Error.cshtml]
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sena CSET/source/repos/Proyecto-GAES/SGAT/SGAT/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sena CSET/source/repos/Proyecto-GAES/SGAT/SGAT/Views/_ViewImports.cshtml]
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/Usuarios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/Usuarios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/Usuarios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/Usuarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sena CSET/source/repos/Proyecto-GAES/SGAT/SGAT/Views/_ViewStart.cshtml]
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sena CSET/source/repos/Proyecto-GAES/SGAT/SGAT/Views/Shared/_Layout.cshtml]
+[C:/Users/sena cset/source/repos/Proyecto_SGAT/SGAT/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-cjykmmiha5

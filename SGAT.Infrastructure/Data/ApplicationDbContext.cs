@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SGAT.Domain.Entities;
 
+
 namespace SGAT.Infrastructure.Data
 {
     public class ApplicationDbContext: IdentityDbContext<ApplicationUser,ApplicationRole,string>
@@ -41,7 +42,7 @@ namespace SGAT.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder); // aplica el modelo de Identity primero
+            base.OnModelCreating(builder);
 
             // Aplica TODAS las IEntityTypeConfiguration<> del assembly (Identity + negocio)
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
