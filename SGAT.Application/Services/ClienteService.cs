@@ -48,7 +48,7 @@ namespace SGAT.Application.Services
 
             var cliente = new Cliente
             {
-                IdUsuario = idUsuarioCrea,
+                IdUsuarioCrea = idUsuarioCrea,
                 NumDoc = dto.NumDocumento,
                 Nombre = dto.Nombre,
                 Telefono = dto.Telefono,
@@ -70,6 +70,7 @@ namespace SGAT.Application.Services
             cliente.Telefono = dto.Telefono;
             cliente.Email = dto.Email;
             cliente.Direccion = dto.Direccion;
+            cliente.UpdatedAt = DateTime.Now;
 
             _clienteRepo.Update(cliente);
             await _clienteRepo.SaveChangesAsync();
