@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\SGAT",
+    "\\SGAT.Application",
+    "\\SGAT.Application\\Interfaces",
+    "\\SGAT.Application\\Interfaces\\Repositories",
+    "\\SGAT.Domain"
+  ],
+  "SelectedNode": "\\SGAT\\appsettings.json",
+  "PreviewInSolutionExplorer": false
+}

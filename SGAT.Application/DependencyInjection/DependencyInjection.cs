@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Application.Services;
 using System;
@@ -15,6 +15,7 @@ namespace SGAT.Application.DependencyInjection
             services.AddScoped<IRolService, RolService>();
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<IProductoService, ProductoService>();
+            services.AddScoped<ITecnicoService, TecnicoService>();
             //services.AddScoped<IOrdenServicioService, OrdenServicioService>();// Falta implementación
             // services.AddScoped<IFacturaService, FacturaService>(); // Falta implementación
             // services.AddScoped<IAuthService, AuthService>(); // Falta implementación

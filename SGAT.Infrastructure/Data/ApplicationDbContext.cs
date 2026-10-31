@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SGAT.Domain.Entities;
 
@@ -13,11 +13,13 @@ namespace SGAT.Infrastructure.Data
 
         // --- Negocio ---
         public DbSet<Auditoria> Auditorias => Set<Auditoria>();
+        public DbSet<BitacoraTecnica> BitacorasTecnicas => Set<BitacoraTecnica>();
         public DbSet<CategoriaDispositivo> CategoriasDispositivo => Set<CategoriaDispositivo>();
         public DbSet<CategoriaProducto> CategoriasProducto => Set<CategoriaProducto>();
         public DbSet<Cliente> Clientes => Set<Cliente>();
         public DbSet<Compra> Compras => Set<Compra>();
         public DbSet<CompraDetalle> CompraDetalles => Set<CompraDetalle>();
+        public DbSet<DiagnosticoTecnico> DiagnosticosTecnicos => Set<DiagnosticoTecnico>();
         public DbSet<Empresa> Empresas => Set<Empresa>();
         public DbSet<Equipo> Equipos => Set<Equipo>();
         public DbSet<EstadoServicio> EstadosServicio => Set<EstadoServicio>();

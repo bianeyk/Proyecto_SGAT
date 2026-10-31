@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SGAT.Application.DTOs.Login;
 using SGAT.Domain.Entities;
@@ -52,7 +52,7 @@ namespace SGAT.Web.Controllers
                 }
 
                 // 4. Redirección por defecto si no es administrador (ej. la página de inicio)
-                return RedirectToAction("AccessDanied", "Account");
+                return RedirectToAction("AccessDenied", "Account");
             }
 
             ModelState.AddModelError(

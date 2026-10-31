@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SGAT.Domain.Entities;
+using SGAT.Domain.Enums;
 using SGAT.SGAT.Domain.Enums;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,10 @@ namespace SGAT.Infrastructure.Data.Configurations
                 .HasConversion<string>()
                 .HasMaxLength(10)
                 .HasDefaultValue(PrioridadEnum.MEDIA);
+
+            builder.Property(o => o.EstadoOrden)
+                .HasConversion<int>()
+                .HasDefaultValue(EstadoOrden.PendienteRevision);
 
             builder.Property(o => o.FechaIngreso).HasDefaultValueSql("GETDATE()");
             builder.Property(o => o.Observaciones).HasColumnType("varchar(max)");

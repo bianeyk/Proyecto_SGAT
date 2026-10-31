@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +28,8 @@ namespace SGAT.Domain.Entities
         public ICollection<Factura> Facturas { get; set; } = new List<Factura>();
 
         public ICollection<HistorialServicio> HistorialesServicio { get; set; } = new List<HistorialServicio>();
+
+        public ICollection<DiagnosticoTecnico> Diagnosticos { get; set; } = new List<DiagnosticoTecnico>();
 
         public ICollection<Auditoria> Auditorias { get; set; } = new List<Auditoria>();
 

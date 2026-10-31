@@ -1,0 +1,517 @@
+@model IEnumerable<SGAT.Application.DTOs.Tecnico.OrdenTecnicoResumenDto>
+@using SGAT.Domain.Enums
+
+@{
+    ViewData["Title"] = "Taller Técnico";
+    var ordenes = Model.ToList();
+    var total = ordenes.Count;
+    var pendientes = ordenes.Count(o => o.EstadoValor == (int)EstadoOrden.PendienteRevision);
+    var enProceso = ordenes.Count(o => o.EstadoValor == (int)EstadoOrden.EnDiagnostico || 
+                                      o.EstadoValor == (int)EstadoOrden.EsperandoRepuestos || 
+                                      o.EstadoValor == (int)EstadoOrden.EnReparacion);
+    var finalizados = ordenes.Count(o => o.EstadoValor == (int)EstadoOrden.Finalizado);
+}
+
+<div class="container-fluid py-3">
+
+    <!-- Encabezado y Métricas -->
+    <div class="row align-items-center mb-4 g-3">
+        <div class="col-md-6">
+            <h2 class="fw-bold text-secondary mb-1">
+                <i class="bi bi-tools text-primary me-2"></i>Taller de Servicio Técnico
+            </h2>
+            <p class="text-muted m-0 small">Control de diagnósticos, reparaciones y bitácora técnica de equipos.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+            <button class="btn btn-outline-primary btn-sm me-2" onclick="location.reload()">
+                <i class="bi bi-arrow-clockwise me-1"></i> Actualizar
+            </button>
+        </div>
+    </div>
+
+    <!-- Tarjetas de Resumen -->
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm rounded-3 bg-white p-3 border-start border-4 border-primary">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="text-muted small fw-semibold">Total Órdenes</span>
+                        <h3 class="fw-bold mb-0 text-dark">@total</h3>
+                    </div>
+                    <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-circle fs-4">
+                        <i class="bi bi-clipboard-data"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm rounded-3 bg-white p-3 border-start border-4 border-secondary">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="text-muted small fw-semibold">Pendientes Revisión</span>
+                        <h3 class="fw-bold mb-0 text-secondary">@pendientes</h3>
+                    </div>
+                    <div class="bg-secondary bg-opacity-10 text-secondary p-2 rounded-circle fs-4">
+                        <i class="bi bi-hourglass-split"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm rounded-3 bg-white p-3 border-start border-4 border-warning">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="text-muted small fw-semibold">En Proceso / Taller</span>
+                        <h3 class="fw-bold mb-0 text-warning">@enProceso</h3>
+                    </div>
+                    <div class="bg-warning bg-opacity-10 text-warning p-2 rounded-circle fs-4">
+                        <i class="bi bi-wrench-adjustable"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm rounded-3 bg-white p-3 border-start border-4 border-success">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="text-muted small fw-semibold">Finalizadas</span>
+                        <h3 class="fw-bold mb-0 text-success">@finalizados</h3>
+                    </div>
+                    <div class="bg-success bg-opacity-10 text-success p-2 rounded-circle fs-4">
+                        <i class="bi bi-check-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de Filtros y Búsqueda -->
+    <div class="card border-0 shadow-sm rounded-3 mb-4">
+        <div class="card-body p-3">
+            <div class="row g-2 align-items-center">
+                <div class="col-md-7">
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border-end-0 text-muted">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input type="text" id="filtroTexto" class="form-control bg-light border-start-0 ps-0" 
+                               placeholder="Buscar por código de orden, dispositivo, marca o modelo..." onkeyup="filtrarTabla()" />
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <select id="filtroEstadoSelect" class="form-select bg-light" onchange="filtrarTabla()">
+                        <option value="">Todos los Estados</option>
+                        <option value="PendienteRevision">Pendiente de Revisión</option>
+                        <option value="EnDiagnostico">En Diagnóstico</option>
+                        <option value="EsperandoRepuestos">Esperando Repuestos</option>
+                        <option value="EnReparacion">En Reparación</option>
+                        <option value="Finalizado">Finalizado</option>
+                        <option value="NoReparable">No Reparable</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabla de Órdenes Técnicas -->
+    <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0" id="tablaOrdenes">
+                <thead class="table-light text-secondary small text-uppercase">
+                    <tr>
+                        <th class="ps-3">N° Orden</th>
+                        <th>Fecha Ingreso</th>
+                        <th>Dispositivo / Equipo</th>
+                        <th>Modelo</th>
+                        <th>Falla Reportada</th>
+                        <th class="text-center">Estado</th>
+                        <th class="text-end pe-3">Acciones Técnicas</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y">
+                    @if (!ordenes.Any())
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center py-5 text-muted">
+                                <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                                No se encontraron órdenes de servicio técnico en el sistema.
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var o in ordenes)
+                        {
+                            <tr class="fila-orden" data-estado="@o.Estado">
+                                <td class="ps-3 fw-bold text-primary">
+                                    <i class="bi bi-file-earmark-text me-1"></i>@o.NumeroOrden
+                                </td>
+                                <td class="small text-muted">
+                                    @o.FechaIngreso.ToString("dd/MM/yyyy HH:mm")
+                                </td>
+                                <td>
+                                    <strong>@o.Dispositivo</strong>
+                                    <div class="small text-muted">@o.Marca</div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border">@o.Modelo</span>
+                                </td>
+                                <td class="small text-muted" style="max-width: 250px;">
+                                    <div class="text-truncate" title="@o.FallaReportada">
+                                        @(string.IsNullOrWhiteSpace(o.FallaReportada) ? "Sin detalles" : o.FallaReportada)
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    @switch (o.Estado)
+                                    {
+                                        case "PendienteRevision":
+                                            <span class="badge bg-secondary">Pendiente</span>
+                                            break;
+                                        case "EnDiagnostico":
+                                            <span class="badge bg-info text-dark">En Diagnóstico</span>
+                                            break;
+                                        case "EsperandoRepuestos":
+                                            <span class="badge bg-warning text-dark">Esperando Repuestos</span>
+                                            break;
+                                        case "EnReparacion":
+                                            <span class="badge bg-primary">En Reparación</span>
+                                            break;
+                                        case "Finalizado":
+                                            <span class="badge bg-success">Finalizado</span>
+                                            break;
+                                        case "NoReparable":
+                                            <span class="badge bg-danger">No Reparable</span>
+                                            break;
+                                        default:
+                                            <span class="badge bg-light text-dark">@o.Estado</span>
+                                            break;
+                                    }
+                                </td>
+                                <td class="text-end pe-3">
+                                    <div class="btn-group btn-group-sm">
+                                        <!-- Ver Detalle -->
+                                        <a href="/Tecnico/Detalle/@o.Id" class="btn btn-light border text-primary" title="Ver Detalle Completo">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <!-- Diagnosticar -->
+                                        <button class="btn btn-light border text-warning" title="Registrar Diagnóstico"
+                                                onclick="abrirModalDiagnostico(@o.Id, '@o.NumeroOrden', '@o.FallaReportada')">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+
+                                        <!-- Bitácora -->
+                                        <button class="btn btn-light border text-info" title="Agregar Nota a Bitácora"
+                                                onclick="abrirModalBitacora(@o.Id, '@o.NumeroOrden')">
+                                            <i class="bi bi-journal-text"></i>
+                                        </button>
+
+                                        <!-- Finalizar Reparación -->
+                                        <button class="btn btn-light border text-success" title="Finalizar Reparación"
+                                                onclick="abrirModalFinalizar(@o.Id, '@o.NumeroOrden')">
+                                            <i class="bi bi-check2-circle"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================================== -->
+<!-- MODAL: REGISTRAR DIAGNÓSTICO                             -->
+<!-- ======================================================== -->
+<div class="modal fade" id="modalDiagnostico" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+            <div class="modal-header bg-warning bg-opacity-10 border-0">
+                <h5 class="modal-title fw-bold text-dark">
+                    <i class="bi bi-search me-2 text-warning"></i>Registrar Diagnóstico Técnico
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body p-4">
+                <input type="hidden" id="diagOrdenId" />
+                <div class="mb-3">
+                    <label class="form-label small text-muted">Orden de Servicio:</label>
+                    <input type="text" id="diagNumOrden" class="form-control-plaintext fw-bold" readonly />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Diagnóstico Detallado <span class="text-danger">*</span></label>
+                    <textarea id="diagDetallado" class="form-control" rows="3" placeholder="Describe los hallazgos técnicos..."></textarea>
+                </div>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="diagRequiereRepuestos" onchange="toggleRepuestosSugeridos()">
+                    <label class="form-check-label fw-semibold" for="diagRequiereRepuestos">¿Requiere Repuestos?</label>
+                </div>
+                <div class="mb-3 d-none" id="divRepuestosSugeridos">
+                    <label class="form-label fw-semibold">Repuestos Sugeridos</label>
+                    <input type="text" id="diagRepuestosSugeridos" class="form-control" placeholder="Ej. Batería 3.7V, Pantalla IPS..." />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Costo Mano de Obra ($)</label>
+                    <input type="number" step="0.01" id="diagManoObra" class="form-control" value="0.00" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nuevo Estado de la Orden</label>
+                    <select id="diagNuevoEstado" class="form-select">
+                        <option value="1">En Diagnóstico</option>
+                        <option value="2">Esperando Repuestos</option>
+                        <option value="3" selected>En Reparación</option>
+                        <option value="5">No Reparable</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer border-0 p-4 pt-0">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-warning fw-bold px-4" onclick="guardarDiagnostico()">
+                    Guardar Diagnóstico
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================================== -->
+<!-- MODAL: AGREGAR NOTA A BITÁCORA                          -->
+<!-- ======================================================== -->
+<div class="modal fade" id="modalBitacora" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+            <div class="modal-header bg-info bg-opacity-10 border-0">
+                <h5 class="modal-title fw-bold text-dark">
+                    <i class="bi bi-journal-text me-2 text-info"></i>Bitácora de Seguimiento
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body p-4">
+                <input type="hidden" id="bitacoraOrdenId" />
+                <div class="mb-3">
+                    <label class="form-label small text-muted">Orden de Servicio:</label>
+                    <input type="text" id="bitacoraNumOrden" class="form-control-plaintext fw-bold" readonly />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nota o Avance <span class="text-danger">*</span></label>
+                    <textarea id="bitacoraNota" class="form-control" rows="3" placeholder="Escribe el avance técnico o novedad..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer border-0 p-4 pt-0">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-info text-white fw-bold px-4" onclick="guardarBitacora()">
+                    Agregar Nota
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================================== -->
+<!-- MODAL: FINALIZAR REPARACIÓN                             -->
+<!-- ======================================================== -->
+<div class="modal fade" id="modalFinalizar" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+            <div class="modal-header bg-success bg-opacity-10 border-0">
+                <h5 class="modal-title fw-bold text-dark">
+                    <i class="bi bi-check2-circle me-2 text-success"></i>Finalizar Reparación
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body p-4">
+                <input type="hidden" id="finOrdenId" />
+                <div class="mb-3">
+                    <label class="form-label small text-muted">Orden de Servicio:</label>
+                    <input type="text" id="finNumOrden" class="form-control-plaintext fw-bold text-success" readonly />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Solución Aplicada <span class="text-danger">*</span></label>
+                    <textarea id="finSolucion" class="form-control" rows="3" placeholder="Describe el trabajo realizado y componentes reemplazados..."></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Costo Total Final ($) <span class="text-danger">*</span></label>
+                    <input type="number" step="0.01" id="finCosto" class="form-control" placeholder="0.00" required />
+                </div>
+            </div>
+            <div class="modal-footer border-0 p-4 pt-0">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success fw-bold px-4" onclick="guardarFinalizacion()">
+                    Completar Reparación
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    // Filtro en tiempo real de la tabla
+    function filtrarTabla() {
+        const texto = document.getElementById('filtroTexto').value.toLowerCase();
+        const estado = document.getElementById('filtroEstadoSelect').value;
+        const filas = document.querySelectorAll('#tablaOrdenes tbody tr.fila-orden');
+
+        filas.forEach(fila => {
+            const contenido = fila.innerText.toLowerCase();
+            const filaEstado = fila.getAttribute('data-estado');
+
+            const coincideTexto = texto === '' || contenido.includes(texto);
+            const coincideEstado = estado === '' || filaEstado === estado;
+
+            if (coincideTexto && coincideEstado) {
+                fila.style.display = '';
+            } else {
+                fila.style.display = 'none';
+            }
+        });
+    }
+
+    function toggleRepuestosSugeridos() {
+        const check = document.getElementById('diagRequiereRepuestos').checked;
+        const div = document.getElementById('divRepuestosSugeridos');
+        if (check) {
+            div.classList.remove('d-none');
+        } else {
+            div.classList.add('d-none');
+        }
+    }
+
+    // Modal Diagnostico
+    function abrirModalDiagnostico(id, numOrden, falla) {
+        document.getElementById('diagOrdenId').value = id;
+        document.getElementById('diagNumOrden').value = numOrden;
+        document.getElementById('diagDetallado').value = '';
+        document.getElementById('diagManoObra').value = '0.00';
+        document.getElementById('diagRequiereRepuestos').checked = false;
+        toggleRepuestosSugeridos();
+        new bootstrap.Modal(document.getElementById('modalDiagnostico')).show();
+    }
+
+    async function guardarDiagnostico() {
+        const ordenId = parseInt(document.getElementById('diagOrdenId').value);
+        const detallado = document.getElementById('diagDetallado').value.trim();
+        const requiereRep = document.getElementById('diagRequiereRepuestos').checked;
+        const repuestos = document.getElementById('diagRepuestosSugeridos').value.trim();
+        const manoObra = parseFloat(document.getElementById('diagManoObra').value) || 0;
+        const nuevoEstado = parseInt(document.getElementById('diagNuevoEstado').value);
+
+        if (!detallado) {
+            alert('Por favor, ingresa el diagnóstico detallado.');
+            return;
+        }
+
+        try {
+            const resp = await fetch('/api/tecnico/diagnostico', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ordenId: ordenId,
+                    diagnosticoDetallado: detallado,
+                    requiereRepuestos: requiereRep,
+                    repuestosSugeridos: repuestos,
+                    costoManoDeObra: manoObra,
+                    nuevoEstado: nuevoEstado
+                })
+            });
+
+            if (resp.ok) {
+                location.reload();
+            } else {
+                const error = await resp.text();
+                alert('Error al registrar diagnóstico: ' + error);
+            }
+        } catch (e) {
+            alert('Error de conexión: ' + e);
+        }
+    }
+
+    // Modal Bitácora
+    function abrirModalBitacora(id, numOrden) {
+        document.getElementById('bitacoraOrdenId').value = id;
+        document.getElementById('bitacoraNumOrden').value = numOrden;
+        document.getElementById('bitacoraNota').value = '';
+        new bootstrap.Modal(document.getElementById('modalBitacora')).show();
+    }
+
+    async function guardarBitacora() {
+        const ordenId = parseInt(document.getElementById('bitacoraOrdenId').value);
+        const nota = document.getElementById('bitacoraNota').value.trim();
+
+        if (!nota) {
+            alert('Por favor, ingresa la nota de la bitácora.');
+            return;
+        }
+
+        try {
+            const resp = await fetch('/api/tecnico/bitacora', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ordenId: ordenId,
+                    nota: nota
+                })
+            });
+
+            if (resp.ok) {
+                location.reload();
+            } else {
+                const error = await resp.text();
+                alert('Error al registrar nota: ' + error);
+            }
+        } catch (e) {
+            alert('Error de conexión: ' + e);
+        }
+    }
+
+    // Modal Finalizar
+    function abrirModalFinalizar(id, numOrden) {
+        document.getElementById('finOrdenId').value = id;
+        document.getElementById('finNumOrden').value = numOrden;
+        document.getElementById('finSolucion').value = '';
+        document.getElementById('finCosto').value = '';
+        new bootstrap.Modal(document.getElementById('modalFinalizar')).show();
+    }
+
+    async function guardarFinalizacion() {
+        const ordenId = parseInt(document.getElementById('finOrdenId').value);
+        const solucion = document.getElementById('finSolucion').value.trim();
+        const costo = parseFloat(document.getElementById('finCosto').value);
+
+        if (!solucion) {
+            alert('Por favor, describe la solución aplicada.');
+            return;
+        }
+        if (isNaN(costo) || costo < 0) {
+            alert('Por favor, ingresa un costo final válido.');
+            return;
+        }
+
+        try {
+            const resp = await fetch('/api/tecnico/finalizar', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ordenId: ordenId,
+                    solucionAplicada: solucion,
+                    costoFinal: costo
+                })
+            });
+
+            if (resp.ok) {
+                location.reload();
+            } else {
+                const error = await resp.text();
+                alert('Error al finalizar reparación: ' + error);
+            }
+        } catch (e) {
+            alert('Error de conexión: ' + e);
+        }
+    }
+</script>
+}
