@@ -10,5 +10,8 @@ namespace SGAT.Application.DTOs.Cliente
         public string Telefono { get; set; } = string.Empty;
         public string? Email { get; set; }
         public string? Direccion { get; set; }
+        public bool EsColaborador { get; set; } = false;
+
+        public bool Activo { get; set; } = true;
     }
 }

@@ -1,0 +1,43 @@
+@model SGAT.Application.DTOs.Cliente.ClienteDto
+
+@{
+    ViewData["Title"] = "Detalle del cliente";
+}
+
+<div class="container mt-4">
+    @if (TempData["Success"] is not null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white"><h4 class="mb-0">Detalle del cliente</h4></div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Documento</dt>
+                <dd class="col-sm-9">@Model.NumDocumento</dd>
+                <dt class="col-sm-3">Nombre</dt>
+                <dd class="col-sm-9">@Model.Nombre</dd>
+                <dt class="col-sm-3">Teléfono</dt>
+                <dd class="col-sm-9">@Model.Telefono</dd>
+                <dt class="col-sm-3">Correo</dt>
+                <dd class="col-sm-9">@(Model.Email ?? "—")</dd>
+                <dt class="col-sm-3">Dirección</dt>
+                <dd class="col-sm-9">@(Model.Direccion ?? "—")</dd>
+                <dt class="col-sm-3">Colaborador</dt>
+                <dd class="col-sm-9">@(Model.EsColaborador ? "Sí" : "No")</dd>
+                <dt class="col-sm-3">Estado</dt>
+                <dd class="col-sm-9">@(Model.Activo ? "Activo" : "Inactivo")</dd>
+                <dt class="col-sm-3">Creado</dt>
+                <dd class="col-sm-9">@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</dd>
+                <dt class="col-sm-3">Actualizado</dt>
+                <dd class="col-sm-9">@(Model.UpdatedAt?.ToString("dd/MM/yyyy HH:mm") ?? "—")</dd>
+            </dl>
+            <a asp-action="Edit" asp-route-id="@Model.IdCliente" class="btn btn-warning">Editar</a>
+            @if (Model.Activo)
+            {
+                <a asp-action="Delete" asp-route-id="@Model.IdCliente" class="btn btn-danger">Dar de baja</a>
+            }
+            <a asp-action="Index" class="btn btn-secondary">Volver</a>
+        </div>
+    </div>
+</div>

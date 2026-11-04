@@ -364,6 +364,11 @@ namespace SGAT.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCliente"));
 
+                    b.Property<bool>("Activo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -377,12 +382,12 @@ namespace SGAT.Infrastructure.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("IdUsuario")
+                    b.Property<string>("IdUsuarioCrea")
                         .IsRequired()
                         .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("IsTecnico")
+                    b.Property<bool>("EsColaborador")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
@@ -402,9 +407,14 @@ namespace SGAT.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
                     b.HasKey("IdCliente");
 
-                    b.HasIndex("IdUsuario");
+                    b.HasIndex("IdUsuarioCrea");
 
                     b.HasIndex("NumDoc")
                         .IsUnique();
@@ -1535,13 +1545,13 @@ namespace SGAT.Infrastructure.Migrations
 
             modelBuilder.Entity("SGAT.Domain.Entities.Cliente", b =>
                 {
-                    b.HasOne("SGAT.Domain.Entities.ApplicationUser", "Usuario")
+                    b.HasOne("SGAT.Domain.Entities.ApplicationUser", "UsuarioCrea")
                         .WithMany("Clientes")
-                        .HasForeignKey("IdUsuario")
+                        .HasForeignKey("IdUsuarioCrea")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("Usuario");
+                    b.Navigation("UsuarioCrea");
                 });
 
             modelBuilder.Entity("SGAT.Domain.Entities.Compra", b =>

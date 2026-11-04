@@ -1,0 +1,20 @@
+@model SGAT.Application.DTOs.Cliente.ClienteDto
+
+@{
+    ViewData["Title"] = "Dar de baja cliente";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-danger text-white"><h4 class="mb-0">Dar de baja cliente</h4></div>
+        <div class="card-body">
+            <p>¿Confirmas que deseas dar de baja a <strong>@Model.Nombre</strong> (documento @Model.NumDocumento)?</p>
+            <p>El cliente se conservará en el sistema y quedará marcado como inactivo.</p>
+            <form asp-action="Delete" asp-route-id="@Model.IdCliente" method="post">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">Confirmar baja</button>
+                <a asp-action="Details" asp-route-id="@Model.IdCliente" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
