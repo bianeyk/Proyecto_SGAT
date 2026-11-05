@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SGAT.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a1bb331d6495657e8052f45f4a87e662cf2415d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b56007e9658e587a04a16942eefe16dafe9f4068")]
 [assembly: System.Reflection.AssemblyProductAttribute("SGAT.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SGAT.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

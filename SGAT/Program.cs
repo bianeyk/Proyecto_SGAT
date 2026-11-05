@@ -52,6 +52,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 //AUTENTICACION
 app.UseAuthentication();
@@ -61,8 +62,10 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Account}/{action=Login}/{id?}")
     .WithStaticAssets();
+
+app.MapControllers();
 
 ////Using para registro de roles
 using (var scope = app.Services.CreateScope())
