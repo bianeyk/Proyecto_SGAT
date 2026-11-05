@@ -48,14 +48,12 @@ namespace SGAT.Application.Services
 
             var cliente = new Cliente
             {
-                IdUsuarioCrea = idUsuarioCrea,
+                IdUsuario = idUsuarioCrea,
                 NumDoc = dto.NumDocumento,
                 Nombre = dto.Nombre,
                 Telefono = dto.Telefono,
                 Email = dto.Email,
-                Direccion = dto.Direccion,
-                EsColaborador = dto.EsColaborador,
-                Activo = dto.Activo
+                Direccion = dto.Direccion
             };
 
             await _clienteRepo.AddAsync(cliente);
@@ -72,9 +70,6 @@ namespace SGAT.Application.Services
             cliente.Telefono = dto.Telefono;
             cliente.Email = dto.Email;
             cliente.Direccion = dto.Direccion;
-            cliente.EsColaborador = dto.EsColaborador;
-            cliente.Activo = dto.Activo;
-            cliente.UpdatedAt = DateTime.Now;
 
             _clienteRepo.Update(cliente);
             await _clienteRepo.SaveChangesAsync();
@@ -90,10 +85,7 @@ namespace SGAT.Application.Services
             Telefono = c.Telefono,
             Email = c.Email,
             Direccion = c.Direccion,
-            EsColaborador = c.EsColaborador,
-            Activo = c.Activo,
-            CreatedAt = c.CreatedAt,
-            UpdatedAt = c.UpdatedAt
+            CreatedAt = c.CreatedAt
         };
     }
 }
