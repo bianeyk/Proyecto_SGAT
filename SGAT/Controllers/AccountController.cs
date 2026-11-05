@@ -9,50 +9,97 @@ namespace SGAT.Web.Controllers
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
         public AccountController(
             SignInManager<ApplicationUser> signInManager,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            RoleManager<ApplicationRole> roleManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
+        //consultar si el rol está activo
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginDto model)
         {
             if (!ModelState.IsValid)
                 return View(model);
-            // 1. Intentar iniciar sesión en Identity
+
+            // 1. Buscar al usuario antes de iniciar sesión.
+            var user = await _userManager.FindByNameAsync(model.UserName);
+
+            // Si no existe, mostrar un mensaje genérico.
+            if (user == null)
+            {
+                ModelState.AddModelError(
+                    string.Empty,
+                    "Usuario o contraseña incorrectos");
+
+                return View(model);
+            }
+
+            // 2. Comprobar si el usuario está activo.
+            if (!user.Activo)
+            {
+                ModelState.AddModelError(
+                    string.Empty,
+                    "Tu cuenta está inactivada. Comunícate con el administrador.");
+
+                return View(model);
+            }
+
+            // 3. Obtener los roles asignados al usuario.
+            var roles = await _userManager.GetRolesAsync(user);
+
+            // El sistema espera que cada usuario tenga un único rol.
+            if (roles.Count != 1)
+            {
+                ModelState.AddModelError(
+                    string.Empty,
+                    "Tu cuenta está inactivada. Comunícate con el administrador.");
+
+                return View(model);
+            }
+
+            // 4. Buscar el rol y comprobar si está activo.
+            var rol = await _roleManager.FindByNameAsync(roles[0]);
+
+            if (rol == null || !rol.Activo)
+            {
+                ModelState.AddModelError(
+                    string.Empty,
+                    "Tu cuenta está inactivada. Comunícate con el administrador.");
+
+                return View(model);
+            }
+
+            // 5. Solo ahora validar la contraseña e iniciar sesión.
             var result = await _signInManager.PasswordSignInAsync(
-                model.UserName,
+                user,
                 model.Password,
                 model.RememberMe,
                 lockoutOnFailure: false);
 
             if (result.Succeeded)
             {
-                // 2. Buscar al usuario en la base de datos usando el UserName (que es su Email)
-                var user = await _userManager.FindByNameAsync(model.UserName);
+                var isAdmin = await _userManager.IsInRoleAsync(
+                    user,
+                    "Administrador");
 
-                if (user != null)
+                if (isAdmin)
                 {
-                    // 3. Validar si el usuario tiene asignado el rol exacto "Administrador"
-                    var isAdmin = await _userManager.IsInRoleAsync(user, "Administrador");
-
-                    if (isAdmin)
-                    {
-                        // Redirigir al Index de UsuariosController (Nota la S al final: "Usuarios")
-                        return RedirectToAction("Index", "Usuarios");
-                    }
+                    return RedirectToAction("Index", "Usuarios");
                 }
 
-                // 4. Redirección por defecto si no es administrador (ej. la página de inicio)
-                return RedirectToAction("AccessDanied", "Account");
+                return RedirectToAction("AccessDenied", "Account");
             }
 
             ModelState.AddModelError(

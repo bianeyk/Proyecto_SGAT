@@ -78,48 +78,57 @@ public class UsuarioService : IUsuarioService
 
     public async Task<IdentityResult> CrearAsync(UsuarioCreateDto dto)
     {
-        //Consultar si existe un correo.
+        // 1. Validar si el correo ya existe
         var usuarioExistente = await _userManager.FindByEmailAsync(dto.Email);
 
         if (usuarioExistente != null)
         {
-            var error = new IdentityError
-            {
-                Code = "EmailDuplicado",
-                Description = "Ya existe un usuario registrado con este correo electrónico."
-            };
-
-            return IdentityResult.Failed(error);
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "EmailDuplicado",
+                    Description = "Ya existe un usuario registrado con este correo electrónico."
+                });
         }
 
-        //validar administrador seleccione al menos un rol al crear un usuario
-        if (dto.Roles == null || !dto.Roles.Any())
+        // 2. Validar que se haya seleccionado un rol
+        var nombreRol = dto.Rol?.Trim();
+
+        if (string.IsNullOrWhiteSpace(nombreRol))
         {
             return IdentityResult.Failed(
                 new IdentityError
                 {
                     Code = "RolRequerido",
-                    Description = "Debe seleccionar al menos un rol para el usuario."
+                    Description = "Debe seleccionar un rol para el usuario."
                 });
         }
 
-        //valisa que el rol exista
-        if (dto.Roles.Any())
+        // 3. Buscar el rol en Identity
+        var rol = await _roleManager.FindByNameAsync(nombreRol);
+
+        if (rol == null)
         {
-            foreach (var rol in dto.Roles)
-            {
-                if (!await _roleManager.RoleExistsAsync(rol))
+            return IdentityResult.Failed(
+                new IdentityError
                 {
-                    return IdentityResult.Failed(
-                        new IdentityError
-                        {
-                            Code = "RolNoExiste",
-                            Description = $"El rol '{rol}' no existe."
-                        });
-                }
-            }
+                    Code = "RolNoExiste",
+                    Description = $"El rol '{nombreRol}' no existe."
+                });
         }
-        //Luego de las validaciones Crear un objeto en memoria Crear el objeto usuario
+
+        // 4. Validar que el rol esté activo
+        if (!rol.Activo)
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "RolInactivo",
+                    Description = "No se puede asignar un rol que está inactivo."
+                });
+        }
+
+        // 5. Crear el usuario
         var usuario = new ApplicationUser
         {
             NombreCompleto = dto.NombreCompleto.Trim(),
@@ -127,32 +136,49 @@ public class UsuarioService : IUsuarioService
             UserName = dto.Email.Trim().ToLower(),
             Activo = dto.Activo
         };
-        // Crear el usuario en Identity
-        var resultado = await _userManager.CreateAsync(usuario, dto.Password);
 
-        // Si hubo errores, devolverlos
+        var resultado = await _userManager.CreateAsync(
+            usuario,
+            dto.Password);
+
         if (!resultado.Succeeded)
         {
             return resultado;
         }
 
-        // Asignar los roles seleccionados
-        var resultadoRoles = await _userManager.AddToRolesAsync(usuario, dto.Roles);
+        // 6. Asignar un único rol
+        var resultadoRol = await _userManager.AddToRoleAsync(
+            usuario,
+            nombreRol);
 
-        if (!resultadoRoles.Succeeded)
+        if (!resultadoRol.Succeeded)
         {
-            // Aquí hablaremos de esto enseguida
-            return resultadoRoles;
+            // Si falla la asignación, dejamos el usuario inactivo.
+            // No eliminamos físicamente el registro.
+            usuario.Activo = false;
+
+            await _userManager.UpdateAsync(usuario);
+
+            _logger.LogError(
+                "No se pudo asignar el rol {Rol} al usuario {Email}.",
+                nombreRol,
+                usuario.Email);
+
+            return resultadoRol;
         }
-        //ILogger ensajes se guarden
-        _logger.LogInformation("Usuario {Email} creado correctamente con los roles: {Roles}", usuario.Email,string.Join(", ", dto.Roles));
+
+        // 7. Registrar la operación
+        _logger.LogInformation(
+            "Usuario {Email} creado correctamente con el rol {Rol}.",
+            usuario.Email,
+            nombreRol);
 
         return IdentityResult.Success;
-        // Continuaremos aquí...
     }
 
     public async Task<IdentityResult> ActualizarAsync(UsuarioEditDto dto)
     {
+        // 1. Buscar el usuario
         var usuario = await _userManager.FindByIdAsync(dto.Id);
 
         if (usuario == null)
@@ -164,67 +190,104 @@ public class UsuarioService : IUsuarioService
                     Description = "El usuario no fue encontrado."
                 });
         }
-        //validar roles
-        if (dto.Roles == null || !dto.Roles.Any())
+
+        // 2. Validar el rol seleccionado
+        var nombreRol = dto.Rol?.Trim();
+
+        if (string.IsNullOrWhiteSpace(nombreRol))
         {
             return IdentityResult.Failed(
                 new IdentityError
                 {
                     Code = "RolRequerido",
-                    Description = "Debe seleccionar al menos un rol."
+                    Description = "Debe seleccionar un rol."
                 });
         }
 
-        foreach (var rol in dto.Roles)
+        // 3. Buscar el rol
+        var rol = await _roleManager.FindByNameAsync(nombreRol);
+
+        if (rol == null)
         {
-            if (!await _roleManager.RoleExistsAsync(rol))
-            {
-                return IdentityResult.Failed(
-                    new IdentityError
-                    {
-                        Code = "RolNoExiste",
-                        Description = $"El rol '{rol}' no existe."
-                    });
-            }
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "RolNoExiste",
+                    Description = $"El rol '{nombreRol}' no existe."
+                });
         }
-        //Actualizamos los datos del usuario
+
+        // 4. Validar que el rol esté activo
+        if (!rol.Activo)
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "RolInactivo",
+                    Description = "No se puede asignar un rol que está inactivo."
+                });
+        }
+
+        // 5. Actualizar los datos del usuario
         usuario.NombreCompleto = dto.NombreCompleto.Trim();
         usuario.Activo = dto.Activo;
-        //Guardamos cambios UserManager se encarga de actualizar el registro de AspNetUsers
-        var resultado = await _userManager.UpdateAsync(usuario);
 
-        if (!resultado.Succeeded)
+        var resultadoUsuario = await _userManager.UpdateAsync(usuario);
+
+        if (!resultadoUsuario.Succeeded)
         {
-            return resultado;
+            return resultadoUsuario;
         }
-        // Obtener los roles actuales del usuario
-        var rolesActuales = await _userManager.GetRolesAsync(usuario);
-        var rolesAQuitar = rolesActuales.Except(dto.Roles).ToList();
-        var rolesAAgregar = dto.Roles.Except(rolesActuales).ToList();
 
-        //quitar roles
+        // 6. Obtener los roles actuales
+        var rolesActuales = await _userManager.GetRolesAsync(usuario);
+
+        // 7. Quitar los roles que no corresponden al seleccionado
+        var rolesAQuitar = rolesActuales
+            .Where(r => !string.Equals(
+                r,
+                nombreRol,
+                StringComparison.OrdinalIgnoreCase))
+            .ToList();
+
         if (rolesAQuitar.Any())
         {
-            var resultadoQuitar = await _userManager.RemoveFromRolesAsync(usuario, rolesAQuitar);
+            var resultadoQuitar = await _userManager.RemoveFromRolesAsync(
+                usuario,
+                rolesAQuitar);
 
             if (!resultadoQuitar.Succeeded)
             {
                 return resultadoQuitar;
             }
         }
-        //Agregar Roles 
-        if (rolesAAgregar.Any())
+
+        // 8. Comprobar si ya tiene el rol seleccionado
+        var tieneRolSeleccionado = rolesActuales.Any(r =>
+            string.Equals(
+                r,
+                nombreRol,
+                StringComparison.OrdinalIgnoreCase));
+
+        // 9. Asignar el rol si todavía no lo tiene
+        if (!tieneRolSeleccionado)
         {
-            var resultadoAgregar = await _userManager.AddToRolesAsync(usuario, rolesAAgregar);
+            var resultadoAgregar = await _userManager.AddToRoleAsync(
+                usuario,
+                nombreRol);
 
             if (!resultadoAgregar.Succeeded)
             {
                 return resultadoAgregar;
             }
         }
-        //Registrar el cambio
-        _logger.LogInformation("Usuario {Email} actualizado correctamente.",usuario.Email);
-        //retornamos
+
+        // 10. Registrar la operación
+        _logger.LogInformation(
+            "Usuario {Email} actualizado correctamente con el rol {Rol}.",
+            usuario.Email,
+            nombreRol);
+
         return IdentityResult.Success;
     }
 

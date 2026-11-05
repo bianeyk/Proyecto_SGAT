@@ -87,25 +87,27 @@
                     </label>
 
                 </div>
-                <h5>Roles</h5>
+                <div class="mb-3">
+                    <label asp-for="Usuario.Rol" class="form-label">
+                        Rol
+                    </label>
 
-                @foreach (var rol in Model.RolesDisponibles)
-                {
-                    <div class="form-check">
+                    <select asp-for="Usuario.Rol" class="form-select">
+                        <option value="">-- Seleccione un rol --</option>
 
-                        <input class="form-check-input"
-                               type="checkbox"
-                               name="Usuario.Roles"
-                               value="@rol.Nombre" />
+                        @foreach (var rol in Model.RolesDisponibles)
+                        {
+                            <option value="@rol.Nombre">
+                                @rol.Nombre
+                            </option>
+                        }
+                    </select>
 
-                        <label class="form-check-label">
-
-                            @rol.Nombre
-
-                        </label>
-
-                    </div>
-                }
+                    <span asp-validation-for="Usuario.Rol"
+                          class="text-danger">
+                    </span>
+                </div>
+                
                 <div class="mt-4">
 
                     <button type="submit"

@@ -103,7 +103,7 @@ namespace SGAT.Web.Controllers
                     Id = usuario.Id,
                     NombreCompleto = usuario.NombreCompleto,
                     Activo = usuario.Activo,
-                    Roles = usuario.Roles
+                    Rol = usuario.Roles.FirstOrDefault() ?? string.Empty
                 },
                 RolesDisponibles = await _rolService.ObtenerTodosAsync()
             };
