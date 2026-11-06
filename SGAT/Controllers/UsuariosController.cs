@@ -148,7 +148,8 @@ namespace SGAT.Web.Controllers
 
             if (!resultado.Succeeded)
             {
-                TempData["Error"] = resultado.Errors.First().Description;
+                TempData["Error"] = string.Join(
+                    ", ", resultado.Errors.Select(e => e.Description));
             }
             else
             {

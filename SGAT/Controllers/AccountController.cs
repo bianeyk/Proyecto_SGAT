@@ -21,8 +21,15 @@ namespace SGAT.Web.Controllers
             _roleManager = roleManager;
         }
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(bool inactiva = false)
         {
+            if (inactiva)
+            {
+                ModelState.AddModelError(
+                    string.Empty,
+                    "Tu cuenta está inactivada. Comunícate con el administrador.");
+            }
+
             return View();
         }
         //consultar si el rol está activo

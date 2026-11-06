@@ -1,0 +1,90 @@
+﻿@model IReadOnlyList<SGAT.Application.DTOs.Rol.RolDto>
+
+@{
+    ViewData["Title"] = "Administración de Roles";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Administración de Roles</h2>
+
+        <a asp-action="Create" class="btn btn-primary">
+            Nuevo Rol
+        </a>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var rol in Model)
+            {
+                <tr>
+                    <td>@rol.Nombre</td>
+
+                    <td>
+                        @if (rol.Activo)
+                        {
+                            <span class="badge bg-success">Activo</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Inactivo</span>
+                        }
+                    </td>
+
+                    <td>
+                        <!-- Aquí agregaremos las acciones -->
+                        <td>
+                            @if (rol.Activo)
+                            {
+                                <form asp-action="Inactivar"
+                                      method="post"
+                                      class="d-inline">
+
+                                    @Html.AntiForgeryToken()
+
+                                    <input type="hidden" name="id" value="@rol.Id" />
+
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        Inactivar
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form asp-action="Activar"
+                                      method="post"
+                                      class="d-inline">
+
+                                    @Html.AntiForgeryToken()
+
+                                    <input type="hidden" name="id" value="@rol.Id" />
+
+                                    <button type="submit" class="btn btn-sm btn-success">
+                                        Activar
+                                    </button>
+                                </form>
+                            }
+                        </td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

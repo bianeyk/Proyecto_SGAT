@@ -344,7 +344,31 @@ public class UsuarioService : IUsuarioService
         {
             return IdentityResult.Success;
         }
+        // Consultar los roles asignados al usuario.
+        var roles = await _userManager.GetRolesAsync(usuario);
 
+        // Comprobar si el usuario es Administrador.
+        if (roles.Contains("Administrador"))
+        {
+            // Obtener todos los usuarios que tienen el rol Administrador.
+            var administradores = await _userManager
+                .GetUsersInRoleAsync("Administrador");
+
+            // Contar únicamente los administradores activos.
+            var administradoresActivos = administradores
+                .Count(a => a.Activo);
+
+            // Impedir inactivar al último administrador activo.
+            if (administradoresActivos <= 1)
+            {
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "UltimoAdministrador",
+                        Description = "No se puede inactivar al último administrador activo."
+                    });
+            }
+        }
         usuario.Activo = false;
 
         var resultado = await _userManager.UpdateAsync(usuario);

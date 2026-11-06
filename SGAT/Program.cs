@@ -5,7 +5,7 @@ using SGAT.Infrastructure.Data;
 using SGAT.Infrastructure.Seed;
 using SGAT.Application.DependencyInjection;
 using SGAT.Infrastructure.DependencyInjection;
-
+using SGAT.Web.Middleware;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -53,8 +53,14 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-//AUTENTICACION
+
+// Autenticación
 app.UseAuthentication();
+
+// Comprobar que el usuario y su rol sigan activos.
+app.UseMiddleware<ValidarEstadoUsuarioMiddleware>();
+
+// Autorización
 app.UseAuthorization();
 
 app.MapStaticAssets();
