@@ -20,8 +20,9 @@ namespace SGAT.Web.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
         }
+
         [HttpGet]
-        public IActionResult Login(bool inactiva = false)
+        public IActionResult Login(bool inactiva = false, bool permisos = false)
         {
             if (inactiva)
             {
@@ -29,9 +30,16 @@ namespace SGAT.Web.Controllers
                     string.Empty,
                     "Tu cuenta está inactivada. Comunícate con el administrador.");
             }
+            else if (permisos)
+            {
+                ModelState.AddModelError(
+                    string.Empty,
+                    "Tus permisos han cambiado. Inicia sesión nuevamente.");
+            }
 
             return View();
         }
+
         //consultar si el rol está activo
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -417,8 +417,7 @@ namespace SGAT.Infrastructure.Migrations
                     b.HasIndex("IdUsuarioCrea");
 
                     b.HasIndex("NumDoc")
-                        .IsUnique()
-                        .HasDatabaseName("UQ_Cliente_NumDoc");
+                        .IsUnique();
 
                     b.ToTable("Clientes");
                 });
@@ -1339,6 +1338,9 @@ namespace SGAT.Infrastructure.Migrations
                     b.Property<int>("IdCategoriaProducto")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdMarca")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -1372,6 +1374,8 @@ namespace SGAT.Infrastructure.Migrations
                         .HasFilter("[Codigo] IS NOT NULL");
 
                     b.HasIndex("IdCategoriaProducto");
+
+                    b.HasIndex("IdMarca");
 
                     b.ToTable("Productos", t =>
                         {
@@ -1893,7 +1897,15 @@ namespace SGAT.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
+                    b.HasOne("SGAT.Domain.Entities.Marca", "Marca")
+                        .WithMany("Productos")
+                        .HasForeignKey("IdMarca")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.Navigation("CategoriaProducto");
+
+                    b.Navigation("Marca");
                 });
 
             modelBuilder.Entity("SGAT.Domain.Entities.RolePermiso", b =>
@@ -2002,6 +2014,8 @@ namespace SGAT.Infrastructure.Migrations
             modelBuilder.Entity("SGAT.Domain.Entities.Marca", b =>
                 {
                     b.Navigation("Equipos");
+
+                    b.Navigation("Productos");
                 });
 
             modelBuilder.Entity("SGAT.Domain.Entities.OrdenServicio", b =>

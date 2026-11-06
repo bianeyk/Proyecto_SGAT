@@ -228,6 +228,43 @@ public class UsuarioService : IUsuarioService
                 });
         }
 
+        // Obtener los roles actuales del usuario.
+        var rolesActuales = await _userManager.GetRolesAsync(usuario);
+
+        // Comprobar si actualmente es un administrador activo.
+        var esAdministradorActual =
+            usuario.Activo &&
+            rolesActuales.Contains(
+                "Administrador",
+                StringComparer.OrdinalIgnoreCase);
+
+        // Comprobar si dejará de ser administrador activo.
+        var pierdeCondicionAdministrador =
+            !dto.Activo ||
+            !string.Equals(
+                nombreRol,
+                "Administrador",
+                StringComparison.OrdinalIgnoreCase);
+
+        if (esAdministradorActual && pierdeCondicionAdministrador)
+        {
+            var administradores = await _userManager
+                .GetUsersInRoleAsync("Administrador");
+
+            var administradoresActivos = administradores
+                .Count(a => a.Activo);
+
+            if (administradoresActivos <= 1)
+            {
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "UltimoAdministrador",
+                        Description = "No se puede quitar el rol o inactivar al último administrador activo."
+                    });
+            }
+        }
+
         // 5. Actualizar los datos del usuario
         usuario.NombreCompleto = dto.NombreCompleto.Trim();
         usuario.Activo = dto.Activo;
@@ -238,9 +275,6 @@ public class UsuarioService : IUsuarioService
         {
             return resultadoUsuario;
         }
-
-        // 6. Obtener los roles actuales
-        var rolesActuales = await _userManager.GetRolesAsync(usuario);
 
         // 7. Quitar los roles que no corresponden al seleccionado
         var rolesAQuitar = rolesActuales
@@ -268,6 +302,7 @@ public class UsuarioService : IUsuarioService
                 r,
                 nombreRol,
                 StringComparison.OrdinalIgnoreCase));
+        var cambioRol = rolesAQuitar.Any() || !tieneRolSeleccionado;
 
         // 9. Asignar el rol si todavía no lo tiene
         if (!tieneRolSeleccionado)
@@ -281,7 +316,27 @@ public class UsuarioService : IUsuarioService
                 return resultadoAgregar;
             }
         }
+        if (cambioRol)
+        {
+            var resultadoStamp = await _userManager
+                .UpdateSecurityStampAsync(usuario);
 
+            if (!resultadoStamp.Succeeded)
+            {
+                return resultadoStamp;
+            }
+        }
+
+        if (cambioRol)
+        {
+            var resultadoStamp = await _userManager
+                .UpdateSecurityStampAsync(usuario);
+
+            if (!resultadoStamp.Succeeded)
+            {
+                return resultadoStamp;
+            }
+        }
         // 10. Registrar la operación
         _logger.LogInformation(
             "Usuario {Email} actualizado correctamente con el rol {Rol}.",

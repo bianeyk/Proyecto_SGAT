@@ -60,6 +60,16 @@ namespace SGAT.Web.Middleware
 
                     return;
                 }
+
+                // Comprobar que el rol de la sesión coincida
+                // con el rol actual de la base de datos.
+                if (!context.User.IsInRole(roles[0]))
+                {
+                    await signInManager.SignOutAsync();
+
+                    context.Response.Redirect("/Account/Login?permisos=true");
+                    return;
+                }
             }
 
             // Si las comprobaciones pasan, continuar la solicitud.
