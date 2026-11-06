@@ -3,6 +3,8 @@
 <form asp-action="Edit" method="post">
     @Html.AntiForgeryToken()
 
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
     <input asp-for="Usuario.Id" type="hidden" />
 
     <div class="mb-3">

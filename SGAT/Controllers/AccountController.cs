@@ -123,14 +123,14 @@ namespace SGAT.Web.Controllers
 
             return View(model);
         }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
 
-            return RedirectToAction(
-                "Login",
-                "Account");
+            return RedirectToAction("Login", "Account");
         }
         [HttpGet]
         public IActionResult AccessDenied()

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SGAT.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cff72bdd9026811d1afb0cc502be0c406f7932d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca93d08dfe8f70b9c71815a0d6740ed2e4135cc4")]
 [assembly: System.Reflection.AssemblyProductAttribute("SGAT.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SGAT.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
