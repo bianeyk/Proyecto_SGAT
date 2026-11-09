@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SGAT.Application.DTOs.Login;
 using SGAT.Domain.Entities;
+using Microsoft.Extensions.Options;
 
 namespace SGAT.Web.Controllers
 {
@@ -10,15 +11,17 @@ namespace SGAT.Web.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
-
+        private readonly IdentityOptions _identityOptions;
         public AccountController(
             SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager,
-            RoleManager<ApplicationRole> roleManager)
+            RoleManager<ApplicationRole> roleManager,
+            IOptions<IdentityOptions> identityOptions)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _roleManager = roleManager;
+            _identityOptions = identityOptions.Value;
         }
 
         [HttpGet]
@@ -101,25 +104,58 @@ namespace SGAT.Web.Controllers
                 user,
                 model.Password,
                 model.RememberMe,
-                lockoutOnFailure: false);
+                lockoutOnFailure: true);
 
             if (result.Succeeded)
             {
-                var isAdmin = await _userManager.IsInRoleAsync(
-                    user,
-                    "Administrador");
-
-                if (isAdmin)
+                if (await _userManager.IsInRoleAsync(user, "Administrador"))
                 {
                     return RedirectToAction("Index", "Usuarios");
+                }
+
+                if (await _userManager.IsInRoleAsync(user, "Gerente"))
+                {
+                    return RedirectToAction("Index", "Clientes");
+                }
+
+                if (await _userManager.IsInRoleAsync(user, "Tecnico"))
+                {
+                    return RedirectToAction("Index", "Clientes");
                 }
 
                 return RedirectToAction("AccessDenied", "Account");
             }
 
+            // Comprobar si Identity bloqueó la cuenta.
+            if (result.IsLockedOut)
+            {
+                var fechaDesbloqueo =
+                    await _userManager.GetLockoutEndDateAsync(user);
+
+                if (fechaDesbloqueo.HasValue)
+                {
+                    ViewBag.BloqueoHasta =
+                        fechaDesbloqueo.Value.ToUnixTimeMilliseconds();
+                }
+
+                ModelState.AddModelError(
+                    string.Empty,
+                    "Tu cuenta está bloqueada temporalmente.");
+
+                return View(model);
+            }
+
+            // Consultar los intentos fallidos actuales.
+            var intentosFallidos =
+                await _userManager.GetAccessFailedCountAsync(user);
+
+            // Calcular los intentos restantes.
+            var intentosRestantes = Math.Max(0,
+                _identityOptions.Lockout.MaxFailedAccessAttempts - intentosFallidos);
+
             ModelState.AddModelError(
                 string.Empty,
-                "Usuario o contraseña incorrectos");
+                $"Usuario o contraseña incorrectos. Te quedan {intentosRestantes} intentos antes del bloqueo.");
 
             return View(model);
         }
