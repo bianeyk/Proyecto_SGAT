@@ -4,21 +4,155 @@
     ViewData["Title"] = "Crear cliente";
 }
 
-<div class="container mt-4">
-    <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white"><h4 class="mb-0">Crear cliente</h4></div>
-        <div class="card-body">
-            <form asp-action="Create" method="post">
-                @Html.AntiForgeryToken()
-                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+<style>
+    .sg-form-page {
+        --sg-ink: #0e1b2c;
+        --sg-muted: #5b6b7f;
+        --sg-line: #e3e8ef;
+        --sg-accent: #1d5fd1;
+        --sg-accent-soft: #e8f0fd;
+        --sg-danger: #b42318;
+        --sg-danger-soft: #fdecea;
+
+        max-width: 760px;
+        color: var(--sg-ink);
+    }
+
+    /* ---------- Encabezado ---------- */
+    .sg-form-page .sg-volver {
+        display: inline-flex; align-items: center; gap: .4rem;
+        color: var(--sg-muted); font-size: .875rem; font-weight: 500;
+        text-decoration: none; margin-bottom: .75rem;
+    }
+    .sg-form-page .sg-volver:hover { color: var(--sg-accent); }
+    .sg-form-page .sg-titulo {
+        font-size: 1.75rem; font-weight: 650; letter-spacing: -.02em; margin: 0;
+    }
+    .sg-form-page .sg-sub { color: var(--sg-muted); font-size: .925rem; margin: .25rem 0 0; }
+
+    /* ---------- Panel ---------- */
+    .sg-form-page .sg-panel {
+        margin-top: 1.5rem;
+        background: #fff;
+        border: 1px solid var(--sg-line);
+        border-radius: .9rem;
+        box-shadow: 0 1px 2px rgba(14, 27, 44, .04);
+        overflow: hidden;
+    }
+    .sg-form-page .sg-cuerpo { padding: 1.5rem; }
+    .sg-form-page .sg-pie {
+        display: flex; justify-content: flex-end; align-items: center; gap: .6rem;
+        padding: .9rem 1.5rem;
+        background: #fbfcfe;
+        border-top: 1px solid var(--sg-line);
+    }
+
+    /* ---------- Campos (afecta también a _ClienteForm) ---------- */
+    .sg-form-page .form-label {
+        font-size: .875rem; font-weight: 550; color: var(--sg-ink); margin-bottom: .35rem;
+    }
+    .sg-form-page .form-control,
+    .sg-form-page .form-select {
+        min-height: 42px;
+        border: 1px solid #d3dbe6;
+        border-radius: .6rem;
+        font-size: .925rem;
+        color: var(--sg-ink);
+        transition: border-color .15s, box-shadow .15s;
+    }
+    .sg-form-page textarea.form-control { min-height: 96px; }
+    .sg-form-page .form-control::placeholder { color: #8795a8; }
+    .sg-form-page .form-control:focus,
+    .sg-form-page .form-select:focus {
+        border-color: var(--sg-accent);
+        box-shadow: 0 0 0 3px rgba(29, 95, 209, .15);
+    }
+    .sg-form-page .form-check-input:checked {
+        background-color: var(--sg-accent); border-color: var(--sg-accent);
+    }
+    .sg-form-page .form-check-input:focus {
+        border-color: var(--sg-accent);
+        box-shadow: 0 0 0 3px rgba(29, 95, 209, .15);
+    }
+    .sg-form-page .form-text,
+    .sg-form-page .text-muted { color: var(--sg-muted) !important; font-size: .8rem; }
+
+    /* Validación */
+    .sg-form-page .input-validation-error {
+        border-color: var(--sg-danger);
+        background-image: none;
+    }
+    .sg-form-page .input-validation-error:focus {
+        box-shadow: 0 0 0 3px rgba(180, 35, 24, .15);
+    }
+    .sg-form-page .field-validation-error {
+        display: block; margin-top: .3rem;
+        color: var(--sg-danger); font-size: .8rem; font-weight: 500;
+    }
+
+    /* Resumen de errores del servidor (solo aparece si hay errores) */
+    .sg-form-page .sg-resumen.validation-summary-errors {
+        display: flex; gap: .6rem;
+        margin-bottom: 1.25rem; padding: .8rem 1rem;
+        background: var(--sg-danger-soft);
+        border: 1px solid #f5c2bd;
+        border-radius: .7rem;
+        color: var(--sg-danger); font-size: .9rem;
+    }
+    .sg-form-page .sg-resumen.validation-summary-errors::before {
+        content: "\F333"; /* bi-exclamation-triangle-fill */
+        font-family: "bootstrap-icons";
+        line-height: 1.4;
+    }
+    .sg-form-page .sg-resumen ul { margin: 0; padding: 0; list-style: none; }
+
+    /* ---------- Botones ---------- */
+    .sg-form-page .sg-btn-primario {
+        background: var(--sg-accent); border: 1px solid var(--sg-accent); color: #fff;
+        font-weight: 500; padding: .55rem 1.1rem; border-radius: .6rem;
+    }
+    .sg-form-page .sg-btn-primario:hover { background: #174fb0; border-color: #174fb0; color: #fff; }
+    .sg-form-page .sg-btn-ghost {
+        background: transparent; border: 1px solid transparent; color: var(--sg-muted);
+        font-weight: 500; padding: .55rem 1rem; border-radius: .6rem; text-decoration: none;
+    }
+    .sg-form-page .sg-btn-ghost:hover { background: #eceff4; color: var(--sg-ink); }
+    .sg-form-page .sg-btn-primario:focus-visible,
+    .sg-form-page .sg-btn-ghost:focus-visible,
+    .sg-form-page .sg-volver:focus-visible {
+        outline: 2px solid var(--sg-accent); outline-offset: 2px;
+    }
+
+    @@media (max-width: 575.98px) {
+        .sg-form-page .sg-cuerpo { padding: 1.1rem; }
+        .sg-form-page .sg-pie { padding: .9rem 1.1rem; }
+        .sg-form-page .sg-pie .btn { flex: 1; text-align: center; }
+    }
+</style>
+
+<div class="container sg-form-page mt-4 mb-5">
+
+    <a asp-action="Index" class="sg-volver">
+        <i class="bi bi-arrow-left"></i> Clientes
+    </a>
+    <h1 class="sg-titulo">Crear cliente</h1>
+    <p class="sg-sub">Registra los datos del cliente para asociarle equipos y órdenes de servicio.</p>
+
+    <form asp-action="Create" method="post" novalidate>
+        @Html.AntiForgeryToken()
+
+        <div class="sg-panel">
+            <div class="sg-cuerpo">
+                <div asp-validation-summary="ModelOnly" class="sg-resumen" role="alert"></div>
                 <partial name="_ClienteForm" model="Model" />
-                <div class="mt-4">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-                </div>
-            </form>
+            </div>
+
+            <div class="sg-pie">
+                <a asp-action="Index" class="btn sg-btn-ghost">Cancelar</a>
+                <button type="submit" class="btn sg-btn-primario">Guardar cliente</button>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
 @section Scripts {

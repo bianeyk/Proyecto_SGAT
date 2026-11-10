@@ -298,6 +298,34 @@ namespace SGAT.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SGAT.Domain.Entities.BitacoraTecnica", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<string>("Nota")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("OrdenId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrdenId");
+
+                    b.ToTable("BitacorasTecnicas");
+                });
+
             modelBuilder.Entity("SGAT.Domain.Entities.CategoriaDispositivo", b =>
                 {
                     b.Property<int>("IdCategoriaDispositivo")
@@ -496,6 +524,69 @@ namespace SGAT.Infrastructure.Migrations
                     b.HasIndex("IdProducto");
 
                     b.ToTable("CompraDetalles");
+                });
+
+            modelBuilder.Entity("SGAT.Domain.Entities.DiagnosticoTecnico", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("CostoManoDeObra")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(0m);
+
+                    b.Property<decimal>("CostoTotalEstimado")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(0m);
+
+                    b.Property<string>("DiagnosticoDetallado")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<string>("FallaReportada")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime?>("FechaFinalizacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaInicio")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<int>("OrdenId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RepuestosSugeridos")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<bool>("RequiereRepuestos")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SolucionAplicada")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<string>("TecnicoId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrdenId")
+                        .IsUnique();
+
+                    b.HasIndex("TecnicoId");
+
+                    b.ToTable("DiagnosticosTecnicos");
                 });
 
             modelBuilder.Entity("SGAT.Domain.Entities.Empresa", b =>
@@ -1077,6 +1168,11 @@ namespace SGAT.Infrastructure.Migrations
                     b.Property<string>("Diagnostico")
                         .HasColumnType("varchar(max)");
 
+                    b.Property<int>("EstadoOrden")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
                     b.Property<DateTime?>("FechaCierre")
                         .HasColumnType("datetime2");
 
@@ -1548,6 +1644,17 @@ namespace SGAT.Infrastructure.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("SGAT.Domain.Entities.BitacoraTecnica", b =>
+                {
+                    b.HasOne("SGAT.Domain.Entities.OrdenServicio", "Orden")
+                        .WithMany("Bitacoras")
+                        .HasForeignKey("OrdenId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Orden");
+                });
+
             modelBuilder.Entity("SGAT.Domain.Entities.Cliente", b =>
                 {
                     b.HasOne("SGAT.Domain.Entities.ApplicationUser", "UsuarioCrea")
@@ -1595,6 +1702,25 @@ namespace SGAT.Infrastructure.Migrations
                     b.Navigation("Compra");
 
                     b.Navigation("Producto");
+                });
+
+            modelBuilder.Entity("SGAT.Domain.Entities.DiagnosticoTecnico", b =>
+                {
+                    b.HasOne("SGAT.Domain.Entities.OrdenServicio", "Orden")
+                        .WithOne("DiagnosticoTecnico")
+                        .HasForeignKey("SGAT.Domain.Entities.DiagnosticoTecnico", "OrdenId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SGAT.Domain.Entities.ApplicationUser", "Tecnico")
+                        .WithMany("Diagnosticos")
+                        .HasForeignKey("TecnicoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Orden");
+
+                    b.Navigation("Tecnico");
                 });
 
             modelBuilder.Entity("SGAT.Domain.Entities.Equipo", b =>
@@ -1940,6 +2066,8 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Navigation("Compras");
 
+                    b.Navigation("Diagnosticos");
+
                     b.Navigation("Equipos");
 
                     b.Navigation("Facturas");
@@ -2020,9 +2148,13 @@ namespace SGAT.Infrastructure.Migrations
 
             modelBuilder.Entity("SGAT.Domain.Entities.OrdenServicio", b =>
                 {
+                    b.Navigation("Bitacoras");
+
                     b.Navigation("Detalles");
 
                     b.Navigation("DetallesProducto");
+
+                    b.Navigation("DiagnosticoTecnico");
 
                     b.Navigation("Facturas");
 

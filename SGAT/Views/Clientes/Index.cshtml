@@ -2,74 +2,447 @@
 
 @{
     ViewData["Title"] = "Clientes";
+
+    var termino = ViewData["Termino"]?.ToString();
+    var hayBusqueda = !string.IsNullOrWhiteSpace(termino);
+    var total = Model.Count();
+    var activos = Model.Count(c => c.Activo);
+    var inactivos = total - activos;
 }
 
-<div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1>Clientes</h1>
-        <a asp-action="Create" class="btn btn-primary">Crear cliente</a>
+<style>
+    .sg-clientes {
+        --sg-ink: #0e1b2c;
+        --sg-muted: #5b6b7f;
+        --sg-line: #e3e8ef;
+        --sg-canvas: #f6f8fb;
+        --sg-accent: #1d5fd1;
+        --sg-accent-soft: #e8f0fd;
+        --sg-ok: #0f7b55;
+        --sg-ok-soft: #e4f5ee;
+        --sg-off: #5b6b7f;
+        --sg-off-soft: #eceff4;
+        --sg-danger: #b42318;
+
+        max-width: 1140px;
+        color: var(--sg-ink);
+    }
+
+    /* ---------- Encabezado ---------- */
+    .sg-clientes .sg-titulo {
+        font-size: 1.75rem;
+        font-weight: 650;
+        letter-spacing: -.02em;
+        margin: 0;
+    }
+    .sg-clientes .sg-sub { color: var(--sg-muted); font-size: .925rem; margin: .25rem 0 0; }
+
+    .sg-clientes .sg-btn-primario {
+        background: var(--sg-accent);
+        border-color: var(--sg-accent);
+        color: #fff;
+        font-weight: 500;
+        padding: .55rem 1rem;
+        border-radius: .6rem;
+    }
+    .sg-clientes .sg-btn-primario:hover { background: #174fb0; border-color: #174fb0; color: #fff; }
+
+    /* ---------- Barra de herramientas ---------- */
+    .sg-toolbar {
+        display: flex; flex-wrap: wrap; gap: .75rem;
+        align-items: center; justify-content: space-between;
+        margin: 1.5rem 0 1rem;
+    }
+
+    .sg-buscador { position: relative; flex: 1 1 320px; max-width: 560px; }
+    .sg-buscador .bi-search {
+        position: absolute; left: .85rem; top: 50%; transform: translateY(-50%);
+        color: var(--sg-muted); pointer-events: none;
+    }
+    .sg-buscador input {
+        width: 100%;
+        height: 42px;
+        padding: 0 5.5rem 0 2.4rem;
+        border: 1px solid var(--sg-line);
+        border-radius: .6rem;
+        background: #fff;
+        font-size: .925rem;
+        transition: border-color .15s, box-shadow .15s;
+    }
+    .sg-buscador input::placeholder { color: #8795a8; }
+    .sg-buscador input:focus {
+        outline: none;
+        border-color: var(--sg-accent);
+        box-shadow: 0 0 0 3px rgba(29, 95, 209, .15);
+    }
+    .sg-buscador .sg-buscar {
+        position: absolute; right: 5px; top: 5px; bottom: 5px;
+        border: 0; border-radius: .45rem;
+        background: var(--sg-ink); color: #fff;
+        font-size: .85rem; font-weight: 500; padding: 0 .85rem;
+    }
+    .sg-buscador .sg-buscar:hover { background: #1c3350; }
+    .sg-buscador .sg-limpiar {
+        position: absolute; right: 5.4rem; top: 50%; transform: translateY(-50%);
+        color: var(--sg-muted); font-size: 1rem; line-height: 1; text-decoration: none;
+    }
+    .sg-buscador .sg-limpiar:hover { color: var(--sg-ink); }
+
+    /* Control segmentado */
+    .sg-segmentos {
+        display: inline-flex; padding: 3px; gap: 2px;
+        background: var(--sg-off-soft);
+        border-radius: .7rem;
+    }
+    .sg-segmentos button {
+        border: 0; background: transparent;
+        padding: .4rem .85rem;
+        border-radius: .55rem;
+        font-size: .875rem; font-weight: 500;
+        color: var(--sg-muted);
+        display: inline-flex; align-items: center; gap: .45rem;
+        transition: background .15s, color .15s;
+    }
+    .sg-segmentos button:hover { color: var(--sg-ink); }
+    .sg-segmentos button[aria-pressed="true"] {
+        background: #fff; color: var(--sg-ink);
+        box-shadow: 0 1px 2px rgba(14, 27, 44, .12);
+    }
+    .sg-segmentos .sg-cuenta {
+        font-size: .75rem; font-variant-numeric: tabular-nums;
+        color: var(--sg-muted);
+        background: rgba(14, 27, 44, .06);
+        padding: .05rem .45rem; border-radius: 999px;
+    }
+    .sg-segmentos button:focus-visible,
+    .sg-clientes .sg-btn-primario:focus-visible,
+    .sg-menu-btn:focus-visible {
+        outline: 2px solid var(--sg-accent); outline-offset: 2px;
+    }
+
+    /* ---------- Tabla ---------- */
+    .sg-panel {
+        background: #fff;
+        border: 1px solid var(--sg-line);
+        border-radius: .9rem;
+        box-shadow: 0 1px 2px rgba(14, 27, 44, .04);
+        overflow: hidden;
+    }
+    .sg-tabla { width: 100%; border-collapse: collapse; margin: 0; }
+    .sg-tabla thead th {
+        position: sticky; top: 0;
+        background: #fbfcfe;
+        color: var(--sg-muted);
+        font-size: .8rem; font-weight: 600;
+        text-align: left;
+        padding: .8rem 1.1rem;
+        border-bottom: 1px solid var(--sg-line);
+        white-space: nowrap;
+    }
+    .sg-tabla tbody td {
+        padding: .9rem 1.1rem;
+        border-bottom: 1px solid var(--sg-line);
+        vertical-align: middle;
+        font-size: .925rem;
+    }
+    .sg-tabla tbody tr:last-child td { border-bottom: 0; }
+    .sg-tabla tbody tr { transition: background .12s; }
+    .sg-tabla tbody tr:hover { background: #f8faff; }
+
+    .sg-nombre {
+        font-weight: 600; color: var(--sg-ink); text-decoration: none;
+    }
+    .sg-nombre:hover { color: var(--sg-accent); }
+    .sg-doc { color: var(--sg-muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+    .sg-dato { color: #2a3a4f; font-variant-numeric: tabular-nums; }
+    .sg-dato a { color: inherit; text-decoration: none; }
+    .sg-dato a:hover { color: var(--sg-accent); text-decoration: underline; }
+    .sg-vacio-dato { color: #a3afbf; }
+
+    tr.sg-inactiva .sg-nombre { color: var(--sg-muted); }
+
+    /* Estado */
+    .sg-estado {
+        display: inline-flex; align-items: center; gap: .4rem;
+        font-size: .8rem; font-weight: 550;
+        padding: .22rem .65rem; border-radius: 999px;
+    }
+    .sg-estado::before {
+        content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+    }
+    .sg-estado.activo   { background: var(--sg-ok-soft);  color: var(--sg-ok); }
+    .sg-estado.inactivo { background: var(--sg-off-soft); color: var(--sg-off); }
+
+    /* Acciones */
+    .sg-acciones { display: inline-flex; align-items: center; gap: .35rem; }
+    .sg-ver {
+        font-size: .85rem; font-weight: 550;
+        color: var(--sg-accent); text-decoration: none;
+        padding: .35rem .7rem; border-radius: .5rem;
+    }
+    .sg-ver:hover { background: var(--sg-accent-soft); color: var(--sg-accent); }
+    .sg-menu-btn {
+        width: 32px; height: 32px;
+        display: inline-flex; align-items: center; justify-content: center;
+        border: 0; background: transparent; color: var(--sg-muted);
+        border-radius: .5rem;
+    }
+    .sg-menu-btn:hover, .sg-menu-btn.show { background: var(--sg-off-soft); color: var(--sg-ink); }
+    .sg-clientes .dropdown-menu {
+        border: 1px solid var(--sg-line);
+        border-radius: .7rem;
+        box-shadow: 0 8px 24px rgba(14, 27, 44, .12);
+        padding: .35rem; min-width: 11rem; font-size: .9rem;
+    }
+    .sg-clientes .dropdown-item { border-radius: .45rem; display: flex; align-items: center; gap: .6rem; padding: .45rem .6rem; }
+    .sg-clientes .dropdown-item.peligro { color: var(--sg-danger); }
+    .sg-clientes .dropdown-item.peligro:hover { background: #fdecea; }
+
+    /* Pie de tabla */
+    .sg-pie {
+        padding: .7rem 1.1rem;
+        border-top: 1px solid var(--sg-line);
+        background: #fbfcfe;
+        color: var(--sg-muted); font-size: .85rem;
+    }
+
+    /* Estado vacío */
+    .sg-vacio { text-align: center; padding: 3.5rem 1.5rem; }
+    .sg-vacio .sg-vacio-ico {
+        width: 56px; height: 56px; margin: 0 auto 1rem;
+        display: flex; align-items: center; justify-content: center;
+        border-radius: 1rem; font-size: 1.5rem;
+        background: var(--sg-accent-soft); color: var(--sg-accent);
+    }
+    .sg-vacio h2 { font-size: 1.1rem; font-weight: 650; margin-bottom: .35rem; }
+    .sg-vacio p { color: var(--sg-muted); max-width: 38ch; margin: 0 auto 1.25rem; }
+
+    /* Alertas */
+    .sg-alerta { border-radius: .7rem; font-size: .925rem; }
+
+    @@media (prefers-reduced-motion: reduce) {
+        .sg-clientes * { transition: none !important; }
+    }
+</style>
+
+<div class="container sg-clientes mt-4 mb-5">
+
+    @* Encabezado *@
+    <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+        <div>
+            <h1 class="sg-titulo">Clientes</h1>
+            <p class="sg-sub">
+                @if (hayBusqueda)
+                {
+                    <span>@total @(total == 1 ? "resultado" : "resultados") para “@termino”</span>
+                }
+                else
+                {
+                    <span>Consulta, edita y administra los clientes del taller.</span>
+                }
+            </p>
+        </div>
+        @if (total > 0 || hayBusqueda)
+        {
+            <a asp-action="Create" class="btn sg-btn-primario d-inline-flex align-items-center gap-2">
+                <i class="bi bi-plus-lg"></i> Crear cliente
+            </a>
+        }
     </div>
 
+    @* Mensajes *@
     @if (TempData["Success"] is not null)
     {
-        <div class="alert alert-success">@TempData["Success"]</div>
+        <div class="alert alert-success sg-alerta d-flex align-items-center gap-2 alert-dismissible fade show mt-3 mb-0" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <div>@TempData["Success"]</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
     }
     @if (TempData["Error"] is not null)
     {
-        <div class="alert alert-danger">@TempData["Error"]</div>
+        <div class="alert alert-danger sg-alerta d-flex align-items-center gap-2 alert-dismissible fade show mt-3 mb-0" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <div>@TempData["Error"]</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
     }
 
-    <form asp-action="Index" method="get" class="row g-2 mb-3">
-        <div class="col-sm-8 col-md-6">
-            <input type="search" name="termino" value="@ViewData["Termino"]"
-                   class="form-control" placeholder="Buscar por documento, nombre, correo o teléfono" />
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-outline-primary">Buscar</button>
-            <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
-        </div>
-    </form>
+    @* Barra de herramientas *@
+    <div class="sg-toolbar">
+        <form asp-action="Index" method="get" class="sg-buscador" role="search">
+            <i class="bi bi-search"></i>
+            <input type="search" name="termino" value="@termino"
+                   placeholder="Buscar por documento, nombre, correo o teléfono"
+                   aria-label="Buscar clientes" />
+            @if (hayBusqueda)
+            {
+                <a asp-action="Index" class="sg-limpiar" title="Limpiar búsqueda" aria-label="Limpiar búsqueda">
+                    <i class="bi bi-x-circle-fill"></i>
+                </a>
+            }
+            <button type="submit" class="sg-buscar">Buscar</button>
+        </form>
 
-    <div class="table-responsive">
-        <table class="table table-striped align-middle">
-            <thead>
-                <tr>
-                    <th>Documento</th>
-                    <th>Nombre</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var cliente in Model)
-                {
-                    <tr>
-                        <td>@cliente.NumDocumento</td>
-                        <td>@cliente.Nombre</td>
-                        <td>@cliente.Telefono</td>
-                        <td>@cliente.Email</td>
-                        <td>
-                            <span class="badge @(cliente.Activo ? "bg-success" : "bg-secondary")">
-                                @(cliente.Activo ? "Activo" : "Inactivo")
-                            </span>
-                        </td>
-                        <td>
-                            <a asp-action="Details" asp-route-id="@cliente.IdCliente" class="btn btn-sm btn-outline-primary">Ver</a>
-                            <a asp-action="Edit" asp-route-id="@cliente.IdCliente" class="btn btn-sm btn-outline-warning">Editar</a>
-                            @if (cliente.Activo)
-                            {
-                                <a asp-action="Delete" asp-route-id="@cliente.IdCliente" class="btn btn-sm btn-outline-danger">Dar de baja</a>
-                            }
-                        </td>
-                    </tr>
-                }
-                @if (!Model.Any())
-                {
-                    <tr><td colspan="6" class="text-center">No se encontraron clientes.</td></tr>
-                }
-            </tbody>
-        </table>
+        @if (total > 0)
+        {
+            <div class="sg-segmentos" role="group" aria-label="Filtrar por estado" id="filtroEstado">
+                <button type="button" data-filtro="todos" aria-pressed="true">
+                    Todos <span class="sg-cuenta">@total</span>
+                </button>
+                <button type="button" data-filtro="activo" aria-pressed="false">
+                    Activos <span class="sg-cuenta">@activos</span>
+                </button>
+                <button type="button" data-filtro="inactivo" aria-pressed="false">
+                    Inactivos <span class="sg-cuenta">@inactivos</span>
+                </button>
+            </div>
+        }
     </div>
+
+    @if (!Model.Any())
+    {
+        <div class="sg-panel sg-vacio">
+            <div class="sg-vacio-ico">
+                <i class="bi @(hayBusqueda ? "bi-search" : "bi-people")"></i>
+            </div>
+            @if (hayBusqueda)
+            {
+                <h2>Sin resultados para “@termino”</h2>
+                <p>Revisa que el documento o el nombre estén bien escritos, o prueba con otro dato.</p>
+                <a asp-action="Index" class="btn btn-outline-secondary">Ver todos los clientes</a>
+            }
+            else
+            {
+                <h2>Aún no hay clientes</h2>
+                <p>Crea el primero para poder registrar sus equipos y órdenes de servicio.</p>
+                <a asp-action="Create" class="btn sg-btn-primario d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-plus-lg"></i> Crear cliente
+                </a>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="sg-panel">
+            <div class="table-responsive">
+                <table class="sg-tabla" id="tablaClientes">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th class="d-none d-md-table-cell">Teléfono</th>
+                            <th class="d-none d-lg-table-cell">Correo</th>
+                            <th>Estado</th>
+                            <th class="text-end"><span class="visually-hidden">Acciones</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cliente in Model)
+                        {
+                            <tr class="@(cliente.Activo ? "" : "sg-inactiva")" data-estado="@(cliente.Activo ? "activo" : "inactivo")">
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@cliente.IdCliente" class="sg-nombre d-block">@cliente.Nombre</a>
+                                    <span class="sg-doc">@cliente.NumDocumento</span>
+                                </td>
+                                <td class="d-none d-md-table-cell sg-dato">
+                                    @if (string.IsNullOrWhiteSpace(cliente.Telefono))
+                                    {
+                                        <span class="sg-vacio-dato">—</span>
+                                    }
+                                    else
+                                    {
+                                        <a href="tel:@cliente.Telefono">@cliente.Telefono</a>
+                                    }
+                                </td>
+                                <td class="d-none d-lg-table-cell sg-dato">
+                                    @if (string.IsNullOrWhiteSpace(cliente.Email))
+                                    {
+                                        <span class="sg-vacio-dato">—</span>
+                                    }
+                                    else
+                                    {
+                                        <a href="mailto:@cliente.Email">@cliente.Email</a>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="sg-estado @(cliente.Activo ? "activo" : "inactivo")">
+                                        @(cliente.Activo ? "Activo" : "Inactivo")
+                                    </span>
+                                </td>
+                                <td class="text-end text-nowrap">
+                                    <div class="sg-acciones">
+                                        <a asp-action="Details" asp-route-id="@cliente.IdCliente" class="sg-ver">Ver</a>
+                                        <div class="dropdown">
+                                            <button type="button" class="sg-menu-btn" data-bs-toggle="dropdown"
+                                                    aria-expanded="false" aria-label="Más acciones para @cliente.Nombre">
+                                                <i class="bi bi-three-dots"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li>
+                                                    <a class="dropdown-item" asp-action="Edit" asp-route-id="@cliente.IdCliente">
+                                                        <i class="bi bi-pencil"></i> Editar
+                                                    </a>
+                                                </li>
+                                                @if (cliente.Activo)
+                                                {
+                                                    <li><hr class="dropdown-divider" /></li>
+                                                    <li>
+                                                        <a class="dropdown-item peligro" asp-action="Delete" asp-route-id="@cliente.IdCliente">
+                                                            <i class="bi bi-person-dash"></i> Dar de baja
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="sg-vacio d-none" id="sinFiltro" style="padding: 2.5rem 1.5rem;">
+                <h2>No hay clientes en este estado</h2>
+                <p class="mb-0">Cambia el filtro para ver el resto.</p>
+            </div>
+
+            <div class="sg-pie" id="pieTabla" aria-live="polite">
+                Mostrando <strong id="visibles">@total</strong> de @total @(total == 1 ? "cliente" : "clientes")
+            </div>
+        </div>
+    }
 </div>
+
+<script>
+    (function () {
+        var grupo = document.getElementById('filtroEstado');
+        var tabla = document.getElementById('tablaClientes');
+        if (!grupo || !tabla) return;
+
+        var filas = tabla.querySelectorAll('tbody tr');
+        var contador = document.getElementById('visibles');
+        var sinFiltro = document.getElementById('sinFiltro');
+        var contenedorTabla = tabla.closest('.table-responsive');
+
+        grupo.addEventListener('click', function (e) {
+            var boton = e.target.closest('button[data-filtro]');
+            if (!boton) return;
+
+            grupo.querySelectorAll('button').forEach(function (b) {
+                b.setAttribute('aria-pressed', b === boton ? 'true' : 'false');
+            });
+
+            var filtro = boton.dataset.filtro, visibles = 0;
+            filas.forEach(function (fila) {
+                var mostrar = filtro === 'todos' || fila.dataset.estado === filtro;
+                fila.hidden = !mostrar;
+                if (mostrar) visibles++;
+            });
+
+            contador.textContent = visibles;
+            contenedorTabla.classList.toggle('d-none', visibles === 0);
+            sinFiltro.classList.toggle('d-none', visibles !== 0);
+        });
+    })();
+</script>

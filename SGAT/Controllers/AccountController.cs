@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SGAT.Application.DTOs.Login;
 using SGAT.Domain.Entities;
@@ -122,6 +122,7 @@ namespace SGAT.Web.Controllers
                 {
                     return RedirectToAction("Index", "Clientes");
                 }
+
 
                 return RedirectToAction("AccessDenied", "Account");
             }
