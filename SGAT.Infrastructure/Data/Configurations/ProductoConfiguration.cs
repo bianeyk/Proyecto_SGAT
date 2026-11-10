@@ -33,6 +33,11 @@ namespace SGAT.Infrastructure.Data.Configurations
                 .HasForeignKey(p => p.IdCategoriaProducto)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            builder.HasOne(p => p.Marca)
+                .WithMany(m => m.Productos)
+                .HasForeignKey(p => p.IdMarca)
+                .OnDelete(DeleteBehavior.NoAction);
+
             builder.ToTable(t => t.HasCheckConstraint(
                 "CK_Producto_Condicion",
                 "[Condicion] IN ('NUEVO','USADO','REMANUFACTURADO')"));
