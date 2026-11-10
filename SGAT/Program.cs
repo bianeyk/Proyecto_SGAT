@@ -5,7 +5,7 @@ using SGAT.Infrastructure.Data;
 using SGAT.Infrastructure.Seed;
 using SGAT.Application.DependencyInjection;
 using SGAT.Infrastructure.DependencyInjection;
-
+using SGAT.Web.Middleware;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +28,24 @@ builder.Services
     .AddIdentity<ApplicationUser, ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Política de contraseñas
+    options.Password.RequiredLength = 8;
+    options.Password.RequireDigit = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+
+    // Bloqueo por intentos fallidos
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.AllowedForNewUsers = true;
+
+    // Usuarios únicos
+    options.User.RequireUniqueEmail = true;
+});
 
 //configurar la ruta de login
 builder.Services.ConfigureApplicationCookie(options =>
@@ -54,8 +72,14 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-//AUTENTICACION
+
+// Autenticación
 app.UseAuthentication();
+
+// Comprobar que el usuario y su rol sigan activos.
+app.UseMiddleware<ValidarEstadoUsuarioMiddleware>();
+
+// Autorización
 app.UseAuthorization();
 
 app.MapStaticAssets();

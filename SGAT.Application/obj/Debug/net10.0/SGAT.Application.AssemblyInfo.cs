@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SGAT.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b56007e9658e587a04a16942eefe16dafe9f4068")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c24a9ef73a880b12ab0526bb8b3cd665ee1d0d7a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SGAT.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SGAT.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
