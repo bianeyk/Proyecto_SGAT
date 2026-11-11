@@ -32,7 +32,8 @@
                     </label>
 
                     <input asp-for="Usuario.NombreCompleto"
-                           class="form-control" />
+                           class="form-control"
+                           oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s'-]/g, '')" />
 
                     <span asp-validation-for="Usuario.NombreCompleto"
                           class="text-danger"></span>
@@ -52,30 +53,17 @@
 
                 </div>
                 <div class="mb-3">
-
-                    <label asp-for="Usuario.Password"
-                           class="form-label">
-                    </label>
-
-                    <input asp-for="Usuario.Password"
-                           class="form-control" />
-
-                    <span asp-validation-for="Usuario.Password"
-                          class="text-danger"></span>
-
+                    <label asp-for="Usuario.Password" class="form-label"></label>
+                    <!-- Agregado type="password" -->
+                    <input asp-for="Usuario.Password" type="password" class="form-control" />
+                    <span asp-validation-for="Usuario.Password" class="text-danger"></span>
                 </div>
+
                 <div class="mb-3">
-
-                    <label asp-for="Usuario.ConfirmPassword"
-                           class="form-label">
-                    </label>
-
-                    <input asp-for="Usuario.ConfirmPassword"
-                           class="form-control" />
-
-                    <span asp-validation-for="Usuario.ConfirmPassword"
-                          class="text-danger"></span>
-
+                    <label asp-for="Usuario.ConfirmPassword" class="form-label"></label>
+                    <!-- Agregado type="password" -->
+                    <input asp-for="Usuario.ConfirmPassword" type="password" class="form-control" />
+                    <span asp-validation-for="Usuario.ConfirmPassword" class="text-danger"></span>
                 </div>
                 <div class="form-check mb-3">
 

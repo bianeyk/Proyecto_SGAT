@@ -105,7 +105,7 @@ namespace SGAT.Web.Controllers
                 model.Password,
                 model.RememberMe,
                 lockoutOnFailure: true);
-
+           
             if (result.Succeeded)
             {
                 if (await _userManager.IsInRoleAsync(user, "Administrador"))

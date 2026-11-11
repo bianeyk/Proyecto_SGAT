@@ -79,13 +79,15 @@ public class UsuarioService : IUsuarioService
     public async Task<IdentityResult> CrearAsync(UsuarioCreateDto dto)
     {
         // 1. Validar si el correo ya existe
-        var usuarioExistente = await _userManager.FindByEmailAsync(dto.Email);
+        var email = dto.Email.Trim().ToLowerInvariant();
+        var usuarioExistente = await _userManager.FindByEmailAsync(email);
 
         if (usuarioExistente != null)
         {
             return IdentityResult.Failed(
                 new IdentityError
                 {
+
                     Code = "EmailDuplicado",
                     Description = "Ya existe un usuario registrado con este correo electrónico."
                 });
@@ -132,8 +134,8 @@ public class UsuarioService : IUsuarioService
         var usuario = new ApplicationUser
         {
             NombreCompleto = dto.NombreCompleto.Trim(),
-            Email = dto.Email.Trim().ToLower(),
-            UserName = dto.Email.Trim().ToLower(),
+            Email = email,
+            UserName = email,
             Activo = dto.Activo
         };
 

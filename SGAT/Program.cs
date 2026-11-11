@@ -6,6 +6,7 @@ using SGAT.Infrastructure.Seed;
 using SGAT.Application.DependencyInjection;
 using SGAT.Infrastructure.DependencyInjection;
 using SGAT.Web.Middleware;
+using SGAT.Infrastructure.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,7 +28,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services
     .AddIdentity<ApplicationUser, ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+    .AddDefaultTokenProviders()
+    .AddErrorDescriber<SpanishIdentityErrorDescriber>();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {

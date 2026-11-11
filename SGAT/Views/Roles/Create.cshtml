@@ -27,7 +27,8 @@
 
                     <input asp-for="Rol.Nombre"
                            class="form-control"
-                           placeholder="Ejemplo: Supervisor" />
+                           placeholder="Ejemplo: Supervisor"
+                           oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/g, '')" />
 
                     <span asp-validation-for="Rol.Nombre"
                           class="text-danger">
