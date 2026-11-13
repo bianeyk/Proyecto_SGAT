@@ -8,7 +8,7 @@ using SGAT.Infrastructure.DependencyInjection;
 using SGAT.Web.Middleware;
 using SGAT.Infrastructure.Identity;
 using System.Threading.RateLimiting;
-using Microsoft.AspNetCore.RateLimiting;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +26,12 @@ builder.Services
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders()
     .AddErrorDescriber<SpanishIdentityErrorDescriber>();
+//determina cuánto tiempo será válido un token antes de expirar
+builder.Services.Configure<DataProtectionTokenProviderOptions>(
+    options =>
+    {
+        options.TokenLifespan = TimeSpan.FromHours(1);
+    });
 
 builder.Services.AddRateLimiter(options =>
 {
@@ -67,6 +73,7 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireUppercase = true;
     options.Password.RequireLowercase = true;
     options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequiredUniqueChars = 4;
 
     // Bloqueo por intentos fallidos
     options.Lockout.MaxFailedAccessAttempts = 5;
@@ -104,6 +111,13 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+//redirige las solicitudes HTTP hacia HTTPS
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

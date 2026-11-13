@@ -133,6 +133,16 @@ namespace SGAT.Web.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult ResetPasswordConfirmation()
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult ForgotPassword()
@@ -184,22 +194,22 @@ namespace SGAT.Web.Controllers
             try
             {
                 var mensaje = $"""
-        Hola {usuario.NombreCompleto},
+                    Hola {usuario.NombreCompleto},
 
-        Hemos recibido una solicitud para restablecer
-        tu contraseña de SGAT.
+                    Hemos recibido una solicitud para restablecer
+                    tu contraseña de SGAT.
 
-        Para establecer una nueva contraseña, ingresa al
-        siguiente enlace:
+                    Para establecer una nueva contraseña, ingresa al
+                    siguiente enlace:
 
-        {enlace}
+                    {enlace}
 
-        Si no solicitaste este cambio, puedes ignorar
-        este mensaje.
+                    Si no solicitaste este cambio, puedes ignorar
+                    este mensaje.
 
-        Saludos,
-        Equipo SGAT
-        """;
+                    Saludos,
+                    Equipo SGAT
+                 """;
 
                 await _emailService.EnviarCorreoAsync(
                     usuario.Email!,
@@ -215,12 +225,6 @@ namespace SGAT.Web.Controllers
 
             return RedirectToAction(
                 nameof(ForgotPasswordConfirmation));
-        }
-
-        [HttpGet]
-        public IActionResult ForgotPasswordConfirmation()
-        {
-            return View();
         }
 
         [HttpGet]
@@ -241,16 +245,9 @@ namespace SGAT.Web.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult ResetPasswordConfirmation()
-        {
-            return View();
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ResetPassword(
-    ResetPasswordViewModel model)
+        public async Task<IActionResult> ResetPassword( ResetPasswordViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -278,9 +275,30 @@ namespace SGAT.Web.Controllers
             {
                 foreach (var error in resultado.Errors)
                 {
-                    ModelState.AddModelError(
-                        string.Empty,
-                        error.Description);
+                    var mensaje = error.Code switch
+                    {
+                        "PasswordTooShort" =>
+                            "La contraseña debe tener al menos 8 caracteres.",
+
+                        "PasswordRequiresDigit" =>
+                            "La contraseña debe contener al menos un número.",
+
+                        "PasswordRequiresUpper" =>
+                            "La contraseña debe contener al menos una letra mayúscula.",
+
+                        "PasswordRequiresLower" =>
+                            "La contraseña debe contener al menos una letra minúscula.",
+
+                        "PasswordRequiresNonAlphanumeric" =>
+                            "La contraseña debe contener al menos un carácter especial.",
+
+                        "PasswordRequiresUniqueChars" =>
+                            "La contraseña debe contener al menos 4 caracteres diferentes.",
+
+                        _ => "No fue posible cambiar la contraseña. Verifica los datos ingresados."
+                    };
+
+                    ModelState.AddModelError(string.Empty, mensaje);
                 }
 
                 return View(model);
@@ -289,5 +307,7 @@ namespace SGAT.Web.Controllers
             return RedirectToAction(
                 nameof(ResetPasswordConfirmation));
         }
+
+        
     }
 }
