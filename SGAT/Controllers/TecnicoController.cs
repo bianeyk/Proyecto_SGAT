@@ -1,15 +1,19 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SGAT.Application.DTOs.Tecnico;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Domain.Enums;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SGAT.Web.Controllers
 {
+    [Authorize(Roles = "Gerente,Tecnico")]
     [ApiController]
     [Route("api/[controller]")]
     public class TecnicoController : Controller
     {
+
         private readonly ITecnicoService _tecnicoService;
 
         public TecnicoController(ITecnicoService tecnicoService)

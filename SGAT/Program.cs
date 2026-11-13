@@ -7,6 +7,8 @@ using SGAT.Application.DependencyInjection;
 using SGAT.Infrastructure.DependencyInjection;
 using SGAT.Web.Middleware;
 using SGAT.Infrastructure.Identity;
+using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.RateLimiting;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,19 +19,45 @@ builder.Services.AddInfrastructure(builder.Configuration); // El nombre puede va
 // 2. REGISTRAR CAPA DE APLICACIÓN (Tus servicios)
 builder.Services.AddApplication();
 
-//Registro de base de datos y servicios
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    options.UseSqlServer(
-        builder.Configuration
-               .GetConnectionString("DefaultConnection"));
-});
+
 //	Registrar el Servicio de Identity (Dependency Injection)
 builder.Services
     .AddIdentity<ApplicationUser, ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders()
     .AddErrorDescriber<SpanishIdentityErrorDescriber>();
+
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode =
+        StatusCodes.Status429TooManyRequests;
+
+    options.AddPolicy("LoginPolicy", context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey:
+                context.Connection.RemoteIpAddress?.ToString()
+                ?? "unknown",
+
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 5,
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 0,
+                AutoReplenishment = true
+            }));
+    options.AddPolicy("ForgotPasswordPolicy", context =>
+    RateLimitPartition.GetFixedWindowLimiter(
+        partitionKey:
+            context.Connection.RemoteIpAddress?.ToString()
+            ?? "unknown",
+        factory: _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 3,
+            Window = TimeSpan.FromMinutes(10),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        }));
+});
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -49,13 +77,27 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.User.RequireUniqueEmail = true;
 });
 
-//configurar la ruta de login
+
+//configurar la ruta de login. opciones de seguridad y duración de la cookie.
 builder.Services.ConfigureApplicationCookie(options =>
 {
+    // Rutas de autenticación
     options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
 
-    options.AccessDeniedPath =
-        "/Account/AccessDenied";
+    // Seguridad de la cookie
+    //Impide que JavaScript acceda directamente a la cookie.
+    options.Cookie.HttpOnly = true;
+    //Solo envía la cookie mediante HTTPS.
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    //Ayuda a reducir ataques CSRF mediante solicitudes entre sitios.
+    options.Cookie.SameSite = SameSiteMode.Lax;
+
+    // Duración de la sesión
+    //	Establece una duración de 30 minutos para el ticket de autenticación.
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    //Renueva la expiración cuando el usuario sigue utilizando la aplicación.
+    options.SlidingExpiration = true;
 });
 
 // Add services to the container.
@@ -74,6 +116,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseRateLimiter();
 
 // Autenticación
 app.UseAuthentication();
@@ -105,8 +148,18 @@ using (var scope = app.Services.CreateScope())
     // 2. Ejecutamos primero los roles (Obligatorio)
     await SeedRoles.SeedAsync(roleManager);
 
-    // 3. Ejecutamos el administrador (Ahora sí se creará)
-    await SeedRoles.SeedAdminAsync(userManager);
+    // 3. Ejecutamos el administrador inicial
+    var adminEmail = builder.Configuration[
+     "SGAT:Admin:Email"];
+
+    var adminPassword = builder.Configuration[
+        "SGAT:Admin:Password"];
+
+    await SeedRoles.SeedAdminAsync(
+    userManager,
+    roleManager,
+    adminEmail,
+    adminPassword);
 }
 
 

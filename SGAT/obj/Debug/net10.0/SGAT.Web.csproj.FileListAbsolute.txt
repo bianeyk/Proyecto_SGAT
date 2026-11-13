@@ -281,3 +281,5 @@ C:\Users\BIANEY\source\repos\Proyecto_SGAT\SGAT\obj\Debug\net10.0\compressed\fyp
 C:\Users\BIANEY\source\repos\Proyecto_SGAT\SGAT\obj\Debug\net10.0\compressed\d2q4wd96r1-{0}-ivef5fplg0-ivef5fplg0.gz
 C:\Users\BIANEY\source\repos\Proyecto_SGAT\SGAT\obj\Debug\net10.0\compressed\79rsoq0xm3-{0}-v1vy2to33n-v1vy2to33n.gz
 C:\Users\BIANEY\source\repos\Proyecto_SGAT\SGAT\obj\Debug\net10.0\compressed\wsanj5g7oz-{0}-ysew0n4kjn-ysew0n4kjn.gz
+C:\Users\BIANEY\source\repos\Proyecto_SGAT\SGAT\bin\Debug\net10.0\MailKit.dll
+C:\Users\BIANEY\source\repos\Proyecto_SGAT\SGAT\bin\Debug\net10.0\MimeKit.Core.dll
