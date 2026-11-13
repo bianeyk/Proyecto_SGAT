@@ -1077,8 +1077,7 @@
       },
       "SGAT.Domain/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "10.0.14",
-          "Microsoft.EntityFrameworkCore.SqlServer": "10.0.14"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "10.0.14"
         },
         "runtime": {
           "SGAT.Domain.dll": {

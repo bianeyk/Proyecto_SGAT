@@ -1,11 +1,14 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SGAT.Application.DTOs.Tecnico;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Domain.Enums;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SGAT.Web.Controllers
 {
+    [Authorize(Roles = "Tecnico,Administrador,Gerente")]
     [ApiController]
     [Route("api/[controller]")]
     public class TecnicoController : Controller
@@ -95,6 +98,11 @@ namespace SGAT.Web.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            if (string.IsNullOrWhiteSpace(dto.TecnicoId))
+            {
+                dto.TecnicoId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
             }
 
             var exito = await _tecnicoService.IniciarDiagnosticoAsync(dto);

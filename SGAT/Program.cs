@@ -8,7 +8,29 @@ using SGAT.Infrastructure.DependencyInjection;
 
 
 
-var builder = WebApplication.CreateBuilder(args);
+var currentDir = Directory.GetCurrentDirectory();
+var contentRoot = currentDir;
+
+if (!Directory.Exists(Path.Combine(currentDir, "wwwroot")))
+{
+    var baseDir = AppContext.BaseDirectory;
+    var candidate = Path.GetFullPath(Path.Combine(baseDir, "..", "..", ".."));
+    if (Directory.Exists(Path.Combine(candidate, "wwwroot")))
+    {
+        contentRoot = candidate;
+    }
+    else if (Directory.Exists(Path.Combine(baseDir, "wwwroot")))
+    {
+        contentRoot = baseDir;
+    }
+}
+
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    ContentRootPath = contentRoot,
+    WebRootPath = "wwwroot"
+});
 
 // 1. REGISTRAR CAPA DE INFRAESTRUCTURA / PERSISTENCIA (Repositorios y DB)
 builder.Services.AddInfrastructure(builder.Configuration); // El nombre puede variar según tu proyecto
