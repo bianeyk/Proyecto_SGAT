@@ -124,10 +124,12 @@
                     <tr>
                         <th class="ps-3">N° Orden</th>
                         <th>Fecha Ingreso</th>
+                        <th>Prioridad</th>
                         <th>Dispositivo / Equipo</th>
                         <th>Modelo</th>
                         <th>Falla Reportada</th>
-                        <th class="text-center">Estado</th>
+                        <th class="text-center">Estado Flujo</th>
+                        <th class="text-center">Estado BD</th>
                         <th class="text-end pe-3">Acciones Técnicas</th>
                     </tr>
                 </thead>
@@ -135,7 +137,7 @@
                     @if (!ordenes.Any())
                     {
                         <tr>
-                            <td colspan="7" class="text-center py-5 text-muted">
+                            <td colspan="9" class="text-center py-5 text-muted">
                                 <i class="bi bi-inbox fs-1 d-block mb-2"></i>
                                 No se encontraron órdenes de servicio técnico en el sistema.
                             </td>
@@ -153,13 +155,27 @@
                                     @o.FechaIngreso.ToString("dd/MM/yyyy HH:mm")
                                 </td>
                                 <td>
+                                    @switch (o.Prioridad)
+                                    {
+                                        case "ALTA":
+                                            <span class="badge bg-danger">ALTA</span>
+                                            break;
+                                        case "BAJA":
+                                            <span class="badge bg-info text-dark">BAJA</span>
+                                            break;
+                                        default:
+                                            <span class="badge bg-warning text-dark">MEDIA</span>
+                                            break;
+                                    }
+                                </td>
+                                <td>
                                     <strong>@o.Dispositivo</strong>
                                     <div class="small text-muted">@o.Marca</div>
                                 </td>
                                 <td>
                                     <span class="badge bg-light text-dark border">@o.Modelo</span>
                                 </td>
-                                <td class="small text-muted" style="max-width: 250px;">
+                                <td class="small text-muted" style="max-width: 200px;">
                                     <div class="text-truncate" title="@o.FallaReportada">
                                         @(string.IsNullOrWhiteSpace(o.FallaReportada) ? "Sin detalles" : o.FallaReportada)
                                     </div>
@@ -189,6 +205,9 @@
                                             <span class="badge bg-light text-dark">@o.Estado</span>
                                             break;
                                     }
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge bg-light text-secondary border">@o.EstadoServicioNombre</span>
                                 </td>
                                 <td class="text-end pe-3">
                                     <div class="btn-group btn-group-sm">

@@ -64,6 +64,14 @@ namespace SGAT.Infrastructure.Repositories
                     .ThenInclude(h => h.Usuario)
                 .Include(o => o.HistorialesServicio)
                     .ThenInclude(h => h.EstadoServicio)
+                .Include(o => o.Detalles)
+                    .ThenInclude(d => d.Servicio)
+                .Include(o => o.Detalles)
+                    .ThenInclude(d => d.UsuarioCrea)
+                .Include(o => o.DetallesProducto)
+                    .ThenInclude(dp => dp.Producto)
+                .Include(o => o.DetallesProducto)
+                    .ThenInclude(dp => dp.LoteProducto)
                 .FirstOrDefaultAsync(o => o.IdOrdenServicio == ordenId);
         }
 

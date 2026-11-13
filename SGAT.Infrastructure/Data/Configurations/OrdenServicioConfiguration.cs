@@ -24,7 +24,8 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.Property(o => o.Prioridad)
                 .HasConversion<string>()
                 .HasMaxLength(10)
-                .HasDefaultValue(PrioridadEnum.MEDIA);
+                .HasDefaultValue(PrioridadEnum.MEDIA)
+                .HasSentinel((PrioridadEnum)(-1));
 
             builder.Property(o => o.EstadoOrden)
                 .HasConversion<int>()

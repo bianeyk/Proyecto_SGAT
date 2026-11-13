@@ -33,6 +33,9 @@ namespace SGAT.Application.Services
                 FallaReportada = o.DiagnosticoTecnico?.FallaReportada ?? o.Diagnostico ?? o.Observaciones,
                 Estado = o.EstadoOrden.ToString(),
                 EstadoValor = (int)o.EstadoOrden,
+                Prioridad = o.Prioridad.ToString(),
+                EstadoServicioNombre = o.EstadoServicio?.Nombre ?? "RECIBIDO",
+                CostoTotal = o.CostoTotal,
                 FechaIngreso = o.FechaIngreso
             });
         }
@@ -73,17 +76,25 @@ namespace SGAT.Application.Services
                 NumeroOrden = o.Codigo,
                 Estado = o.EstadoOrden.ToString(),
                 EstadoValor = (int)o.EstadoOrden,
+                EstadoServicioId = o.IdEstadoServicio,
+                EstadoServicioNombre = o.EstadoServicio?.Nombre ?? "RECIBIDO",
                 Prioridad = o.Prioridad.ToString(),
                 FechaIngreso = o.FechaIngreso,
                 FechaPrometida = o.FechaPrometida,
+                FechaCierre = o.FechaCierre,
+                DiagnosticoInicial = o.Diagnostico,
                 Observaciones = o.Observaciones,
+                CostoTotal = o.CostoTotal,
+                Abono = o.Abono,
+                UsuarioCreaNombre = o.UsuarioCrea?.NombreCompleto ?? o.UsuarioCrea?.UserName ?? o.IdUsuarioCrea,
                 Cliente = new ClienteTecnicoDto
                 {
                     Id = o.Equipo?.Cliente?.IdCliente ?? 0,
                     Nombre = o.Equipo?.Cliente?.Nombre ?? "No registrado",
                     NumDoc = o.Equipo?.Cliente?.NumDoc ?? string.Empty,
                     Telefono = o.Equipo?.Cliente?.Telefono ?? string.Empty,
-                    Email = o.Equipo?.Cliente?.Email
+                    Email = o.Equipo?.Cliente?.Email,
+                    Direccion = o.Equipo?.Cliente?.Direccion
                 },
                 Equipo = new EquipoTecnicoDto
                 {
@@ -109,7 +120,28 @@ namespace SGAT.Application.Services
                     TecnicoId = o.DiagnosticoTecnico.TecnicoId,
                     TecnicoNombre = o.DiagnosticoTecnico.Tecnico?.NombreCompleto ?? o.DiagnosticoTecnico.Tecnico?.UserName ?? "Técnico Asignado"
                 },
-                HistorialNotas = historialUnificado
+                HistorialNotas = historialUnificado,
+                ServiciosAplicados = o.Detalles.Select(d => new ServicioAplicadoTecnicoDto
+                {
+                    Id = d.IdOrdenServicioDetalle,
+                    ServicioId = d.IdServicio,
+                    ServicioNombre = d.Servicio?.Nombre ?? "Servicio",
+                    Descripcion = d.Descripcion,
+                    Observacion = d.Observacion,
+                    FechaRegistro = d.CreatedAt,
+                    UsuarioCrea = d.UsuarioCrea?.NombreCompleto ?? d.UsuarioCrea?.UserName ?? d.IdUsuarioCrea
+                }).ToList(),
+                RepuestosAplicados = o.DetallesProducto.Select(dp => new RepuestoAplicadoTecnicoDto
+                {
+                    Id = dp.IdOrdenServicioDetalleProducto,
+                    ProductoId = dp.IdProducto,
+                    ProductoNombre = dp.Producto?.Nombre ?? "Repuesto",
+                    LoteId = dp.IdLoteProducto,
+                    Cantidad = dp.Cantidad,
+                    PrecioUnitario = dp.PrecioUnitario,
+                    Subtotal = dp.Subtotal,
+                    Estado = dp.Estado.ToString()
+                }).ToList()
             };
         }
 

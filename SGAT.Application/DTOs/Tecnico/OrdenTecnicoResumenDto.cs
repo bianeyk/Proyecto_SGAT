@@ -12,6 +12,9 @@ namespace SGAT.Application.DTOs.Tecnico
         public string? FallaReportada { get; set; }
         public string Estado { get; set; } = string.Empty;
         public int EstadoValor { get; set; }
+        public string Prioridad { get; set; } = "MEDIA";
+        public string EstadoServicioNombre { get; set; } = "RECIBIDO";
+        public decimal CostoTotal { get; set; }
         public DateTime FechaIngreso { get; set; }
     }
 }
