@@ -68,6 +68,19 @@
                             </li>
                         }
                     </ul>
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <form asp-controller="Account"
+                              asp-action="Logout"
+                              method="post"
+                              class="d-flex">
+
+                            <button type="submit" class="btn btn-outline-danger">
+                                Cerrar sesión
+                            </button>
+
+                        </form>
+                    }
                 </div>
             </div>
         </nav>

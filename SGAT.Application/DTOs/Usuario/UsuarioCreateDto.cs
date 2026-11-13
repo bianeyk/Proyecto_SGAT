@@ -29,6 +29,7 @@ namespace SGAT.Application.DTOs.Usuario
 
         public bool Activo { get; set; } = true;
 
-        public List<string> Roles { get; set; } = new();
+        [Required(ErrorMessage = "Debe seleccionar un rol.")]
+        public string Rol { get; set; } = string.Empty;
     }
 }

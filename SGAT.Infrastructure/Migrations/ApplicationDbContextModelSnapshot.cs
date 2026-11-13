@@ -410,15 +410,15 @@ namespace SGAT.Infrastructure.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("IdUsuarioCrea")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<bool>("EsColaborador")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
+
+                    b.Property<string>("IdUsuarioCrea")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -1434,6 +1434,9 @@ namespace SGAT.Infrastructure.Migrations
                     b.Property<int>("IdCategoriaProducto")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdMarca")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -1467,6 +1470,8 @@ namespace SGAT.Infrastructure.Migrations
                         .HasFilter("[Codigo] IS NOT NULL");
 
                     b.HasIndex("IdCategoriaProducto");
+
+                    b.HasIndex("IdMarca");
 
                     b.ToTable("Productos", t =>
                         {
@@ -2018,7 +2023,15 @@ namespace SGAT.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
+                    b.HasOne("SGAT.Domain.Entities.Marca", "Marca")
+                        .WithMany("Productos")
+                        .HasForeignKey("IdMarca")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.Navigation("CategoriaProducto");
+
+                    b.Navigation("Marca");
                 });
 
             modelBuilder.Entity("SGAT.Domain.Entities.RolePermiso", b =>
@@ -2129,6 +2142,8 @@ namespace SGAT.Infrastructure.Migrations
             modelBuilder.Entity("SGAT.Domain.Entities.Marca", b =>
                 {
                     b.Navigation("Equipos");
+
+                    b.Navigation("Productos");
                 });
 
             modelBuilder.Entity("SGAT.Domain.Entities.OrdenServicio", b =>

@@ -13,5 +13,6 @@ namespace SGAT.Domain.Entities
         public bool Activo { get; set; } = true;
 
         public ICollection<Equipo> Equipos { get; set; } = new List<Equipo>();
+        public ICollection<Producto> Productos { get; set; } = new List<Producto>();
     }
 }

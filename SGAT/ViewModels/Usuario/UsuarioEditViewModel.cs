@@ -1,4 +1,4 @@
-﻿using SGAT.Application.DTOs.Rol.SGAT.Application.DTOs.Rol;
+﻿using SGAT.Application.DTOs.Rol;
 using SGAT.Application.DTOs.Usuario;
 
 namespace SGAT.Web.ViewModels.Usuario
