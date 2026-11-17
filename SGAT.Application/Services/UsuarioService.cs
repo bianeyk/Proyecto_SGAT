@@ -4,6 +4,8 @@ using SGAT.Application.DTOs.Usuario;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using SGAT.Application.Interfaces.Transactions;
+using System.Data;
 
 //Inyección de Dependencias
 public class UsuarioService : IUsuarioService
@@ -12,17 +14,24 @@ public class UsuarioService : IUsuarioService
 
     private readonly RoleManager<ApplicationRole> _roleManager;
 
-    private readonly ILogger<UsuarioService> _logger;
+    private readonly ILogger<UsuarioService> _logger;//registra eventos y errores
+    private readonly ITransactionManager _transactionManager;
+    private readonly IAppLockManager _appLockManager;
 
     public UsuarioService(
         UserManager<ApplicationUser> userManager,
         RoleManager<ApplicationRole> roleManager,
-        ILogger<UsuarioService> logger)
+        ILogger<UsuarioService> logger,
+        ITransactionManager transactionManager,
+        IAppLockManager appLockManager)
     {
         _userManager = userManager;
         _roleManager = roleManager;
         _logger = logger;
+        _transactionManager = transactionManager;
+        _appLockManager = appLockManager;
     }
+    private const string RecursoBloqueoAdministradores = "SGAT_GESTION_ADMINISTRADORES";
     //METODOS
     public async Task<IReadOnlyList<UsuarioListDto>> ObtenerTodosAsync()
     {
@@ -76,369 +85,677 @@ public class UsuarioService : IUsuarioService
         return dto;
     }
 
+
     public async Task<IdentityResult> CrearAsync(UsuarioCreateDto dto)
     {
-        // 1. Validar si el correo ya existe
+        // 1. Validar que el DTO exista.
+        if (dto == null)
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "DatosInvalidos",
+                    Description = "Los datos del usuario son obligatorios."
+                });
+        }
+
+        // 2. Validar los datos obligatorios.
+        if (string.IsNullOrWhiteSpace(dto.NombreCompleto) ||
+            string.IsNullOrWhiteSpace(dto.Email) ||
+            string.IsNullOrWhiteSpace(dto.Password) ||
+            string.IsNullOrWhiteSpace(dto.Rol))
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "DatosIncompletos",
+                    Description = "Debe completar todos los campos obligatorios."
+                });
+        }
+
+        // 3. Normalizar los datos.
+        var nombreCompleto = dto.NombreCompleto.Trim();
         var email = dto.Email.Trim().ToLowerInvariant();
-        var usuarioExistente = await _userManager.FindByEmailAsync(email);
+        var nombreRol = dto.Rol.Trim();
 
-        if (usuarioExistente != null)
+        // 4. Iniciar la transacción.
+        await using var transaction =
+            await _transactionManager.BeginTransactionAsync();
+
+        try
         {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
+            // 5. Adquirir el bloqueo exclusivo.
+            await _appLockManager.AcquireLockAsync(
+                RecursoBloqueoAdministradores);
 
-                    Code = "EmailDuplicado",
-                    Description = "Ya existe un usuario registrado con este correo electrónico."
-                });
+            // 6. Verificar si el correo ya existe.
+            var usuarioExistente =
+                await _userManager.FindByEmailAsync(email);
+
+            if (usuarioExistente != null)
+            {
+                await transaction.RollbackAsync();
+
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "EmailDuplicado",
+                        Description = "Ya existe un usuario registrado con este correo electrónico."
+                    });
+            }
+
+            // 7. Buscar el rol.
+            var rol = await _roleManager.FindByNameAsync(nombreRol);
+
+            if (rol == null)
+            {
+                await transaction.RollbackAsync();
+
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolNoExiste",
+                        Description = $"El rol '{nombreRol}' no existe."
+                    });
+            }
+
+            // 8. Verificar que el rol esté activo.
+            if (!rol.Activo)
+            {
+                await transaction.RollbackAsync();
+
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolInactivo",
+                        Description = "No se puede asignar un rol que está inactivo."
+                    });
+            }
+
+            // 9. Construir la entidad manualmente.
+            var usuario = new ApplicationUser
+            {
+                NombreCompleto = nombreCompleto,
+                Email = email,
+                UserName = email,
+                Activo = true
+            };
+
+            // 10. Crear el usuario mediante Identity.
+            var resultadoUsuario = await _userManager.CreateAsync(
+                usuario,
+                dto.Password);
+
+            if (!resultadoUsuario.Succeeded)
+            {
+                await transaction.RollbackAsync();
+                return resultadoUsuario;
+            }
+
+            // 11. Asignar un único rol.
+            var resultadoRol = await _userManager.AddToRoleAsync(
+                usuario,
+                nombreRol);
+
+            if (!resultadoRol.Succeeded)
+            {
+                await transaction.RollbackAsync();
+
+                _logger.LogError(
+                    "No se pudo asignar el rol {Rol} al usuario {Email}.",
+                    nombreRol,
+                    usuario.Email);
+
+                return resultadoRol;
+            }
+
+            // 12. Confirmar la transacción.
+            await transaction.CommitAsync();
+
+            // 13. Registrar la operación.
+            _logger.LogInformation(
+                "Usuario {Email} creado correctamente con el rol {Rol}.",
+                usuario.Email,
+                nombreRol);
+
+            return IdentityResult.Success;
         }
-
-        // 2. Validar que se haya seleccionado un rol
-        var nombreRol = dto.Rol?.Trim();
-
-        if (string.IsNullOrWhiteSpace(nombreRol))
+        catch (Exception ex)
         {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "RolRequerido",
-                    Description = "Debe seleccionar un rol para el usuario."
-                });
-        }
-
-        // 3. Buscar el rol en Identity
-        var rol = await _roleManager.FindByNameAsync(nombreRol);
-
-        if (rol == null)
-        {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "RolNoExiste",
-                    Description = $"El rol '{nombreRol}' no existe."
-                });
-        }
-
-        // 4. Validar que el rol esté activo
-        if (!rol.Activo)
-        {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "RolInactivo",
-                    Description = "No se puede asignar un rol que está inactivo."
-                });
-        }
-
-        // 5. Crear el usuario
-        var usuario = new ApplicationUser
-        {
-            NombreCompleto = dto.NombreCompleto.Trim(),
-            Email = email,
-            UserName = email,
-            Activo = dto.Activo
-        };
-
-        var resultado = await _userManager.CreateAsync(
-            usuario,
-            dto.Password);
-
-        if (!resultado.Succeeded)
-        {
-            return resultado;
-        }
-
-        // 6. Asignar un único rol
-        var resultadoRol = await _userManager.AddToRoleAsync(
-            usuario,
-            nombreRol);
-
-        if (!resultadoRol.Succeeded)
-        {
-            // Si falla la asignación, dejamos el usuario inactivo.
-            // No eliminamos físicamente el registro.
-            usuario.Activo = false;
-
-            await _userManager.UpdateAsync(usuario);
+            await transaction.RollbackAsync();
 
             _logger.LogError(
-                "No se pudo asignar el rol {Rol} al usuario {Email}.",
-                nombreRol,
-                usuario.Email);
+                ex,
+                "Error al crear el usuario con correo {Email}.",
+                email);
 
-            return resultadoRol;
+            throw;
         }
-
-        // 7. Registrar la operación
-        _logger.LogInformation(
-            "Usuario {Email} creado correctamente con el rol {Rol}.",
-            usuario.Email,
-            nombreRol);
-
-        return IdentityResult.Success;
     }
 
     public async Task<IdentityResult> ActualizarAsync(UsuarioEditDto dto)
     {
-        // 1. Buscar el usuario
-        var usuario = await _userManager.FindByIdAsync(dto.Id);
-
-        if (usuario == null)
+        // Validaciones iniciales
+        if (dto == null)
         {
             return IdentityResult.Failed(
                 new IdentityError
                 {
-                    Code = "UsuarioNoExiste",
-                    Description = "El usuario no fue encontrado."
+                    Code = "DatosInvalidos",
+                    Description = "Los datos del usuario son obligatorios."
                 });
         }
-
-        // 2. Validar el rol seleccionado
-        var nombreRol = dto.Rol?.Trim();
-
-        if (string.IsNullOrWhiteSpace(nombreRol))
+        // Validar que se haya seleccionado un rol
+        if (string.IsNullOrWhiteSpace(dto.Id))
         {
             return IdentityResult.Failed(
                 new IdentityError
                 {
-                    Code = "RolRequerido",
-                    Description = "Debe seleccionar un rol."
+                    Code = "IdUsuarioInvalido",
+                    Description = "El identificador del usuario no es válido."
                 });
         }
-
-        // 3. Buscar el rol
-        var rol = await _roleManager.FindByNameAsync(nombreRol);
-
-        if (rol == null)
+        // Validar que se haya ingresado un nombre completo
+        if (string.IsNullOrWhiteSpace(dto.NombreCompleto))
         {
             return IdentityResult.Failed(
                 new IdentityError
                 {
-                    Code = "RolNoExiste",
-                    Description = $"El rol '{nombreRol}' no existe."
+                    Code = "NombreRequerido",
+                    Description = "El nombre completo es obligatorio."
                 });
         }
+        //inicio de transacción para proteger la operación de actualización de usuario y roles
+        await using var transaction =
+       await _transactionManager.BeginTransactionAsync();
 
-        // 4. Validar que el rol esté activo
-        if (!rol.Activo)
+        try
         {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "RolInactivo",
-                    Description = "No se puede asignar un rol que está inactivo."
-                });
-        }
+            
+            // Obtener el bloqueo exclusivo para gestionar administradores.
+            await _appLockManager.AcquireLockAsync(RecursoBloqueoAdministradores);
+            // 1. Buscar el usuario
+            var usuario = await _userManager.FindByIdAsync(dto.Id);
 
-        // Obtener los roles actuales del usuario.
-        var rolesActuales = await _userManager.GetRolesAsync(usuario);
-
-        // Comprobar si actualmente es un administrador activo.
-        var esAdministradorActual =
-            usuario.Activo &&
-            rolesActuales.Contains(
-                "Administrador",
-                StringComparer.OrdinalIgnoreCase);
-
-        // Comprobar si dejará de ser administrador activo.
-        var pierdeCondicionAdministrador =
-            !dto.Activo ||
-            !string.Equals(
-                nombreRol,
-                "Administrador",
-                StringComparison.OrdinalIgnoreCase);
-
-        if (esAdministradorActual && pierdeCondicionAdministrador)
-        {
-            var administradores = await _userManager
-                .GetUsersInRoleAsync("Administrador");
-
-            var administradoresActivos = administradores
-                .Count(a => a.Activo);
-
-            if (administradoresActivos <= 1)
+            if (usuario == null)
             {
+                //transacción iniciada, si ocurre un error se hace rollback
+                await transaction.RollbackAsync();
                 return IdentityResult.Failed(
                     new IdentityError
                     {
-                        Code = "UltimoAdministrador",
-                        Description = "No se puede quitar el rol o inactivar al último administrador activo."
+                        Code = "UsuarioNoExiste",
+                        Description = "El usuario no fue encontrado."
                     });
             }
-        }
 
-        // 5. Actualizar los datos del usuario
-        usuario.NombreCompleto = dto.NombreCompleto.Trim();
-        usuario.Activo = dto.Activo;
+            // 2. Validar el rol seleccionado
+            var nombreRol = dto.Rol?.Trim();
 
-        var resultadoUsuario = await _userManager.UpdateAsync(usuario);
-
-        if (!resultadoUsuario.Succeeded)
-        {
-            return resultadoUsuario;
-        }
-
-        // 7. Quitar los roles que no corresponden al seleccionado
-        var rolesAQuitar = rolesActuales
-            .Where(r => !string.Equals(
-                r,
-                nombreRol,
-                StringComparison.OrdinalIgnoreCase))
-            .ToList();
-
-        if (rolesAQuitar.Any())
-        {
-            var resultadoQuitar = await _userManager.RemoveFromRolesAsync(
-                usuario,
-                rolesAQuitar);
-
-            if (!resultadoQuitar.Succeeded)
+            if (string.IsNullOrWhiteSpace(nombreRol))
             {
-                return resultadoQuitar;
+                //transacción iniciada, si ocurre un error se hace rollback
+                await transaction.RollbackAsync();
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolRequerido",
+                        Description = "Debe seleccionar un rol."
+                    });
             }
-        }
 
-        // 8. Comprobar si ya tiene el rol seleccionado
-        var tieneRolSeleccionado = rolesActuales.Any(r =>
-            string.Equals(
-                r,
-                nombreRol,
-                StringComparison.OrdinalIgnoreCase));
-        var cambioRol = rolesAQuitar.Any() || !tieneRolSeleccionado;
+            // 3. Buscar el rol
+            var rol = await _roleManager.FindByNameAsync(nombreRol);
 
-        // 9. Asignar el rol si todavía no lo tiene
-        if (!tieneRolSeleccionado)
-        {
-            var resultadoAgregar = await _userManager.AddToRoleAsync(
-                usuario,
+            if (rol == null)
+            {
+                //transacción iniciada, si ocurre un error se hace rollback
+                await transaction.RollbackAsync();
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolNoExiste",
+                        Description = $"El rol '{nombreRol}' no existe."
+                    });
+            }
+
+            // 4. Validar que el rol esté activo
+            if (!rol.Activo)
+            {
+                //transacción iniciada, si ocurre un error se hace rollback
+                await transaction.RollbackAsync();
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolInactivo",
+                        Description = "No se puede asignar un rol que está inactivo."
+                    });
+            }
+
+            // 5. Obtener los roles actuales
+            var rolesActuales = await _userManager.GetRolesAsync(usuario);
+
+            // 6. Proteger al último Administrador activo
+            var esAdministradorActual =
+                usuario.Activo &&
+                rolesActuales.Contains(
+                    "Administrador",
+                    StringComparer.OrdinalIgnoreCase);
+
+            var pierdeCondicionAdministrador =
+                !dto.Activo ||
+                !string.Equals(
+                    nombreRol,
+                    "Administrador",
+                    StringComparison.OrdinalIgnoreCase);
+
+            if (esAdministradorActual && pierdeCondicionAdministrador)
+            {
+                var administradores = await _userManager
+                    .GetUsersInRoleAsync("Administrador");
+
+                var administradoresActivos = administradores
+                    .Count(a => a.Activo);
+
+                if (administradoresActivos <= 1)
+                {
+                    await transaction.RollbackAsync();
+                    return IdentityResult.Failed(
+                        new IdentityError
+                        {
+                            Code = "UltimoAdministrador",
+                            Description = "No se puede quitar el rol o inactivar al último administrador activo."
+                        });
+                }
+            }
+
+            // 7. Detectar si cambia el rol
+            var tieneRolSeleccionado = rolesActuales.Any(r =>
+                string.Equals(
+                    r,
+                    nombreRol,
+                    StringComparison.OrdinalIgnoreCase));
+
+            var rolesAQuitar = rolesActuales
+                .Where(r => !string.Equals(
+                    r,
+                    nombreRol,
+                    StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            var cambioRol = rolesAQuitar.Any() || !tieneRolSeleccionado;
+
+
+            // 9. Actualizar datos del usuario
+            usuario.NombreCompleto = dto.NombreCompleto.Trim();
+            var cambioEstadoActivo = usuario.Activo != dto.Activo;
+            usuario.Activo = dto.Activo;
+
+            var resultadoUsuario = await _userManager.UpdateAsync(usuario);
+
+            if (!resultadoUsuario.Succeeded)
+            {
+                await transaction.RollbackAsync();
+                return resultadoUsuario;
+            }
+
+            // 10. Quitar roles anteriores
+            if (rolesAQuitar.Any())
+            {
+                var resultadoQuitar = await _userManager.RemoveFromRolesAsync(
+                    usuario,
+                    rolesAQuitar);
+
+                if (!resultadoQuitar.Succeeded)
+                {
+                    await transaction.RollbackAsync();
+                    return resultadoQuitar;
+                }
+            }
+
+            // 11. Asignar el rol seleccionado
+            if (!tieneRolSeleccionado)
+            {
+                var resultadoAgregar = await _userManager.AddToRoleAsync(
+                    usuario,
+                    nombreRol);
+
+                if (!resultadoAgregar.Succeeded)
+                {
+                    await transaction.RollbackAsync();
+                    return resultadoAgregar;
+                }
+            }
+
+            // 12. Actualizar Security Stamp si cambió el rol
+            if (cambioRol || cambioEstadoActivo)
+            {
+                var resultadoStamp = await _userManager
+                    .UpdateSecurityStampAsync(usuario);
+
+                if (!resultadoStamp.Succeeded)
+                {
+                    await transaction.RollbackAsync();
+                    return resultadoStamp;
+                }
+            }
+
+            // 13. Confirmar todos los cambios
+            await transaction.CommitAsync();
+
+            // 14. Registrar la operación
+            _logger.LogInformation(
+                "Usuario {Email} actualizado correctamente con el rol {Rol}.",
+                usuario.Email,
                 nombreRol);
 
-            if (!resultadoAgregar.Succeeded)
-            {
-                return resultadoAgregar;
-            }
+            return IdentityResult.Success;
         }
-        if (cambioRol)
+        catch
         {
-            var resultadoStamp = await _userManager
-                .UpdateSecurityStampAsync(usuario);
-
-            if (!resultadoStamp.Succeeded)
-            {
-                return resultadoStamp;
-            }
+            await transaction.RollbackAsync();
+            throw;
         }
-
-        if (cambioRol)
-        {
-            var resultadoStamp = await _userManager
-                .UpdateSecurityStampAsync(usuario);
-
-            if (!resultadoStamp.Succeeded)
-            {
-                return resultadoStamp;
-            }
-        }
-        // 10. Registrar la operación
-        _logger.LogInformation(
-            "Usuario {Email} actualizado correctamente con el rol {Rol}.",
-            usuario.Email,
-            nombreRol);
-
-        return IdentityResult.Success;
     }
+
+
+
 
     public async Task<IdentityResult> ActivarAsync(string id)
     {
-        var usuario = await _userManager.FindByIdAsync(id);
-
-        if (usuario == null)
+        // 1. Validar el identificador.
+        if (string.IsNullOrWhiteSpace(id))
         {
             return IdentityResult.Failed(
                 new IdentityError
                 {
-                    Code = "UsuarioNoExiste",
-                    Description = "El usuario no fue encontrado."
+                    Code = "IdUsuarioInvalido",
+                    Description = "El identificador del usuario no es válido."
                 });
         }
 
-        if (usuario.Activo)
+        // 2. Iniciar la transacción.
+        await using var transaction =
+            await _transactionManager.BeginTransactionAsync();
+
+        try
         {
-            return IdentityResult.Success;
-        }
+            // 3. Adquirir el bloqueo exclusivo.
+            await _appLockManager.AcquireLockAsync(
+                RecursoBloqueoAdministradores);
 
-        usuario.Activo = true;
+            // 4. Buscar el usuario.
+            var usuario = await _userManager.FindByIdAsync(id);
 
-        var resultado = await _userManager.UpdateAsync(usuario);
-
-        if (!resultado.Succeeded)
-        {
-            return resultado;
-        }
-
-        _logger.LogInformation(
-            "Usuario {Email} activado correctamente.",
-            usuario.Email);
-
-        return IdentityResult.Success;
-    }
-
-    public async Task<IdentityResult> InactivarAsync(string id)
-    {
-        var usuario = await _userManager.FindByIdAsync(id);
-
-        if (usuario == null)
-        {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "UsuarioNoExiste",
-                    Description = "El usuario no fue encontrado."
-                });
-        }
-
-        if (!usuario.Activo)
-        {
-            return IdentityResult.Success;
-        }
-        // Consultar los roles asignados al usuario.
-        var roles = await _userManager.GetRolesAsync(usuario);
-
-        // Comprobar si el usuario es Administrador.
-        if (roles.Contains("Administrador"))
-        {
-            // Obtener todos los usuarios que tienen el rol Administrador.
-            var administradores = await _userManager
-                .GetUsersInRoleAsync("Administrador");
-
-            // Contar únicamente los administradores activos.
-            var administradoresActivos = administradores
-                .Count(a => a.Activo);
-
-            // Impedir inactivar al último administrador activo.
-            if (administradoresActivos <= 1)
+            if (usuario == null)
             {
+                await transaction.RollbackAsync();
+
                 return IdentityResult.Failed(
                     new IdentityError
                     {
-                        Code = "UltimoAdministrador",
-                        Description = "No se puede inactivar al último administrador activo."
+                        Code = "UsuarioNoExiste",
+                        Description = "El usuario no fue encontrado."
                     });
             }
+
+            // 5. Comprobar si el usuario ya está activo.
+            if (usuario.Activo)
+            {
+                await transaction.CommitAsync();
+                return IdentityResult.Success;
+            }
+
+            // 6. Obtener los roles actuales.
+            var rolesActuales = await _userManager.GetRolesAsync(usuario);
+
+            // 7. Comprobar que tenga exactamente un rol.
+            if (rolesActuales.Count != 1)
+            {
+                await transaction.RollbackAsync();
+
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "CantidadRolesInvalida",
+                        Description = "El usuario debe tener exactamente un rol asignado para poder activarse."
+                    });
+            }
+
+            // 8. Buscar el rol asignado.
+            var nombreRol = rolesActuales.Single();
+
+            var rol = await _roleManager.FindByNameAsync(nombreRol);
+
+            if (rol == null)
+            {
+                await transaction.RollbackAsync();
+
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolNoExiste",
+                        Description = "El rol asignado al usuario no existe."
+                    });
+            }
+
+            // 9. Comprobar que el rol esté activo.
+            if (!rol.Activo)
+            {
+                await transaction.RollbackAsync();
+
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolInactivo",
+                        Description = "No se puede activar un usuario cuyo rol está inactivo."
+                    });
+            }
+
+            // 10. Activar el usuario.
+            usuario.Activo = true;
+
+            var resultado = await _userManager.UpdateAsync(usuario);
+
+            if (!resultado.Succeeded)
+            {
+                await transaction.RollbackAsync();
+                return resultado;
+            }
+
+            // 11. Actualizar el Security Stamp.
+            var resultadoStamp =
+                await _userManager.UpdateSecurityStampAsync(usuario);
+
+            if (!resultadoStamp.Succeeded)
+            {
+                await transaction.RollbackAsync();
+                return resultadoStamp;
+            }
+
+            // 12. Confirmar la transacción.
+            await transaction.CommitAsync();
+
+            // 13. Registrar la operación.
+            _logger.LogInformation(
+                "Usuario {Email} activado correctamente.",
+                usuario.Email);
+
+            return IdentityResult.Success;
         }
-        usuario.Activo = false;
-
-        var resultado = await _userManager.UpdateAsync(usuario);
-
-        if (!resultado.Succeeded)
+        catch (Exception ex)
         {
-            return resultado;
+            await transaction.RollbackAsync();
+
+            _logger.LogError(
+                ex,
+                "Error al activar el usuario con identificador {UsuarioId}.",
+                id);
+
+            throw;
+        }
+    }
+
+
+    public async Task<IdentityResult> InactivarAsync(string id)
+    {
+        // 1. Validar el identificador.
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "IdUsuarioInvalido",
+                    Description = "El identificador del usuario no es válido."
+                });
         }
 
-        _logger.LogInformation(
-            "Usuario {Email} inactivado correctamente.",
-            usuario.Email);
+        // 2. Iniciar la transacción.
+        await using var transaction =
+            await _transactionManager.BeginTransactionAsync();
 
-        return IdentityResult.Success;
+        try
+        {
+            // 3. Adquirir el bloqueo exclusivo.
+            await _appLockManager.AcquireLockAsync(
+                RecursoBloqueoAdministradores);
+
+            // 4. Buscar el usuario.
+            var usuario = await _userManager.FindByIdAsync(id);
+
+            if (usuario == null)
+            {
+                await transaction.RollbackAsync();
+
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "UsuarioNoExiste",
+                        Description = "El usuario no fue encontrado."
+                    });
+            }
+
+            // 5. Comprobar si ya está inactivo.
+            if (!usuario.Activo)
+            {
+                await transaction.CommitAsync();
+                return IdentityResult.Success;
+            }
+
+            // 6. Obtener los roles actuales.
+            var rolesActuales =
+                await _userManager.GetRolesAsync(usuario);
+
+            // 7. Comprobar que tenga exactamente un rol.
+            if (rolesActuales.Count != 1)
+            {
+                await transaction.RollbackAsync();
+
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "CantidadRolesInvalida",
+                        Description = "El usuario debe tener exactamente un rol asignado para poder inactivarse."
+                    });
+            }
+
+            // 8. Buscar el rol asignado.
+            var nombreRol = rolesActuales.Single();
+
+            var rol = await _roleManager.FindByNameAsync(nombreRol);
+
+            if (rol == null)
+            {
+                await transaction.RollbackAsync();
+
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolNoExiste",
+                        Description = "El rol asignado al usuario no existe."
+                    });
+            }
+
+            // 9. Comprobar que el rol esté activo.
+            if (!rol.Activo)
+            {
+                await transaction.RollbackAsync();
+
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolInactivo",
+                        Description = "No se puede inactivar un usuario cuyo rol está inactivo."
+                    });
+            }
+
+            // 10. Proteger al último administrador activo.
+            if (string.Equals(
+                nombreRol,
+                "Administrador",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                var administradores = await _userManager
+                    .GetUsersInRoleAsync("Administrador");
+
+                var administradoresActivos = administradores
+                    .Count(a => a.Activo);
+
+                if (administradoresActivos <= 1)
+                {
+                    await transaction.RollbackAsync();
+
+                    return IdentityResult.Failed(
+                        new IdentityError
+                        {
+                            Code = "UltimoAdministrador",
+                            Description = "No se puede inactivar al último administrador activo."
+                        });
+                }
+            }
+
+            // 11. Inactivar el usuario.
+            usuario.Activo = false;
+
+            var resultado = await _userManager.UpdateAsync(usuario);
+
+            if (!resultado.Succeeded)
+            {
+                await transaction.RollbackAsync();
+                return resultado;
+            }
+
+            // 12. Actualizar el Security Stamp.
+            var resultadoStamp =
+                await _userManager.UpdateSecurityStampAsync(usuario);
+
+            if (!resultadoStamp.Succeeded)
+            {
+                await transaction.RollbackAsync();
+                return resultadoStamp;
+            }
+
+            // 13. Confirmar la transacción.
+            await transaction.CommitAsync();
+
+            // 14. Registrar la operación.
+            _logger.LogInformation(
+                "Usuario {Email} inactivado correctamente.",
+                usuario.Email);
+
+            return IdentityResult.Success;
+        }
+        catch (Exception ex)
+        {
+            await transaction.RollbackAsync();
+
+            _logger.LogError(
+                ex,
+                "Error al inactivar el usuario con identificador {UsuarioId}.",
+                id);
+
+            throw;
+        }
     }
+
 }

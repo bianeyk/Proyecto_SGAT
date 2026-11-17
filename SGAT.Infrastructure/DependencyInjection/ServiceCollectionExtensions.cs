@@ -7,6 +7,8 @@ using SGAT.Infrastructure.Repositories;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Infrastructure.Services;
 using SGAT.Infrastructure.Settings;
+using SGAT.Application.Interfaces.Transactions;
+using SGAT.Infrastructure.Data.Transactions;
 
 namespace SGAT.Infrastructure.DependencyInjection
 {
@@ -16,6 +18,10 @@ namespace SGAT.Infrastructure.DependencyInjection
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            // Registro de servicios de transacciones
+            services.AddScoped<ITransactionManager, EfTransactionManager>();
+            // Gestión de bloqueos de SQL Server
+            services.AddScoped<IAppLockManager, EfAppLockManager>();
             // Configuración del correo electrónico
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
 

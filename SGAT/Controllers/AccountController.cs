@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
@@ -61,8 +62,7 @@ namespace SGAT.Web.Controllers
             if (!ModelState.IsValid)
                 return View(model);
             // 1. Buscar al usuario antes de iniciar sesión.
-            var user = await _userManager.FindByNameAsync(
-                model.UserName);
+            var user = await _userManager.FindByNameAsync(model.UserName);
             // validar Si no existe.
             if (user == null)
                 return LoginInvalido(model);
@@ -124,6 +124,7 @@ namespace SGAT.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
+            //cierra la sesión de Identity y elimina la cookie de autenticación correspondiente
             await _signInManager.SignOutAsync();
 
             return RedirectToAction("Login", "Account");
@@ -149,7 +150,7 @@ namespace SGAT.Web.Controllers
             {
                 return View(model);
             }
-
+            // Buscar al usuario por correo electrónico.
             var usuario = await _userManager.FindByEmailAsync(
                 model.Email.Trim());
 
@@ -158,10 +159,10 @@ namespace SGAT.Web.Controllers
                 return RedirectToAction(
                     nameof(ForgotPasswordConfirmation));
             }
-
+            // Generar un token de restablecimiento de contraseña.
             var token = await _userManager.GeneratePasswordResetTokenAsync(
                 usuario);
-
+            // Crear un enlace de restablecimiento de contraseña.
             var enlace = Url.Action(
                 nameof(ResetPassword),
                 "Account",
@@ -170,6 +171,7 @@ namespace SGAT.Web.Controllers
                     email = usuario.Email,
                     token = token
                 },
+                //permite generar el enlace con el protocolo de la solicitud
                 Request.Scheme);
             //Comprobar que el usuario tenga un correo válido
             if (string.IsNullOrWhiteSpace(enlace))
@@ -184,24 +186,22 @@ namespace SGAT.Web.Controllers
             try
             {
                 var mensaje = $"""
-        Hola {usuario.NombreCompleto},
+                    Hola {usuario.NombreCompleto},
 
-        Hemos recibido una solicitud para restablecer
-        tu contraseña de SGAT.
+                    Hemos recibido una solicitud para restablecer
+                    tu contraseña de SGAT.
+                    Para establecer una nueva contraseña, ingresa al
+                    siguiente enlace:
 
-        Para establecer una nueva contraseña, ingresa al
-        siguiente enlace:
+                    {enlace}
+                    
+                    Si no solicitaste este cambio, puedes ignorar
+                    este mensaje.
+                    Saludos,
+                    Equipo SGAT
+                    """;
 
-        {enlace}
-
-        Si no solicitaste este cambio, puedes ignorar
-        este mensaje.
-
-        Saludos,
-        Equipo SGAT
-        """;
-
-                await _emailService.EnviarCorreoAsync(
+                    await _emailService.EnviarCorreoAsync(
                     usuario.Email!,
                     "Restablecer contraseña - SGAT",
                     mensaje);
@@ -216,7 +216,7 @@ namespace SGAT.Web.Controllers
             return RedirectToAction(
                 nameof(ForgotPasswordConfirmation));
         }
-
+        //confirma que se procesó la solicitud de recuperación
         [HttpGet]
         public IActionResult ForgotPasswordConfirmation()
         {
@@ -240,7 +240,7 @@ namespace SGAT.Web.Controllers
 
             return View(model);
         }
-
+        //confirma que se procesó la solicitud de restablecimiento de contraseña
         [HttpGet]
         public IActionResult ResetPasswordConfirmation()
         {
@@ -288,6 +288,64 @@ namespace SGAT.Web.Controllers
 
             return RedirectToAction(
                 nameof(ResetPasswordConfirmation));
+        }
+        // GET: /Account/CambiarPassword desde la cuenta del usuario.
+        [HttpGet]
+        [Authorize]
+        public IActionResult CambiarPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CambiarPassword(
+    CambiarPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            // Obtener el usuario actual.
+            var usuario = await _userManager.GetUserAsync(User);
+
+            if (usuario == null || !usuario.Activo)
+            {
+                await _signInManager.SignOutAsync();
+                return RedirectToAction(nameof(Login));
+            }
+
+            var resultado = await _userManager.ChangePasswordAsync(
+                usuario,
+                model.PasswordActual,
+                model.NuevaPassword);
+
+            if (!resultado.Succeeded)
+            {
+                foreach (var error in resultado.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Code switch
+                    {
+                        "PasswordMismatch" => "La contraseña actual es incorrecta.",
+                        "PasswordTooShort" => "La contraseña debe tener al menos 12 caracteres.",
+                        "PasswordRequiresDigit" => "Debe contener al menos un número.",
+                        "PasswordRequiresUpper" => "Debe contener al menos una mayúscula.",
+                        "PasswordRequiresLower" => "Debe contener al menos una minúscula.",
+                        "PasswordRequiresNonAlphanumeric" => "Debe contener al menos un carácter especial.",
+                        "PasswordRequiresUniqueChars" => "Debe contener al menos 4 caracteres diferentes.",
+                        _ => "No fue posible cambiar la contraseña."
+                    });
+                }
+
+                return View(model);
+            }
+            // Actualizar el Security Stamp para forzar la revalidación de la sesión del usuario.
+            await _signInManager.RefreshSignInAsync(usuario);
+
+            TempData["Success"] = "Tu contraseña se cambió correctamente.";
+
+            return RedirectToAction(nameof(CambiarPassword));
         }
     }
 }

@@ -55,26 +55,17 @@
                 <div class="mb-3">
                     <label asp-for="Usuario.Password" class="form-label"></label>
                     <!-- Agregado type="password" -->
-                    <input asp-for="Usuario.Password" type="password" class="form-control" />
+                    <input asp-for="Usuario.Password" type="password" class="form-control" autocomplete="new-password" />
                     <span asp-validation-for="Usuario.Password" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
                     <label asp-for="Usuario.ConfirmPassword" class="form-label"></label>
                     <!-- Agregado type="password" -->
-                    <input asp-for="Usuario.ConfirmPassword" type="password" class="form-control" />
+                    <input asp-for="Usuario.ConfirmPassword" type="password" class="form-control" autocomplete="new-password" />
                     <span asp-validation-for="Usuario.ConfirmPassword" class="text-danger"></span>
                 </div>
-                <div class="form-check mb-3">
-
-                    <input asp-for="Usuario.Activo"
-                           class="form-check-input" />
-
-                    <label asp-for="Usuario.Activo"
-                           class="form-check-label">
-                    </label>
-
-                </div>
+               
                 <div class="mb-3">
                     <label asp-for="Usuario.Rol" class="form-label">
                         Rol

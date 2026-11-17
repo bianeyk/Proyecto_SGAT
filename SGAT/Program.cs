@@ -77,6 +77,11 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.User.RequireUniqueEmail = true;
 });
 
+// Configurar la validación del Security Stamp para que se verifique cada 5 minutos.
+builder.Services.Configure<SecurityStampValidatorOptions>(options =>
+{
+    options.ValidationInterval = TimeSpan.FromMinutes(5);
+});
 
 //configurar la ruta de login. opciones de seguridad y duración de la cookie.
 builder.Services.ConfigureApplicationCookie(options =>
