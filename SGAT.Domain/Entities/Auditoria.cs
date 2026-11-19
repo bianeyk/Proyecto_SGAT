@@ -20,7 +20,7 @@ namespace SGAT.Domain.Entities
         public string? Observacion { get; set; }
         public string? IpAddress { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; }
 
         // Navegacion
         public ApplicationUser Usuario { get; set; } = null!;

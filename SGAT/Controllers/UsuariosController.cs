@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SGAT.Application.DTOs.Usuario;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Web.ViewModels.Usuario;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace SGAT.Web.Controllers
 {
@@ -113,8 +113,13 @@ namespace SGAT.Web.Controllers
         //POST Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(UsuarioEditViewModel vm)
+        public async Task<IActionResult> Edit(string id, UsuarioEditViewModel vm)
         {
+            if (vm?.Usuario == null || string.IsNullOrWhiteSpace(id) || !string.Equals(id, vm.Usuario.Id, StringComparison.Ordinal))
+            {
+                return BadRequest();
+            }
+
             if (!ModelState.IsValid)
             {
                 vm.RolesDisponibles = await _rolService.ObtenerTodosAsync();
@@ -144,12 +149,15 @@ namespace SGAT.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Inactivar(string id)
         {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return NotFound();
+            }
             var resultado = await _usuarioService.InactivarAsync(id);
 
             if (!resultado.Succeeded)
             {
-                TempData["Error"] = string.Join(
-                    ", ", resultado.Errors.Select(e => e.Description));
+                TempData["Error"] = string.Join(", ", resultado.Errors.Select(e => e.Description));
             }
             else
             {
@@ -163,11 +171,15 @@ namespace SGAT.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Activar(string id)
         {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return NotFound();
+            }
             var resultado = await _usuarioService.ActivarAsync(id);
 
             if (!resultado.Succeeded)
             {
-                TempData["Error"] = resultado.Errors.First().Description;
+                TempData["Error"] = string.Join(", ", resultado.Errors.Select(e => e.Description));
             }
             else
             {

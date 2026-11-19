@@ -22,6 +22,41 @@ TestResults/
 # Sistema operativo
 .DS_Store
 Thumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+Thumbs.db
+*.stackdump
 
-# Logs
+# Archivos de Windows
+*.lnk
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Logs y temporales
 *.log
+*.swp
+*.tmp
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+# SQL Server
+*.mdf
+*.ldf
+*.ndf
+
+# Publicación
+*.pubxml
+*.publishproj
+publish/
+
+# Otros
+node_modules/
+.DS_Store
+healthchecksdb

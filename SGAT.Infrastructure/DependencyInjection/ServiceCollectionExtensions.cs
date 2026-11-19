@@ -7,20 +7,38 @@ using SGAT.Infrastructure.Repositories;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Infrastructure.Services;
 using SGAT.Infrastructure.Settings;
+using SGAT.Application.Interfaces.Transactions;
+using SGAT.Infrastructure.Data.Transactions;
 
 namespace SGAT.Infrastructure.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructure(
+            this IServiceCollection services,
+            IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            // Configuración del correo electrónico
-            services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+                options.UseSqlServer(
+                    configuration.GetConnectionString("DefaultConnection")));
 
-            // Servicio de envío de correos
+            // Registro de servicios de transacciones.
+            services.AddScoped<ITransactionManager, EfTransactionManager>();
+
+            // Gestión de bloqueos de SQL Server.
+            services.AddScoped<IAppLockManager, EfAppLockManager>();
+
+            // Configuración y validación del correo electrónico.
+            services.AddOptions<EmailSettings>().Bind(configuration.GetSection("EmailSettings"))
+                .ValidateDataAnnotations()
+                .Validate(
+                    settings => Enum.IsDefined(settings.SecurityOption),
+                    "La opción de seguridad SMTP no es válida.")
+                .ValidateOnStart();
+
+            // Servicio de envío de correos.
             services.AddScoped<IEmailService, EmailService>();
+
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IProductoRepository, ProductoRepository>();
             services.AddScoped<IMarcaRepository, MarcaRepository>();

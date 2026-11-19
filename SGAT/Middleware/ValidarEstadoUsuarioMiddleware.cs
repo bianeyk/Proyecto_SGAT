@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using Microsoft.AspNetCore.Identity;
 using SGAT.Domain.Entities;
 
 namespace SGAT.Web.Middleware
@@ -6,10 +7,14 @@ namespace SGAT.Web.Middleware
     public class ValidarEstadoUsuarioMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly ILogger<ValidarEstadoUsuarioMiddleware> _logger;
 
-        public ValidarEstadoUsuarioMiddleware(RequestDelegate next)
+        public ValidarEstadoUsuarioMiddleware(
+            RequestDelegate next,
+            ILogger<ValidarEstadoUsuarioMiddleware> logger)
         {
             _next = next;
+            _logger = logger;
         }
 
         public async Task InvokeAsync(
@@ -26,6 +31,9 @@ namespace SGAT.Web.Middleware
                 // Comprobar que el usuario exista y esté activo.
                 if (usuario == null || !usuario.Activo)
                 {
+                    _logger.LogWarning(
+                        "Se rechazó una solicitud por usuario inexistente o inactivo.");
+
                     await signInManager.SignOutAsync();
 
                     context.Response.Redirect(
@@ -40,10 +48,15 @@ namespace SGAT.Web.Middleware
                 // Este sistema espera exactamente un rol por usuario.
                 if (roles.Count != 1)
                 {
+                    _logger.LogWarning(
+                        "Se rechazó una solicitud del usuario {UsuarioId} por tener {CantidadRoles} roles.",
+                        usuario.Id,
+                        roles.Count);
+
                     await signInManager.SignOutAsync();
 
                     context.Response.Redirect(
-                        "/Account/Login?inactiva=true");
+                        "/Account/Login?permisos=true");
 
                     return;
                 }
@@ -53,10 +66,14 @@ namespace SGAT.Web.Middleware
 
                 if (rol == null || !rol.Activo)
                 {
+                    _logger.LogWarning(
+                        "Se rechazó una solicitud del usuario {UsuarioId} porque su rol no existe o está inactivo.",
+                        usuario.Id);
+
                     await signInManager.SignOutAsync();
 
                     context.Response.Redirect(
-                        "/Account/Login?inactiva=true");
+                        "/Account/Login?permisos=true");
 
                     return;
                 }
@@ -65,9 +82,15 @@ namespace SGAT.Web.Middleware
                 // con el rol actual de la base de datos.
                 if (!context.User.IsInRole(roles[0]))
                 {
+                    _logger.LogWarning(
+                        "Se rechazó una solicitud del usuario {UsuarioId} por discrepancia entre el rol de la sesión y el rol actual.",
+                        usuario.Id);
+
                     await signInManager.SignOutAsync();
 
-                    context.Response.Redirect("/Account/Login?permisos=true");
+                    context.Response.Redirect(
+                        "/Account/Login?permisos=true");
+
                     return;
                 }
             }

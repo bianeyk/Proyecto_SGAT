@@ -14,7 +14,7 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.HasKey(c => c.IdCliente);
 
             builder.Property(c => c.IdUsuarioCrea).HasMaxLength(450).IsRequired();
-            builder.Property(c => c.NumDoc).HasMaxLength(50).IsRequired();
+            builder.Property(c => c.NumDoc).HasMaxLength(15).IsRequired();
             builder.HasIndex(c => c.NumDoc).IsUnique();
             builder.Property(c => c.Nombre).HasMaxLength(250).IsRequired();
             builder.Property(c => c.Telefono).HasMaxLength(20).IsRequired();
@@ -22,8 +22,10 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.Property(c => c.Direccion).HasMaxLength(255);
             builder.Property(c => c.EsColaborador).HasDefaultValue(false);
             builder.Property(c => c.Activo).HasDefaultValue(true);
-            builder.Property(c => c.CreatedAt).HasDefaultValueSql("GETDATE()");
-            builder.Property(c => c.UpdatedAt).HasDefaultValueSql("GETDATE()");
+            builder.Property(c => c.CreatedAt).HasPrecision(0)
+              .HasDefaultValueSql("CAST(SYSDATETIMEOFFSET() AT TIME ZONE 'SA Pacific Standard Time' AS DATETIME2(0))");
+            builder.Property(c => c.UpdatedAt).HasPrecision(0)
+              .HasDefaultValueSql("CAST(SYSDATETIMEOFFSET() AT TIME ZONE 'SA Pacific Standard Time' AS DATETIME2(0))");
 
             builder.HasOne(c => c.UsuarioCrea)
                 .WithMany(u => u.Clientes)
