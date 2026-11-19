@@ -1,0 +1,144 @@
+@model SGAT.Web.ViewModels.Producto.ProductoViewModel
+
+@* ── Sección: Clasificación ── *@
+<div class="sg-section">
+    <p class="sg-section-title">Clasificación</p>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="sg-form-group">
+                <label asp-for="IdCategoriaProducto" class="sg-label">
+                    Categoría <span class="sg-req">*</span>
+                </label>
+                <select asp-for="IdCategoriaProducto" class="form-select"
+                        asp-items="@(new Microsoft.AspNetCore.Mvc.Rendering.SelectList(Model.Categorias, "IdCategoriaProducto", "Nombre"))">
+                    <option value="">— Selecciona una categoría —</option>
+                </select>
+                <span asp-validation-for="IdCategoriaProducto" class="text-danger small"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="sg-form-group">
+                <label asp-for="IdMarca" class="sg-label">
+                    Marca <span class="sg-req">*</span>
+                </label>
+                <select asp-for="IdMarca" class="form-select"
+                        asp-items="@(new Microsoft.AspNetCore.Mvc.Rendering.SelectList(Model.Marcas, "IdMarca", "Nombre"))">
+                    <option value="">— Selecciona una marca —</option>
+                </select>
+                <span asp-validation-for="IdMarca" class="text-danger small"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ── Sección: Identificación ── *@
+<div class="sg-section">
+    <p class="sg-section-title">Identificación</p>
+
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="sg-form-group">
+                <label asp-for="Codigo" class="sg-label">Código</label>
+                <input asp-for="Codigo" class="form-control" maxlength="100"
+                       placeholder="Ej. PROD-001"
+                       onkeydown="if(event.key === '*' || event.code === 'NumpadMultiply') event.preventDefault();"
+                       oninput="this.value = this.value.replace(/\*/g, '').replace(/[^A-Za-z0-9\-_.]/g, '');" />
+                <span asp-validation-for="Codigo" class="text-danger small"></span>
+                <span class="sg-hint">Opcional. Solo letras, números, - . _</span>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="sg-form-group">
+                <label asp-for="Nombre" class="sg-label">
+                    Nombre <span class="sg-req">*</span>
+                </label>
+                <input asp-for="Nombre" class="form-control" maxlength="150"
+                       placeholder="Nombre descriptivo del producto"
+                       onkeydown="if(event.key === '*' || event.code === 'NumpadMultiply') event.preventDefault();"
+                       oninput="this.value = this.value.replace(/\*/g, '').replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-.,()/]/g, '');" />
+                <span asp-validation-for="Nombre" class="text-danger small"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sg-form-group">
+        <label asp-for="Descripcion" class="sg-label">Descripción</label>
+        <textarea asp-for="Descripcion" class="form-control" rows="3" maxlength="500"
+                  placeholder="Descripción opcional del producto"
+                  onkeydown="if(event.key === '*' || event.code === 'NumpadMultiply') event.preventDefault();"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-.,()/&'+]/g, '')"></textarea>
+        <span asp-validation-for="Descripcion" class="text-danger small"></span>
+        <span class="sg-hint">Opcional. Máximo 500 caracteres.</span>
+    </div>
+
+    <div class="sg-form-group">
+        <label asp-for="Condicion" class="sg-label">Condición</label>
+        <select asp-for="Condicion" class="form-select"
+                asp-items="Html.GetEnumSelectList<SGAT.SGAT.Domain.Enums.CondicionProductoEnum>()">
+        </select>
+        <span asp-validation-for="Condicion" class="text-danger small"></span>
+    </div>
+</div>
+
+@* ── Sección: Precios ── *@
+<div class="sg-section">
+    <p class="sg-section-title">Precios</p>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="sg-form-group">
+                <label asp-for="PrecioVenta" class="sg-label">
+                    Precio de venta <span class="sg-req">*</span>
+                </label>
+                <div class="input-group">
+                    <span class="input-group-text" style="border-color: var(--sg-line); background: var(--sg-canvas); color: var(--sg-muted);">$</span>
+                    <input asp-for="PrecioVenta" class="form-control" type="number" step="0.01"
+                           placeholder="0.00" />
+                </div>
+                <span asp-validation-for="PrecioVenta" class="text-danger small"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="sg-form-group">
+                <label asp-for="PrecioDescuento" class="sg-label">Precio con descuento</label>
+                <div class="input-group">
+                    <span class="input-group-text" style="border-color: var(--sg-line); background: var(--sg-canvas); color: var(--sg-muted);">$</span>
+                    <input asp-for="PrecioDescuento" class="form-control" type="number" step="0.01"
+                           placeholder="0.00" />
+                </div>
+                <span asp-validation-for="PrecioDescuento" class="text-danger small"></span>
+                <span class="sg-hint">Opcional. Debe ser menor que el precio de venta.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ── Sección: Inventario ── *@
+<div class="sg-section">
+    <p class="sg-section-title">Inventario</p>
+
+    <div class="col-md-4">
+        <div class="sg-form-group">
+            <label asp-for="StockMinimo" class="sg-label">Stock mínimo</label>
+            <input asp-for="StockMinimo" class="form-control" type="number" step="0.01"
+                   placeholder="0" />
+            <span asp-validation-for="StockMinimo" class="text-danger small"></span>
+            <span class="sg-hint">Se mostrará una alerta cuando el stock actual sea igual o menor a este valor.</span>
+        </div>
+    </div>
+</div>
+
+@* ── Sección: Estado ── *@
+<div class="sg-section">
+    <p class="sg-section-title">Estado</p>
+
+    <div class="sg-toggle-wrap">
+        <input asp-for="Activo" class="form-check-input sg-switch" type="checkbox" role="switch" />
+        <div class="sg-toggle-info">
+            <strong>Producto activo</strong>
+            <span>Los productos inactivos no aparecen disponibles en ventas ni en búsquedas de inventario.</span>
+        </div>
+    </div>
+    <span asp-validation-for="Activo" class="text-danger small"></span>
+</div>

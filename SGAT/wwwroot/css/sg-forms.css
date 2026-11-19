@@ -1,0 +1,461 @@
+/* =====================================================
+   sg-forms.css — Estilos compartidos para formularios
+   y vistas de detalle del sistema SGAT
+   ===================================================== */
+
+:root {
+    --sg-ink: #0e1b2c;
+    --sg-muted: #5b6b7f;
+    --sg-line: #e3e8ef;
+    --sg-canvas: #f6f8fb;
+    --sg-accent: #1d5fd1;
+    --sg-accent-soft: #e8f0fd;
+    --sg-ok: #0f7b55;
+    --sg-ok-soft: #e4f5ee;
+    --sg-warn: #b45309;
+    --sg-warn-soft: #fef3c7;
+    --sg-off: #5b6b7f;
+    --sg-off-soft: #eceff4;
+    --sg-danger: #b42318;
+    --sg-danger-soft: #fdecea;
+}
+
+/* ── Breadcrumb ── */
+.sg-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .85rem;
+    color: var(--sg-muted);
+    margin-bottom: 1.25rem;
+}
+.sg-breadcrumb a {
+    color: var(--sg-accent);
+    text-decoration: none;
+}
+.sg-breadcrumb a:hover { text-decoration: underline; }
+.sg-breadcrumb .sep { color: var(--sg-line); }
+
+/* ── Panel principal ── */
+.sg-form-panel {
+    background: #fff;
+    border: 1px solid var(--sg-line);
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(14,27,44,.06);
+    overflow: hidden;
+    max-width: 860px;
+}
+
+.sg-detail-panel {
+    background: #fff;
+    border: 1px solid var(--sg-line);
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(14,27,44,.06);
+    overflow: hidden;
+}
+
+/* ── Cabecera del panel ── */
+.sg-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--sg-line);
+    background: var(--sg-canvas);
+}
+
+.sg-panel-header-left {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.sg-panel-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .7rem;
+    background: var(--sg-accent-soft);
+    color: var(--sg-accent);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.sg-panel-title {
+    font-size: 1.15rem;
+    font-weight: 650;
+    color: var(--sg-ink);
+    margin: 0;
+    letter-spacing: -.01em;
+}
+
+.sg-panel-subtitle {
+    font-size: .825rem;
+    color: var(--sg-muted);
+    margin: .1rem 0 0;
+}
+
+/* ── Badge de estado ── */
+.sg-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: .8rem;
+    font-weight: 550;
+    padding: .3rem .75rem;
+    border-radius: 999px;
+}
+.sg-badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+.sg-badge.activo  { background: var(--sg-ok-soft);   color: var(--sg-ok); }
+.sg-badge.inactivo{ background: var(--sg-off-soft);  color: var(--sg-off); }
+
+/* ── Cuerpo del formulario ── */
+.sg-form-body { padding: 1.5rem; }
+
+/* ── Sección de campos ── */
+.sg-section {
+    margin-bottom: 1.75rem;
+}
+.sg-section:last-of-type { margin-bottom: 0; }
+
+.sg-section-title {
+    font-size: .75rem;
+    font-weight: 650;
+    color: var(--sg-muted);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--sg-line);
+}
+
+/* ── Campos del formulario ── */
+.sg-form-group { margin-bottom: 1.1rem; }
+.sg-form-group:last-child { margin-bottom: 0; }
+
+.sg-label {
+    display: block;
+    font-size: .875rem;
+    font-weight: 550;
+    color: var(--sg-ink);
+    margin-bottom: .35rem;
+}
+.sg-label .sg-req {
+    color: var(--sg-danger);
+    margin-left: .2rem;
+}
+.sg-hint {
+    font-size: .8rem;
+    color: var(--sg-muted);
+    margin-top: .3rem;
+    display: block;
+}
+
+.sg-form-group .form-control,
+.sg-form-group .form-select {
+    border-color: var(--sg-line);
+    border-radius: .6rem;
+    font-size: .925rem;
+    color: var(--sg-ink);
+    background: #fff;
+    transition: border-color .15s, box-shadow .15s;
+}
+.sg-form-group .form-control:focus,
+.sg-form-group .form-select:focus {
+    border-color: var(--sg-accent);
+    box-shadow: 0 0 0 3px rgba(29,95,209,.15);
+}
+.sg-form-group .form-control.is-invalid,
+.sg-form-group .form-select.is-invalid {
+    border-color: var(--sg-danger);
+}
+.sg-form-group .form-control.is-invalid:focus,
+.sg-form-group .form-select.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(180,35,24,.12);
+}
+
+/* Toggle activo */
+.sg-toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .85rem 1rem;
+    border: 1px solid var(--sg-line);
+    border-radius: .7rem;
+    background: var(--sg-canvas);
+}
+.sg-toggle-info strong {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--sg-ink);
+    display: block;
+}
+.sg-toggle-info span {
+    font-size: .8rem;
+    color: var(--sg-muted);
+}
+.form-check-input.sg-switch {
+    width: 2.5em;
+    height: 1.35em;
+    cursor: pointer;
+}
+
+/* ── Pie del formulario ── */
+.sg-form-footer {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: 1.1rem 1.5rem;
+    border-top: 1px solid var(--sg-line);
+    background: var(--sg-canvas);
+}
+
+.sg-btn-primary {
+    background: var(--sg-accent);
+    border-color: var(--sg-accent);
+    color: #fff;
+    font-weight: 550;
+    padding: .55rem 1.25rem;
+    border-radius: .6rem;
+    font-size: .925rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    transition: background .15s, border-color .15s;
+}
+.sg-btn-primary:hover {
+    background: #174fb0;
+    border-color: #174fb0;
+    color: #fff;
+}
+
+.sg-btn-secondary {
+    background: transparent;
+    border: 1px solid var(--sg-line);
+    color: var(--sg-ink);
+    font-weight: 500;
+    padding: .55rem 1.1rem;
+    border-radius: .6rem;
+    font-size: .925rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    text-decoration: none;
+    transition: background .15s, border-color .15s;
+}
+.sg-btn-secondary:hover {
+    background: var(--sg-canvas);
+    border-color: #c5d0de;
+    color: var(--sg-ink);
+}
+
+/* ── Validation summary ── */
+.sg-validation-summary {
+    border-radius: .65rem;
+    font-size: .9rem;
+    padding: .75rem 1rem;
+    margin-bottom: 1.25rem;
+}
+
+/* =====================================================
+   VISTA DETALLE
+   ===================================================== */
+
+.sg-detail-body {
+    padding: 0;
+}
+
+.sg-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+@media (max-width: 767px) {
+    .sg-detail-grid { grid-template-columns: 1fr; }
+}
+
+.sg-detail-col {
+    padding: 1.5rem;
+}
+
+.sg-detail-col + .sg-detail-col {
+    border-left: 1px solid var(--sg-line);
+}
+
+@media (max-width: 767px) {
+    .sg-detail-col + .sg-detail-col {
+        border-left: 0;
+        border-top: 1px solid var(--sg-line);
+    }
+}
+
+.sg-detail-section { margin-bottom: 1.5rem; }
+.sg-detail-section:last-child { margin-bottom: 0; }
+
+.sg-detail-section-title {
+    font-size: .72rem;
+    font-weight: 650;
+    color: var(--sg-muted);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: .85rem;
+    padding-bottom: .45rem;
+    border-bottom: 1px solid var(--sg-line);
+}
+
+.sg-dl { margin: 0; }
+
+.sg-dl dt {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--sg-muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-bottom: .2rem;
+    margin-top: .85rem;
+}
+.sg-dl dt:first-child { margin-top: 0; }
+
+.sg-dl dd {
+    font-size: .95rem;
+    color: var(--sg-ink);
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.sg-empty-val { color: #a3afbf; }
+
+/* Chip de condición */
+.sg-chip {
+    display: inline-block;
+    font-size: .8rem;
+    font-weight: 550;
+    padding: .2rem .65rem;
+    border-radius: 999px;
+    background: var(--sg-accent-soft);
+    color: var(--sg-accent);
+}
+
+/* Panel de precio */
+.sg-price-card {
+    background: var(--sg-canvas);
+    border: 1px solid var(--sg-line);
+    border-radius: .75rem;
+    padding: 1rem 1.1rem;
+    margin-bottom: .75rem;
+}
+.sg-price-card:last-child { margin-bottom: 0; }
+.sg-price-label {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--sg-muted);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: .2rem;
+}
+.sg-price-value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--sg-ink);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.02em;
+}
+.sg-price-value.descuento { color: var(--sg-ok); }
+
+/* Panel de stock */
+.sg-stock-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .6rem 0;
+    border-bottom: 1px solid var(--sg-line);
+    font-size: .925rem;
+}
+.sg-stock-row:last-child { border-bottom: 0; }
+.sg-stock-key { color: var(--sg-muted); font-size: .875rem; }
+.sg-stock-val { font-weight: 600; color: var(--sg-ink); font-variant-numeric: tabular-nums; }
+.sg-stock-val.bajo { color: var(--sg-warn); }
+
+.sg-stock-alert {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background: var(--sg-warn-soft);
+    color: var(--sg-warn);
+    border-radius: .6rem;
+    padding: .55rem .85rem;
+    font-size: .875rem;
+    font-weight: 550;
+    margin-top: .75rem;
+}
+
+/* ── Pie del detalle ── */
+.sg-detail-footer {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    flex-wrap: wrap;
+    padding: 1.1rem 1.5rem;
+    border-top: 1px solid var(--sg-line);
+    background: var(--sg-canvas);
+}
+
+.sg-btn-edit {
+    background: var(--sg-accent);
+    border-color: var(--sg-accent);
+    color: #fff;
+    font-weight: 550;
+    padding: .5rem 1.1rem;
+    border-radius: .6rem;
+    font-size: .9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    text-decoration: none;
+    transition: background .15s;
+}
+.sg-btn-edit:hover { background: #174fb0; border-color: #174fb0; color: #fff; }
+
+.sg-btn-danger {
+    background: transparent;
+    border: 1px solid #fca5a5;
+    color: var(--sg-danger);
+    font-weight: 550;
+    padding: .5rem 1.1rem;
+    border-radius: .6rem;
+    font-size: .9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    transition: background .15s;
+}
+.sg-btn-danger:hover { background: var(--sg-danger-soft); border-color: #f87171; color: var(--sg-danger); }
+
+.sg-btn-success {
+    background: transparent;
+    border: 1px solid #6ee7b7;
+    color: var(--sg-ok);
+    font-weight: 550;
+    padding: .5rem 1.1rem;
+    border-radius: .6rem;
+    font-size: .9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    transition: background .15s;
+}
+.sg-btn-success:hover { background: var(--sg-ok-soft); border-color: #34d399; color: var(--sg-ok); }
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+}

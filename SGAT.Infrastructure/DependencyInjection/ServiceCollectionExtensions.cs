@@ -16,6 +16,8 @@ namespace SGAT.Infrastructure.DependencyInjection
 
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IProductoRepository, ProductoRepository>();
+            services.AddScoped<IMarcaRepository, MarcaRepository>();
+            services.AddScoped<ICategoriaProductoRepository, CategoriaProductoRepository>();
             services.AddScoped<IOrdenServicioRepository, OrdenServicioRepository>();
             services.AddScoped<IFacturaRepository, FacturaRepository>();
             services.AddScoped<ITecnicoRepository, TecnicoRepository>();

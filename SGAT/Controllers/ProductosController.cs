@@ -35,8 +35,8 @@ namespace SGAT.Web.Controllers
 
             productos = (filtro ?? "todos").ToLowerInvariant() switch
             {
-                "activos" => productos.Where(p => p.Activo),
-                "inactivos" => productos.Where(p => !p.Activo),
+                "activo" => productos.Where(p => p.Activo),
+                "inactivo" => productos.Where(p => !p.Activo),
                 "stockbajo" => productos.Where(p => p.StockBajo),
                 _ => productos
             };
@@ -143,10 +143,6 @@ namespace SGAT.Web.Controllers
         public async Task<IActionResult> Edit(int id, ProductoViewModel vm)
         {
             if (id != vm.IdProducto)
-                return NotFound();
-
-            var productoActual = await _productoService.GetByIdAsync(id);
-            if (productoActual is null)
                 return NotFound();
 
             if (!ModelState.IsValid)

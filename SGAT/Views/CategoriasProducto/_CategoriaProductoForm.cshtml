@@ -1,0 +1,40 @@
+@model SGAT.Web.ViewModels.CategoriaProducto.CategoriaProductoViewModel
+
+<div class="sg-section">
+    <p class="sg-section-title">Información de la categoría</p>
+
+    <div class="sg-form-group">
+        <label asp-for="Nombre" class="sg-label">
+            Nombre <span class="sg-req">*</span>
+        </label>
+        <input asp-for="Nombre" class="form-control" maxlength="100"
+               placeholder="Ej. Repuestos, Accesorios, Consumibles"
+               onkeydown="if(event.key === '*' || event.code === 'NumpadMultiply') event.preventDefault();"
+               oninput="this.value = this.value.replace(/\*/g, '').replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-.,()/&'+]/g, '')" />
+        <span asp-validation-for="Nombre" class="text-danger small"></span>
+        <span class="sg-hint">Máximo 100 caracteres. Solo letras, números y los símbolos - . , ( ) / & ' +</span>
+    </div>
+
+    <div class="sg-form-group">
+        <label asp-for="Descripcion" class="sg-label">Descripción</label>
+        <textarea asp-for="Descripcion" class="form-control" rows="3" maxlength="500"
+                  placeholder="Descripción opcional de la categoría"
+                  onkeydown="if(event.key === '*' || event.code === 'NumpadMultiply') event.preventDefault();"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-.,()/&'+]/g, '')"></textarea>
+        <span asp-validation-for="Descripcion" class="text-danger small"></span>
+        <span class="sg-hint">Opcional. Máximo 500 caracteres.</span>
+    </div>
+</div>
+
+<div class="sg-section">
+    <p class="sg-section-title">Estado</p>
+
+    <div class="sg-toggle-wrap">
+        <input asp-for="Activo" class="form-check-input sg-switch" type="checkbox" role="switch" />
+        <div class="sg-toggle-info">
+            <strong>Categoría activa</strong>
+            <span>Las categorías activas aparecen disponibles al crear o editar productos.</span>
+        </div>
+    </div>
+    <span asp-validation-for="Activo" class="text-danger small"></span>
+</div>

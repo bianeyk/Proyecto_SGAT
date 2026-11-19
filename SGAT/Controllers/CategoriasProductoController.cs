@@ -1,0 +1,152 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SGAT.Application.DTOs.Producto;
+using SGAT.Application.Interfaces.Services;
+using SGAT.Web.ViewModels.CategoriaProducto;
+
+namespace SGAT.Web.Controllers
+{
+    [Authorize(Roles = "Administrador,Gerente")]
+    public class CategoriasProductoController : Controller
+    {
+        private readonly ICategoriaProductoService _categoriaService;
+
+        public CategoriasProductoController(ICategoriaProductoService categoriaService)
+        {
+            _categoriaService = categoriaService;
+        }
+
+        // GET: /CategoriasProducto
+        [HttpGet]
+        public async Task<IActionResult> Index(string? termino)
+        {
+            var categorias = string.IsNullOrWhiteSpace(termino)
+                ? await _categoriaService.GetTodasAsync()
+                : await _categoriaService.BuscarAsync(termino.Trim());
+
+            var vm = new CategoriaProductoIndexViewModel
+            {
+                Categorias = categorias.OrderBy(c => c.Nombre).ToList(),
+                Termino = termino
+            };
+
+            return View(vm);
+        }
+
+        // GET: /CategoriasProducto/Create
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View(new CategoriaProductoViewModel { Activo = true });
+        }
+
+        // POST: /CategoriasProducto/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CategoriaProductoViewModel vm)
+        {
+            if (!ModelState.IsValid)
+                return View(vm);
+
+            try
+            {
+                await _categoriaService.CrearAsync(new CategoriaProductoDto
+                {
+                    Nombre = vm.Nombre,
+                    Descripcion = vm.Descripcion,
+                    Activo = vm.Activo
+                });
+
+                TempData["Success"] = "Categoría creada correctamente.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError(nameof(vm.Nombre), ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return View(vm);
+        }
+
+        // GET: /CategoriasProducto/Edit/5
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (id <= 0)
+                return NotFound();
+
+            var categoria = await _categoriaService.GetByIdAsync(id);
+            if (categoria is null)
+                return NotFound();
+
+            return View(new CategoriaProductoViewModel
+            {
+                IdCategoriaProducto = categoria.IdCategoriaProducto,
+                Nombre = categoria.Nombre,
+                Descripcion = categoria.Descripcion,
+                Activo = categoria.Activo
+            });
+        }
+
+        // POST: /CategoriasProducto/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, CategoriaProductoViewModel vm)
+        {
+            if (id != vm.IdCategoriaProducto)
+                return NotFound();
+
+            if (!ModelState.IsValid)
+                return View(vm);
+
+            try
+            {
+                await _categoriaService.ActualizarAsync(id, new CategoriaProductoDto
+                {
+                    Nombre = vm.Nombre,
+                    Descripcion = vm.Descripcion,
+                    Activo = vm.Activo
+                });
+
+                TempData["Success"] = "Categoría actualizada correctamente.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError(nameof(vm.Nombre), ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return View(vm);
+        }
+
+        // POST: /CategoriasProducto/ActivarDesactivar/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ActivarDesactivar(int id)
+        {
+            try
+            {
+                await _categoriaService.ActivarDesactivarAsync(id);
+                TempData["Success"] = "Estado de la categoría actualizado correctamente.";
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+    }
+}

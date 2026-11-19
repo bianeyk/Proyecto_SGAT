@@ -1,0 +1,27 @@
+# Salidas de compilación
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+
+# Rider
+.idea/
+
+# Resultados de pruebas
+TestResults/
+*.trx
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

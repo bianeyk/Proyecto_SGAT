@@ -32,6 +32,8 @@ namespace SGAT.Web.ViewModels.Producto
         public string Nombre { get; set; } = string.Empty;
 
         [StringLength(500, ErrorMessage = "La descripción no puede superar los 500 caracteres.")]
+        [RegularExpression(@"^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-.,()/&'+]+$",
+            ErrorMessage = "La descripción contiene caracteres no permitidos.")]
         [Display(Name = "Descripción")]
         public string? Descripcion { get; set; }
 
@@ -39,17 +41,17 @@ namespace SGAT.Web.ViewModels.Producto
         public CondicionProductoEnum Condicion { get; set; } = CondicionProductoEnum.NUEVO;
 
         [Required(ErrorMessage = "El precio de venta es obligatorio.")]
-        [Range(typeof(decimal), "0.01", "99999999.99", ErrorMessage = "El precio de venta debe ser mayor que cero.")]
+        [Range(typeof(decimal), "0.01", "99999999.99", ParseLimitsInInvariantCulture = true, ErrorMessage = "El precio de venta debe ser mayor que cero.")]
         [Display(Name = "Precio de venta")]
         [DataType(DataType.Currency)]
         public decimal PrecioVenta { get; set; }
 
-        [Range(typeof(decimal), "0", "99999999.99", ErrorMessage = "El precio con descuento no puede ser negativo.")]
+        [Range(typeof(decimal), "0", "99999999.99", ParseLimitsInInvariantCulture = true, ErrorMessage = "El precio con descuento no puede ser negativo.")]
         [Display(Name = "Precio con descuento")]
         [DataType(DataType.Currency)]
         public decimal? PrecioDescuento { get; set; }
 
-        [Range(typeof(decimal), "0", "99999999.99", ErrorMessage = "El stock mínimo no puede ser negativo.")]
+        [Range(typeof(decimal), "0", "99999999.99", ParseLimitsInInvariantCulture = true, ErrorMessage = "El stock mínimo no puede ser negativo.")]
         [Display(Name = "Stock mínimo")]
         public decimal StockMinimo { get; set; }
 

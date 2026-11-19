@@ -1,0 +1,189 @@
+@model SGAT.Web.ViewModels.Producto.ProductoDetalleViewModel
+
+@{
+    ViewData["Title"] = "Detalle del producto";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/sg-forms.css" asp-append-version="true" />
+}
+
+<div class="container mt-4 mb-5">
+
+    <nav class="sg-breadcrumb" aria-label="Ruta de navegación">
+        <a asp-action="Index"><i class="bi bi-box-seam me-1"></i>Productos</a>
+        <span class="sep"><i class="bi bi-chevron-right"></i></span>
+        <span>@Model.Nombre</span>
+    </nav>
+
+    @if (TempData["Success"] is not null)
+    {
+        <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 mb-3" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <div>@TempData["Success"]</div>
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    }
+    @if (TempData["Error"] is not null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center gap-2 mb-3" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <div>@TempData["Error"]</div>
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    }
+
+    <div class="sg-detail-panel">
+
+        @* ── Cabecera ── *@
+        <div class="sg-panel-header">
+            <div class="sg-panel-header-left">
+                <div class="sg-panel-icon"><i class="bi bi-box-seam-fill"></i></div>
+                <div>
+                    <h1 class="sg-panel-title">@Model.Nombre</h1>
+                    @if (!string.IsNullOrWhiteSpace(Model.Codigo))
+                    {
+                        <p class="sg-panel-subtitle">Código: <strong>@Model.Codigo</strong></p>
+                    }
+                    else
+                    {
+                        <p class="sg-panel-subtitle">Sin código asignado</p>
+                    }
+                </div>
+            </div>
+            <span class="sg-badge @(Model.Activo ? "activo" : "inactivo")">
+                @(Model.Activo ? "Activo" : "Inactivo")
+            </span>
+        </div>
+
+        @* ── Cuerpo en dos columnas ── *@
+        <div class="sg-detail-body">
+            <div class="sg-detail-grid">
+
+                @* Columna izquierda: datos generales *@
+                <div class="sg-detail-col">
+
+                    <div class="sg-detail-section">
+                        <p class="sg-detail-section-title">Información general</p>
+                        <dl class="sg-dl">
+                            <dt>Categoría</dt>
+                            <dd>@(string.IsNullOrWhiteSpace(Model.Categoria) ? "<span class=\"sg-empty-val\">—</span>" : Model.Categoria)</dd>
+
+                            <dt>Marca</dt>
+                            <dd>@(string.IsNullOrWhiteSpace(Model.Marca) ? "<span class=\"sg-empty-val\">—</span>" : Model.Marca)</dd>
+
+                            <dt>Condición</dt>
+                            <dd><span class="sg-chip">@Model.Condicion</span></dd>
+
+                            <dt>Descripción</dt>
+                            <dd>
+                                @if (string.IsNullOrWhiteSpace(Model.Descripcion))
+                                {
+                                    <span class="sg-empty-val">Sin descripción</span>
+                                }
+                                else
+                                {
+                                    @Model.Descripcion
+                                }
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <div class="sg-detail-section">
+                        <p class="sg-detail-section-title">Registro</p>
+                        <dl class="sg-dl">
+                            <dt>Creado</dt>
+                            <dd>@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</dd>
+                        </dl>
+                    </div>
+
+                </div>
+
+                @* Columna derecha: precios y stock *@
+                <div class="sg-detail-col">
+
+                    <div class="sg-detail-section">
+                        <p class="sg-detail-section-title">Precios</p>
+
+                        <div class="sg-price-card">
+                            <p class="sg-price-label">Precio de venta</p>
+                            <p class="sg-price-value">@Model.PrecioVenta.ToString("C")</p>
+                        </div>
+
+                        @if (Model.PrecioDescuento.HasValue)
+                        {
+                            <div class="sg-price-card">
+                                <p class="sg-price-label">Precio con descuento</p>
+                                <p class="sg-price-value descuento">@Model.PrecioDescuento.Value.ToString("C")</p>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="sg-detail-section">
+                        <p class="sg-detail-section-title">Stock</p>
+
+                        <div>
+                            <div class="sg-stock-row">
+                                <span class="sg-stock-key">Stock actual</span>
+                                <span class="sg-stock-val @(Model.StockBajo ? "bajo" : "")">@Model.StockActual</span>
+                            </div>
+                            <div class="sg-stock-row">
+                                <span class="sg-stock-key">Stock reservado</span>
+                                <span class="sg-stock-val">@Model.StockReservado</span>
+                            </div>
+                            <div class="sg-stock-row">
+                                <span class="sg-stock-key">Stock disponible</span>
+                                <span class="sg-stock-val">@Model.StockDisponible</span>
+                            </div>
+                            <div class="sg-stock-row">
+                                <span class="sg-stock-key">Stock mínimo</span>
+                                <span class="sg-stock-val">@Model.StockMinimo</span>
+                            </div>
+                        </div>
+
+                        @if (Model.StockBajo)
+                        {
+                            <div class="sg-stock-alert">
+                                <i class="bi bi-exclamation-triangle-fill"></i>
+                                Stock bajo — el nivel actual (@Model.StockActual) es igual o inferior al mínimo (@Model.StockMinimo).
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        @* ── Pie con acciones ── *@
+        <div class="sg-detail-footer">
+            <a asp-action="Edit" asp-route-id="@Model.IdProducto" class="sg-btn-edit">
+                <i class="bi bi-pencil"></i> Editar
+            </a>
+
+            @if (Model.Activo)
+            {
+                <form asp-action="ActivarDesactivar" asp-route-id="@Model.IdProducto" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="sg-btn-danger"
+                            onclick="return confirm('¿Dar de baja este producto?');">
+                        <i class="bi bi-slash-circle"></i> Dar de baja
+                    </button>
+                </form>
+            }
+            else
+            {
+                <form asp-action="ActivarDesactivar" asp-route-id="@Model.IdProducto" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="sg-btn-success">
+                        <i class="bi bi-check-circle"></i> Reactivar
+                    </button>
+                </form>
+            }
+
+            <a asp-action="Index" class="sg-btn-secondary" style="margin-left: auto;">
+                <i class="bi bi-arrow-left"></i> Volver
+            </a>
+        </div>
+
+    </div>
+</div>
