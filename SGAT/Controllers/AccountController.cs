@@ -238,10 +238,10 @@ namespace SGAT.Web.Controllers
                     Equipo SGAT
                     """;
 
-                    await _emailService.EnviarCorreoAsync(
-                    usuario.Email!,
-                    "Restablecer contraseña - SGAT",
-                    mensaje);
+                await _emailService.EnviarCorreoAsync(
+                usuario.Email!,
+                "Restablecer contraseña - SGAT",
+                mensaje);
             }
             catch (Exception ex)
             {
@@ -416,5 +416,6 @@ namespace SGAT.Web.Controllers
             return RedirectToAction(nameof(Login));
 
         }
+
     }
 }

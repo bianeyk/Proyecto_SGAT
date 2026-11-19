@@ -1,4 +1,4 @@
-using System;
+copy.env.example.envusing System;
 using System.Collections.Generic;
 
 namespace SGAT.Application.DTOs.Tecnico

@@ -28,6 +28,8 @@ namespace SGAT.Infrastructure.Repositories
                 .Include(o => o.Facturas)
                 .Include(o => o.HistorialesServicio)
                 .Include(o => o.PagosCartera)
+                .Include(o => o.DiagnosticoTecnico)
+                .Include(o => o.Bitacoras)
                 .FirstOrDefaultAsync(o => o.IdOrdenServicio == id);
         }
 

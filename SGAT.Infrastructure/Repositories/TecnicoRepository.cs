@@ -26,6 +26,8 @@ namespace SGAT.Infrastructure.Repositories
                     .ThenInclude(e => e.CategoriaDispositivo)
                 .Include(o => o.Equipo)
                     .ThenInclude(e => e.Marca)
+                .Include(o => o.EstadoServicio)
+                .Include(o => o.UsuarioCrea)
                 .Include(o => o.DiagnosticoTecnico)
                 .AsQueryable();
 
@@ -53,9 +55,15 @@ namespace SGAT.Infrastructure.Repositories
                     .ThenInclude(e => e.CategoriaDispositivo)
                 .Include(o => o.Equipo)
                     .ThenInclude(e => e.Marca)
+                .Include(o => o.EstadoServicio)
+                .Include(o => o.UsuarioCrea)
                 .Include(o => o.DiagnosticoTecnico)
                     .ThenInclude(d => d!.Tecnico)
                 .Include(o => o.Bitacoras)
+                .Include(o => o.HistorialesServicio)
+                    .ThenInclude(h => h.Usuario)
+                .Include(o => o.HistorialesServicio)
+                    .ThenInclude(h => h.EstadoServicio)
                 .FirstOrDefaultAsync(o => o.IdOrdenServicio == ordenId);
         }
 
@@ -79,6 +87,11 @@ namespace SGAT.Infrastructure.Repositories
         public async Task AddBitacoraAsync(BitacoraTecnica bitacora)
         {
             await _context.BitacorasTecnicas.AddAsync(bitacora);
+        }
+
+        public async Task AddHistorialAsync(HistorialServicio historial)
+        {
+            await _context.HistorialServicios.AddAsync(historial);
         }
 
         public void UpdateOrden(OrdenServicio orden)
