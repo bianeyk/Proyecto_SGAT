@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SGAT.Application.DTOs.Rol;
@@ -16,6 +17,9 @@ namespace SGAT.Application.Services
         private readonly ILogger<RolService> _logger;
         private readonly UserManager<ApplicationUser> _userManager;
 
+        private const string RecursoBloqueoAdministradores =
+            "SGAT_GESTION_ADMINISTRADORES";
+
         public RolService(
             RoleManager<ApplicationRole> roleManager,
             ITransactionManager transactionManager,
@@ -29,29 +33,25 @@ namespace SGAT.Application.Services
             _logger = logger;
             _userManager = userManager;
         }
-        //constante para el recurso de bloqueo de administradores
-        private const string RecursoBloqueoAdministradores = "SGAT_GESTION_ADMINISTRADORES";
+
+        // 1. Obtener todos los roles.
         public async Task<IReadOnlyList<RolDto>> ObtenerTodosAsync()
         {
-            var roles = await _roleManager.Roles
+            var lista = await _roleManager.Roles
+                .AsNoTracking()
                 .OrderBy(r => r.Name)
-                .ToListAsync();
-
-            var lista = new List<RolDto>();
-
-            foreach (var rol in roles)
-            {
-                lista.Add(new RolDto
+                .Select(r => new RolDto
                 {
-                    Id = rol.Id,
-                    Nombre = rol.Name!,
-                    Activo = rol.Activo
-                });
-            }
+                    Id = r.Id,
+                    Nombre = r.Name!,
+                    Activo = r.Activo
+                })
+                .ToListAsync();
 
             return lista;
         }
 
+        // 2. Crear un rol.
         public async Task<IdentityResult> CrearAsync(RolCreateDto dto)
         {
             if (dto == null || string.IsNullOrWhiteSpace(dto.Nombre))
@@ -64,10 +64,10 @@ namespace SGAT.Application.Services
                     });
             }
 
-            // 1. Limpiar espacios al inicio y al final.
+            // Limpiar espacios.
             var nombre = dto.Nombre.Trim();
 
-            // 2. Validar longitud.
+            // Validar longitud.
             if (nombre.Length > 50)
             {
                 return IdentityResult.Failed(
@@ -78,7 +78,7 @@ namespace SGAT.Application.Services
                     });
             }
 
-            // 3. Proteger los nombres reservados.
+            // Proteger los nombres reservados.
             var rolesReservados = new[]
             {
                 "Administrador",
@@ -103,11 +103,11 @@ namespace SGAT.Application.Services
 
             try
             {
-                // 4. Adquirir el bloqueo compartido.
+                // Adquirir el bloqueo exclusivo.
                 await _appLockManager.AcquireLockAsync(
                     RecursoBloqueoAdministradores);
 
-                // 5. Comprobar si el rol ya existe.
+                // Comprobar si el rol ya existe.
                 var rolExistente =
                     await _roleManager.FindByNameAsync(nombre);
 
@@ -123,14 +123,15 @@ namespace SGAT.Application.Services
                         });
                 }
 
-                // 6. Crear el nuevo rol.
+                // Crear el nuevo rol.
                 var nuevoRol = new ApplicationRole
                 {
                     Name = nombre,
                     Activo = true
                 };
 
-                var resultado = await _roleManager.CreateAsync(nuevoRol);
+                var resultado =
+                    await _roleManager.CreateAsync(nuevoRol);
 
                 if (!resultado.Succeeded)
                 {
@@ -138,7 +139,6 @@ namespace SGAT.Application.Services
                     return resultado;
                 }
 
-                // 7. Confirmar la transacción.
                 await transaction.CommitAsync();
 
                 _logger.LogInformation(
@@ -160,9 +160,9 @@ namespace SGAT.Application.Services
             }
         }
 
+        // 3. Activar un rol.
         public async Task<IdentityResult> ActivarAsync(string id)
         {
-            // 1. Validar el identificador antes de iniciar la transacción.
             if (string.IsNullOrWhiteSpace(id))
             {
                 return IdentityResult.Failed(
@@ -173,17 +173,16 @@ namespace SGAT.Application.Services
                     });
             }
 
-            // 2. Iniciar la transacción.
             await using var transaction =
                 await _transactionManager.BeginTransactionAsync();
 
             try
             {
-                // 3. Adquirir el bloqueo compartido.
+                // Adquirir el bloqueo exclusivo.
                 await _appLockManager.AcquireLockAsync(
                     RecursoBloqueoAdministradores);
 
-                // 4. Buscar el rol.
+                // Buscar el rol.
                 var rol = await _roleManager.FindByIdAsync(id);
 
                 if (rol == null)
@@ -198,14 +197,14 @@ namespace SGAT.Application.Services
                         });
                 }
 
-                // 5. Comprobar si ya está activo.
+                // Comprobar si ya está activo.
                 if (rol.Activo)
                 {
                     await transaction.CommitAsync();
                     return IdentityResult.Success;
                 }
 
-                // 6. Activar el rol.
+                // Activar el rol.
                 rol.Activo = true;
 
                 var resultado = await _roleManager.UpdateAsync(rol);
@@ -216,7 +215,6 @@ namespace SGAT.Application.Services
                     return resultado;
                 }
 
-                // 7. Confirmar la transacción.
                 await transaction.CommitAsync();
 
                 _logger.LogInformation(
@@ -238,11 +236,9 @@ namespace SGAT.Application.Services
             }
         }
 
-
-
+        // 4. Inactivar un rol.
         public async Task<IdentityResult> InactivarAsync(string id)
         {
-            // 1. Validar el identificador antes de iniciar la transacción.
             if (string.IsNullOrWhiteSpace(id))
             {
                 return IdentityResult.Failed(
@@ -253,17 +249,16 @@ namespace SGAT.Application.Services
                     });
             }
 
-            // 2. Iniciar la transacción.
             await using var transaction =
                 await _transactionManager.BeginTransactionAsync();
 
             try
             {
-                // 3. Adquirir el bloqueo compartido.
+                // Adquirir el bloqueo exclusivo.
                 await _appLockManager.AcquireLockAsync(
                     RecursoBloqueoAdministradores);
 
-                // 4. Buscar el rol.
+                // Buscar el rol.
                 var rol = await _roleManager.FindByIdAsync(id);
 
                 if (rol == null)
@@ -278,7 +273,7 @@ namespace SGAT.Application.Services
                         });
                 }
 
-                // 5. Proteger el rol Administrador.
+                // Proteger el rol Administrador.
                 if (string.Equals(
                     rol.Name,
                     "Administrador",
@@ -294,7 +289,7 @@ namespace SGAT.Application.Services
                         });
                 }
 
-                // 6. Comprobar si existen usuarios asignados.
+                // Comprobar si existen usuarios asignados.
                 var usuariosAsignados =
                     await _userManager.GetUsersInRoleAsync(rol.Name!);
 
@@ -310,14 +305,14 @@ namespace SGAT.Application.Services
                         });
                 }
 
-                // 7. Si ya está inactivo, no es necesario modificarlo.
+                // Comprobar si ya está inactivo.
                 if (!rol.Activo)
                 {
                     await transaction.CommitAsync();
                     return IdentityResult.Success;
                 }
 
-                // 8. Cambiar el estado del rol.
+                // Inactivar el rol.
                 rol.Activo = false;
 
                 var resultado = await _roleManager.UpdateAsync(rol);
@@ -328,7 +323,6 @@ namespace SGAT.Application.Services
                     return resultado;
                 }
 
-                // 9. Confirmar la transacción.
                 await transaction.CommitAsync();
 
                 _logger.LogInformation(
@@ -349,6 +343,5 @@ namespace SGAT.Application.Services
                 throw;
             }
         }
-
     }
 }

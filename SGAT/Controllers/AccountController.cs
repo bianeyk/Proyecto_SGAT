@@ -72,9 +72,31 @@ namespace SGAT.Web.Controllers
                 user,
                 model.Password,
                 lockoutOnFailure: true);
-
-            if (!resultado.Succeeded)
+            // Validar si el usuario está bloqueado.
+            if (resultado.IsLockedOut)
+            {
                 return LoginInvalido(model);
+            }
+            // Validar si la contraseña es incorrecta.
+            // Comprobar si Identity bloqueó temporalmente la cuenta.
+            if (resultado.IsLockedOut)
+            {
+                model.Password = string.Empty;
+
+                ModelState.AddModelError(
+                    string.Empty,
+                    "Demasiados intentos de inicio de sesión. " +
+                    "Por seguridad, el acceso se ha limitado temporalmente. " +
+                    "Espera unos minutos antes de volver a intentarlo.");
+
+                return View("Login", model);
+            }
+
+            // Mantener el mensaje genérico para los demás errores.
+            if (!resultado.Succeeded)
+            {
+                return LoginInvalido(model);
+            }
 
             // 2. Comprobar si el usuario está activo.
             if (!user.Activo)
@@ -90,6 +112,14 @@ namespace SGAT.Web.Controllers
             var rol = await _roleManager.FindByNameAsync(roles[0]);
 
             if (rol == null || !rol.Activo)
+                return LoginInvalido(model);
+            // 5. Comprobar si el rol es uno de los permitidos.
+            var esRolPermitido =
+                roles[0] == "Administrador" ||
+                roles[0] == "Gerente" ||
+                roles[0] == "Tecnico";
+
+            if (!esRolPermitido)
                 return LoginInvalido(model);
 
             // 5. Todas las validaciones fueron satisfactorias.
@@ -110,14 +140,21 @@ namespace SGAT.Web.Controllers
             return RedirectToAction("AccessDenied", "Account");
         }
 
+
         private IActionResult LoginInvalido(LoginDto model)
         {
+            // 1. Limpiar la contraseña.
+            model.Password = string.Empty;
+
+            // 2. Mostrar un mensaje genérico.
             ModelState.AddModelError(
                 string.Empty,
                 "Usuario o contraseña incorrectos.");
 
+            // 3. Volver al formulario.
             return View("Login", model);
         }
+
 
 
         [HttpPost]
@@ -247,48 +284,75 @@ namespace SGAT.Web.Controllers
             return View();
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ResetPassword(
-    ResetPasswordViewModel model)
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
         {
+            // 1. Validar los datos recibidos.
             if (!ModelState.IsValid)
             {
+                model.NewPassword = string.Empty;
+                model.ConfirmPassword = string.Empty;
+
                 return View(model);
             }
 
+            // 2. Buscar al usuario por correo electrónico.
             var usuario = await _userManager.FindByEmailAsync(
                 model.Email.Trim());
 
+            // 3. Comprobar que el usuario exista y esté activo.
             if (usuario == null || !usuario.Activo)
             {
                 ModelState.AddModelError(
                     string.Empty,
                     "El enlace de recuperación no es válido o ha expirado.");
 
+                model.NewPassword = string.Empty;
+                model.ConfirmPassword = string.Empty;
+
                 return View(model);
             }
-            //Security Stamp para proteger las operaciones de autenticación.
+
+            // 4. Restablecer la contraseña.
+            // Identity valida el token y actualiza el Security Stamp.
             var resultado = await _userManager.ResetPasswordAsync(
                 usuario,
                 model.Token,
                 model.NewPassword);
 
+            // 5. Procesar los errores de Identity.
             if (!resultado.Succeeded)
             {
                 foreach (var error in resultado.Errors)
                 {
-                    ModelState.AddModelError(
-                        string.Empty,
-                        error.Description);
+                    if (error.Code == "InvalidToken")
+                    {
+                        ModelState.AddModelError(
+                            string.Empty,
+                            "El enlace de restablecimiento no es válido, ha expirado o ya fue utilizado. Solicita uno nuevo.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(
+                            string.Empty,
+                            error.Description);
+                    }
                 }
+
+                // Limpiar las contraseñas antes de devolver la vista.
+                model.NewPassword = string.Empty;
+                model.ConfirmPassword = string.Empty;
 
                 return View(model);
             }
 
+            // 6. Mostrar la confirmación.
             return RedirectToAction(
                 nameof(ResetPasswordConfirmation));
         }
+
         // GET: /Account/CambiarPassword desde la cuenta del usuario.
         [HttpGet]
         [Authorize]
@@ -300,8 +364,7 @@ namespace SGAT.Web.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CambiarPassword(
-    CambiarPasswordViewModel model)
+        public async Task<IActionResult> CambiarPassword(CambiarPasswordViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -328,7 +391,7 @@ namespace SGAT.Web.Controllers
                     ModelState.AddModelError(string.Empty, error.Code switch
                     {
                         "PasswordMismatch" => "La contraseña actual es incorrecta.",
-                        "PasswordTooShort" => "La contraseña debe tener al menos 12 caracteres.",
+                        "PasswordTooShort" => "La contraseña debe tener al menos 8 caracteres.",
                         "PasswordRequiresDigit" => "Debe contener al menos un número.",
                         "PasswordRequiresUpper" => "Debe contener al menos una mayúscula.",
                         "PasswordRequiresLower" => "Debe contener al menos una minúscula.",
@@ -341,11 +404,17 @@ namespace SGAT.Web.Controllers
                 return View(model);
             }
             // Actualizar el Security Stamp para forzar la revalidación de la sesión del usuario.
-            await _signInManager.RefreshSignInAsync(usuario);
 
-            TempData["Success"] = "Tu contraseña se cambió correctamente.";
+            // Cerrar la sesión después de cambiar la contraseña.
+            await _signInManager.SignOutAsync();
 
-            return RedirectToAction(nameof(CambiarPassword));
+            // Mostrar un mensaje de confirmación en Login.
+            TempData["Success"] =
+                "Tu contraseña se cambió correctamente. Inicia sesión con tu nueva contraseña.";
+
+            // Redirigir al inicio de sesión.
+            return RedirectToAction(nameof(Login));
+
         }
     }
 }

@@ -60,18 +60,27 @@ public class UsuarioService : IUsuarioService
         return lista;
     }
 
+
     public async Task<UsuarioDetalleDto?> ObtenerPorIdAsync(string id)
     {
-        //Buscar el usuario
+        // 1. Validar el identificador.
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            return null;
+        }
+
+        // 2. Buscar el usuario.
         var usuario = await _userManager.FindByIdAsync(id);
 
         if (usuario == null)
         {
             return null;
         }
-        //Obtener los roles
+
+        // 3. Obtener los roles.
         var roles = await _userManager.GetRolesAsync(usuario);
-        //Crear el DTO
+
+        // 4. Crear el DTO manualmente.
         var dto = new UsuarioDetalleDto
         {
             Id = usuario.Id,
@@ -82,8 +91,10 @@ public class UsuarioService : IUsuarioService
             LastLoginAt = usuario.LastLoginAt,
             Roles = roles.ToList()
         };
+
         return dto;
     }
+
 
 
     public async Task<IdentityResult> CrearAsync(UsuarioCreateDto dto)
@@ -444,16 +455,18 @@ public class UsuarioService : IUsuarioService
             await transaction.CommitAsync();
 
             // 14. Registrar la operación
-            _logger.LogInformation(
-                "Usuario {Email} actualizado correctamente con el rol {Rol}.",
-                usuario.Email,
+            _logger.LogInformation("Usuario {UsuarioId} actualizado correctamente. Rol asignado: {Rol}.",
+                usuario.Id,
                 nombreRol);
 
             return IdentityResult.Success;
         }
-        catch
+        catch (Exception ex)
         {
             await transaction.RollbackAsync();
+
+            _logger.LogError(ex,"Error al actualizar el usuario {UsuarioId}.",dto.Id);
+
             throw;
         }
     }
@@ -577,9 +590,9 @@ public class UsuarioService : IUsuarioService
             await transaction.CommitAsync();
 
             // 13. Registrar la operación.
-            _logger.LogInformation(
-                "Usuario {Email} activado correctamente.",
-                usuario.Email);
+            _logger.LogInformation("Usuario {UsuarioId} activado correctamente con el rol {Rol}.",
+                usuario.Id,
+                nombreRol);
 
             return IdentityResult.Success;
         }
@@ -739,9 +752,7 @@ public class UsuarioService : IUsuarioService
             await transaction.CommitAsync();
 
             // 14. Registrar la operación.
-            _logger.LogInformation(
-                "Usuario {Email} inactivado correctamente.",
-                usuario.Email);
+            _logger.LogInformation("Usuario {UsuarioId} inactivado correctamente.",usuario.Id);
 
             return IdentityResult.Success;
         }

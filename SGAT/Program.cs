@@ -31,7 +31,18 @@ builder.Services.AddRateLimiter(options =>
 {
     options.RejectionStatusCode =
         StatusCodes.Status429TooManyRequests;
+    options.OnRejected = async (context, cancellationToken) =>
+    {
+        context.HttpContext.Response.StatusCode =
+            StatusCodes.Status429TooManyRequests;
 
+        context.HttpContext.Response.ContentType =
+            "text/plain; charset=utf-8";
+
+        await context.HttpContext.Response.WriteAsync(
+            "Demasiados intentos. Espera unos minutos antes de volver a intentarlo.",
+            cancellationToken);
+    };
     options.AddPolicy("LoginPolicy", context =>
         RateLimitPartition.GetFixedWindowLimiter(
             partitionKey:
@@ -77,10 +88,10 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.User.RequireUniqueEmail = true;
 });
 
-// Configurar la validación del Security Stamp para que se verifique cada 5 minutos.
+// Configurar la validación del Security Stamp  autenticada procesada por la cookie correspondiente.
 builder.Services.Configure<SecurityStampValidatorOptions>(options =>
 {
-    options.ValidationInterval = TimeSpan.FromMinutes(5);
+    options.ValidationInterval = TimeSpan.Zero;
 });
 
 //configurar la ruta de login. opciones de seguridad y duración de la cookie.
@@ -114,7 +125,7 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    // The default HSTS value is 30 days. You may want to change this for production scenarios
     app.UseHsts();
 }
 

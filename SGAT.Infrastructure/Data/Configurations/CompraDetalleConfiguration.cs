@@ -13,11 +13,11 @@ namespace SGAT.Infrastructure.Data.Configurations
         {
             builder.HasKey(d => d.IdCompraDetalle);
 
-            builder.Property(d => d.Cantidad).HasColumnType("decimal(10,2)");
-            builder.Property(d => d.CostoUnitario).HasColumnType("decimal(10,2)");
+            builder.Property(d => d.Cantidad).HasColumnType("int");
+            builder.Property(d => d.CostoUnitario).HasColumnType("decimal(18,2)");
 
             builder.Property(d => d.Subtotal)
-                .HasColumnType("decimal(10,2)")
+                .HasColumnType("decimal(18,2)")
                 .HasComputedColumnSql("[Cantidad] * [CostoUnitario]", stored: true)
                 .ValueGeneratedOnAddOrUpdate();
 

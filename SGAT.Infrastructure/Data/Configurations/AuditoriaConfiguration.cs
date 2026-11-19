@@ -21,7 +21,8 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.Property(a => a.Modulo).HasMaxLength(100);
             builder.Property(a => a.Observacion).HasMaxLength(255);
             builder.Property(a => a.IpAddress).HasMaxLength(50);
-            builder.Property(a => a.CreatedAt).HasDefaultValueSql("GETDATE()");
+            builder.Property(a => a.CreatedAt).HasPrecision(0)
+              .HasDefaultValueSql("CAST(SYSDATETIMEOFFSET() AT TIME ZONE 'SA Pacific Standard Time' AS DATETIME2(0))");
 
             builder.HasOne(a => a.Usuario)
                 .WithMany(u => u.Auditorias)

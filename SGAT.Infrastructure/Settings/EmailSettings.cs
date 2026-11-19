@@ -1,5 +1,5 @@
 ﻿using MailKit.Security;
-
+using System.ComponentModel.DataAnnotations;
 namespace SGAT.Infrastructure.Settings
 {
     //clase que representa la configuración del servidor de correo.

@@ -16,7 +16,7 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.Property(c => c.IdUsuario).HasMaxLength(450).IsRequired();
             builder.Property(c => c.NumFactura).HasMaxLength(100);
             builder.Property(c => c.FechaCompra).HasDefaultValueSql("GETDATE()");
-            builder.Property(c => c.Total).HasColumnType("decimal(10,2)").HasDefaultValue(0);
+            builder.Property(c => c.Total).HasColumnType("decimal(18,2)").HasDefaultValue(0);
             builder.Property(c => c.Observaciones).HasColumnType("varchar(max)");
 
             builder.HasOne(c => c.Proveedor)
