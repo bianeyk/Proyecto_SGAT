@@ -30,6 +30,7 @@ namespace SGAT.Domain.Entities
         // Navegacion
         public Equipo Equipo { get; set; } = null!;
         public ApplicationUser UsuarioCrea { get; set; } = null!;
+        //revisar
         public EstadoServicio EstadoServicio { get; set; } = null!;
         public DiagnosticoTecnico? DiagnosticoTecnico { get; set; }
         public ICollection<BitacoraTecnica> Bitacoras { get; set; } = new List<BitacoraTecnica>();

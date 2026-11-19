@@ -7,7 +7,19 @@
 <div class="container">
     <div class="row justify-content-center align-items-center min-vh-100">
         <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (ViewBag.BloqueoHasta != null)
+            {
+                <div id="mensajeBloqueo" class="alert alert-danger text-center">
+                    <h5>Cuenta bloqueada temporalmente</h5>
 
+                    <p class="mb-2">
+                        Podrás intentar ingresar nuevamente en:
+                    </p>
+
+                    <h3 id="temporizador" class="fw-bold">05:00</h3>
+                </div>
+            }
             <!-- Tarjeta de Login -->
             <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
                 <div class="card-body p-5">
@@ -78,5 +90,41 @@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        @if (ViewBag.BloqueoHasta != null)
+        {
+            <script>
+                const fechaDesbloqueo = @ViewBag.BloqueoHasta;
+
+                const temporizador = document.getElementById("temporizador");
+                const botonIngresar = document.querySelector('button[type="submit"]');
+
+                botonIngresar.disabled = true;
+
+                function actualizarTemporizador() {
+
+                    const ahora = Date.now();
+                    const diferencia = fechaDesbloqueo - ahora;
+
+                    if (diferencia <= 0) {
+                        temporizador.textContent = "00:00";
+                        botonIngresar.disabled = false;
+                        clearInterval(intervalo);
+
+                        return;
+                    }
+
+                    const minutos = Math.floor(diferencia / 60000);
+                    const segundos = Math.floor((diferencia % 60000) / 1000);
+
+                    temporizador.textContent =
+                        String(minutos).padStart(2, "0") + ":" +
+                        String(segundos).padStart(2, "0");
+                }
+
+                actualizarTemporizador();
+
+                const intervalo = setInterval(actualizarTemporizador, 1000);
+            </script>
+        }
     }
 }

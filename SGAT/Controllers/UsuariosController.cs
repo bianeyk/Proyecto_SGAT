@@ -103,7 +103,7 @@ namespace SGAT.Web.Controllers
                     Id = usuario.Id,
                     NombreCompleto = usuario.NombreCompleto,
                     Activo = usuario.Activo,
-                    Roles = usuario.Roles
+                    Rol = usuario.Roles.FirstOrDefault() ?? string.Empty
                 },
                 RolesDisponibles = await _rolService.ObtenerTodosAsync()
             };
@@ -148,7 +148,8 @@ namespace SGAT.Web.Controllers
 
             if (!resultado.Succeeded)
             {
-                TempData["Error"] = resultado.Errors.First().Description;
+                TempData["Error"] = string.Join(
+                    ", ", resultado.Errors.Select(e => e.Description));
             }
             else
             {

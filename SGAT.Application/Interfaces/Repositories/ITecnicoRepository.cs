@@ -13,6 +13,7 @@ namespace SGAT.Application.Interfaces.Repositories
         Task AddDiagnosticoAsync(DiagnosticoTecnico diagnostico);
         void UpdateDiagnostico(DiagnosticoTecnico diagnostico);
         Task AddBitacoraAsync(BitacoraTecnica bitacora);
+        Task AddHistorialAsync(HistorialServicio historial);
         void UpdateOrden(OrdenServicio orden);
         Task<bool> SaveChangesAsync();
     }

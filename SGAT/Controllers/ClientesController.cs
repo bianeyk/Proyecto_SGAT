@@ -7,7 +7,7 @@ using SGAT.Web.ViewModels.Cliente;
 
 namespace SGAT.Web.Controllers
 {
-    [Authorize(Roles = "Administrador")]
+    [Authorize(Roles = "Administrador,Gerente,Tecnico")]
     public class ClientesController : Controller
     {
         private readonly IClienteService _clienteService;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace SGAT.Application.DTOs.Usuario
@@ -12,6 +13,7 @@ namespace SGAT.Application.DTOs.Usuario
 
         public bool Activo { get; set; }
 
-        public List<string> Roles { get; set; } = new();
+        [Required(ErrorMessage = "Debe seleccionar un rol.")]
+        public string Rol { get; set; } = string.Empty;
     }
 }

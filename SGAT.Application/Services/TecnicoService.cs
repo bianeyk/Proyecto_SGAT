@@ -42,6 +42,31 @@ namespace SGAT.Application.Services
             var o = await _tecnicoRepo.GetDetalleOrdenAsync(id);
             if (o == null) return null;
 
+            // Combinar y ordenar historial de bitácora técnica e historial de servicio
+            var notasBitacora = o.Bitacoras.Select(b => new BitacoraTecnicaItemDto
+            {
+                Id = b.Id,
+                Nota = b.Nota,
+                FechaRegistro = b.FechaRegistro
+            });
+
+            var notasHistorial = o.HistorialesServicio
+                .Where(h => !string.IsNullOrWhiteSpace(h.Comentario))
+                .Select(h => new BitacoraTecnicaItemDto
+                {
+                    Id = h.IdHistorialServicio,
+                    Nota = $"[{h.EstadoServicio?.Nombre ?? "Estado"}]: {h.Comentario}",
+                    FechaRegistro = h.CreatedAt
+                });
+
+            // Evitar notas repetidas y ordenar cronológicamente descendente
+            var historialUnificado = notasBitacora
+                .Concat(notasHistorial)
+                .GroupBy(n => n.Nota)
+                .Select(g => g.OrderByDescending(x => x.FechaRegistro).First())
+                .OrderByDescending(b => b.FechaRegistro)
+                .ToList();
+
             return new DetalleOrdenTecnicoDto
             {
                 Id = o.IdOrdenServicio,
@@ -84,14 +109,7 @@ namespace SGAT.Application.Services
                     TecnicoId = o.DiagnosticoTecnico.TecnicoId,
                     TecnicoNombre = o.DiagnosticoTecnico.Tecnico?.NombreCompleto ?? o.DiagnosticoTecnico.Tecnico?.UserName ?? "Técnico Asignado"
                 },
-                HistorialNotas = o.Bitacoras
-                    .OrderByDescending(b => b.FechaRegistro)
-                    .Select(b => new BitacoraTecnicaItemDto
-                    {
-                        Id = b.Id,
-                        Nota = b.Nota,
-                        FechaRegistro = b.FechaRegistro
-                    }).ToList()
+                HistorialNotas = historialUnificado
             };
         }
 
@@ -122,14 +140,29 @@ namespace SGAT.Application.Services
                 _tecnicoRepo.UpdateDiagnostico(orden.DiagnosticoTecnico);
             }
 
+            // Sincronizar ambos estados (Enum y Relacional de BD)
             orden.EstadoOrden = EstadoOrden.EnDiagnostico;
+            orden.IdEstadoServicio = MapearAEstadoServicioId(EstadoOrden.EnDiagnostico);
             _tecnicoRepo.UpdateOrden(orden);
 
+            var notaTexto = $"Diagnóstico iniciado y asignado al técnico ID '{dto.TecnicoId}'.";
+
+            // Guardar en bitácora técnica
             await _tecnicoRepo.AddBitacoraAsync(new BitacoraTecnica
             {
                 OrdenId = dto.OrdenId,
-                Nota = $"Diagnóstico iniciado y asignado al técnico ID '{dto.TecnicoId}'.",
+                Nota = notaTexto,
                 FechaRegistro = DateTime.UtcNow
+            });
+
+            // Sincronizar en historial oficial de servicios del sistema
+            await _tecnicoRepo.AddHistorialAsync(new HistorialServicio
+            {
+                IdOrdenServicio = dto.OrdenId,
+                IdEstadoServicio = orden.IdEstadoServicio,
+                IdUsuario = dto.TecnicoId,
+                Comentario = notaTexto,
+                CreatedAt = DateTime.UtcNow
             });
 
             return await _tecnicoRepo.SaveChangesAsync();
@@ -140,12 +173,14 @@ namespace SGAT.Application.Services
             var orden = await _tecnicoRepo.GetDetalleOrdenAsync(dto.OrdenId);
             if (orden == null) return false;
 
+            var tecnicoId = orden.DiagnosticoTecnico?.TecnicoId ?? orden.IdUsuarioCrea;
+
             if (orden.DiagnosticoTecnico == null)
             {
                 var diag = new DiagnosticoTecnico
                 {
                     OrdenId = dto.OrdenId,
-                    TecnicoId = orden.IdUsuarioCrea,
+                    TecnicoId = tecnicoId,
                     FallaReportada = orden.Diagnostico ?? orden.Observaciones,
                     DiagnosticoDetallado = dto.DiagnosticoDetallado,
                     RequiereRepuestos = dto.RequiereRepuestos,
@@ -166,15 +201,30 @@ namespace SGAT.Application.Services
                 _tecnicoRepo.UpdateDiagnostico(orden.DiagnosticoTecnico);
             }
 
+            // Sincronizar ambos estados y campo de diagnóstico de la orden
             orden.EstadoOrden = dto.NuevoEstado;
+            orden.IdEstadoServicio = MapearAEstadoServicioId(dto.NuevoEstado);
             orden.Diagnostico = dto.DiagnosticoDetallado;
             _tecnicoRepo.UpdateOrden(orden);
 
+            var notaTexto = $"Diagnóstico actualizado: {dto.DiagnosticoDetallado}. Nuevo estado: {dto.NuevoEstado}. Requiere repuestos: {(dto.RequiereRepuestos ? "Sí" : "No")}.";
+
+            // Guardar en bitácora técnica
             await _tecnicoRepo.AddBitacoraAsync(new BitacoraTecnica
             {
                 OrdenId = dto.OrdenId,
-                Nota = $"Diagnóstico actualizado: {dto.DiagnosticoDetallado}. Nuevo estado: {dto.NuevoEstado}. Requiere repuestos: {(dto.RequiereRepuestos ? "Sí" : "No")}.",
+                Nota = notaTexto,
                 FechaRegistro = DateTime.UtcNow
+            });
+
+            // Sincronizar en historial oficial de servicios
+            await _tecnicoRepo.AddHistorialAsync(new HistorialServicio
+            {
+                IdOrdenServicio = dto.OrdenId,
+                IdEstadoServicio = orden.IdEstadoServicio,
+                IdUsuario = tecnicoId,
+                Comentario = notaTexto,
+                CreatedAt = DateTime.UtcNow
             });
 
             return await _tecnicoRepo.SaveChangesAsync();
@@ -185,6 +235,8 @@ namespace SGAT.Application.Services
             var orden = await _tecnicoRepo.GetDetalleOrdenAsync(dto.OrdenId);
             if (orden == null) return false;
 
+            var tecnicoId = orden.DiagnosticoTecnico?.TecnicoId ?? orden.IdUsuarioCrea;
+
             var nota = new BitacoraTecnica
             {
                 OrdenId = dto.OrdenId,
@@ -193,6 +245,17 @@ namespace SGAT.Application.Services
             };
 
             await _tecnicoRepo.AddBitacoraAsync(nota);
+
+            // Sincronizar en historial oficial
+            await _tecnicoRepo.AddHistorialAsync(new HistorialServicio
+            {
+                IdOrdenServicio = dto.OrdenId,
+                IdEstadoServicio = orden.IdEstadoServicio,
+                IdUsuario = tecnicoId,
+                Comentario = dto.Nota,
+                CreatedAt = DateTime.UtcNow
+            });
+
             return await _tecnicoRepo.SaveChangesAsync();
         }
 
@@ -200,6 +263,8 @@ namespace SGAT.Application.Services
         {
             var orden = await _tecnicoRepo.GetDetalleOrdenAsync(dto.OrdenId);
             if (orden == null) return false;
+
+            var tecnicoId = orden.DiagnosticoTecnico?.TecnicoId ?? orden.IdUsuarioCrea;
 
             if (orden.DiagnosticoTecnico != null)
             {
@@ -209,19 +274,51 @@ namespace SGAT.Application.Services
                 _tecnicoRepo.UpdateDiagnostico(orden.DiagnosticoTecnico);
             }
 
+            // Sincronizar ambos estados y cierre
             orden.EstadoOrden = EstadoOrden.Finalizado;
+            orden.IdEstadoServicio = MapearAEstadoServicioId(EstadoOrden.Finalizado);
             orden.CostoTotal = dto.CostoFinal;
             orden.FechaCierre = DateTime.UtcNow;
             _tecnicoRepo.UpdateOrden(orden);
 
+            var notaTexto = $"Reparación finalizada con éxito. Solución: {dto.SolucionAplicada}. Costo total: {dto.CostoFinal:N2}.";
+
             await _tecnicoRepo.AddBitacoraAsync(new BitacoraTecnica
             {
                 OrdenId = dto.OrdenId,
-                Nota = $"Reparación finalizada con éxito. Solución: {dto.SolucionAplicada}. Costo total: {dto.CostoFinal:N2}.",
+                Nota = notaTexto,
                 FechaRegistro = DateTime.UtcNow
             });
 
+            // Sincronizar en historial oficial
+            await _tecnicoRepo.AddHistorialAsync(new HistorialServicio
+            {
+                IdOrdenServicio = dto.OrdenId,
+                IdEstadoServicio = orden.IdEstadoServicio,
+                IdUsuario = tecnicoId,
+                Comentario = notaTexto,
+                CreatedAt = DateTime.UtcNow
+            });
+
             return await _tecnicoRepo.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Mapea el enum EstadoOrden a los IDs oficiales de la tabla EstadosServicio en BD
+        /// 1=RECIBIDO, 2=DIAGNOSTICO, 3=EN_REPARACION, 4=LISTO, 5=ENTREGADO, 6=CANCELADO, 7=BODEGA
+        /// </summary>
+        private static int MapearAEstadoServicioId(EstadoOrden estadoOrden)
+        {
+            return estadoOrden switch
+            {
+                EstadoOrden.PendienteRevision => 1, // RECIBIDO
+                EstadoOrden.EnDiagnostico => 2,     // DIAGNOSTICO
+                EstadoOrden.EsperandoRepuestos => 7,// BODEGA / EN ESPERA
+                EstadoOrden.EnReparacion => 3,      // EN_REPARACION
+                EstadoOrden.Finalizado => 4,        // LISTO
+                EstadoOrden.NoReparable => 6,       // CANCELADO
+                _ => 1
+            };
         }
     }
 }

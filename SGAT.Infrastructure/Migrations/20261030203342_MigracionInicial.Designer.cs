@@ -12,15 +12,15 @@ using SGAT.Infrastructure.Data;
 namespace SGAT.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260701203900_DB_Inicial")]
-    partial class DB_Inicial
+    [Migration("20261030203342_MigracionInicial")]
+    partial class MigracionInicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.9")
+                .HasAnnotation("ProductVersion", "10.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -367,6 +367,11 @@ namespace SGAT.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCliente"));
 
+                    b.Property<bool>("Activo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -380,15 +385,15 @@ namespace SGAT.Infrastructure.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("IdUsuario")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("IsTecnico")
+                    b.Property<bool>("EsColaborador")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
+
+                    b.Property<string>("IdUsuarioCrea")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -405,12 +410,18 @@ namespace SGAT.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
                     b.HasKey("IdCliente");
 
-                    b.HasIndex("IdUsuario");
+                    b.HasIndex("IdUsuarioCrea");
 
                     b.HasIndex("NumDoc")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("UQ_Cliente_NumDoc");
 
                     b.ToTable("Clientes");
                 });
@@ -1538,13 +1549,13 @@ namespace SGAT.Infrastructure.Migrations
 
             modelBuilder.Entity("SGAT.Domain.Entities.Cliente", b =>
                 {
-                    b.HasOne("SGAT.Domain.Entities.ApplicationUser", "Usuario")
+                    b.HasOne("SGAT.Domain.Entities.ApplicationUser", "UsuarioCrea")
                         .WithMany("Clientes")
-                        .HasForeignKey("IdUsuario")
+                        .HasForeignKey("IdUsuarioCrea")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("Usuario");
+                    b.Navigation("UsuarioCrea");
                 });
 
             modelBuilder.Entity("SGAT.Domain.Entities.Compra", b =>
