@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SGAT.Domain.Entities;
@@ -34,6 +35,12 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
     ContentRootPath = contentRoot,
     WebRootPath = "wwwroot"
 });
+
+// Cultura de FORMATO: punto (.) como separador decimal, sin importar la
+// configuración regional del sistema. Evita el error de parseo en [Range]
+// (por ejemplo "0.01") y en el binding de decimales desde <input type="number">.
+// La cultura de INTERFAZ se deja en el idioma del sistema (español).
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-MX");
 
 // 1. REGISTRAR CAPA DE INFRAESTRUCTURA / PERSISTENCIA (Repositorios y DB)
 builder.Services.AddInfrastructure(builder.Configuration); // El nombre puede variar según tu proyecto
@@ -146,7 +153,37 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    // El runtime de .NET no incluye los mensajes del framework en español,
+    // así que los definimos explícitamente (errores de binding, números, etc.).
+    var mensajes = options.ModelBindingMessageProvider;
+
+    mensajes.SetAttemptedValueIsInvalidAccessor(
+        (valor, campo) => string.IsNullOrEmpty(valor)
+            ? $"El campo {campo} es obligatorio."
+            : $"El valor '{valor}' no es válido para {campo}.");
+    mensajes.SetNonPropertyAttemptedValueIsInvalidAccessor(
+        valor => $"El valor '{valor}' no es válido.");
+    mensajes.SetUnknownValueIsInvalidAccessor(
+        campo => $"El valor indicado no es válido para {campo}.");
+    mensajes.SetNonPropertyUnknownValueIsInvalidAccessor(
+        () => "El valor indicado no es válido.");
+    mensajes.SetValueIsInvalidAccessor(
+        valor => $"El valor '{valor}' no es válido.");
+    mensajes.SetValueMustNotBeNullAccessor(
+        campo => $"El campo {campo} es obligatorio.");
+    mensajes.SetValueMustBeANumberAccessor(
+        campo => $"El campo {campo} debe ser un número.");
+    mensajes.SetNonPropertyValueMustBeANumberAccessor(
+        () => "El campo debe ser un número.");
+    mensajes.SetMissingBindRequiredValueAccessor(
+        campo => $"Falta un valor para {campo}.");
+    mensajes.SetMissingKeyOrValueAccessor(
+        () => "Se requieren la clave y el valor.");
+    mensajes.SetMissingRequestBodyRequiredValueAccessor(
+        () => "Se requiere el cuerpo de la solicitud.");
+});
 
 var app = builder.Build();
 //redirige las solicitudes HTTP hacia HTTPS
@@ -165,6 +202,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// Redirección a HTTPS también en desarrollo. El perfil "https" de
+// launchSettings.json expone https://localhost:7137 y http://localhost:5224.
+// Para que el navegador no marque el sitio como inseguro, hay que confiar el
+// certificado de desarrollo en el almacén del sistema (ver README de desarrollo).
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

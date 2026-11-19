@@ -15,6 +15,8 @@ namespace SGAT.Application.DependencyInjection
             services.AddScoped<IRolService, RolService>();
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<IProductoService, ProductoService>();
+            services.AddScoped<IMarcaService, MarcaService>();
+            services.AddScoped<ICategoriaProductoService, CategoriaProductoService>();
             services.AddScoped<ITecnicoService, TecnicoService>();
             //services.AddScoped<IOrdenServicioService, OrdenServicioService>();// Falta implementación
             // services.AddScoped<IFacturaService, FacturaService>(); // Falta implementación

@@ -1,0 +1,57 @@
+@model SGAT.Web.ViewModels.Marca.MarcaViewModel
+
+@{
+    ViewData["Title"] = "Editar marca";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/sg-forms.css" asp-append-version="true" />
+}
+
+<div class="container mt-4 mb-5">
+
+    <nav class="sg-breadcrumb" aria-label="Ruta de navegación">
+        <a asp-action="Index"><i class="bi bi-tags me-1"></i>Marcas</a>
+        <span class="sep"><i class="bi bi-chevron-right"></i></span>
+        <span>@Model.Nombre</span>
+    </nav>
+
+    <div class="sg-form-panel">
+        <div class="sg-panel-header">
+            <div class="sg-panel-header-left">
+                <div class="sg-panel-icon"><i class="bi bi-pencil-square"></i></div>
+                <div>
+                    <h1 class="sg-panel-title">@Model.Nombre</h1>
+                    <p class="sg-panel-subtitle">Modifica los datos de esta marca.</p>
+                </div>
+            </div>
+            <span class="sg-badge @(Model.Activo ? "activo" : "inactivo")">
+                @(Model.Activo ? "Activa" : "Inactiva")
+            </span>
+        </div>
+
+        <form asp-action="Edit" asp-route-id="@Model.IdMarca" method="post">
+            @Html.AntiForgeryToken()
+            <input asp-for="IdMarca" type="hidden" />
+
+            <div class="sg-form-body">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger sg-validation-summary" role="alert"></div>
+
+                <partial name="_MarcaForm" model="Model" />
+            </div>
+
+            <div class="sg-form-footer">
+                <button type="submit" class="btn sg-btn-primary">
+                    <i class="bi bi-save"></i> Guardar cambios
+                </button>
+                <a asp-action="Index" class="sg-btn-secondary">
+                    <i class="bi bi-x"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,240 @@
+@model SGAT.Web.ViewModels.Marca.MarcaIndexViewModel
+
+@{
+    ViewData["Title"] = "Marcas";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/marcas.css" asp-append-version="true" />
+}
+
+<div class="container sg-marcas mt-4 mb-5">
+    @* Encabezado *@
+    <div class="sg-header">
+        <div>
+            <span class="sg-eyebrow"><i class="bi bi-tags"></i> Catálogo</span>
+            <h1 class="sg-titulo">Marcas</h1>
+            <p class="sg-sub">
+                @if (Model.HayBusqueda)
+                {
+                    <span>@Model.Total @(Model.Total == 1 ? "resultado" : "resultados") para "@Model.Termino"</span>
+                }
+                else
+                {
+                    <span>Administra las marcas disponibles para los productos del inventario.</span>
+                }
+            </p>
+        </div>
+        <a asp-action="Create" class="btn sg-btn-primario">
+            <i class="bi bi-plus-lg"></i> Nueva marca
+        </a>
+    </div>
+
+    @* Tarjetas de resumen *@
+    <div class="sg-stats">
+        <div class="sg-stat">
+            <div class="sg-stat-ico"><i class="bi bi-collection"></i></div>
+            <div>
+                <div class="sg-stat-num">@Model.Total</div>
+                <div class="sg-stat-lbl">Total de marcas</div>
+            </div>
+        </div>
+        <div class="sg-stat">
+            <div class="sg-stat-ico is-ok"><i class="bi bi-check-circle"></i></div>
+            <div>
+                <div class="sg-stat-num">@Model.TotalActivas</div>
+                <div class="sg-stat-lbl">Activas</div>
+            </div>
+        </div>
+        <div class="sg-stat">
+            <div class="sg-stat-ico is-off"><i class="bi bi-slash-circle"></i></div>
+            <div>
+                <div class="sg-stat-num">@Model.TotalInactivas</div>
+                <div class="sg-stat-lbl">Inactivas</div>
+            </div>
+        </div>
+    </div>
+
+    @* Mensajes *@
+    @if (TempData["Success"] is not null)
+    {
+        <div class="alert alert-success sg-alerta d-flex align-items-center gap-2 alert-dismissible fade show mt-3 mb-0" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <div>@TempData["Success"]</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    }
+    @if (TempData["Error"] is not null)
+    {
+        <div class="alert alert-danger sg-alerta d-flex align-items-center gap-2 alert-dismissible fade show mt-3 mb-0" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <div>@TempData["Error"]</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    }
+
+    @* Barra de herramientas *@
+    <div class="sg-toolbar">
+        <form asp-action="Index" method="get" class="sg-buscador" role="search">
+            <i class="bi bi-search"></i>
+            <input type="search" name="termino" value="@Model.Termino"
+                   placeholder="Buscar por nombre o descripción"
+                   aria-label="Buscar marcas" />
+            @if (Model.HayBusqueda)
+            {
+                <a asp-action="Index" class="sg-limpiar" title="Limpiar búsqueda" aria-label="Limpiar búsqueda">
+                    <i class="bi bi-x-circle-fill"></i>
+                </a>
+            }
+            <button type="submit" class="sg-buscar">Buscar</button>
+        </form>
+
+        @if (Model.Total > 0)
+        {
+            <div class="sg-segmentos" role="group" aria-label="Filtrar por estado" id="filtroEstado">
+                <button type="button" data-filtro="todos" aria-pressed="true">
+                    Todas <span class="sg-cuenta">@Model.Total</span>
+                </button>
+                <button type="button" data-filtro="activo" aria-pressed="false">
+                    Activas <span class="sg-cuenta">@Model.TotalActivas</span>
+                </button>
+                <button type="button" data-filtro="inactivo" aria-pressed="false">
+                    Inactivas <span class="sg-cuenta">@Model.TotalInactivas</span>
+                </button>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Marcas.Any())
+    {
+        <div class="sg-panel sg-vacio">
+            <div class="sg-vacio-ico">
+                <i class="bi @(Model.HayBusqueda ? "bi-search" : "bi-tags")"></i>
+            </div>
+            @if (Model.HayBusqueda)
+            {
+                <h2>Sin resultados para "@Model.Termino"</h2>
+                <p>Revisa que el nombre esté bien escrito o prueba con otro dato.</p>
+                <a asp-action="Index" class="btn btn-outline-secondary">Ver todas las marcas</a>
+            }
+            else
+            {
+                <h2>Aún no hay marcas</h2>
+                <p>Crea la primera para poder asignarla a los productos del inventario.</p>
+                <a asp-action="Create" class="btn sg-btn-primario">
+                    <i class="bi bi-plus-lg"></i> Nueva marca
+                </a>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="sg-panel">
+            <div class="table-responsive">
+                <table class="sg-tabla" id="tablaMarcas">
+                    <thead>
+                        <tr>
+                            <th>Marca</th>
+                            <th>Estado</th>
+                            <th class="text-end"><span class="visually-hidden">Acciones</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var marca in Model.Marcas)
+                        {
+                            <tr class="@(marca.Activo ? "" : "sg-inactiva")" data-estado="@(marca.Activo ? "activo" : "inactivo")">
+                                <td>
+                                    <span class="sg-nombre d-block">@marca.Nombre</span>
+                                    @if (string.IsNullOrWhiteSpace(marca.Descripcion))
+                                    {
+                                        <span class="sg-vacio-dato sg-doc">Sin descripción</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="sg-doc">@marca.Descripcion</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="sg-estado @(marca.Activo ? "activo" : "inactivo")">
+                                        @(marca.Activo ? "Activa" : "Inactiva")
+                                    </span>
+                                </td>
+                                <td class="text-end">
+                                    <div class="sg-acciones">
+                                        <a asp-action="Edit" asp-route-id="@marca.IdMarca" class="sg-accion sg-accion-editar">
+                                            <i class="bi bi-pencil"></i> <span>Editar</span>
+                                        </a>
+
+                                        @if (marca.Activo)
+                                        {
+                                            <form asp-action="ActivarDesactivar" asp-route-id="@marca.IdMarca" method="post" class="sg-accion-form">
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="sg-accion sg-accion-baja"
+                                                        onclick="return confirm('¿Dar de baja esta marca? Los productos que la usan conservarán el dato, pero no aparecerá en los desplegables.');">
+                                                    <i class="bi bi-slash-circle"></i> <span>Dar de baja</span>
+                                                </button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form asp-action="ActivarDesactivar" asp-route-id="@marca.IdMarca" method="post" class="sg-accion-form">
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="sg-accion sg-accion-reactivar">
+                                                    <i class="bi bi-arrow-counterclockwise"></i> <span>Reactivar</span>
+                                                </button>
+                                            </form>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="sg-vacio d-none" id="sinFiltro" style="padding: 2.5rem 1.5rem;">
+                <h2>No hay marcas en este estado</h2>
+                <p class="mb-0">Cambia el filtro para ver el resto.</p>
+            </div>
+
+            <div class="sg-pie" id="pieTabla" aria-live="polite">
+                Mostrando <strong id="visibles">@Model.Total</strong> de @Model.Total @(Model.Total == 1 ? "marca" : "marcas")
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            var grupo = document.getElementById('filtroEstado');
+            var tabla = document.getElementById('tablaMarcas');
+            if (!grupo || !tabla) return;
+
+            var filas = tabla.querySelectorAll('tbody tr');
+            var contador = document.getElementById('visibles');
+            var sinFiltro = document.getElementById('sinFiltro');
+            var contenedorTabla = tabla.closest('.table-responsive');
+
+            grupo.addEventListener('click', function (e) {
+                var boton = e.target.closest('button[data-filtro]');
+                if (!boton) return;
+
+                grupo.querySelectorAll('button').forEach(function (b) {
+                    b.setAttribute('aria-pressed', b === boton ? 'true' : 'false');
+                });
+
+                var filtro = boton.dataset.filtro, visibles = 0;
+                filas.forEach(function (fila) {
+                    var mostrar = filtro === 'todos' || fila.dataset.estado === filtro;
+                    fila.hidden = !mostrar;
+                    if (mostrar) visibles++;
+                });
+
+                contador.textContent = visibles;
+                contenedorTabla.classList.toggle('d-none', visibles === 0);
+                sinFiltro.classList.toggle('d-none', visibles !== 0);
+            });
+        })();
+    </script>
+}

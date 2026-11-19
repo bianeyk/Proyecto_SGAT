@@ -5,7 +5,6 @@ namespace SGAT.Domain.Entities
     public class Producto
     {
         public int IdProducto { get; set; }
-
         public int IdCategoriaProducto { get; set; }
         public int IdMarca { get; set; }
         public string? Codigo { get; set; }
@@ -17,7 +16,6 @@ namespace SGAT.Domain.Entities
         public decimal StockActual { get; set; } = 0;
         public decimal StockMinimo { get; set; } = 0;
         public decimal StockReservado { get; set; } = 0;
-
         public bool Activo { get; set; } = true;
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;

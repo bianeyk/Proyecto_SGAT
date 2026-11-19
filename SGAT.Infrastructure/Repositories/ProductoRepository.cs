@@ -23,12 +23,64 @@ namespace SGAT.Infrastructure.Repositories
 
         public async Task<IEnumerable<Producto>> GetStockBajoAsync()
         {
-            return await _dbSet.Where(p => p.StockActual <= p.StockMinimo).ToListAsync();
+            return await _dbSet
+                .Include(p => p.CategoriaProducto)
+                .Include(p => p.Marca)
+                .Where(p => p.Activo && p.StockMinimo > 0 && p.StockActual <= p.StockMinimo)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Producto>> GetActivosAsync()
         {
             return await _dbSet.Where(p => p.Activo).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Producto>> GetAllConDetalleAsync()
+        {
+            return await _dbSet
+                .Include(p => p.CategoriaProducto)
+                .Include(p => p.Marca)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
+        public async Task<Producto?> GetByIdConDetalleAsync(int id)
+        {
+            return await _dbSet
+                .Include(p => p.CategoriaProducto)
+                .Include(p => p.Marca)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.IdProducto == id);
+        }
+
+        public async Task<IEnumerable<CategoriaProducto>> GetCategoriasActivasAsync()
+        {
+            return await _context.CategoriasProducto
+                .AsNoTracking()
+                .Where(c => c.Activo)
+                .OrderBy(c => c.Nombre)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Marca>> GetMarcasActivasAsync()
+        {
+            return await _context.Marcas
+                .AsNoTracking()
+                .Where(m => m.Activo)
+                .OrderBy(m => m.Nombre)
+                .ToListAsync();
+        }
+
+        public async Task<bool> CategoriaExisteAsync(int idCategoria)
+        {
+            return await _context.CategoriasProducto
+                .AnyAsync(c => c.IdCategoriaProducto == idCategoria && c.Activo);
+        }
+
+        public async Task<bool> MarcaExisteAsync(int idMarca)
+        {
+            return await _context.Marcas
+                .AnyAsync(m => m.IdMarca == idMarca && m.Activo);
         }
     }
 }
