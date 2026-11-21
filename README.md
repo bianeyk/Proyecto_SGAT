@@ -52,4 +52,34 @@ La dirección de las dependencias siempre apunta hacia el dominio:
 SGAT (Presentación)
    └──> SGAT.Application
             └──> SGAT.Domain
-   └──> SGAT.Infrastructure ──> SGAT.Application / SGAT.Domain
+   └──> SGAT.Infrastructure ──> SGAT.Application / SGAT.Domain 
+```
+Tecnologías
+
+Frontend
+JavaScript (~16 %), HTML (~7 %), CSS (~2 %)
+Framework
+.NET / ASP.NET Core
+Formato de solución
+.slnx (nuevo formato XML de Visual Studio)
+
+Requisitos previos
+SDK de .NET 8 o superior (TODO: confirmar versión).
+Visual Studio 2022 (17.10+) o VS Code con la extensión de C# Dev Kit. El archivo SGAT.slnx requiere una versión reciente del IDE.
+Git.
+Motor de base de datos (TODO: SQL Server / SQLite / PostgreSQL...).
+
+Instalación y ejecución
+# 1. Clonar el repositorio
+git clone https://github.com/bianeyk/Proyecto_SGAT.git
+cd Proyecto_SGAT
+
+# 2. Restaurar dependencias
+dotnet restore SGAT.slnx
+
+# 3. Configurar la cadena de conexión en SGAT/appsettings.json
+#    TODO: documentar claves y valores necesarios
+
+# 4. Ejecutar la aplicación web
+dotnet run --project SGAT
+
