@@ -14,6 +14,7 @@ namespace SGAT.Web.Controllers
 
         // Número máximo de registros por página. Ajustar si se necesita más.
         private const int TamanoPagina = 25;
+        private const int MaxPagina = 100_000;
 
         public ClientesController(IClienteService clienteService)
         {
@@ -23,22 +24,19 @@ namespace SGAT.Web.Controllers
         public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
             // Forzar límites de paginación para evitar descargas masivas.
-            if (pagina < 1) pagina = 1;
-
-            var clientes = string.IsNullOrWhiteSpace(termino)
-                ? await _clienteService.GetTodosAsync()
-                : await _clienteService.BuscarAsync(termino.Trim());
-
-            var total = clientes.Count();
-            var items = clientes
-                .Skip((pagina - 1) * TamanoPagina)
-                .Take(TamanoPagina)
-                .ToList();
+            // La página se limita antes de enviarla al repositorio.
+            pagina = Math.Clamp(pagina, 1, MaxPagina);
+            var result = await _clienteService.GetPageAsync(
+                string.IsNullOrWhiteSpace(termino) ? null : termino.Trim(),
+                pagina,
+                TamanoPagina);
 
             ViewData["Termino"] = termino;
+            ViewData["TotalRegistros"] = result.TotalCount;
             ViewData["PaginaActual"] = pagina;
-            ViewData["TotalPaginas"] = (int)Math.Ceiling(total / (double)TamanoPagina);
-            return View(items);
+            ViewData["TotalPaginas"] = Math.Max(1,
+                (int)Math.Ceiling(result.TotalCount / (double)TamanoPagina));
+            return View(result.Items);
         }
 
         public async Task<IActionResult> Details(int id)
@@ -66,6 +64,10 @@ namespace SGAT.Web.Controllers
 
             try
             {
+                // Solo gerente o administrador puede definir estos indicadores.
+                // Nunca se deben aceptar directamente desde un formulario de técnico.
+                var puedeGestionarEstado =
+                    User.IsInRole("Gerente") || User.IsInRole("Administrador");
                 var cliente = await _clienteService.CrearAsync(
                     new CrearClienteDto
                     {
@@ -74,8 +76,8 @@ namespace SGAT.Web.Controllers
                         Telefono = vm.Telefono.Trim(),
                         Email = vm.Email?.Trim(),
                         Direccion = vm.Direccion?.Trim(),
-                        EsColaborador = vm.EsColaborador,
-                        Activo = vm.Activo
+                        EsColaborador = puedeGestionarEstado && vm.EsColaborador,
+                        Activo = puedeGestionarEstado ? vm.Activo : true
                     },
                     idUsuarioCrea);
 
@@ -83,6 +85,11 @@ namespace SGAT.Web.Controllers
                 return RedirectToAction(nameof(Details), new { id = cliente.IdCliente });
             }
             catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError(nameof(vm.NumDocumento), ex.Message);
+                return View(vm);
+            }
+            catch (ArgumentException ex)
             {
                 ModelState.AddModelError(nameof(vm.NumDocumento), ex.Message);
                 return View(vm);
@@ -130,14 +137,20 @@ namespace SGAT.Web.Controllers
 
             try
             {
+                // Para técnicos, conservar los valores actuales aunque el request
+                // incluya campos manipulados de forma manual.
+                var puedeGestionarEstado =
+                    User.IsInRole("Gerente") || User.IsInRole("Administrador");
                 await _clienteService.ActualizarAsync(id, new ActualizarClienteDto
                 {
                     Nombre = vm.Nombre,
                     Telefono = vm.Telefono,
                     Email = vm.Email,
                     Direccion = vm.Direccion,
-                    EsColaborador = vm.EsColaborador,
-                    Activo = vm.Activo
+                    EsColaborador = puedeGestionarEstado
+                        ? vm.EsColaborador
+                        : clienteActual.EsColaborador,
+                    Activo = puedeGestionarEstado ? vm.Activo : clienteActual.Activo
                 });
 
                 TempData["Success"] = "Cliente actualizado correctamente.";
@@ -150,6 +163,7 @@ namespace SGAT.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador,Gerente")]
         public async Task<IActionResult> Delete(int id)
         {
             var cliente = await _clienteService.GetByIdAsync(id);
@@ -157,6 +171,7 @@ namespace SGAT.Web.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Administrador,Gerente")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

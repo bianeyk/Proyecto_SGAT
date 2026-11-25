@@ -1,9 +1,11 @@
 ﻿using SGAT.Application.DTOs.Cliente;
+using SGAT.Application.DTOs.Paginacion;
 using SGAT.Application.Interfaces.Repositories;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SGAT.Application.Services
@@ -41,15 +43,28 @@ namespace SGAT.Application.Services
             return clientes.Select(MapToDto);
         }
 
+        public async Task<PagedResult<ClienteDto>> GetPageAsync(
+            string? termino, int pagina, int tamanoPagina)
+        {
+            var result = await _clienteRepo.GetPageAsync(termino, pagina, tamanoPagina);
+            return new PagedResult<ClienteDto>
+            {
+                Items = result.Items.Select(MapToDto).ToList(),
+                TotalCount = result.TotalCount
+            };
+        }
+
         public async Task<ClienteDto> CrearAsync(CrearClienteDto dto, string idUsuarioCrea)
         {
-            if (await _clienteRepo.NumDocExisteAsync(dto.NumDocumento))
-                throw new InvalidOperationException($"Ya existe un cliente con el documento {dto.NumDocumento}.");
+            var numDocumento = NormalizarDocumento(dto.NumDocumento);
+
+            if (await _clienteRepo.NumDocExisteAsync(numDocumento))
+                throw new InvalidOperationException($"Ya existe un cliente con el documento {numDocumento}.");
 
             var cliente = new Cliente
             {
                 IdUsuarioCrea = idUsuarioCrea,
-                NumDoc = dto.NumDocumento,
+                NumDoc = numDocumento,
                 Nombre = dto.Nombre,
                 Telefono = dto.Telefono,
                 Email = dto.Email,
@@ -61,6 +76,22 @@ namespace SGAT.Application.Services
             await _clienteRepo.AddAsync(cliente);
             await _clienteRepo.SaveChangesAsync();
             return MapToDto(cliente);
+        }
+
+        private static string NormalizarDocumento(string? documento)
+        {
+            if (string.IsNullOrWhiteSpace(documento))
+                throw new ArgumentException("El número de documento es obligatorio.");
+
+            var limpio = documento.Trim();
+
+            if (limpio.Length > 15)
+                throw new ArgumentException("El documento no puede superar los 15 caracteres.");
+
+            if (!limpio.All(char.IsDigit))
+                throw new ArgumentException("El documento solo debe contener números.");
+
+            return limpio;
         }
 
         public async Task<ClienteDto> ActualizarAsync(int id, ActualizarClienteDto dto)

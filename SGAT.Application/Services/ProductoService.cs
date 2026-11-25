@@ -1,4 +1,5 @@
 ﻿using SGAT.Application.DTOs.Producto;
+using SGAT.Application.DTOs.Paginacion;
 using SGAT.Application.Interfaces.Repositories;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Domain.Entities;
@@ -25,6 +26,18 @@ namespace SGAT.Application.Services
         {
             var p = await _productoRepo.GetByIdConDetalleAsync(id);
             return p is null ? null : MapToDto(p);
+        }
+
+        public async Task<PagedResult<ProductoDto>> GetPageAsync(
+            string? termino, string filtro, int pagina, int tamanoPagina)
+        {
+            var result = await _productoRepo.GetPageConDetalleAsync(
+                termino, filtro, pagina, tamanoPagina);
+            return new PagedResult<ProductoDto>
+            {
+                Items = result.Items.Select(MapToDto).ToList(),
+                TotalCount = result.TotalCount
+            };
         }
 
         public async Task<IEnumerable<ProductoDto>> GetStockBajoAsync()

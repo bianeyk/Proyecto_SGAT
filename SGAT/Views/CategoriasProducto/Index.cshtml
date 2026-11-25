@@ -202,6 +202,27 @@
             </div>
         </div>
     }
+
+    @if (Model.TotalPaginas > 1)
+    {
+        <nav class="mt-3" aria-label="Paginación de categorías">
+            <ul class="pagination justify-content-center">
+                <li class="page-item @(Model.HayPaginaAnterior ? "" : "disabled")">
+                    <a class="page-link" asp-action="Index"
+                       asp-route-termino="@Model.Termino"
+                       asp-route-pagina="@(Model.PaginaActual - 1)">Anterior</a>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link">Página @Model.PaginaActual de @Model.TotalPaginas</span>
+                </li>
+                <li class="page-item @(Model.HayPaginaSiguiente ? "" : "disabled")">
+                    <a class="page-link" asp-action="Index"
+                       asp-route-termino="@Model.Termino"
+                       asp-route-pagina="@(Model.PaginaActual + 1)">Siguiente</a>
+                </li>
+            </ul>
+        </nav>
+    }
 </div>
 
 @section Scripts {

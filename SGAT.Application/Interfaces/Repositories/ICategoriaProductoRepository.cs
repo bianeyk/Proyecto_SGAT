@@ -1,4 +1,5 @@
 using SGAT.Domain.Entities;
+using SGAT.Application.DTOs.Paginacion;
 
 namespace SGAT.Application.Interfaces.Repositories
 {
@@ -11,5 +12,6 @@ namespace SGAT.Application.Interfaces.Repositories
         Task<bool> NombreExisteAsync(string nombre, int? excluirId = null);
 
         Task<IEnumerable<CategoriaProducto>> BuscarAsync(string termino);
+        Task<PagedResult<CategoriaProducto>> GetPageAsync(string? termino, int pagina, int tamanoPagina);
     }
 }

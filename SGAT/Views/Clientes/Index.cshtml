@@ -5,7 +5,9 @@
 
     var termino = ViewData["Termino"]?.ToString();
     var hayBusqueda = !string.IsNullOrWhiteSpace(termino);
-    var total = Model.Count();
+    var total = ViewData["TotalRegistros"] is int totalRegistros
+        ? totalRegistros
+        : Model.Count();
     var activos = Model.Count(c => c.Activo);
     var inactivos = total - activos;
 }
@@ -386,11 +388,14 @@
                                                 @if (cliente.Activo)
                                                 {
                                                     <li><hr class="dropdown-divider" /></li>
-                                                    <li>
-                                                        <a class="dropdown-item peligro" asp-action="Delete" asp-route-id="@cliente.IdCliente">
-                                                            <i class="bi bi-person-dash"></i> Dar de baja
-                                                        </a>
-                                                    </li>
+                                                    @if (User.IsInRole("Gerente") || User.IsInRole("Administrador"))
+                                                    {
+                                                        <li>
+                                                            <a class="dropdown-item peligro" asp-action="Delete" asp-route-id="@cliente.IdCliente">
+                                                                <i class="bi bi-person-dash"></i> Dar de baja
+                                                            </a>
+                                                        </li>
+                                                    }
                                                 }
                                             </ul>
                                         </div>
@@ -411,6 +416,30 @@
                 Mostrando <strong id="visibles">@total</strong> de @total @(total == 1 ? "cliente" : "clientes")
             </div>
         </div>
+    }
+
+    @if (ViewData["TotalPaginas"] is int totalPaginas && totalPaginas > 1)
+    {
+        var paginaActual = (int)(ViewData["PaginaActual"] ?? 1);
+        <nav class="mt-3" aria-label="Paginación de clientes">
+            <ul class="pagination justify-content-center">
+                <li class="page-item @(paginaActual <= 1 ? "disabled" : "")">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-termino="@termino"
+                       asp-route-pagina="@(paginaActual - 1)">Anterior</a>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link">Página @paginaActual de @totalPaginas</span>
+                </li>
+                <li class="page-item @(paginaActual >= totalPaginas ? "disabled" : "")">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-termino="@termino"
+                       asp-route-pagina="@(paginaActual + 1)">Siguiente</a>
+                </li>
+            </ul>
+        </nav>
     }
 </div>
 

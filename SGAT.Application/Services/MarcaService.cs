@@ -1,4 +1,5 @@
 using SGAT.Application.DTOs.Producto;
+using SGAT.Application.DTOs.Paginacion;
 using SGAT.Application.Interfaces.Repositories;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Domain.Entities;
@@ -30,6 +31,17 @@ namespace SGAT.Application.Services
         {
             var marcas = await _marcaRepo.BuscarAsync(termino);
             return marcas.Select(MapToDto);
+        }
+
+        public async Task<PagedResult<MarcaDto>> GetPageAsync(
+            string? termino, int pagina, int tamanoPagina)
+        {
+            var result = await _marcaRepo.GetPageAsync(termino, pagina, tamanoPagina);
+            return new PagedResult<MarcaDto>
+            {
+                Items = result.Items.Select(MapToDto).ToList(),
+                TotalCount = result.TotalCount
+            };
         }
 
         public async Task<MarcaDto> CrearAsync(MarcaDto dto)

@@ -14,10 +14,11 @@ namespace SGAT.Web.ViewModels.CategoriaProducto
         // Paginación
         public int PaginaActual { get; set; } = 1;
         public int TotalPaginas { get; set; } = 1;
+        public int TotalRegistros { get; set; }
         public bool HayPaginaAnterior => PaginaActual > 1;
         public bool HayPaginaSiguiente => PaginaActual < TotalPaginas;
 
-        public int Total => Categorias.Count();
+        public int Total => TotalRegistros;
         public int TotalActivas => Categorias.Count(c => c.Activo);
         public int TotalInactivas => Categorias.Count(c => !c.Activo);
 

@@ -13,6 +13,7 @@ namespace SGAT.Web.Controllers
         private readonly IProductoService _productoService;
 
         private const int TamanoPagina = 25;
+        private const int MaxPagina = 100_000;
 
         public ProductosController(IProductoService productoService)
         {
@@ -23,41 +24,26 @@ namespace SGAT.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string? termino, string filtro = "todos", int pagina = 1)
         {
-            if (pagina < 1) pagina = 1;
-
-            var productos = await _productoService.GetTodosAsync();
-
-            if (!string.IsNullOrWhiteSpace(termino))
-            {
-                var texto = termino.Trim();
-                productos = productos.Where(p =>
-                    p.Nombre.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
-                    p.Codigo.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
-                    p.Categoria.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
-                    p.Marca.Contains(texto, StringComparison.OrdinalIgnoreCase));
-            }
-
-            productos = (filtro ?? "todos").ToLowerInvariant() switch
-            {
-                "activo" => productos.Where(p => p.Activo),
-                "inactivo" => productos.Where(p => !p.Activo),
-                "stockbajo" => productos.Where(p => p.StockBajo),
-                _ => productos
-            };
-
-            var listaOrdenada = productos.OrderBy(p => p.Nombre).ToList();
-            var total = listaOrdenada.Count;
+            // Se limita la página para evitar desplazamientos inválidos o costosos.
+            pagina = Math.Clamp(pagina, 1, MaxPagina);
+            filtro = string.IsNullOrWhiteSpace(filtro)
+                ? "todos"
+                : filtro.Trim().ToLowerInvariant();
+            var result = await _productoService.GetPageAsync(
+                string.IsNullOrWhiteSpace(termino) ? null : termino.Trim(),
+                filtro,
+                pagina,
+                TamanoPagina);
 
             var vm = new ProductoIndexViewModel
             {
-                Productos = listaOrdenada
-                    .Skip((pagina - 1) * TamanoPagina)
-                    .Take(TamanoPagina)
-                    .ToList(),
+                Productos = result.Items,
                 Termino = termino,
-                Filtro = string.IsNullOrWhiteSpace(filtro) ? "todos" : filtro.ToLowerInvariant(),
+                Filtro = filtro,
                 PaginaActual = pagina,
-                TotalPaginas = (int)Math.Ceiling(total / (double)TamanoPagina)
+                TotalRegistros = result.TotalCount,
+                TotalPaginas = Math.Max(1,
+                    (int)Math.Ceiling(result.TotalCount / (double)TamanoPagina))
             };
 
             return View(vm);

@@ -12,6 +12,7 @@ namespace SGAT.Web.Controllers
         private readonly ICategoriaProductoService _categoriaService;
 
         private const int TamanoPagina = 25;
+        private const int MaxPagina = 100_000;
 
         public CategoriasProductoController(ICategoriaProductoService categoriaService)
         {
@@ -22,24 +23,21 @@ namespace SGAT.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
-            if (pagina < 1) pagina = 1;
-
-            var categorias = string.IsNullOrWhiteSpace(termino)
-                ? await _categoriaService.GetTodasAsync()
-                : await _categoriaService.BuscarAsync(termino.Trim());
-
-            var listaOrdenada = categorias.OrderBy(c => c.Nombre).ToList();
-            var total = listaOrdenada.Count;
+            // Se controla el valor recibido desde la URL antes de consultar datos.
+            pagina = Math.Clamp(pagina, 1, MaxPagina);
+            var result = await _categoriaService.GetPageAsync(
+                string.IsNullOrWhiteSpace(termino) ? null : termino.Trim(),
+                pagina,
+                TamanoPagina);
 
             var vm = new CategoriaProductoIndexViewModel
             {
-                Categorias = listaOrdenada
-                    .Skip((pagina - 1) * TamanoPagina)
-                    .Take(TamanoPagina)
-                    .ToList(),
+                Categorias = result.Items,
                 Termino = termino,
                 PaginaActual = pagina,
-                TotalPaginas = (int)Math.Ceiling(total / (double)TamanoPagina)
+                TotalRegistros = result.TotalCount,
+                TotalPaginas = Math.Max(1,
+                    (int)Math.Ceiling(result.TotalCount / (double)TamanoPagina))
             };
 
             return View(vm);

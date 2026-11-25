@@ -7,7 +7,7 @@ namespace SGAT.Web.ViewModels.Cliente
         public int IdCliente { get; set; }
 
         [Required(ErrorMessage = "El número de documento es obligatorio.")]
-        [StringLength(50, ErrorMessage = "El documento no puede superar los 50 caracteres.")]
+        [StringLength(15, ErrorMessage = "El documento no puede superar los 15 caracteres.")]
         [Display(Name = "Número de documento")]
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "El documento solo debe contener números.")]
         public string NumDocumento { get; set; } = string.Empty;
