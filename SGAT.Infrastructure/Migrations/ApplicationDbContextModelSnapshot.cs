@@ -254,8 +254,9 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasPrecision(0)
+                        .HasColumnType("datetime2(0)")
+                        .HasDefaultValueSql("CAST(SYSDATETIMEOFFSET() AT TIME ZONE 'SA Pacific Standard Time' AS DATETIME2(0))");
 
                     b.Property<string>("IdUsuario")
                         .IsRequired()
@@ -399,8 +400,9 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasPrecision(0)
+                        .HasColumnType("datetime2(0)")
+                        .HasDefaultValueSql("CAST(SYSDATETIMEOFFSET() AT TIME ZONE 'SA Pacific Standard Time' AS DATETIME2(0))");
 
                     b.Property<string>("Direccion")
                         .HasMaxLength(255)
@@ -427,8 +429,8 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<string>("NumDoc")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("Telefono")
                         .IsRequired()
@@ -437,8 +439,9 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasPrecision(0)
+                        .HasColumnType("datetime2(0)")
+                        .HasDefaultValueSql("CAST(SYSDATETIMEOFFSET() AT TIME ZONE 'SA Pacific Standard Time' AS DATETIME2(0))");
 
                     b.HasKey("IdCliente");
 
@@ -480,7 +483,7 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<decimal>("Total")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasDefaultValue(0m);
 
                     b.HasKey("IdCompra");
@@ -489,7 +492,10 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.HasIndex("IdUsuario");
 
-                    b.ToTable("Compras");
+                    b.ToTable("Compras", t =>
+                        {
+                            t.HasCheckConstraint("CK_Compra_Total", "[Total] >= 0");
+                        });
                 });
 
             modelBuilder.Entity("SGAT.Domain.Entities.CompraDetalle", b =>
@@ -500,11 +506,11 @@ namespace SGAT.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCompraDetalle"));
 
-                    b.Property<decimal>("Cantidad")
-                        .HasColumnType("decimal(10,2)");
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("CostoUnitario")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("IdCompra")
                         .HasColumnType("int");
@@ -514,7 +520,7 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<decimal>("Subtotal")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasComputedColumnSql("[Cantidad] * [CostoUnitario]", true);
 
                     b.HasKey("IdCompraDetalle");
@@ -523,7 +529,12 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.HasIndex("IdProducto");
 
-                    b.ToTable("CompraDetalles");
+                    b.ToTable("CompraDetalles", t =>
+                        {
+                            t.HasCheckConstraint("CK_CompraDetalle_Cantidad", "[Cantidad] > 0");
+
+                            t.HasCheckConstraint("CK_CompraDetalle_CostoUnitario", "[CostoUnitario] >= 0");
+                        });
                 });
 
             modelBuilder.Entity("SGAT.Domain.Entities.DiagnosticoTecnico", b =>
@@ -771,7 +782,7 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<decimal>("Iva")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(5,2)")
                         .HasDefaultValue(0m);
 
                     b.Property<string>("MetodoPago")
@@ -789,17 +800,17 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<decimal>("SaldoPendiente")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasDefaultValue(0m);
 
                     b.Property<decimal>("Subtotal")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasDefaultValue(0m);
 
                     b.Property<decimal>("Total")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasDefaultValue(0m);
 
                     b.HasKey("IdFactura");
@@ -817,7 +828,17 @@ namespace SGAT.Infrastructure.Migrations
                         {
                             t.HasCheckConstraint("CK_Factura_Estado", "[Estado] IN ('PENDIENTE','PAGADA','ANULADA')");
 
+                            t.HasCheckConstraint("CK_Factura_GarantiaDias", "[GarantiaDias] >= 0");
+
+                            t.HasCheckConstraint("CK_Factura_Iva", "[Iva] >= 0");
+
                             t.HasCheckConstraint("CK_Factura_MetodoPago", "[MetodoPago] IN ('EFECTIVO','TRANSFERENCIA','TARJETA','OTRO')");
+
+                            t.HasCheckConstraint("CK_Factura_SaldoPendiente", "[SaldoPendiente] >= 0");
+
+                            t.HasCheckConstraint("CK_Factura_Subtotal", "[Subtotal] >= 0");
+
+                            t.HasCheckConstraint("CK_Factura_Total", "[Total] >= 0");
                         });
                 });
 
@@ -829,10 +850,10 @@ namespace SGAT.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdFacturaDetalle"));
 
-                    b.Property<decimal>("Cantidad")
+                    b.Property<int>("Cantidad")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
-                        .HasDefaultValue(1m);
+                        .HasColumnType("int")
+                        .HasDefaultValue(1);
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
@@ -852,11 +873,11 @@ namespace SGAT.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("PrecioUnitario")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("Subtotal")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasComputedColumnSql("[Cantidad] * [PrecioUnitario]", true);
 
                     b.Property<string>("Tipo")
@@ -876,6 +897,10 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.ToTable("FacturaDetalles", t =>
                         {
+                            t.HasCheckConstraint("CK_FacturaDetalle_Cantidad", "[Cantidad] > 0");
+
+                            t.HasCheckConstraint("CK_FacturaDetalle_PrecioUnitario", "[PrecioUnitario] >= 0");
+
                             t.HasCheckConstraint("CK_FacturaDetalle_Tipo", "[Tipo] IN ('PRODUCTO','SERVICIO')");
                         });
                 });
@@ -1011,14 +1036,14 @@ namespace SGAT.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdLoteProducto"));
 
-                    b.Property<decimal>("CantidadDisponible")
-                        .HasColumnType("decimal(10,2)");
+                    b.Property<int>("CantidadDisponible")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("CantidadInicial")
-                        .HasColumnType("decimal(10,2)");
+                    b.Property<int>("CantidadInicial")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("CostoUnitario")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("FechaFinGarantiaProveedor")
                         .ValueGeneratedOnAddOrUpdate()
@@ -1060,7 +1085,16 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.HasIndex("IdProducto");
 
-                    b.ToTable("LotesProducto");
+                    b.ToTable("LotesProducto", t =>
+                        {
+                            t.HasCheckConstraint("CK_LoteProducto_CantidadDisponible", "[CantidadDisponible] >= 0");
+
+                            t.HasCheckConstraint("CK_LoteProducto_CantidadInicial", "[CantidadInicial] > 0");
+
+                            t.HasCheckConstraint("CK_LoteProducto_CostoUnitario", "[CostoUnitario] >= 0");
+
+                            t.HasCheckConstraint("CK_LoteProducto_GarantiaProveedorDias", "[GarantiaProveedorDias] >= 0");
+                        });
                 });
 
             modelBuilder.Entity("SGAT.Domain.Entities.Marca", b =>
@@ -1101,8 +1135,8 @@ namespace SGAT.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMovimientoInventario"));
 
-                    b.Property<decimal>("Cantidad")
-                        .HasColumnType("decimal(10,2)");
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -1119,11 +1153,11 @@ namespace SGAT.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<decimal?>("StockAnterior")
-                        .HasColumnType("decimal(10,2)");
+                    b.Property<int?>("StockAnterior")
+                        .HasColumnType("int");
 
-                    b.Property<decimal?>("StockNuevo")
-                        .HasColumnType("decimal(10,2)");
+                    b.Property<int?>("StockNuevo")
+                        .HasColumnType("int");
 
                     b.Property<string>("Tipo")
                         .IsRequired()
@@ -1138,6 +1172,12 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.ToTable("MovimientosInventario", t =>
                         {
+                            t.HasCheckConstraint("CK_MovimientoInventario_Cantidad", "[Cantidad] > 0");
+
+                            t.HasCheckConstraint("CK_MovimientoInventario_StockAnterior", "[StockAnterior] >= 0");
+
+                            t.HasCheckConstraint("CK_MovimientoInventario_StockNuevo", "[StockNuevo] >= 0");
+
                             t.HasCheckConstraint("CK_MovimientoInventario_Tipo", "[Tipo] IN ('COMPRA','VENTA','RESERVA','LIBERACION_RESERVA')");
                         });
                 });
@@ -1152,7 +1192,7 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<decimal>("Abono")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasDefaultValue(0m);
 
                     b.Property<string>("Codigo")
@@ -1162,7 +1202,7 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<decimal>("CostoTotal")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasDefaultValue(0m);
 
                     b.Property<string>("Diagnostico")
@@ -1276,8 +1316,8 @@ namespace SGAT.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdOrdenServicioDetalleProducto"));
 
-                    b.Property<decimal>("Cantidad")
-                        .HasColumnType("decimal(10,2)");
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
 
                     b.Property<string>("Estado")
                         .IsRequired()
@@ -1296,11 +1336,11 @@ namespace SGAT.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("PrecioUnitario")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("Subtotal")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasComputedColumnSql("[Cantidad] * [PrecioUnitario]", true);
 
                     b.HasKey("IdOrdenServicioDetalleProducto");
@@ -1328,7 +1368,7 @@ namespace SGAT.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPagoCartera"));
 
                     b.Property<decimal>("Abono")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -1372,6 +1412,8 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.ToTable("PagosCartera", t =>
                         {
+                            t.HasCheckConstraint("CK_PagoCartera_Abono", "[Abono] > 0");
+
                             t.HasCheckConstraint("CK_PagoCartera_MetodoPago", "[MetodoPago] IN ('EFECTIVO','TRANSFERENCIA','OTRO')");
                         });
                 });
@@ -1443,25 +1485,25 @@ namespace SGAT.Infrastructure.Migrations
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<decimal?>("PrecioDescuento")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("PrecioVenta")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("StockActual")
+                    b.Property<int>("StockActual")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
-                        .HasDefaultValue(0m);
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
-                    b.Property<decimal>("StockMinimo")
+                    b.Property<int>("StockMinimo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
-                        .HasDefaultValue(0m);
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
-                    b.Property<decimal>("StockReservado")
+                    b.Property<int>("StockReservado")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
-                        .HasDefaultValue(0m);
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.HasKey("IdProducto");
 
@@ -1476,6 +1518,16 @@ namespace SGAT.Infrastructure.Migrations
                     b.ToTable("Productos", t =>
                         {
                             t.HasCheckConstraint("CK_Producto_Condicion", "[Condicion] IN ('NUEVO','USADO','REMANUFACTURADO')");
+
+                            t.HasCheckConstraint("CK_Producto_PrecioDescuento", "[PrecioDescuento] >= 0");
+
+                            t.HasCheckConstraint("CK_Producto_PrecioVenta", "[PrecioVenta] >= 0");
+
+                            t.HasCheckConstraint("CK_Producto_StockActual", "[StockActual] >= 0");
+
+                            t.HasCheckConstraint("CK_Producto_StockMinimo", "[StockMinimo] >= 0");
+
+                            t.HasCheckConstraint("CK_Producto_StockReservado", "[StockReservado] >= 0");
                         });
                 });
 
@@ -1575,7 +1627,7 @@ namespace SGAT.Infrastructure.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<decimal?>("PrecioBase")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("IdServicio");
 

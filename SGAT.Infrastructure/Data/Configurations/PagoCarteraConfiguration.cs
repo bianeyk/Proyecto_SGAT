@@ -13,7 +13,7 @@ namespace SGAT.Infrastructure.Data.Configurations
         {
             builder.HasKey(p => p.IdPagoCartera);
 
-            builder.Property(p => p.Abono).HasColumnType("decimal(10,2)").IsRequired();
+            builder.Property(p => p.Abono).HasColumnType("decimal(18,2)").IsRequired();
             builder.Property(p => p.FechaPago).HasDefaultValueSql("GETDATE()");
             builder.Property(p => p.MetodoPago).HasConversion<string>().HasMaxLength(20).IsRequired();
             builder.Property(p => p.Referencia).HasMaxLength(100);
@@ -35,9 +35,13 @@ namespace SGAT.Infrastructure.Data.Configurations
                 .HasForeignKey(p => p.IdOrdenServicio)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            builder.ToTable(t => t.HasCheckConstraint(
-                "CK_PagoCartera_MetodoPago",
-                "[MetodoPago] IN ('EFECTIVO','TRANSFERENCIA','OTRO')"));
+            builder.ToTable(t =>
+            {
+                t.HasCheckConstraint("CK_PagoCartera_Abono", "[Abono] > 0");
+                t.HasCheckConstraint(
+                    "CK_PagoCartera_MetodoPago",
+                    "[MetodoPago] IN ('EFECTIVO','TRANSFERENCIA','OTRO')");
+            });
         }
     }
 }

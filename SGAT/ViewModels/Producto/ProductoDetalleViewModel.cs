@@ -17,14 +17,14 @@ namespace SGAT.Web.ViewModels.Producto
         public decimal PrecioVenta { get; set; }
         public decimal? PrecioDescuento { get; set; }
 
-        public decimal StockActual { get; set; }
-        public decimal StockMinimo { get; set; }
-        public decimal StockReservado { get; set; }
+        public int StockActual { get; set; }
+        public int StockMinimo { get; set; }
+        public int StockReservado { get; set; }
 
         public bool Activo { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public decimal StockDisponible => StockActual - StockReservado;
+        public int StockDisponible => StockActual - StockReservado;
         public bool StockBajo => StockMinimo > 0 && StockActual <= StockMinimo;
     }
 }

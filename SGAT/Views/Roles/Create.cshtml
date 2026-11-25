@@ -20,19 +20,14 @@
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Rol.Nombre"
-                           class="form-label">
-                        Nombre del rol
-                    </label>
-
-                    <input asp-for="Rol.Nombre"
-                           class="form-control"
-                           placeholder="Ejemplo: Supervisor"
-                           oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9\s_-]/g, '')" />
-
-                    <span asp-validation-for="Rol.Nombre"
-                          class="text-danger">
-                    </span>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Rol.Nombre" class="form-label">Nombre del rol</label>
+                        <input asp-for="Rol.Nombre"
+                               class="form-control"
+                               placeholder="Ejemplo: Supervisor" />
+                        <span asp-validation-for="Rol.Nombre" class="text-danger"></span>
+                    </div>
                 </div>
 
                 <div class="d-flex gap-2">

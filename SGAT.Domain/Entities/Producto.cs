@@ -13,9 +13,9 @@ namespace SGAT.Domain.Entities
         public CondicionProductoEnum Condicion { get; set; } = CondicionProductoEnum.NUEVO;
         public decimal PrecioVenta { get; set; }
         public decimal? PrecioDescuento { get; set; }
-        public decimal StockActual { get; set; } = 0;
-        public decimal StockMinimo { get; set; } = 0;
-        public decimal StockReservado { get; set; } = 0;
+        public int StockActual { get; set; } = 0;
+        public int StockMinimo { get; set; } = 0;
+        public int StockReservado { get; set; } = 0;
         public bool Activo { get; set; } = true;
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;

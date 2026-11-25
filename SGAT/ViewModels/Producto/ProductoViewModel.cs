@@ -51,9 +51,9 @@ namespace SGAT.Web.ViewModels.Producto
         [DataType(DataType.Currency)]
         public decimal? PrecioDescuento { get; set; }
 
-        [Range(typeof(decimal), "0", "99999999.99", ParseLimitsInInvariantCulture = true, ErrorMessage = "El stock mínimo no puede ser negativo.")]
+        [Range(0, int.MaxValue, ErrorMessage = "El stock mínimo no puede ser negativo.")]
         [Display(Name = "Stock mínimo")]
-        public decimal StockMinimo { get; set; }
+        public int StockMinimo { get; set; }
 
         [Display(Name = "Activo")]
         public bool Activo { get; set; } = true;

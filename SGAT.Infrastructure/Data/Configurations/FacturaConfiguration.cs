@@ -19,10 +19,10 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.HasIndex(f => f.NumeroFactura).IsUnique();
             builder.Property(f => f.FechaFactura).HasDefaultValueSql("GETDATE()");
 
-            builder.Property(f => f.Subtotal).HasColumnType("decimal(10,2)").HasDefaultValue(0);
-            builder.Property(f => f.Iva).HasColumnType("decimal(10,2)").HasDefaultValue(0);
-            builder.Property(f => f.Total).HasColumnType("decimal(10,2)").HasDefaultValue(0);
-            builder.Property(f => f.SaldoPendiente).HasColumnType("decimal(10,2)").HasDefaultValue(0);
+            builder.Property(f => f.Subtotal).HasColumnType("decimal(18,2)").HasDefaultValue(0);
+            builder.Property(f => f.Iva).HasColumnType("decimal(5,2)").HasDefaultValue(0);
+            builder.Property(f => f.Total).HasColumnType("decimal(18,2)").HasDefaultValue(0);
+            builder.Property(f => f.SaldoPendiente).HasColumnType("decimal(18,2)").HasDefaultValue(0);
 
             builder.Property(f => f.MetodoPago).HasConversion<string>().HasMaxLength(20).IsRequired();
             builder.Property(f => f.Estado)
@@ -50,6 +50,11 @@ namespace SGAT.Infrastructure.Data.Configurations
 
             builder.ToTable(t =>
             {
+                t.HasCheckConstraint("CK_Factura_Subtotal", "[Subtotal] >= 0");
+                t.HasCheckConstraint("CK_Factura_Iva", "[Iva] >= 0");
+                t.HasCheckConstraint("CK_Factura_Total", "[Total] >= 0");
+                t.HasCheckConstraint("CK_Factura_SaldoPendiente", "[SaldoPendiente] >= 0");
+                t.HasCheckConstraint("CK_Factura_GarantiaDias", "[GarantiaDias] >= 0");
                 t.HasCheckConstraint("CK_Factura_Estado", "[Estado] IN ('PENDIENTE','PAGADA','ANULADA')");
                 t.HasCheckConstraint(
                     "CK_Factura_MetodoPago",

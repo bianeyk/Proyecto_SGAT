@@ -19,8 +19,8 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.Property(o => o.Codigo).HasMaxLength(100).IsRequired();
             builder.HasIndex(o => o.Codigo).IsUnique();
             builder.Property(o => o.Diagnostico).HasColumnType("varchar(max)");
-            builder.Property(o => o.CostoTotal).HasColumnType("decimal(10,2)").HasDefaultValue(0);
-            builder.Property(o => o.Abono).HasColumnType("decimal(10,2)").HasDefaultValue(0);
+            builder.Property(o => o.CostoTotal).HasColumnType("decimal(18,2)").HasDefaultValue(0);
+            builder.Property(o => o.Abono).HasColumnType("decimal(18,2)").HasDefaultValue(0);
             builder.Property(o => o.Prioridad)
                 .HasConversion<string>()
                 .HasMaxLength(10)

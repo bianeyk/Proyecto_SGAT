@@ -17,9 +17,9 @@ namespace SGAT.Application.DTOs.Producto
         public string Condicion { get; set; } = string.Empty;
         public decimal PrecioVenta { get; set; }
         public decimal? PrecioDescuento { get; set; }
-        public decimal StockActual { get; set; }
-        public decimal StockMinimo { get; set; }
-        public decimal StockReservado { get; set; }
+        public int StockActual { get; set; }
+        public int StockMinimo { get; set; }
+        public int StockReservado { get; set; }
         public bool Activo { get; set; }
         public DateTime CreatedAt { get; set; }
 
