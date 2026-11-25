@@ -1,7 +1,10 @@
 using SGAT.Application.DTOs.Producto;
+using SGAT.Application.DTOs.Paginacion;
 using SGAT.Application.Interfaces.Repositories;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace SGAT.Application.Services
 {
@@ -9,15 +12,13 @@ namespace SGAT.Application.Services
     {
         private readonly IMarcaRepository _marcaRepo;
 
+        private static readonly Regex TextoValido =
+            new(@"^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-.,()/&'+]+$",
+                RegexOptions.Compiled);
+
         public MarcaService(IMarcaRepository marcaRepo)
         {
             _marcaRepo = marcaRepo;
-        }
-
-        public async Task<IEnumerable<MarcaDto>> GetTodasAsync()
-        {
-            var marcas = await _marcaRepo.GetAllOrdenadasAsync();
-            return marcas.Select(MapToDto);
         }
 
         public async Task<MarcaDto?> GetByIdAsync(int id)
@@ -26,14 +27,23 @@ namespace SGAT.Application.Services
             return marca is null ? null : MapToDto(marca);
         }
 
-        public async Task<IEnumerable<MarcaDto>> BuscarAsync(string termino)
+        public async Task<PagedResult<MarcaDto>> GetPageAsync(
+            string? termino, int pagina, int tamanoPagina)
         {
-            var marcas = await _marcaRepo.BuscarAsync(termino);
-            return marcas.Select(MapToDto);
+            var result = await _marcaRepo.GetPageAsync(termino, pagina, tamanoPagina);
+            return new PagedResult<MarcaDto>
+            {
+                Items = result.Items.Select(MapToDto).ToList(),
+                TotalCount = result.TotalCount,
+                ActiveCount = result.ActiveCount,
+                InactiveCount = result.InactiveCount
+            };
         }
 
         public async Task<MarcaDto> CrearAsync(MarcaDto dto)
         {
+            ArgumentNullException.ThrowIfNull(dto);
+
             var nombre = NormalizarNombre(dto.Nombre);
             var descripcion = NormalizarDescripcion(dto.Descripcion);
 
@@ -48,12 +58,22 @@ namespace SGAT.Application.Services
             };
 
             await _marcaRepo.AddAsync(marca);
-            await _marcaRepo.SaveChangesAsync();
+            try
+            {
+                await _marcaRepo.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex) when (DatabaseErrorHelper.IsUniqueConstraintViolation(ex))
+            {
+                throw new InvalidOperationException($"Ya existe una marca con el nombre {nombre}.");
+            }
+
             return MapToDto(marca);
         }
 
         public async Task<MarcaDto> ActualizarAsync(int id, MarcaDto dto)
         {
+            ArgumentNullException.ThrowIfNull(dto);
+
             var nombre = NormalizarNombre(dto.Nombre);
             var descripcion = NormalizarDescripcion(dto.Descripcion);
 
@@ -68,7 +88,15 @@ namespace SGAT.Application.Services
             marca.Activo = dto.Activo;
 
             _marcaRepo.Update(marca);
-            await _marcaRepo.SaveChangesAsync();
+            try
+            {
+                await _marcaRepo.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex) when (DatabaseErrorHelper.IsUniqueConstraintViolation(ex))
+            {
+                throw new InvalidOperationException($"Ya existe una marca con el nombre {nombre}.");
+            }
+
             return MapToDto(marca);
         }
 
@@ -87,10 +115,13 @@ namespace SGAT.Application.Services
             if (string.IsNullOrWhiteSpace(nombre))
                 throw new ArgumentException("El nombre de la marca es obligatorio.");
 
-            var limpio = nombre.Trim();
+            var limpio = TextNormalization.CollapseWhitespace(nombre);
 
             if (limpio.Length > 100)
                 throw new ArgumentException("El nombre de la marca no puede superar los 100 caracteres.");
+
+            if (!TextoValido.IsMatch(limpio))
+                throw new ArgumentException("El nombre de la marca contiene caracteres no permitidos.");
 
             return limpio;
         }
@@ -100,10 +131,13 @@ namespace SGAT.Application.Services
             if (string.IsNullOrWhiteSpace(descripcion))
                 return null;
 
-            var limpia = descripcion.Trim();
+            var limpia = TextNormalization.CollapseWhitespace(descripcion);
 
             if (limpia.Length > 255)
                 throw new ArgumentException("La descripción no puede superar los 255 caracteres.");
+
+            if (!TextoValido.IsMatch(limpia))
+                throw new ArgumentException("La descripción contiene caracteres no permitidos.");
 
             return limpia;
         }

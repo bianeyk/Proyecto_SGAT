@@ -1,44 +1,58 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using SGAT.Application.DTOs.Cliente;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Web.ViewModels.Cliente;
 
 namespace SGAT.Web.Controllers
 {
-    [Authorize(Roles = "Gerente,Tecnico")]
+    [Authorize(Roles = "Administrador,Gerente,Tecnico")]
     public class ClientesController : Controller
     {
         private readonly IClienteService _clienteService;
 
         // Número máximo de registros por página. Ajustar si se necesita más.
         private const int TamanoPagina = 25;
+        private const int MaxPagina = 10_000;
+        private const int MinLongitudBusqueda = 2;
+        private const int MaxLongitudBusqueda = 100;
 
         public ClientesController(IClienteService clienteService)
         {
             _clienteService = clienteService;
         }
 
+        [EnableRateLimiting("SearchPolicy")]
         public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
             // Forzar límites de paginación para evitar descargas masivas.
-            if (pagina < 1) pagina = 1;
+            // La página se limita antes de enviarla al repositorio.
+            pagina = Math.Clamp(pagina, 1, MaxPagina);
+            termino = termino?.Trim();
+            if (!string.IsNullOrWhiteSpace(termino)
+                && termino.Length < MinLongitudBusqueda)
+            {
+                return BadRequest("El término de búsqueda debe tener al menos 2 caracteres.");
+            }
 
-            var clientes = string.IsNullOrWhiteSpace(termino)
-                ? await _clienteService.GetTodosAsync()
-                : await _clienteService.BuscarAsync(termino.Trim());
+            if (termino?.Length > MaxLongitudBusqueda)
+                return BadRequest("El término de búsqueda no puede superar los 100 caracteres.");
 
-            var total = clientes.Count();
-            var items = clientes
-                .Skip((pagina - 1) * TamanoPagina)
-                .Take(TamanoPagina)
-                .ToList();
+            var result = await _clienteService.GetPageAsync(
+                string.IsNullOrWhiteSpace(termino) ? null : termino,
+                pagina,
+                TamanoPagina);
 
             ViewData["Termino"] = termino;
+            ViewData["TotalRegistros"] = result.TotalCount;
+            ViewData["TotalActivos"] = result.ActiveCount;
+            ViewData["TotalInactivos"] = result.InactiveCount;
             ViewData["PaginaActual"] = pagina;
-            ViewData["TotalPaginas"] = (int)Math.Ceiling(total / (double)TamanoPagina);
-            return View(items);
+            ViewData["TotalPaginas"] = Math.Max(1,
+                (int)Math.Ceiling(result.TotalCount / (double)TamanoPagina));
+            return View(result.Items);
         }
 
         public async Task<IActionResult> Details(int id)
@@ -66,6 +80,10 @@ namespace SGAT.Web.Controllers
 
             try
             {
+                // Solo gerente o administrador puede definir estos indicadores.
+                // Nunca se deben aceptar directamente desde un formulario de técnico.
+                var puedeGestionarEstado =
+                    User.IsInRole("Gerente") || User.IsInRole("Administrador");
                 var cliente = await _clienteService.CrearAsync(
                     new CrearClienteDto
                     {
@@ -74,8 +92,8 @@ namespace SGAT.Web.Controllers
                         Telefono = vm.Telefono.Trim(),
                         Email = vm.Email?.Trim(),
                         Direccion = vm.Direccion?.Trim(),
-                        EsColaborador = vm.EsColaborador,
-                        Activo = vm.Activo
+                        EsColaborador = puedeGestionarEstado && vm.EsColaborador,
+                        Activo = puedeGestionarEstado ? vm.Activo : true
                     },
                     idUsuarioCrea);
 
@@ -83,6 +101,11 @@ namespace SGAT.Web.Controllers
                 return RedirectToAction(nameof(Details), new { id = cliente.IdCliente });
             }
             catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError(nameof(vm.NumDocumento), ex.Message);
+                return View(vm);
+            }
+            catch (ArgumentException ex)
             {
                 ModelState.AddModelError(nameof(vm.NumDocumento), ex.Message);
                 return View(vm);
@@ -130,14 +153,20 @@ namespace SGAT.Web.Controllers
 
             try
             {
+                // Para técnicos, conservar los valores actuales aunque el request
+                // incluya campos manipulados de forma manual.
+                var puedeGestionarEstado =
+                    User.IsInRole("Gerente") || User.IsInRole("Administrador");
                 await _clienteService.ActualizarAsync(id, new ActualizarClienteDto
                 {
                     Nombre = vm.Nombre,
                     Telefono = vm.Telefono,
                     Email = vm.Email,
                     Direccion = vm.Direccion,
-                    EsColaborador = vm.EsColaborador,
-                    Activo = vm.Activo
+                    EsColaborador = puedeGestionarEstado
+                        ? vm.EsColaborador
+                        : clienteActual.EsColaborador,
+                    Activo = puedeGestionarEstado ? vm.Activo : clienteActual.Activo
                 });
 
                 TempData["Success"] = "Cliente actualizado correctamente.";
@@ -147,9 +176,16 @@ namespace SGAT.Web.Controllers
             {
                 return NotFound();
             }
+            catch (ArgumentException ex)
+            {
+                vm.NumDocumento = clienteActual.NumDocumento;
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(vm);
+            }
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador,Gerente")]
         public async Task<IActionResult> Delete(int id)
         {
             var cliente = await _clienteService.GetByIdAsync(id);
@@ -157,6 +193,7 @@ namespace SGAT.Web.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Administrador,Gerente")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

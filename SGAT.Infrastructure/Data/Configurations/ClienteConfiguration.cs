@@ -17,9 +17,12 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.Property(c => c.NumDoc).HasMaxLength(15).IsRequired();
             builder.HasIndex(c => c.NumDoc).IsUnique();
             builder.Property(c => c.Nombre).HasMaxLength(250).IsRequired();
+            builder.HasIndex(c => c.Nombre);
             builder.Property(c => c.Telefono).HasMaxLength(20).IsRequired();
             builder.Property(c => c.Email).HasMaxLength(150);
+            builder.HasIndex(c => c.Email);
             builder.Property(c => c.Direccion).HasMaxLength(255);
+            builder.HasIndex(c => c.Telefono);
             builder.Property(c => c.EsColaborador).HasDefaultValue(false);
             builder.Property(c => c.Activo).HasDefaultValue(true);
             builder.Property(c => c.CreatedAt).HasPrecision(0)

@@ -1,4 +1,5 @@
 ﻿using SGAT.Domain.Entities;
+using SGAT.Application.DTOs.Paginacion;
 
 namespace SGAT.Application.Interfaces.Repositories
 {
@@ -6,6 +7,6 @@ namespace SGAT.Application.Interfaces.Repositories
     {
         Task<Cliente?> GetByNumDocAsync(string numDoc);
         Task<bool> NumDocExisteAsync(string numDoc);
-        Task<IEnumerable<Cliente>> BuscarAsync(string termino);
+        Task<PagedResult<Cliente>> GetPageAsync(string? termino, int pagina, int tamanoPagina);
     }
 }

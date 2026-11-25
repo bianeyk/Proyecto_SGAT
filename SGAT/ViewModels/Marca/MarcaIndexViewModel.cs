@@ -14,12 +14,13 @@ namespace SGAT.Web.ViewModels.Marca
         // Paginación
         public int PaginaActual { get; set; } = 1;
         public int TotalPaginas { get; set; } = 1;
+        public int TotalRegistros { get; set; }
         public bool HayPaginaAnterior => PaginaActual > 1;
         public bool HayPaginaSiguiente => PaginaActual < TotalPaginas;
 
-        public int Total => Marcas.Count();
-        public int TotalActivas => Marcas.Count(m => m.Activo);
-        public int TotalInactivas => Marcas.Count(m => !m.Activo);
+        public int Total => TotalRegistros;
+        public int TotalActivas { get; set; }
+        public int TotalInactivas { get; set; }
 
         public bool HayBusqueda => !string.IsNullOrWhiteSpace(Termino);
     }

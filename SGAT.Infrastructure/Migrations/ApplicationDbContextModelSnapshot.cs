@@ -445,10 +445,16 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.HasKey("IdCliente");
 
+                    b.HasIndex("Email");
+
                     b.HasIndex("IdUsuarioCrea");
+
+                    b.HasIndex("Nombre");
 
                     b.HasIndex("NumDoc")
                         .IsUnique();
+
+                    b.HasIndex("Telefono");
 
                     b.ToTable("Clientes");
                 });
@@ -1514,6 +1520,8 @@ namespace SGAT.Infrastructure.Migrations
                     b.HasIndex("IdCategoriaProducto");
 
                     b.HasIndex("IdMarca");
+
+                    b.HasIndex("Nombre");
 
                     b.ToTable("Productos", t =>
                         {

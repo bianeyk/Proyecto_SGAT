@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using SGAT.Application.DTOs.Producto;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Web.ViewModels.Marca;
@@ -12,6 +13,9 @@ namespace SGAT.Web.Controllers
         private readonly IMarcaService _marcaService;
 
         private const int TamanoPagina = 25;
+        private const int MaxPagina = 10_000;
+        private const int MinLongitudBusqueda = 2;
+        private const int MaxLongitudBusqueda = 100;
 
         public MarcasController(IMarcaService marcaService)
         {
@@ -20,26 +24,36 @@ namespace SGAT.Web.Controllers
 
         // GET: /Marcas
         [HttpGet]
+        [EnableRateLimiting("SearchPolicy")]
         public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
-            if (pagina < 1) pagina = 1;
+            // Evita páginas negativas o desplazamientos excesivamente grandes.
+            pagina = Math.Clamp(pagina, 1, MaxPagina);
+            termino = termino?.Trim();
+            if (!string.IsNullOrWhiteSpace(termino)
+                && termino.Length < MinLongitudBusqueda)
+            {
+                return BadRequest("El término de búsqueda debe tener al menos 2 caracteres.");
+            }
 
-            var marcas = string.IsNullOrWhiteSpace(termino)
-                ? await _marcaService.GetTodasAsync()
-                : await _marcaService.BuscarAsync(termino.Trim());
+            if (termino?.Length > MaxLongitudBusqueda)
+                return BadRequest("El término de búsqueda no puede superar los 100 caracteres.");
 
-            var listaOrdenada = marcas.OrderBy(m => m.Nombre).ToList();
-            var total = listaOrdenada.Count;
+            var result = await _marcaService.GetPageAsync(
+                string.IsNullOrWhiteSpace(termino) ? null : termino,
+                pagina,
+                TamanoPagina);
 
             var vm = new MarcaIndexViewModel
             {
-                Marcas = listaOrdenada
-                    .Skip((pagina - 1) * TamanoPagina)
-                    .Take(TamanoPagina)
-                    .ToList(),
+                Marcas = result.Items,
                 Termino = termino,
                 PaginaActual = pagina,
-                TotalPaginas = (int)Math.Ceiling(total / (double)TamanoPagina)
+                TotalRegistros = result.TotalCount,
+                TotalActivas = result.ActiveCount,
+                TotalInactivas = result.InactiveCount,
+                TotalPaginas = Math.Max(1,
+                    (int)Math.Ceiling(result.TotalCount / (double)TamanoPagina))
             };
 
             return View(vm);

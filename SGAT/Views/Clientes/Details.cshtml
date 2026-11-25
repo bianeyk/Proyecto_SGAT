@@ -35,7 +35,10 @@
             <a asp-action="Edit" asp-route-id="@Model.IdCliente" class="btn btn-warning">Editar</a>
             @if (Model.Activo)
             {
-                <a asp-action="Delete" asp-route-id="@Model.IdCliente" class="btn btn-danger">Dar de baja</a>
+                @if (User.IsInRole("Gerente") || User.IsInRole("Administrador"))
+                {
+                    <a asp-action="Delete" asp-route-id="@Model.IdCliente" class="btn btn-danger">Dar de baja</a>
+                }
             }
             <a asp-action="Index" class="btn btn-secondary">Volver</a>
         </div>

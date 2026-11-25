@@ -10,6 +10,7 @@ using SGAT.Web.Middleware;
 using SGAT.Infrastructure.Identity;
 using SGAT.Web.ModelBinding;
 using System.Threading.RateLimiting;
+using System.Security.Claims;
 
 
 
@@ -121,7 +122,23 @@ builder.Services.AddRateLimiter(options =>
             Window = TimeSpan.FromMinutes(10),
             QueueLimit = 0,
             AutoReplenishment = true
-        }));
+             }));
+
+    // Limita las búsquedas de los módulos de clientes, marcas, categorías y productos.
+    // Se particiona por usuario autenticado para no bloquear a todos los usuarios.
+    options.AddPolicy("SearchPolicy", context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey:
+                context.User.FindFirstValue(ClaimTypes.NameIdentifier)
+                ?? context.Connection.RemoteIpAddress?.ToString()
+                ?? "unknown",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 30,
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 0,
+                AutoReplenishment = true
+            }));
 });
 
 builder.Services.Configure<IdentityOptions>(options =>
@@ -249,10 +266,14 @@ app.Use(async (context, next) =>
 
 app.UseStaticFiles();
 app.UseRouting();
-app.UseRateLimiter();
 
 // Autenticación
 app.UseAuthentication();
+
+// El rate limiting se ejecuta después de autenticación para que las políticas
+// puedan identificar al usuario autenticado. Las acciones anónimas siguen
+// utilizando la dirección IP como partición.
+app.UseRateLimiter();
 
 // Comprobar que el usuario y su rol sigan activos.
 app.UseMiddleware<ValidarEstadoUsuarioMiddleware>();

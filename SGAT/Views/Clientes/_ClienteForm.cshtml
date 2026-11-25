@@ -40,11 +40,14 @@
            oninput="this.value = this.value.replace(/\*/g, '').replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s#.,\/-]/g, '')" />
     <span asp-validation-for="Direccion" class="text-danger"></span>
 </div>
-<div class="form-check mb-3">
-    <input asp-for="EsColaborador" class="form-check-input" />
-    <label asp-for="EsColaborador" class="form-check-label"></label>
-</div>
-<div class="form-check mb-3">
-    <input asp-for="Activo" class="form-check-input" />
-    <label asp-for="Activo" class="form-check-label"></label>
-</div>
+@if (User.IsInRole("Gerente") || User.IsInRole("Administrador"))
+{
+    <div class="form-check mb-3">
+        <input asp-for="EsColaborador" class="form-check-input" />
+        <label asp-for="EsColaborador" class="form-check-label"></label>
+    </div>
+    <div class="form-check mb-3">
+        <input asp-for="Activo" class="form-check-input" />
+        <label asp-for="Activo" class="form-check-label"></label>
+    </div>
+}

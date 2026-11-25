@@ -16,6 +16,7 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.Property(p => p.Codigo).HasMaxLength(100);
             builder.HasIndex(p => p.Codigo).IsUnique().HasFilter("[Codigo] IS NOT NULL");
             builder.Property(p => p.Nombre).HasMaxLength(150).IsRequired();
+            builder.HasIndex(p => p.Nombre);
             builder.Property(p => p.Descripcion).HasColumnType("varchar(max)");
             builder.Property(p => p.Condicion).HasConversion<string>().HasMaxLength(20).IsRequired();
 

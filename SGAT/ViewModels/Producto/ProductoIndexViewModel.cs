@@ -19,13 +19,14 @@ namespace SGAT.Web.ViewModels.Producto
         // Paginación
         public int PaginaActual { get; set; } = 1;
         public int TotalPaginas { get; set; } = 1;
+        public int TotalRegistros { get; set; }
         public bool HayPaginaAnterior => PaginaActual > 1;
         public bool HayPaginaSiguiente => PaginaActual < TotalPaginas;
 
-        public int Total => Productos.Count();
-        public int TotalActivos => Productos.Count(p => p.Activo);
-        public int TotalInactivos => Productos.Count(p => !p.Activo);
-        public int TotalStockBajo => Productos.Count(p => p.StockBajo);
+        public int Total => TotalRegistros;
+        public int TotalActivos { get; set; }
+        public int TotalInactivos { get; set; }
+        public int TotalStockBajo { get; set; }
 
         public bool HayBusqueda => !string.IsNullOrWhiteSpace(Termino);
     }
