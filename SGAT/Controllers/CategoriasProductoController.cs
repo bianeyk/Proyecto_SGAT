@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using SGAT.Application.DTOs.Producto;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Web.ViewModels.CategoriaProducto;
@@ -12,7 +13,9 @@ namespace SGAT.Web.Controllers
         private readonly ICategoriaProductoService _categoriaService;
 
         private const int TamanoPagina = 25;
-        private const int MaxPagina = 100_000;
+        private const int MaxPagina = 10_000;
+        private const int MinLongitudBusqueda = 2;
+        private const int MaxLongitudBusqueda = 100;
 
         public CategoriasProductoController(ICategoriaProductoService categoriaService)
         {
@@ -21,12 +24,23 @@ namespace SGAT.Web.Controllers
 
         // GET: /CategoriasProducto
         [HttpGet]
+        [EnableRateLimiting("SearchPolicy")]
         public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
             // Se controla el valor recibido desde la URL antes de consultar datos.
             pagina = Math.Clamp(pagina, 1, MaxPagina);
+            termino = termino?.Trim();
+            if (!string.IsNullOrWhiteSpace(termino)
+                && termino.Length < MinLongitudBusqueda)
+            {
+                return BadRequest("El término de búsqueda debe tener al menos 2 caracteres.");
+            }
+
+            if (termino?.Length > MaxLongitudBusqueda)
+                return BadRequest("El término de búsqueda no puede superar los 100 caracteres.");
+
             var result = await _categoriaService.GetPageAsync(
-                string.IsNullOrWhiteSpace(termino) ? null : termino.Trim(),
+                string.IsNullOrWhiteSpace(termino) ? null : termino,
                 pagina,
                 TamanoPagina);
 
@@ -36,6 +50,8 @@ namespace SGAT.Web.Controllers
                 Termino = termino,
                 PaginaActual = pagina,
                 TotalRegistros = result.TotalCount,
+                TotalActivas = result.ActiveCount,
+                TotalInactivas = result.InactiveCount,
                 TotalPaginas = Math.Max(1,
                     (int)Math.Ceiling(result.TotalCount / (double)TamanoPagina))
             };

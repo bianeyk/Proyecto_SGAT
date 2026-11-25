@@ -1,38 +1,54 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using SGAT.Application.DTOs.Cliente;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Web.ViewModels.Cliente;
 
 namespace SGAT.Web.Controllers
 {
-    [Authorize(Roles = "Gerente,Tecnico")]
+    [Authorize(Roles = "Administrador,Gerente,Tecnico")]
     public class ClientesController : Controller
     {
         private readonly IClienteService _clienteService;
 
         // Número máximo de registros por página. Ajustar si se necesita más.
         private const int TamanoPagina = 25;
-        private const int MaxPagina = 100_000;
+        private const int MaxPagina = 10_000;
+        private const int MinLongitudBusqueda = 2;
+        private const int MaxLongitudBusqueda = 100;
 
         public ClientesController(IClienteService clienteService)
         {
             _clienteService = clienteService;
         }
 
+        [EnableRateLimiting("SearchPolicy")]
         public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
             // Forzar límites de paginación para evitar descargas masivas.
             // La página se limita antes de enviarla al repositorio.
             pagina = Math.Clamp(pagina, 1, MaxPagina);
+            termino = termino?.Trim();
+            if (!string.IsNullOrWhiteSpace(termino)
+                && termino.Length < MinLongitudBusqueda)
+            {
+                return BadRequest("El término de búsqueda debe tener al menos 2 caracteres.");
+            }
+
+            if (termino?.Length > MaxLongitudBusqueda)
+                return BadRequest("El término de búsqueda no puede superar los 100 caracteres.");
+
             var result = await _clienteService.GetPageAsync(
-                string.IsNullOrWhiteSpace(termino) ? null : termino.Trim(),
+                string.IsNullOrWhiteSpace(termino) ? null : termino,
                 pagina,
                 TamanoPagina);
 
             ViewData["Termino"] = termino;
             ViewData["TotalRegistros"] = result.TotalCount;
+            ViewData["TotalActivos"] = result.ActiveCount;
+            ViewData["TotalInactivos"] = result.InactiveCount;
             ViewData["PaginaActual"] = pagina;
             ViewData["TotalPaginas"] = Math.Max(1,
                 (int)Math.Ceiling(result.TotalCount / (double)TamanoPagina));
@@ -159,6 +175,12 @@ namespace SGAT.Web.Controllers
             catch (KeyNotFoundException)
             {
                 return NotFound();
+            }
+            catch (ArgumentException ex)
+            {
+                vm.NumDocumento = clienteActual.NumDocumento;
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(vm);
             }
         }
 

@@ -41,7 +41,8 @@ namespace SGAT.Web.ViewModels.Producto
         public CondicionProductoEnum Condicion { get; set; } = CondicionProductoEnum.NUEVO;
 
         [Required(ErrorMessage = "El precio de venta es obligatorio.")]
-        [Range(typeof(decimal), "0.01", "99999999.99", ParseLimitsInInvariantCulture = true, ErrorMessage = "El precio de venta debe ser mayor que cero.")]
+        [Range(typeof(decimal), "0.01", "99999999.99", ParseLimitsInInvariantCulture = true,
+            ErrorMessage = "El precio de venta debe ser mayor que cero y no superar 99.999.999,99.")]
         [Display(Name = "Precio de venta")]
         [DataType(DataType.Currency)]
         public decimal PrecioVenta { get; set; }

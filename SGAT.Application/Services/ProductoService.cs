@@ -4,22 +4,28 @@ using SGAT.Application.Interfaces.Repositories;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Domain.Entities;
 using SGAT.SGAT.Domain.Enums;
+using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace SGAT.Application.Services
 {
     public class ProductoService : IProductoService
     {
         private readonly IProductoRepository _productoRepo;
+        private const decimal PrecioMaximo = 99_999_999.99m;
+
+        private static readonly Regex CodigoValido =
+            new(@"^[A-Za-z0-9\-_.]+$", RegexOptions.Compiled);
+
+        private static readonly Regex TextoProductoValido =
+            new(@"^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-.,()/]+$", RegexOptions.Compiled);
+
+        private static readonly Regex DescripcionValida =
+            new(@"^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-.,()/&'+]+$", RegexOptions.Compiled);
 
         public ProductoService(IProductoRepository productoRepo)
         {
             _productoRepo = productoRepo;
-        }
-
-        public async Task<IEnumerable<ProductoDto>> GetTodosAsync()
-        {
-            var productos = await _productoRepo.GetAllConDetalleAsync();
-            return productos.Select(MapToDto);
         }
 
         public async Task<ProductoDto?> GetByIdAsync(int id)
@@ -36,14 +42,11 @@ namespace SGAT.Application.Services
             return new PagedResult<ProductoDto>
             {
                 Items = result.Items.Select(MapToDto).ToList(),
-                TotalCount = result.TotalCount
+                TotalCount = result.TotalCount,
+                ActiveCount = result.ActiveCount,
+                InactiveCount = result.InactiveCount,
+                LowStockCount = result.LowStockCount
             };
-        }
-
-        public async Task<IEnumerable<ProductoDto>> GetStockBajoAsync()
-        {
-            var productos = await _productoRepo.GetStockBajoAsync();
-            return productos.Select(MapToDto);
         }
 
         public async Task<IEnumerable<CategoriaProductoDto>> GetCategoriasAsync()
@@ -80,8 +83,8 @@ namespace SGAT.Application.Services
                 IdCategoriaProducto = dto.IdCategoriaProducto,
                 IdMarca = dto.IdMarca,
                 Codigo = codigo,
-                Nombre = dto.Nombre.Trim(),
-                Descripcion = dto.Descripcion,
+                Nombre = TextNormalization.CollapseWhitespace(dto.Nombre),
+                Descripcion = NormalizarDescripcion(dto.Descripcion),
                 Condicion = ParseCondicion(dto.Condicion),
                 PrecioVenta = dto.PrecioVenta,
                 PrecioDescuento = dto.PrecioDescuento,
@@ -90,7 +93,16 @@ namespace SGAT.Application.Services
             };
 
             await _productoRepo.AddAsync(producto);
-            await _productoRepo.SaveChangesAsync();
+            try
+            {
+                await _productoRepo.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex) when (DatabaseErrorHelper.IsUniqueConstraintViolation(ex))
+            {
+                throw new InvalidOperationException(
+                    $"El código {codigo} ya está en uso.");
+            }
+
             return MapToDto(producto);
         }
 
@@ -113,8 +125,8 @@ namespace SGAT.Application.Services
             producto.IdCategoriaProducto = dto.IdCategoriaProducto;
             producto.IdMarca = dto.IdMarca;
             producto.Codigo = codigo;
-            producto.Nombre = dto.Nombre.Trim();
-            producto.Descripcion = dto.Descripcion;
+            producto.Nombre = TextNormalization.CollapseWhitespace(dto.Nombre);
+            producto.Descripcion = NormalizarDescripcion(dto.Descripcion);
             producto.Condicion = ParseCondicion(dto.Condicion);
             producto.PrecioVenta = dto.PrecioVenta;
             producto.PrecioDescuento = dto.PrecioDescuento;
@@ -122,7 +134,16 @@ namespace SGAT.Application.Services
             producto.Activo = dto.Activo;
 
             _productoRepo.Update(producto);
-            await _productoRepo.SaveChangesAsync();
+            try
+            {
+                await _productoRepo.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex) when (DatabaseErrorHelper.IsUniqueConstraintViolation(ex))
+            {
+                throw new InvalidOperationException(
+                    $"El código {codigo} ya está en uso.");
+            }
+
             return MapToDto(producto);
         }
 
@@ -147,14 +168,56 @@ namespace SGAT.Application.Services
             if (string.IsNullOrWhiteSpace(dto.Nombre))
                 throw new ArgumentException("El nombre del producto es obligatorio.");
 
-            if (dto.PrecioVenta <= 0)
-                throw new ArgumentException("El precio de venta debe ser mayor que cero.");
+            var nombre = TextNormalization.CollapseWhitespace(dto.Nombre);
+            if (nombre.Length > 150)
+                throw new ArgumentException("El nombre del producto no puede superar los 150 caracteres.");
 
-            if (dto.PrecioDescuento.HasValue && dto.PrecioDescuento.Value >= dto.PrecioVenta)
-                throw new ArgumentException("El precio de descuento debe ser menor que el precio de venta.");
+            if (!TextoProductoValido.IsMatch(nombre))
+                throw new ArgumentException("El nombre del producto contiene caracteres no permitidos.");
+
+            var codigo = Normalizar(dto.Codigo);
+            if (codigo is not null)
+            {
+                if (codigo.Length > 100)
+                    throw new ArgumentException("El código no puede superar los 100 caracteres.");
+
+                if (!CodigoValido.IsMatch(codigo))
+                    throw new ArgumentException(
+                        "El código solo puede contener letras, números, guiones, puntos y guiones bajos.");
+            }
+
+            if (dto.Descripcion is not null)
+            {
+                var descripcion = TextNormalization.CollapseWhitespace(dto.Descripcion);
+                if (descripcion.Length > 500)
+                    throw new ArgumentException("La descripción no puede superar los 500 caracteres.");
+
+                if (descripcion.Length > 0 && !DescripcionValida.IsMatch(descripcion))
+                    throw new ArgumentException("La descripción contiene caracteres no permitidos.");
+            }
+
+            if (dto.PrecioVenta <= 0 || dto.PrecioVenta > PrecioMaximo)
+                throw new ArgumentException(
+                    "El precio de venta debe ser mayor que cero y no superar 99.999.999,99.");
+
+            if (dto.PrecioDescuento.HasValue)
+            {
+                if (dto.PrecioDescuento.Value < 0
+                    || dto.PrecioDescuento.Value > PrecioMaximo)
+                {
+                    throw new ArgumentException(
+                        "El precio con descuento debe estar entre cero y 99.999.999,99.");
+                }
+
+                if (dto.PrecioDescuento.Value >= dto.PrecioVenta)
+                    throw new ArgumentException(
+                        "El precio de descuento debe ser menor que el precio de venta.");
+            }
 
             if (dto.StockMinimo < 0)
                 throw new ArgumentException("El stock mínimo no puede ser negativo.");
+
+            ParseCondicion(dto.Condicion);
         }
 
         private async Task ValidarCatalogosAsync(CrearProductoDto dto)
@@ -179,6 +242,9 @@ namespace SGAT.Application.Services
 
         private static string? Normalizar(string? codigo)
             => string.IsNullOrWhiteSpace(codigo) ? null : codigo.Trim();
+
+        private static string? NormalizarDescripcion(string? descripcion)
+            => TextNormalization.CollapseOptional(descripcion);
 
         private static ProductoDto MapToDto(Producto p) => new()
         {

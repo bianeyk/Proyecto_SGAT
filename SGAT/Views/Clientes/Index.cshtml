@@ -8,8 +8,12 @@
     var total = ViewData["TotalRegistros"] is int totalRegistros
         ? totalRegistros
         : Model.Count();
-    var activos = Model.Count(c => c.Activo);
-    var inactivos = total - activos;
+    var activos = ViewData["TotalActivos"] is int totalActivos
+        ? totalActivos
+        : Model.Count(c => c.Activo);
+    var inactivos = ViewData["TotalInactivos"] is int totalInactivos
+        ? totalInactivos
+        : total - activos;
 }
 
 <style>
@@ -275,7 +279,7 @@
         <form asp-action="Index" method="get" class="sg-buscador" role="search">
             <i class="bi bi-search"></i>
             <input type="search" name="termino" value="@termino"
-                   placeholder="Buscar por documento, nombre, correo o teléfono"
+                   placeholder="Buscar por inicio de documento, nombre, correo o teléfono"
                    aria-label="Buscar clientes" />
             @if (hayBusqueda)
             {

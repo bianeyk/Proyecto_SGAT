@@ -19,8 +19,8 @@ namespace SGAT.Web.ViewModels.Marca
         public bool HayPaginaSiguiente => PaginaActual < TotalPaginas;
 
         public int Total => TotalRegistros;
-        public int TotalActivas => Marcas.Count(m => m.Activo);
-        public int TotalInactivas => Marcas.Count(m => !m.Activo);
+        public int TotalActivas { get; set; }
+        public int TotalInactivas { get; set; }
 
         public bool HayBusqueda => !string.IsNullOrWhiteSpace(Termino);
     }

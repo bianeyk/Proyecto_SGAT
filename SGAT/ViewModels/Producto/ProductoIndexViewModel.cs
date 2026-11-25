@@ -24,9 +24,9 @@ namespace SGAT.Web.ViewModels.Producto
         public bool HayPaginaSiguiente => PaginaActual < TotalPaginas;
 
         public int Total => TotalRegistros;
-        public int TotalActivos => Productos.Count(p => p.Activo);
-        public int TotalInactivos => Productos.Count(p => !p.Activo);
-        public int TotalStockBajo => Productos.Count(p => p.StockBajo);
+        public int TotalActivos { get; set; }
+        public int TotalInactivos { get; set; }
+        public int TotalStockBajo { get; set; }
 
         public bool HayBusqueda => !string.IsNullOrWhiteSpace(Termino);
     }

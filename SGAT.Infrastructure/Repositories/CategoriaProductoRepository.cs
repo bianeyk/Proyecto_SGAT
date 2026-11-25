@@ -12,14 +12,6 @@ namespace SGAT.Infrastructure.Repositories
         {
         }
 
-        public async Task<IEnumerable<CategoriaProducto>> GetAllOrdenadasAsync()
-        {
-            return await _dbSet
-                .AsNoTracking()
-                .OrderBy(c => c.Nombre)
-                .ToListAsync();
-        }
-
         public async Task<CategoriaProducto?> GetByNombreAsync(string nombre)
         {
             return await _dbSet
@@ -37,32 +29,39 @@ namespace SGAT.Infrastructure.Repositories
             return await consulta.AnyAsync();
         }
 
-        public async Task<IEnumerable<CategoriaProducto>> BuscarAsync(string termino)
-        {
-            return await _dbSet
-                .AsNoTracking()
-                .Where(c => c.Nombre.Contains(termino)
-                         || (c.Descripcion != null && c.Descripcion.Contains(termino)))
-                .OrderBy(c => c.Nombre)
-                .ToListAsync();
-        }
-
         public async Task<PagedResult<CategoriaProducto>> GetPageAsync(
             string? termino, int pagina, int tamanoPagina)
         {
             // Se valida antes de calcular Skip para mantener el desplazamiento seguro.
-            pagina = Math.Clamp(pagina, 1, 100_000);
+            pagina = Math.Clamp(pagina, 1, 10_000);
             tamanoPagina = Math.Clamp(tamanoPagina, 1, 100);
 
             var query = _dbSet.AsNoTracking().AsQueryable();
             if (!string.IsNullOrWhiteSpace(termino))
             {
                 termino = termino.Trim();
-                query = query.Where(c => c.Nombre.Contains(termino)
-                    || (c.Descripcion != null && c.Descripcion.Contains(termino)));
+                if (termino.Length < 2)
+                    throw new ArgumentException(
+                        "El término de búsqueda debe tener al menos 2 caracteres.");
+
+                if (termino.Length > 100)
+                    throw new ArgumentException("El término de búsqueda no puede superar los 100 caracteres.");
+
+                query = query.Where(c => c.Nombre.StartsWith(termino));
             }
 
-            var total = await query.CountAsync();
+            // Los contadores se calculan en un solo agregado SQL.
+            var resumen = await query
+                .GroupBy(_ => 1)
+                .Select(g => new
+                {
+                    Total = g.Count(),
+                    Activas = g.Count(c => c.Activo)
+                })
+                .FirstOrDefaultAsync();
+
+            var total = resumen?.Total ?? 0;
+            var activas = resumen?.Activas ?? 0;
             var items = await query
                 .OrderBy(c => c.Nombre)
                 .ThenBy(c => c.IdCategoriaProducto)
@@ -70,7 +69,13 @@ namespace SGAT.Infrastructure.Repositories
                 .Take(tamanoPagina)
                 .ToListAsync();
 
-            return new PagedResult<CategoriaProducto> { Items = items, TotalCount = total };
+            return new PagedResult<CategoriaProducto>
+            {
+                Items = items,
+                TotalCount = total,
+                ActiveCount = activas,
+                InactiveCount = total - activas
+            };
         }
     }
 }

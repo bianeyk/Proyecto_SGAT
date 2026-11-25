@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using SGAT.Application.DTOs.Producto;
 using SGAT.Application.Interfaces.Services;
 using SGAT.SGAT.Domain.Enums;
@@ -13,7 +14,9 @@ namespace SGAT.Web.Controllers
         private readonly IProductoService _productoService;
 
         private const int TamanoPagina = 25;
-        private const int MaxPagina = 100_000;
+        private const int MaxPagina = 10_000;
+        private const int MinLongitudBusqueda = 2;
+        private const int MaxLongitudBusqueda = 100;
 
         public ProductosController(IProductoService productoService)
         {
@@ -22,15 +25,26 @@ namespace SGAT.Web.Controllers
 
         // GET: /Productos
         [HttpGet]
+        [EnableRateLimiting("SearchPolicy")]
         public async Task<IActionResult> Index(string? termino, string filtro = "todos", int pagina = 1)
         {
             // Se limita la página para evitar desplazamientos inválidos o costosos.
             pagina = Math.Clamp(pagina, 1, MaxPagina);
+            termino = termino?.Trim();
+            if (!string.IsNullOrWhiteSpace(termino)
+                && termino.Length < MinLongitudBusqueda)
+            {
+                return BadRequest("El término de búsqueda debe tener al menos 2 caracteres.");
+            }
+
+            if (termino?.Length > MaxLongitudBusqueda)
+                return BadRequest("El término de búsqueda no puede superar los 100 caracteres.");
+
             filtro = string.IsNullOrWhiteSpace(filtro)
                 ? "todos"
                 : filtro.Trim().ToLowerInvariant();
             var result = await _productoService.GetPageAsync(
-                string.IsNullOrWhiteSpace(termino) ? null : termino.Trim(),
+                string.IsNullOrWhiteSpace(termino) ? null : termino,
                 filtro,
                 pagina,
                 TamanoPagina);
@@ -42,6 +56,9 @@ namespace SGAT.Web.Controllers
                 Filtro = filtro,
                 PaginaActual = pagina,
                 TotalRegistros = result.TotalCount,
+                TotalActivos = result.ActiveCount,
+                TotalInactivos = result.InactiveCount,
+                TotalStockBajo = result.LowStockCount,
                 TotalPaginas = Math.Max(1,
                     (int)Math.Ceiling(result.TotalCount / (double)TamanoPagina))
             };

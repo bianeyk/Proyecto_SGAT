@@ -55,7 +55,7 @@
         <form asp-action="Index" method="get" class="sg-buscador" role="search">
             <i class="bi bi-search"></i>
             <input type="search" name="termino" value="@Model.Termino"
-                   placeholder="Buscar por código, nombre, categoría o marca"
+                   placeholder="Buscar por inicio de código, nombre, categoría o marca"
                    aria-label="Buscar productos" />
             @if (Model.HayBusqueda)
             {
@@ -66,21 +66,32 @@
             <button type="submit" class="sg-buscar">Buscar</button>
         </form>
 
-        @if (Model.Total > 0)
+        @if (Model.TotalRegistros > 0
+            || Model.TotalActivos > 0
+            || Model.TotalInactivos > 0
+            || Model.TotalStockBajo > 0)
         {
             <div class="sg-segmentos" role="group" aria-label="Filtrar por estado" id="filtroEstado">
-                <button type="button" data-filtro="todos" aria-pressed="true">
+                <a asp-action="Index" asp-route-termino="@Model.Termino"
+                   asp-route-filtro="todos" asp-route-pagina="1"
+                   aria-pressed="@(Model.Filtro == "todos" ? "true" : "false")">
                     Todos <span class="sg-cuenta">@Model.Total</span>
-                </button>
-                <button type="button" data-filtro="activo" aria-pressed="false">
+                </a>
+                <a asp-action="Index" asp-route-termino="@Model.Termino"
+                   asp-route-filtro="activo" asp-route-pagina="1"
+                   aria-pressed="@(Model.Filtro == "activo" ? "true" : "false")">
                     Activos <span class="sg-cuenta">@Model.TotalActivos</span>
-                </button>
-                <button type="button" data-filtro="inactivo" aria-pressed="false">
+                </a>
+                <a asp-action="Index" asp-route-termino="@Model.Termino"
+                   asp-route-filtro="inactivo" asp-route-pagina="1"
+                   aria-pressed="@(Model.Filtro == "inactivo" ? "true" : "false")">
                     Inactivos <span class="sg-cuenta">@Model.TotalInactivos</span>
-                </button>
-                <button type="button" data-filtro="stockbajo" aria-pressed="false">
+                </a>
+                <a asp-action="Index" asp-route-termino="@Model.Termino"
+                   asp-route-filtro="stockbajo" asp-route-pagina="1"
+                   aria-pressed="@(Model.Filtro == "stockbajo" ? "true" : "false")">
                     Stock bajo <span class="sg-cuenta">@Model.TotalStockBajo</span>
-                </button>
+                </a>
             </div>
         }
     </div>
@@ -236,40 +247,3 @@
     }
 </div>
 
-<script>
-    (function () {
-        var grupo = document.getElementById('filtroEstado');
-        var tabla = document.getElementById('tablaProductos');
-        if (!grupo || !tabla) return;
-
-        var filas = tabla.querySelectorAll('tbody tr');
-        var contador = document.getElementById('visibles');
-        var sinFiltro = document.getElementById('sinFiltro');
-        var contenedorTabla = tabla.closest('.table-responsive');
-
-        grupo.addEventListener('click', function (e) {
-            var boton = e.target.closest('button[data-filtro]');
-            if (!boton) return;
-
-            grupo.querySelectorAll('button').forEach(function (b) {
-                b.setAttribute('aria-pressed', b === boton ? 'true' : 'false');
-            });
-
-            var filtro = boton.dataset.filtro, visibles = 0;
-            filas.forEach(function (fila) {
-                var estado = fila.dataset.estado || '';
-                var esStockBajo = fila.dataset.stockbajo === '1';
-                var mostrar = filtro === 'todos'
-                    || (filtro === 'activo' && estado === 'activo')
-                    || (filtro === 'inactivo' && estado === 'inactivo')
-                    || (filtro === 'stockbajo' && esStockBajo);
-                fila.hidden = !mostrar;
-                if (mostrar) visibles++;
-            });
-
-            contador.textContent = visibles;
-            contenedorTabla.classList.toggle('d-none', visibles === 0);
-            sinFiltro.classList.toggle('d-none', visibles !== 0);
-        });
-    })();
-</script>

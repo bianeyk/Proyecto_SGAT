@@ -9,12 +9,8 @@ namespace SGAT.Application.Interfaces.Repositories
     public interface IProductoRepository : IGenericRepository<Producto>
     {
         Task<Producto?> GetByCodigoAsync(string codigo);
-        Task<IEnumerable<Producto>> GetStockBajoAsync();
-        Task<IEnumerable<Producto>> GetActivosAsync();
         Task<bool> CodigoExisteAsync(string codigo);
 
-        // Lecturas con categoría y marca cargadas para mostrarlas en las vistas.
-        Task<IEnumerable<Producto>> GetAllConDetalleAsync();
         Task<PagedResult<Producto>> GetPageConDetalleAsync(
             string? termino, string filtro, int pagina, int tamanoPagina);
         Task<Producto?> GetByIdConDetalleAsync(int id);

@@ -3,6 +3,8 @@ using SGAT.Application.DTOs.Paginacion;
 using SGAT.Application.Interfaces.Repositories;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace SGAT.Application.Services
 {
@@ -10,27 +12,19 @@ namespace SGAT.Application.Services
     {
         private readonly ICategoriaProductoRepository _categoriaRepo;
 
+        private static readonly Regex TextoValido =
+            new(@"^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s\-.,()/&'+]+$",
+                RegexOptions.Compiled);
+
         public CategoriaProductoService(ICategoriaProductoRepository categoriaRepo)
         {
             _categoriaRepo = categoriaRepo;
-        }
-
-        public async Task<IEnumerable<CategoriaProductoDto>> GetTodasAsync()
-        {
-            var categorias = await _categoriaRepo.GetAllOrdenadasAsync();
-            return categorias.Select(MapToDto);
         }
 
         public async Task<CategoriaProductoDto?> GetByIdAsync(int id)
         {
             var categoria = await _categoriaRepo.GetByIdAsync(id);
             return categoria is null ? null : MapToDto(categoria);
-        }
-
-        public async Task<IEnumerable<CategoriaProductoDto>> BuscarAsync(string termino)
-        {
-            var categorias = await _categoriaRepo.BuscarAsync(termino);
-            return categorias.Select(MapToDto);
         }
 
         public async Task<PagedResult<CategoriaProductoDto>> GetPageAsync(
@@ -40,12 +34,16 @@ namespace SGAT.Application.Services
             return new PagedResult<CategoriaProductoDto>
             {
                 Items = result.Items.Select(MapToDto).ToList(),
-                TotalCount = result.TotalCount
+                TotalCount = result.TotalCount,
+                ActiveCount = result.ActiveCount,
+                InactiveCount = result.InactiveCount
             };
         }
 
         public async Task<CategoriaProductoDto> CrearAsync(CategoriaProductoDto dto)
         {
+            ArgumentNullException.ThrowIfNull(dto);
+
             var nombre = NormalizarNombre(dto.Nombre);
             var descripcion = NormalizarDescripcion(dto.Descripcion);
 
@@ -60,12 +58,23 @@ namespace SGAT.Application.Services
             };
 
             await _categoriaRepo.AddAsync(categoria);
-            await _categoriaRepo.SaveChangesAsync();
+            try
+            {
+                await _categoriaRepo.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex) when (DatabaseErrorHelper.IsUniqueConstraintViolation(ex))
+            {
+                throw new InvalidOperationException(
+                    $"Ya existe una categoría con el nombre {nombre}.");
+            }
+
             return MapToDto(categoria);
         }
 
         public async Task<CategoriaProductoDto> ActualizarAsync(int id, CategoriaProductoDto dto)
         {
+            ArgumentNullException.ThrowIfNull(dto);
+
             var nombre = NormalizarNombre(dto.Nombre);
             var descripcion = NormalizarDescripcion(dto.Descripcion);
 
@@ -80,7 +89,16 @@ namespace SGAT.Application.Services
             categoria.Activo = dto.Activo;
 
             _categoriaRepo.Update(categoria);
-            await _categoriaRepo.SaveChangesAsync();
+            try
+            {
+                await _categoriaRepo.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex) when (DatabaseErrorHelper.IsUniqueConstraintViolation(ex))
+            {
+                throw new InvalidOperationException(
+                    $"Ya existe una categoría con el nombre {nombre}.");
+            }
+
             return MapToDto(categoria);
         }
 
@@ -99,10 +117,14 @@ namespace SGAT.Application.Services
             if (string.IsNullOrWhiteSpace(nombre))
                 throw new ArgumentException("El nombre de la categoría es obligatorio.");
 
-            var limpio = nombre.Trim();
+            var limpio = TextNormalization.CollapseWhitespace(nombre);
 
             if (limpio.Length > 100)
                 throw new ArgumentException("El nombre de la categoría no puede superar los 100 caracteres.");
+
+            if (!TextoValido.IsMatch(limpio))
+                throw new ArgumentException(
+                    "El nombre de la categoría contiene caracteres no permitidos.");
 
             return limpio;
         }
@@ -112,10 +134,13 @@ namespace SGAT.Application.Services
             if (string.IsNullOrWhiteSpace(descripcion))
                 return null;
 
-            var limpia = descripcion.Trim();
+            var limpia = TextNormalization.CollapseWhitespace(descripcion);
 
             if (limpia.Length > 500)
                 throw new ArgumentException("La descripción no puede superar los 500 caracteres.");
+
+            if (!TextoValido.IsMatch(limpia))
+                throw new ArgumentException("La descripción contiene caracteres no permitidos.");
 
             return limpia;
         }

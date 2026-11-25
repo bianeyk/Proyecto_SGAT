@@ -19,8 +19,8 @@ namespace SGAT.Web.ViewModels.CategoriaProducto
         public bool HayPaginaSiguiente => PaginaActual < TotalPaginas;
 
         public int Total => TotalRegistros;
-        public int TotalActivas => Categorias.Count(c => c.Activo);
-        public int TotalInactivas => Categorias.Count(c => !c.Activo);
+        public int TotalActivas { get; set; }
+        public int TotalInactivas { get; set; }
 
         public bool HayBusqueda => !string.IsNullOrWhiteSpace(Termino);
     }
