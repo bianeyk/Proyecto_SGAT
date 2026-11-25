@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace SGAT.Application.DTOs.Tecnico

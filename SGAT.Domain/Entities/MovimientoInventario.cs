@@ -13,9 +13,9 @@ namespace SGAT.Domain.Entities
         public int? IdProveedor { get; set; }
 
         public TipoMovimientoEnum Tipo { get; set; }
-        public decimal Cantidad { get; set; }
-        public decimal? StockAnterior { get; set; }
-        public decimal? StockNuevo { get; set; }
+        public int Cantidad { get; set; }
+        public int? StockAnterior { get; set; }
+        public int? StockNuevo { get; set; }
         public string? Observacion { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;

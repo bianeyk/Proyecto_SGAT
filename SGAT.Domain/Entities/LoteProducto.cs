@@ -13,8 +13,8 @@ namespace SGAT.Domain.Entities
 
         public string NumeroLote { get; set; } = string.Empty;
         public string? Serial { get; set; }
-        public decimal CantidadInicial { get; set; }
-        public decimal CantidadDisponible { get; set; }
+        public int CantidadInicial { get; set; }
+        public int CantidadDisponible { get; set; }
         public decimal CostoUnitario { get; set; }
         public DateTime FechaIngreso { get; set; } = DateTime.Now;
         public int GarantiaProveedorDias { get; set; } = 0;

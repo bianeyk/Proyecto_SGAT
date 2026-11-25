@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SGAT.Web.Controllers
 {
-    [Authorize(Roles = "Tecnico,Administrador,Gerente")]
+    [Authorize(Roles = "Gerente,Tecnico")]
     [ApiController]
     [Route("api/[controller]")]
     public class TecnicoController : Controller

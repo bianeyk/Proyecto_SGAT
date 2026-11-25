@@ -19,11 +19,11 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.Property(p => p.Descripcion).HasColumnType("varchar(max)");
             builder.Property(p => p.Condicion).HasConversion<string>().HasMaxLength(20).IsRequired();
 
-            builder.Property(p => p.PrecioVenta).HasColumnType("decimal(10,2)");
-            builder.Property(p => p.PrecioDescuento).HasColumnType("decimal(10,2)");
-            builder.Property(p => p.StockActual).HasColumnType("decimal(10,2)").HasDefaultValue(0);
-            builder.Property(p => p.StockMinimo).HasColumnType("decimal(10,2)").HasDefaultValue(0);
-            builder.Property(p => p.StockReservado).HasColumnType("decimal(10,2)").HasDefaultValue(0);
+            builder.Property(p => p.PrecioVenta).HasColumnType("decimal(18,2)");
+            builder.Property(p => p.PrecioDescuento).HasColumnType("decimal(18,2)");
+            builder.Property(p => p.StockActual).HasColumnType("int").HasDefaultValue(0);
+            builder.Property(p => p.StockMinimo).HasColumnType("int").HasDefaultValue(0);
+            builder.Property(p => p.StockReservado).HasColumnType("int").HasDefaultValue(0);
 
             builder.Property(p => p.Activo).HasDefaultValue(true);
             builder.Property(p => p.CreatedAt).HasDefaultValueSql("GETDATE()");
@@ -38,9 +38,17 @@ namespace SGAT.Infrastructure.Data.Configurations
                 .HasForeignKey(p => p.IdMarca)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            builder.ToTable(t => t.HasCheckConstraint(
-                "CK_Producto_Condicion",
-                "[Condicion] IN ('NUEVO','USADO','REMANUFACTURADO')"));
+            builder.ToTable(t =>
+            {
+                t.HasCheckConstraint("CK_Producto_PrecioVenta", "[PrecioVenta] >= 0");
+                t.HasCheckConstraint("CK_Producto_PrecioDescuento", "[PrecioDescuento] >= 0");
+                t.HasCheckConstraint("CK_Producto_StockActual", "[StockActual] >= 0");
+                t.HasCheckConstraint("CK_Producto_StockMinimo", "[StockMinimo] >= 0");
+                t.HasCheckConstraint("CK_Producto_StockReservado", "[StockReservado] >= 0");
+                t.HasCheckConstraint(
+                    "CK_Producto_Condicion",
+                    "[Condicion] IN ('NUEVO','USADO','REMANUFACTURADO')");
+            });
         }
     }
 }

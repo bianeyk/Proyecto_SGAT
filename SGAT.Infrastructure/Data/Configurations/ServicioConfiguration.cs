@@ -15,7 +15,7 @@ namespace SGAT.Infrastructure.Data.Configurations
 
             builder.Property(s => s.Nombre).HasMaxLength(100).IsRequired();
             builder.Property(s => s.DescripcionBase).HasMaxLength(255);
-            builder.Property(s => s.PrecioBase).HasColumnType("decimal(10,2)");
+            builder.Property(s => s.PrecioBase).HasColumnType("decimal(18,2)");
             builder.Property(s => s.Activo).HasDefaultValue(true);
         }
     }
