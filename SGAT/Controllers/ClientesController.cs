@@ -12,19 +12,33 @@ namespace SGAT.Web.Controllers
     {
         private readonly IClienteService _clienteService;
 
+        // Número máximo de registros por página. Ajustar si se necesita más.
+        private const int TamanoPagina = 25;
+
         public ClientesController(IClienteService clienteService)
         {
             _clienteService = clienteService;
         }
 
-        public async Task<IActionResult> Index(string? termino)
+        public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
+            // Forzar límites de paginación para evitar descargas masivas.
+            if (pagina < 1) pagina = 1;
+
             var clientes = string.IsNullOrWhiteSpace(termino)
                 ? await _clienteService.GetTodosAsync()
                 : await _clienteService.BuscarAsync(termino.Trim());
 
+            var total = clientes.Count();
+            var items = clientes
+                .Skip((pagina - 1) * TamanoPagina)
+                .Take(TamanoPagina)
+                .ToList();
+
             ViewData["Termino"] = termino;
-            return View(clientes);
+            ViewData["PaginaActual"] = pagina;
+            ViewData["TotalPaginas"] = (int)Math.Ceiling(total / (double)TamanoPagina);
+            return View(items);
         }
 
         public async Task<IActionResult> Details(int id)
@@ -55,11 +69,11 @@ namespace SGAT.Web.Controllers
                 var cliente = await _clienteService.CrearAsync(
                     new CrearClienteDto
                     {
-                        NumDocumento = vm.NumDocumento,
-                        Nombre = vm.Nombre,
-                        Telefono = vm.Telefono,
-                        Email = vm.Email,
-                        Direccion = vm.Direccion,
+                        NumDocumento = vm.NumDocumento.Trim(),
+                        Nombre = vm.Nombre.Trim(),
+                        Telefono = vm.Telefono.Trim(),
+                        Email = vm.Email?.Trim(),
+                        Direccion = vm.Direccion?.Trim(),
                         EsColaborador = vm.EsColaborador,
                         Activo = vm.Activo
                     },

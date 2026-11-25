@@ -287,6 +287,7 @@ namespace SGAT.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [EnableRateLimiting("ResetPasswordPolicy")]
         public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
         {
             // 1. Validar los datos recibidos.

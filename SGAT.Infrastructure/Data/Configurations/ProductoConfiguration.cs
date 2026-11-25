@@ -36,7 +36,6 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.HasOne(p => p.Marca)
                 .WithMany(m => m.Productos)
                 .HasForeignKey(p => p.IdMarca)
-
                 .OnDelete(DeleteBehavior.NoAction);
 
             builder.ToTable(t =>

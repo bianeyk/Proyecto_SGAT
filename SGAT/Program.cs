@@ -8,6 +8,7 @@ using SGAT.Application.DependencyInjection;
 using SGAT.Infrastructure.DependencyInjection;
 using SGAT.Web.Middleware;
 using SGAT.Infrastructure.Identity;
+using SGAT.Web.ModelBinding;
 using System.Threading.RateLimiting;
 
 
@@ -106,6 +107,21 @@ builder.Services.AddRateLimiter(options =>
             QueueLimit = 0,
             AutoReplenishment = true
         }));
+
+    // Limita el consumo de tokens de restablecimiento de contraseña.
+    // 5 intentos cada 10 minutos por IP.
+    options.AddPolicy("ResetPasswordPolicy", context =>
+    RateLimitPartition.GetFixedWindowLimiter(
+        partitionKey:
+            context.Connection.RemoteIpAddress?.ToString()
+            ?? "unknown",
+        factory: _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 5,
+            Window = TimeSpan.FromMinutes(10),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        }));
 });
 
 builder.Services.Configure<IdentityOptions>(options =>
@@ -158,6 +174,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews(options =>
 {
+    options.ModelBinderProviders.Insert(0, new StringTrimmingModelBinderProvider());
+
     // El runtime de .NET no incluye los mensajes del framework en español,
     // así que los definimos explícitamente (errores de binding, números, etc.).
     var mensajes = options.ModelBindingMessageProvider;
@@ -189,27 +207,46 @@ builder.Services.AddControllersWithViews(options =>
 });
 
 var app = builder.Build();
-//redirige las solicitudes HTTP hacia HTTPS
-if (!app.Environment.IsDevelopment())
-{
-    app.UseHsts();
-}
-//// Configure the HTTP request pipeline.
-app.UseHttpsRedirection();
 
-//
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios
+    // El valor HSTS por defecto es de 30 días.
     app.UseHsts();
 }
 
-// Redirección a HTTPS también en desarrollo. El perfil "https" de
-// launchSettings.json expone https://localhost:7137 y http://localhost:5224.
-// Para que el navegador no marque el sitio como inseguro, hay que confiar el
-// certificado de desarrollo en el almacén del sistema (ver README de desarrollo).
 app.UseHttpsRedirection();
+
+// Cabeceras de seguridad HTTP
+app.Use(async (context, next) =>
+{
+    var headers = context.Response.Headers;
+
+    // Evita que el navegador adivine el tipo MIME (protege contra Content-Type sniffing).
+    headers["X-Content-Type-Options"] = "nosniff";
+
+    // Impide que la aplicación sea embebida en un iframe de otro origen (clickjacking).
+    headers["X-Frame-Options"] = "SAMEORIGIN";
+
+    // Restringe la información del Referer al mismo origen.
+    headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
+
+    // Deshabilita características del navegador que no se usan.
+    headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()";
+
+    // Content Security Policy básica: solo recursos del propio origen + Bootstrap/jQuery CDN.
+    // Ajusta 'unsafe-inline' para scripts para migrar a nonces en el futuro.
+    headers["Content-Security-Policy"] =
+        "default-src 'self'; " +
+        "script-src 'self' 'unsafe-inline'; " +
+        "style-src 'self' 'unsafe-inline'; " +
+        "img-src 'self' data:; " +
+        "font-src 'self'; " +
+        "frame-ancestors 'none';";
+
+    await next();
+});
+
 app.UseStaticFiles();
 app.UseRouting();
 app.UseRateLimiter();
