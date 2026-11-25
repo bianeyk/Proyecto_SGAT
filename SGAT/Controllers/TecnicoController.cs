@@ -5,15 +5,10 @@ using SGAT.Application.Interfaces.Services;
 using SGAT.Domain.Enums;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 
 namespace SGAT.Web.Controllers
 {
-<<<<<<< HEAD
-    [Authorize(Roles = "Gerente,Tecnico")]
-=======
     [Authorize(Roles = "Tecnico,Administrador,Gerente")]
->>>>>>> a40105f60fb64178107b1261eef45bc293208340
     [ApiController]
     [Route("api/[controller]")]
     public class TecnicoController : Controller
@@ -64,10 +59,21 @@ namespace SGAT.Web.Controllers
         /// <summary>
         /// 1. GET api/tecnico/ordenes
         /// Lista las órdenes asignadas o pendientes de revisión con filtros opcionales por estado o técnico.
+        /// Los técnicos solo ven sus propias órdenes. Administradores y Gerentes pueden filtrar por cualquier técnico.
         /// </summary>
         [HttpGet("ordenes")]
         public async Task<IActionResult> ObtenerOrdenes([FromQuery] EstadoOrden? estado, [FromQuery] string? tecnicoId)
         {
+            // Un técnico no puede consultar órdenes de otro técnico.
+            var esTecnico = User.IsInRole("Tecnico") &&
+                            !User.IsInRole("Administrador") &&
+                            !User.IsInRole("Gerente");
+
+            if (esTecnico)
+            {
+                tecnicoId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            }
+
             var ordenes = await _tecnicoService.ObtenerOrdenesAsync(estado, tecnicoId);
             return Ok(ordenes);
         }
@@ -106,9 +112,24 @@ namespace SGAT.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (string.IsNullOrWhiteSpace(dto.TecnicoId))
+            // Los técnicos solo pueden asignarse a sí mismos.
+            // Administradores y Gerentes pueden especificar cualquier técnico.
+            var esTecnico = User.IsInRole("Tecnico") &&
+                            !User.IsInRole("Administrador") &&
+                            !User.IsInRole("Gerente");
+
+            var tecnicoIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier)
+                                 ?? string.Empty;
+
+            if (esTecnico)
             {
-                dto.TecnicoId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
+                // Ignorar cualquier TecnicoId enviado y forzar el del token.
+                dto.TecnicoId = tecnicoIdClaim;
+            }
+            else if (string.IsNullOrWhiteSpace(dto.TecnicoId))
+            {
+                // Administrador/Gerente: si no especificaron técnico, usar el suyo propio.
+                dto.TecnicoId = tecnicoIdClaim;
             }
 
             var exito = await _tecnicoService.IniciarDiagnosticoAsync(dto);

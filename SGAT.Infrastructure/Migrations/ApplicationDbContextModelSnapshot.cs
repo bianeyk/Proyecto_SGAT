@@ -254,8 +254,9 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasPrecision(0)
+                        .HasColumnType("datetime2(0)")
+                        .HasDefaultValueSql("CAST(SYSDATETIMEOFFSET() AT TIME ZONE 'SA Pacific Standard Time' AS DATETIME2(0))");
 
                     b.Property<string>("IdUsuario")
                         .IsRequired()
@@ -399,8 +400,9 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasPrecision(0)
+                        .HasColumnType("datetime2(0)")
+                        .HasDefaultValueSql("CAST(SYSDATETIMEOFFSET() AT TIME ZONE 'SA Pacific Standard Time' AS DATETIME2(0))");
 
                     b.Property<string>("Direccion")
                         .HasMaxLength(255)
@@ -427,8 +429,8 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<string>("NumDoc")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("Telefono")
                         .IsRequired()
@@ -437,8 +439,9 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasPrecision(0)
+                        .HasColumnType("datetime2(0)")
+                        .HasDefaultValueSql("CAST(SYSDATETIMEOFFSET() AT TIME ZONE 'SA Pacific Standard Time' AS DATETIME2(0))");
 
                     b.HasKey("IdCliente");
 
@@ -480,7 +483,7 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<decimal>("Total")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasDefaultValue(0m);
 
                     b.HasKey("IdCompra");
@@ -500,11 +503,11 @@ namespace SGAT.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCompraDetalle"));
 
-                    b.Property<decimal>("Cantidad")
-                        .HasColumnType("decimal(10,2)");
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("CostoUnitario")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("IdCompra")
                         .HasColumnType("int");
@@ -514,7 +517,7 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.Property<decimal>("Subtotal")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(10,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasComputedColumnSql("[Cantidad] * [CostoUnitario]", true);
 
                     b.HasKey("IdCompraDetalle");

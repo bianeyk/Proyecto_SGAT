@@ -16,6 +16,12 @@ namespace SGAT.Web.ViewModels.Producto
         /// </summary>
         public string Filtro { get; set; } = "todos";
 
+        // Paginación
+        public int PaginaActual { get; set; } = 1;
+        public int TotalPaginas { get; set; } = 1;
+        public bool HayPaginaAnterior => PaginaActual > 1;
+        public bool HayPaginaSiguiente => PaginaActual < TotalPaginas;
+
         public int Total => Productos.Count();
         public int TotalActivos => Productos.Count(p => p.Activo);
         public int TotalInactivos => Productos.Count(p => !p.Activo);

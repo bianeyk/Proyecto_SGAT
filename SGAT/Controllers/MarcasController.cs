@@ -11,6 +11,8 @@ namespace SGAT.Web.Controllers
     {
         private readonly IMarcaService _marcaService;
 
+        private const int TamanoPagina = 25;
+
         public MarcasController(IMarcaService marcaService)
         {
             _marcaService = marcaService;
@@ -18,16 +20,26 @@ namespace SGAT.Web.Controllers
 
         // GET: /Marcas
         [HttpGet]
-        public async Task<IActionResult> Index(string? termino)
+        public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
+            if (pagina < 1) pagina = 1;
+
             var marcas = string.IsNullOrWhiteSpace(termino)
                 ? await _marcaService.GetTodasAsync()
                 : await _marcaService.BuscarAsync(termino.Trim());
 
+            var listaOrdenada = marcas.OrderBy(m => m.Nombre).ToList();
+            var total = listaOrdenada.Count;
+
             var vm = new MarcaIndexViewModel
             {
-                Marcas = marcas.OrderBy(m => m.Nombre).ToList(),
-                Termino = termino
+                Marcas = listaOrdenada
+                    .Skip((pagina - 1) * TamanoPagina)
+                    .Take(TamanoPagina)
+                    .ToList(),
+                Termino = termino,
+                PaginaActual = pagina,
+                TotalPaginas = (int)Math.Ceiling(total / (double)TamanoPagina)
             };
 
             return View(vm);

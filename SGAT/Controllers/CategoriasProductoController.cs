@@ -11,6 +11,8 @@ namespace SGAT.Web.Controllers
     {
         private readonly ICategoriaProductoService _categoriaService;
 
+        private const int TamanoPagina = 25;
+
         public CategoriasProductoController(ICategoriaProductoService categoriaService)
         {
             _categoriaService = categoriaService;
@@ -18,16 +20,26 @@ namespace SGAT.Web.Controllers
 
         // GET: /CategoriasProducto
         [HttpGet]
-        public async Task<IActionResult> Index(string? termino)
+        public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
+            if (pagina < 1) pagina = 1;
+
             var categorias = string.IsNullOrWhiteSpace(termino)
                 ? await _categoriaService.GetTodasAsync()
                 : await _categoriaService.BuscarAsync(termino.Trim());
 
+            var listaOrdenada = categorias.OrderBy(c => c.Nombre).ToList();
+            var total = listaOrdenada.Count;
+
             var vm = new CategoriaProductoIndexViewModel
             {
-                Categorias = categorias.OrderBy(c => c.Nombre).ToList(),
-                Termino = termino
+                Categorias = listaOrdenada
+                    .Skip((pagina - 1) * TamanoPagina)
+                    .Take(TamanoPagina)
+                    .ToList(),
+                Termino = termino,
+                PaginaActual = pagina,
+                TotalPaginas = (int)Math.Ceiling(total / (double)TamanoPagina)
             };
 
             return View(vm);
