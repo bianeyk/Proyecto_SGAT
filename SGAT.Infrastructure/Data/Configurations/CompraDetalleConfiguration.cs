@@ -30,6 +30,12 @@ namespace SGAT.Infrastructure.Data.Configurations
                 .WithMany(p => p.CompraDetalles)
                 .HasForeignKey(d => d.IdProducto)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            builder.ToTable(t =>
+            {
+                t.HasCheckConstraint("CK_CompraDetalle_Cantidad", "[Cantidad] > 0");
+                t.HasCheckConstraint("CK_CompraDetalle_CostoUnitario", "[CostoUnitario] >= 0");
+            });
         }
     }
 }

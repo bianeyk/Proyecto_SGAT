@@ -15,9 +15,9 @@ namespace SGAT.Infrastructure.Data.Configurations
 
             builder.Property(l => l.NumeroLote).HasMaxLength(100).IsRequired();
             builder.Property(l => l.Serial).HasMaxLength(150);
-            builder.Property(l => l.CantidadInicial).HasColumnType("decimal(10,2)");
-            builder.Property(l => l.CantidadDisponible).HasColumnType("decimal(10,2)");
-            builder.Property(l => l.CostoUnitario).HasColumnType("decimal(10,2)");
+            builder.Property(l => l.CantidadInicial).HasColumnType("int");
+            builder.Property(l => l.CantidadDisponible).HasColumnType("int");
+            builder.Property(l => l.CostoUnitario).HasColumnType("decimal(18,2)");
             builder.Property(l => l.FechaIngreso).HasDefaultValueSql("GETDATE()");
             builder.Property(l => l.GarantiaProveedorDias).HasDefaultValue(0);
             builder.Property(l => l.Observaciones).HasMaxLength(255);
@@ -35,6 +35,14 @@ namespace SGAT.Infrastructure.Data.Configurations
                 .WithMany(p => p.Lotes)
                 .HasForeignKey(l => l.IdProducto)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            builder.ToTable(t =>
+            {
+                t.HasCheckConstraint("CK_LoteProducto_CantidadInicial", "[CantidadInicial] > 0");
+                t.HasCheckConstraint("CK_LoteProducto_CantidadDisponible", "[CantidadDisponible] >= 0");
+                t.HasCheckConstraint("CK_LoteProducto_CostoUnitario", "[CostoUnitario] >= 0");
+                t.HasCheckConstraint("CK_LoteProducto_GarantiaProveedorDias", "[GarantiaProveedorDias] >= 0");
+            });
         }
     }
 }

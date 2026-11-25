@@ -14,9 +14,9 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.HasKey(m => m.IdMovimientoInventario);
 
             builder.Property(m => m.Tipo).HasConversion<string>().HasMaxLength(20).IsRequired();
-            builder.Property(m => m.Cantidad).HasColumnType("decimal(10,2)");
-            builder.Property(m => m.StockAnterior).HasColumnType("decimal(10,2)");
-            builder.Property(m => m.StockNuevo).HasColumnType("decimal(10,2)");
+            builder.Property(m => m.Cantidad).HasColumnType("int");
+            builder.Property(m => m.StockAnterior).HasColumnType("int");
+            builder.Property(m => m.StockNuevo).HasColumnType("int");
             builder.Property(m => m.Observacion).HasMaxLength(255);
             builder.Property(m => m.CreatedAt).HasDefaultValueSql("GETDATE()");
 
@@ -30,9 +30,15 @@ namespace SGAT.Infrastructure.Data.Configurations
                 .HasForeignKey(m => m.IdProveedor)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            builder.ToTable(t => t.HasCheckConstraint(
-                "CK_MovimientoInventario_Tipo",
-                "[Tipo] IN ('COMPRA','VENTA','RESERVA','LIBERACION_RESERVA')"));
+            builder.ToTable(t =>
+            {
+                t.HasCheckConstraint("CK_MovimientoInventario_Cantidad", "[Cantidad] > 0");
+                t.HasCheckConstraint("CK_MovimientoInventario_StockAnterior", "[StockAnterior] >= 0");
+                t.HasCheckConstraint("CK_MovimientoInventario_StockNuevo", "[StockNuevo] >= 0");
+                t.HasCheckConstraint(
+                    "CK_MovimientoInventario_Tipo",
+                    "[Tipo] IN ('COMPRA','VENTA','RESERVA','LIBERACION_RESERVA')");
+            });
         }
     }
 }

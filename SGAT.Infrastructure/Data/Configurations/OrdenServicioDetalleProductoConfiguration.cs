@@ -11,15 +11,15 @@ namespace SGAT.Infrastructure.Data.Configurations
         {
             builder.HasKey(d => d.IdOrdenServicioDetalleProducto);
 
-            builder.Property(d => d.Cantidad).HasColumnType("decimal(10,2)");
-            builder.Property(d => d.PrecioUnitario).HasColumnType("decimal(10,2)");
+            builder.Property(d => d.Cantidad).HasColumnType("int");
+            builder.Property(d => d.PrecioUnitario).HasColumnType("decimal(18,2)");
             builder.Property(d => d.Estado)
                 .HasConversion<string>()
                 .HasMaxLength(20)
                 .HasDefaultValue(EstadoOrdenServicioProductoEnum.RESERVADO);
 
             builder.Property(d => d.Subtotal)
-                .HasColumnType("decimal(10,2)")
+                .HasColumnType("decimal(18,2)")
                 .HasComputedColumnSql("[Cantidad] * [PrecioUnitario]", stored: true)
                 .ValueGeneratedOnAddOrUpdate();
 

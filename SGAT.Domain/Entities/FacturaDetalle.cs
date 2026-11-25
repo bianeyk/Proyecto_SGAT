@@ -15,7 +15,7 @@ namespace SGAT.Domain.Entities
 
         public string Tipo { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
-        public decimal Cantidad { get; set; } = 1;
+        public int Cantidad { get; set; } = 1;
         public decimal PrecioUnitario { get; set; }
         public decimal Subtotal { get; set; } // columna calculada
 

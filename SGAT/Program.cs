@@ -43,7 +43,7 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-MX");
 
 // 1. REGISTRAR CAPA DE INFRAESTRUCTURA / PERSISTENCIA (Repositorios y DB)
-builder.Services.AddInfrastructure(builder.Configuration); // El nombre puede variar según tu proyecto
+builder.Services.AddInfrastructure(builder.Configuration); 
 
 // 2. REGISTRAR CAPA DE APLICACIÓN (Tus servicios)
 builder.Services.AddApplication();
@@ -61,16 +61,17 @@ builder.Services.Configure<DataProtectionTokenProviderOptions>(
     {
         options.TokenLifespan = TimeSpan.FromHours(1);
     });
-
+//controla la frecuencia de las solicitudes HTTP
 builder.Services.AddRateLimiter(options =>
 {
     options.RejectionStatusCode =
         StatusCodes.Status429TooManyRequests;
+    //funcion personalizada para manejar solicitudes rechazadas por límite de velocidad
     options.OnRejected = async (context, cancellationToken) =>
     {
         context.HttpContext.Response.StatusCode =
             StatusCodes.Status429TooManyRequests;
-
+        //texto plano para la respuesta
         context.HttpContext.Response.ContentType =
             "text/plain; charset=utf-8";
 
@@ -78,6 +79,7 @@ builder.Services.AddRateLimiter(options =>
             "Demasiados intentos. Espera unos minutos antes de volver a intentarlo.",
             cancellationToken);
     };
+    
     options.AddPolicy("LoginPolicy", context =>
         RateLimitPartition.GetFixedWindowLimiter(
             partitionKey:
@@ -91,6 +93,7 @@ builder.Services.AddRateLimiter(options =>
                 QueueLimit = 0,
                 AutoReplenishment = true
             }));
+    //regla mas estricta para el restablecimiento de contraseña, solo 3 intentos cada 10 minutos
     options.AddPolicy("ForgotPasswordPolicy", context =>
     RateLimitPartition.GetFixedWindowLimiter(
         partitionKey:
@@ -133,11 +136,11 @@ builder.Services.Configure<SecurityStampValidatorOptions>(options =>
 //configurar la ruta de login. opciones de seguridad y duración de la cookie.
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    // Rutas de autenticación
+    // Ruta a la que se redirige a un usuario no autenticado
     options.LoginPath = "/Account/Login";
     options.AccessDeniedPath = "/Account/AccessDenied";
 
-    // Seguridad de la cookie
+    // Seguridad de la cookie xss
     //Impide que JavaScript acceda directamente a la cookie.
     options.Cookie.HttpOnly = true;
     //Solo envía la cookie mediante HTTPS.
@@ -191,10 +194,10 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseHsts();
 }
-
+//// Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
 
-// Configure the HTTP request pipeline.
+//
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

@@ -9,11 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SGAT.Web.Controllers
 {
-<<<<<<< HEAD
     [Authorize(Roles = "Gerente,Tecnico")]
-=======
-    [Authorize(Roles = "Tecnico,Administrador,Gerente")]
->>>>>>> a40105f60fb64178107b1261eef45bc293208340
+
     [ApiController]
     [Route("api/[controller]")]
     public class TecnicoController : Controller
