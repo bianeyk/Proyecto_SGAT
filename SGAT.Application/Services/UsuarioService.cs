@@ -1,11 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SGAT.Application.DTOs.Usuario;
 using SGAT.Application.Interfaces.Services;
-using SGAT.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 using SGAT.Application.Interfaces.Transactions;
+using SGAT.Application.Services;
+using SGAT.Domain.Entities;
 using System.Data;
+using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
+using SGAT.Application.DTOs.Paginacion;
+using SGAT.Application.Interfaces.Repositories;
 
 //Inyección de Dependencias
 public class UsuarioService : IUsuarioService
@@ -17,50 +22,88 @@ public class UsuarioService : IUsuarioService
     private readonly ILogger<UsuarioService> _logger;//registra eventos y errores
     private readonly ITransactionManager _transactionManager;
     private readonly IAppLockManager _appLockManager;
+    private readonly IUsuarioRepository _usuarioRepository;
 
     public UsuarioService(
         UserManager<ApplicationUser> userManager,
         RoleManager<ApplicationRole> roleManager,
         ILogger<UsuarioService> logger,
         ITransactionManager transactionManager,
-        IAppLockManager appLockManager)
+        IAppLockManager appLockManager,
+        IUsuarioRepository usuarioRepository)
     {
         _userManager = userManager;
         _roleManager = roleManager;
         _logger = logger;
         _transactionManager = transactionManager;
         _appLockManager = appLockManager;
+        _usuarioRepository = usuarioRepository;
     }
+    //Definicion de constantes
     private const string RecursoBloqueoAdministradores = "SGAT_GESTION_ADMINISTRADORES";
+    private const int LongitudMaximaNombre = 100;
+    private const int LongitudMaximaEmail = 256;
+    private const int LongitudMaximaRol = 50;
+
+    private static readonly Regex NombreValido =new(@"^[\p{L}\p{M} '’\-]+$",
+        RegexOptions.Compiled,
+        TimeSpan.FromMilliseconds(100));
+    private static readonly Regex TerminoBusquedaValido =new(@"^[\p{L}\p{M}0-9 @._%+'’\-]+$",
+        RegexOptions.Compiled,
+        TimeSpan.FromMilliseconds(100)
+    );
+
     //METODOS
-    public async Task<IReadOnlyList<UsuarioListDto>> ObtenerTodosAsync()
+
+    public async Task<PagedResult<UsuarioListDto>>ObtenerPaginadosAsync(UsuarioFiltroDto filtro)
     {
-        //Obtendremos todos los usuarios
-        var usuarios = await _userManager.Users.ToListAsync();
-        //Creamos la lista que devolveremos
-        var lista = new List<UsuarioListDto>();
-        //Recorremos cada usuario
-        foreach (var usuario in usuarios)
+        ArgumentNullException.ThrowIfNull(filtro);
+
+        // 1. Normalizar el término de búsqueda.
+        var termino = TextNormalization.CollapseOptional(
+            filtro.Termino);
+
+        // 2. Validar el término de búsqueda.
+        if (termino is not null)
         {
-            //Obtener los roles
-            var roles = await _userManager.GetRolesAsync(usuario);
-            //Crear el DTO manualmente
-            var dto = new UsuarioListDto
+            if (termino.Length < 2 || termino.Length > 100)
             {
-                Id = usuario.Id,
-                NombreCompleto = usuario.NombreCompleto,
-                Email = usuario.Email!,
-                Activo = usuario.Activo,
-                Roles = roles.ToList()
-            };
-            //Agregar el DTO
-            lista.Add(dto);
+                throw new ArgumentException(
+                    "La búsqueda debe contener entre 2 y 100 caracteres.");
+            }
+
+            if (!TerminoBusquedaValido.IsMatch(termino))
+            {
+                throw new ArgumentException(
+                    "La búsqueda contiene caracteres no permitidos.");
+            }
         }
 
-        return lista;
+        // 3. Normalizar el identificador del rol.
+        var rolId = TextNormalization.TrimOptional(filtro.Rol);
+
+        if (rolId is not null && rolId.Length > 450)
+        {
+            throw new ArgumentException(
+                "El identificador del rol no es válido.");
+        }
+
+        // 4. Construir los filtros validados.
+        var filtroValidado = new UsuarioFiltroDto
+        {
+            Termino = termino,
+            Activo = filtro.Activo,
+            Rol = rolId,
+
+            Pagina = PaginacionHelper.NormalizarPagina(filtro.Pagina),
+
+            TamanoPagina = PaginacionHelper.NormalizarTamano(filtro.TamanoPagina)
+        };
+
+        // 5. Consultar el repositorio.
+        return await _usuarioRepository
+            .ObtenerPaginadosAsync(filtroValidado);
     }
-
-
     public async Task<UsuarioDetalleDto?> ObtenerPorIdAsync(string id)
     {
         // 1. Validar el identificador.
@@ -125,9 +168,38 @@ public class UsuarioService : IUsuarioService
         }
 
         // 3. Normalizar los datos.
-        var nombreCompleto = dto.NombreCompleto.Trim();
+        var nombreCompleto = TextNormalization
+            .CollapseWhitespace(dto.NombreCompleto);
+
         var email = dto.Email.Trim().ToLowerInvariant();
-        var nombreRol = dto.Rol.Trim();
+
+        var nombreRol = TextNormalization
+            .CollapseWhitespace(dto.Rol);
+
+        // Validar los datos normalizados.
+        var resultadoNombre = ValidarNombreCompleto(nombreCompleto);
+
+        if (!resultadoNombre.Succeeded)
+        {
+            return resultadoNombre;
+        }
+
+        var resultadoEmail = ValidarEmail(email);
+
+        if (!resultadoEmail.Succeeded)
+        {
+            return resultadoEmail;
+        }
+
+        if (nombreRol.Length > LongitudMaximaRol)
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "RolInvalido",
+                    Description = "El rol seleccionado no es válido."
+                });
+        }
 
         // 4. Iniciar la transacción.
         await using var transaction =
@@ -231,14 +303,28 @@ public class UsuarioService : IUsuarioService
 
             return IdentityResult.Success;
         }
+        catch (DbUpdateException ex)
+        when (DatabaseErrorHelper.IsUniqueConstraintViolation(ex))
+        {
+            await transaction.RollbackAsync();
+
+            _logger.LogWarning(
+                "Conflicto de unicidad al crear un usuario.");
+
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "UsuarioDuplicado",
+                    Description = "No se pudo crear el usuario porque existe un conflicto con un registro existente."
+                });
+        }
         catch (Exception ex)
         {
             await transaction.RollbackAsync();
 
             _logger.LogError(
                 ex,
-                "Error al crear el usuario con correo {Email}.",
-                email);
+                "Error inesperado al crear el usuario.");
 
             throw;
         }
@@ -267,13 +353,26 @@ public class UsuarioService : IUsuarioService
                 });
         }
         // Validar que se haya ingresado un nombre completo
-        if (string.IsNullOrWhiteSpace(dto.NombreCompleto))
+        var nombreCompleto = TextNormalization
+        .CollapseOptional(dto.NombreCompleto) ?? string.Empty;
+
+        var resultadoNombre = ValidarNombreCompleto(nombreCompleto);
+
+        if (!resultadoNombre.Succeeded)
+        {
+            return resultadoNombre;
+        }
+        // Validar que se haya ingresado un rol
+        var nombreRol = TextNormalization.CollapseOptional(dto.Rol);
+
+        if (string.IsNullOrWhiteSpace(nombreRol) ||
+            nombreRol.Length > LongitudMaximaRol)
         {
             return IdentityResult.Failed(
                 new IdentityError
                 {
-                    Code = "NombreRequerido",
-                    Description = "El nombre completo es obligatorio."
+                    Code = "RolInvalido",
+                    Description = "Debe seleccionar un rol válido."
                 });
         }
         //inicio de transacción para proteger la operación de actualización de usuario y roles
@@ -297,21 +396,6 @@ public class UsuarioService : IUsuarioService
                     {
                         Code = "UsuarioNoExiste",
                         Description = "El usuario no fue encontrado."
-                    });
-            }
-
-            // 2. Validar el rol seleccionado
-            var nombreRol = dto.Rol?.Trim();
-
-            if (string.IsNullOrWhiteSpace(nombreRol))
-            {
-                //transacción iniciada, si ocurre un error se hace rollback
-                await transaction.RollbackAsync();
-                return IdentityResult.Failed(
-                    new IdentityError
-                    {
-                        Code = "RolRequerido",
-                        Description = "Debe seleccionar un rol."
                     });
             }
 
@@ -398,7 +482,7 @@ public class UsuarioService : IUsuarioService
 
 
             // 9. Actualizar datos del usuario
-            usuario.NombreCompleto = dto.NombreCompleto.Trim();
+            usuario.NombreCompleto = nombreCompleto;
             var cambioEstadoActivo = usuario.Activo != dto.Activo;
             usuario.Activo = dto.Activo;
 
@@ -767,6 +851,78 @@ public class UsuarioService : IUsuarioService
 
             throw;
         }
-    }
 
+
+    }
+    private static IdentityResult ValidarNombreCompleto(
+    string nombreCompleto)
+    {
+        if (string.IsNullOrWhiteSpace(nombreCompleto))
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "NombreRequerido",
+                    Description = "El nombre completo es obligatorio."
+                });
+        }
+
+        if (nombreCompleto.Length > LongitudMaximaNombre)
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "NombreMuyLargo",
+                    Description = "El nombre no puede superar los 100 caracteres."
+                });
+        }
+
+        if (!NombreValido.IsMatch(nombreCompleto) ||
+            !nombreCompleto.Any(char.IsLetter))
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "NombreInvalido",
+                    Description = "El nombre contiene caracteres no permitidos."
+                });
+        }
+
+        return IdentityResult.Success;
+    }
+    private static IdentityResult ValidarEmail(string email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "EmailRequerido",
+                    Description = "El correo electrónico es obligatorio."
+                });
+        }
+
+        if (email.Length > LongitudMaximaEmail)
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "EmailMuyLargo",
+                    Description = "El correo no puede superar los 256 caracteres."
+                });
+        }
+
+        if (email.Any(char.IsWhiteSpace) ||
+            !new EmailAddressAttribute().IsValid(email))
+        {
+            return IdentityResult.Failed(
+                new IdentityError
+                {
+                    Code = "EmailInvalido",
+                    Description = "El formato del correo electrónico no es válido."
+                });
+        }
+
+        return IdentityResult.Success;
+    }
 }

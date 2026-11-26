@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using SGAT.Application.DTOs.Usuario;
-
+using SGAT.Application.DTOs.Paginacion;
 
 namespace SGAT.Application.Interfaces.Services
 {
     public interface IUsuarioService
     {
-        Task<IReadOnlyList<UsuarioListDto>> ObtenerTodosAsync();
-
+        Task<PagedResult<UsuarioListDto>> ObtenerPaginadosAsync(UsuarioFiltroDto filtro);
         Task<UsuarioDetalleDto?> ObtenerPorIdAsync(string id);
 
         Task<IdentityResult> CrearAsync(UsuarioCreateDto dto);
@@ -17,5 +16,6 @@ namespace SGAT.Application.Interfaces.Services
         Task<IdentityResult> ActivarAsync(string id);
 
         Task<IdentityResult> InactivarAsync(string id);
+
     }
 }

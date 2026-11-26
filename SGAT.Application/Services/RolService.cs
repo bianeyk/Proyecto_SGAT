@@ -6,6 +6,7 @@ using SGAT.Application.DTOs.Rol;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Application.Interfaces.Transactions;
 using SGAT.Domain.Entities;
+using System.Text.RegularExpressions;
 
 namespace SGAT.Application.Services
 {
@@ -17,9 +18,14 @@ namespace SGAT.Application.Services
         private readonly ILogger<RolService> _logger;
         private readonly UserManager<ApplicationUser> _userManager;
 
+        // Constantes y expresiones regulares
         private const string RecursoBloqueoAdministradores =
             "SGAT_GESTION_ADMINISTRADORES";
+        private static readonly Regex NombreRolValido =new(@"^[\p{L}\p{M}0-9 _\-]+$",
+        RegexOptions.Compiled,
+        TimeSpan.FromMilliseconds(100));
 
+        // Constructor
         public RolService(
             RoleManager<ApplicationRole> roleManager,
             ITransactionManager transactionManager,
@@ -65,7 +71,7 @@ namespace SGAT.Application.Services
             }
 
             // Limpiar espacios.
-            var nombre = dto.Nombre.Trim();
+            var nombre = TextNormalization.CollapseWhitespace(dto.Nombre);
 
             // Validar longitud.
             if (nombre.Length > 50)
@@ -78,6 +84,17 @@ namespace SGAT.Application.Services
                     });
             }
 
+            // Validar los caracteres permitidos.
+            if (!NombreRolValido.IsMatch(nombre) ||
+                !nombre.Any(char.IsLetter))
+            {
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "NombreRolInvalido",
+                        Description = "El nombre del rol contiene caracteres no permitidos."
+                    });
+            }
             // Proteger los nombres reservados.
             var rolesReservados = new[]
             {
@@ -146,6 +163,21 @@ namespace SGAT.Application.Services
                     nombre);
 
                 return IdentityResult.Success;
+            }
+            catch (DbUpdateException ex)
+            when (DatabaseErrorHelper.IsUniqueConstraintViolation(ex))
+            {
+                await transaction.RollbackAsync();
+
+                _logger.LogWarning(
+                    "Conflicto de unicidad al crear un rol.");
+
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolDuplicado",
+                        Description = "No se pudo crear el rol porque existe un conflicto con un registro existente."
+                    });
             }
             catch (Exception ex)
             {

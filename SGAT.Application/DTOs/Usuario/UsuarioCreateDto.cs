@@ -8,11 +8,11 @@ namespace SGAT.Application.DTOs.Usuario
     public class UsuarioCreateDto
     {
         [Required(ErrorMessage = "El nombre completo es obligatorio.")]
-        [RegularExpression(@"^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+([ '-][a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+)*$", ErrorMessage = "El nombre solo puede contener letras, espacios, guiones y apóstrofes.")]
+        [RegularExpression(@"^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ '’-]+$", ErrorMessage = "El nombre solo puede contener letras, espacios, guiones y apóstrofes.")]
         [StringLength(100, ErrorMessage = "El nombre completo no puede superar los 100 caracteres.")]
         public string NombreCompleto { get; set; } = string.Empty;
 
-        
+
         [Required(ErrorMessage = "El correo electrónico es obligatorio.")]
         [StringLength(256,ErrorMessage = "El correo electrónico no puede superar los 256 caracteres.")]
         [EmailAddress(ErrorMessage = "Debe ingresar un correo electrónico válido.")]

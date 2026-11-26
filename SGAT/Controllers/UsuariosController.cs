@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SGAT.Application.DTOs.Usuario;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Web.ViewModels.Usuario;
-
+using SGAT.Application.DTOs.Paginacion;
 
 namespace SGAT.Web.Controllers
 {
@@ -20,11 +20,53 @@ namespace SGAT.Web.Controllers
             _rolService = rolService;
         }
         //Index
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> Index(
+            [FromQuery] UsuarioFiltroDto filtro)
         {
-            var usuarios = await _usuarioService.ObtenerTodosAsync();
+            // 1. Validar el Model Binding.
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Los parámetros de búsqueda no son válidos.");
+            }
 
-            return View(usuarios);
+            // 2. Establecer límites de paginación.
+            filtro.Pagina = PaginacionHelper.NormalizarPagina(filtro.Pagina);
+
+            filtro.TamanoPagina = PaginacionHelper.NormalizarTamano(filtro.TamanoPagina);
+
+            // 3. Preparar el ViewModel.
+            var vm = new UsuarioIndexViewModel
+            {
+                Filtro = filtro,
+                RolesDisponibles = await _rolService.ObtenerTodosAsync()
+            };
+
+            try
+            {
+                // 4. Consultar los usuarios paginados.
+                vm.Resultado = await _usuarioService
+                    .ObtenerPaginadosAsync(filtro);
+
+                // 5. Corregir páginas fuera del rango disponible.
+                if (filtro.Pagina > vm.TotalPaginas)
+                {
+                    filtro.Pagina = vm.TotalPaginas;
+
+                    vm.Resultado = await _usuarioService
+                        .ObtenerPaginadosAsync(filtro);
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                // 6. Mostrar errores de búsqueda.
+                ModelState.AddModelError(string.Empty, ex.Message);
+
+                vm.Resultado = new PagedResult<UsuarioListDto>();
+            }
+
+            // 7. Enviar el ViewModel a la vista.
+            return View(vm);
         }
         //Deatils
         public async Task<IActionResult> Details(string id)

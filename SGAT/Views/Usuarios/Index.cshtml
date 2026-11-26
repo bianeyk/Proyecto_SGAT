@@ -1,9 +1,11 @@
-@model IReadOnlyList<SGAT.Application.DTOs.Usuario.UsuarioListDto>
+@model SGAT.Web.ViewModels.Usuario.UsuarioIndexViewModel
+
 @{
     ViewData["Title"] = "Usuarios";
-    var totalUsuarios = Model.Count;
-    var totalActivos = Model.Count(u => u.Activo);
-    var totalInactivos = totalUsuarios - totalActivos;
+
+    var totalUsuarios = Model.TotalUsuarios;
+    var totalActivos = Model.Resultado.ActiveCount;
+    var totalInactivos = Model.Resultado.InactiveCount;
 }
 
 <div class="container mt-4">
@@ -51,36 +53,118 @@
         
     }
 
+    <!-- Validaciones de búsqueda -->
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger mb-3">
+    </div>
+
     <!-- Barra de búsqueda y filtros -->
     <div class="card shadow-sm mb-3 border-0">
         <div class="card-body py-3">
-            <div class="row g-2 align-items-center">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
-                        <input type="text" id="buscarUsuario" class="form-control" placeholder="Buscar por nombre o correo...">
+
+            <form asp-action="Index" method="get">
+
+                <input type="hidden" name="Pagina" value="1" />
+
+                <div class="row g-2 align-items-center">
+
+                    <!-- Búsqueda -->
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white">
+                                <i class="bi bi-search"></i>
+                            </span>
+
+                            <input type="text"
+                                   name="Termino"
+                                   value="@Model.Filtro.Termino"
+                                   maxlength="100"
+                                   class="form-control"
+                                   placeholder="Buscar por nombre o correo..."
+                                   aria-label="Buscar usuario" />
+                        </div>
                     </div>
+
+                    <!-- Estado -->
+                    <div class="col-md-2">
+                        <select name="Activo"
+                                class="form-select"
+                                aria-label="Estado">
+
+                            <option value="">Todos los estados</option>
+
+                            <option value="true"
+                                    selected="@(Model.Filtro.Activo == true)">
+                                Activo
+                            </option>
+
+                            <option value="false"
+                                    selected="@(Model.Filtro.Activo == false)">
+                                Inactivo
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <!-- Roles -->
+                    <div class="col-md-2">
+                        <select name="Rol"
+                                class="form-select"
+                                aria-label="Rol">
+
+                            <option value="">Todos los roles</option>
+
+                            @foreach (var rol in Model.RolesDisponibles)
+                            {
+                                <option value="@rol.Id"
+                                        selected="@(Model.Filtro.Rol == rol.Id)">
+                                    @rol.Nombre
+                                </option>
+                            }
+
+                        </select>
+                    </div>
+
+                    <!-- Tamaño de página -->
+                    <div class="col-md-2">
+                        <select name="TamanoPagina"
+                                class="form-select"
+                                aria-label="Registros por página">
+
+                            @foreach (var cantidad in new[] { 10, 25, 50, 100 })
+                            {
+                                <option value="@cantidad"
+                                        selected="@(Model.Filtro.TamanoPagina == cantidad)">
+                                    @cantidad registros
+                                </option>
+                            }
+
+                        </select>
+                    </div>
+
+                    <!-- Acciones -->
+                    <div class="col-md-2 d-flex gap-2">
+
+                        <button type="submit"
+                                class="btn btn-primary"
+                                title="Buscar">
+                            <i class="bi bi-search"></i>
+                            Buscar
+                        </button>
+
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary"
+                           title="Limpiar filtros"
+                           aria-label="Limpiar filtros">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                        </a>
+
+                    </div>
+
                 </div>
-                <div class="col-md-3">
-                    <select id="filtroEstado" class="form-select">
-                        <option value="">Todos los estados</option>
-                        <option value="activo">Activo</option>
-                        <option value="inactivo">Inactivo</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <select id="filtroRol" class="form-select">
-                        <option value="">Todos los roles</option>
-                        @foreach (var rol in Model.SelectMany(u => u.Roles).Distinct().OrderBy(r => r))
-                        {
-                            <option value="@rol.ToLower()">@rol</option>
-                        }
-                    </select>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
-
     <!-- Tabla de Usuarios -->
     <div class="table-responsive shadow-sm rounded">
         <table class="table table-striped table-hover align-middle mb-0" id="tablaUsuarios">
@@ -94,26 +178,27 @@
                 </tr>
             </thead>
             <tbody>
-                @if (!Model.Any())
+                @if (!Model.Resultado.Items.Any())
                 {
                     <tr>
                         <td colspan="5" class="text-center text-muted py-5">
                             <i class="bi bi-people-fill display-6 d-block mb-2"></i>
-                            No se encontraron usuarios registrados.
+                            @if (ViewData.ModelState.IsValid)
+                            {
+                                <span>No se encontraron usuarios que coincidan con los filtros.</span>
+                            }
+                            else
+                            {
+                                <span>No se pudo realizar la búsqueda.</span>
+                            }
                         </td>
                     </tr>
                 }
                 else
                 {
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Resultado.Items)
                     {
-                        var estadoTexto = item.Activo ? "activo" : "inactivo";
-                        var rolesTexto = string.Join(",", item.Roles).ToLower();
-                        <tr class="fila-usuario"
-                            data-nombre="@item.NombreCompleto.ToLower()"
-                            data-email="@item.Email.ToLower()"
-                            data-estado="@estadoTexto"
-                            data-roles="@rolesTexto">
+                        <tr>
                             <td class="fw-semibold">
                                 <div class="d-flex align-items-center gap-2">
                                     <span class="avatar-inicial rounded-circle bg-secondary-subtle text-secondary d-inline-flex align-items-center justify-content-center">
@@ -190,11 +275,81 @@
         </table>
     </div>
 
-    <!-- Mensaje cuando el filtro no encuentra resultados -->
-    <div id="sinResultados" class="text-center text-muted py-4 d-none">
-        <i class="bi bi-search display-6 d-block mb-2"></i>
-        No hay usuarios que coincidan con la búsqueda.
-    </div>
+    <!-- Paginación -->
+    @if (ViewData.ModelState.IsValid &&
+         Model.Resultado.TotalCount > 0)
+    {
+        <div class="d-flex flex-wrap
+            justify-content-between
+            align-items-center mt-3 gap-2">
+
+            <!-- Información de resultados -->
+            <div class="text-muted small">
+                Mostrando @Model.Resultado.Items.Count
+                de @Model.Resultado.TotalCount resultados.
+            </div>
+
+            <!-- Navegación -->
+            <nav aria-label="Paginación de usuarios">
+
+                <div class="d-flex align-items-center gap-2">
+
+                    @if (Model.TienePaginaAnterior)
+                    {
+                        <a asp-action="Index"
+                           asp-route-Termino="@Model.Filtro.Termino"
+                           asp-route-Activo="@Model.Filtro.Activo"
+                           asp-route-Rol="@Model.Filtro.Rol"
+                           asp-route-Pagina="@(Model.Filtro.Pagina - 1)"
+                           asp-route-TamanoPagina="@Model.Filtro.TamanoPagina"
+                           class="btn btn-outline-primary btn-sm">
+
+                            <i class="bi bi-chevron-left"></i>
+                            Anterior
+                        </a>
+                    }
+                    else
+                    {
+                        <button type="button"
+                                class="btn btn-outline-secondary btn-sm"
+                                disabled>
+                            Anterior
+                        </button>
+                    }
+
+                    <span class="small fw-semibold">
+                        Página @Model.Filtro.Pagina
+                        de @Model.TotalPaginas
+                    </span>
+
+                    @if (Model.TienePaginaSiguiente)
+                    {
+                        <a asp-action="Index"
+                           asp-route-Termino="@Model.Filtro.Termino"
+                           asp-route-Activo="@Model.Filtro.Activo"
+                           asp-route-Rol="@Model.Filtro.Rol"
+                           asp-route-Pagina="@(Model.Filtro.Pagina + 1)"
+                           asp-route-TamanoPagina="@Model.Filtro.TamanoPagina"
+                           class="btn btn-outline-primary btn-sm">
+
+                            Siguiente
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <button type="button"
+                                class="btn btn-outline-secondary btn-sm"
+                                disabled>
+                            Siguiente
+                        </button>
+                    }
+
+                </div>
+
+            </nav>
+        </div>
+    }
 </div>
 
 <style>
@@ -210,40 +365,15 @@
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Activar tooltips de Bootstrap
-            var tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-            tooltipTriggerList.forEach(function (el) { new bootstrap.Tooltip(el); });
 
-            var inputBuscar = document.getElementById('buscarUsuario');
-            var filtroEstado = document.getElementById('filtroEstado');
-            var filtroRol = document.getElementById('filtroRol');
-            var filas = document.querySelectorAll('.fila-usuario');
-            var sinResultados = document.getElementById('sinResultados');
+            const tooltipTriggerList =
+                document.querySelectorAll('[data-bs-toggle="tooltip"]');
 
-            function aplicarFiltros() {
-                var texto = inputBuscar.value.trim().toLowerCase();
-                var estado = filtroEstado.value;
-                var rol = filtroRol.value;
-                var visibles = 0;
+            tooltipTriggerList.forEach(function (el) {
+                new bootstrap.Tooltip(el);
+            });
 
-                filas.forEach(function (fila) {
-                    var coincideTexto = !texto ||
-                        fila.dataset.nombre.includes(texto) ||
-                        fila.dataset.email.includes(texto);
-                    var coincideEstado = !estado || fila.dataset.estado === estado;
-                    var coincideRol = !rol || fila.dataset.roles.includes(rol);
-
-                    var visible = coincideTexto && coincideEstado && coincideRol;
-                    fila.classList.toggle('d-none', !visible);
-                    if (visible) visibles++;
-                });
-
-                sinResultados.classList.toggle('d-none', visibles !== 0 || filas.length === 0);
-            }
-
-            if (inputBuscar) inputBuscar.addEventListener('input', aplicarFiltros);
-            if (filtroEstado) filtroEstado.addEventListener('change', aplicarFiltros);
-            if (filtroRol) filtroRol.addEventListener('change', aplicarFiltros);
         });
     </script>
 }
+
