@@ -18,6 +18,9 @@ namespace SGAT.Infrastructure.Data.Configurations
             builder.Property(e => e.Serial).HasMaxLength(100);
             builder.HasIndex(e => e.Serial).IsUnique().HasFilter("[Serial] IS NOT NULL");
             builder.Property(e => e.Descripcion).HasMaxLength(255);
+            builder.Property(e => e.Activo).HasDefaultValue(true);
+            builder.Property(e => e.Version).IsRowVersion();
+            builder.HasIndex(e => e.Modelo);
 
             builder.Property(e => e.CreatedAt).HasDefaultValueSql("GETDATE()");
             builder.Property(e => e.UpdatedAt).HasDefaultValueSql("GETDATE()");

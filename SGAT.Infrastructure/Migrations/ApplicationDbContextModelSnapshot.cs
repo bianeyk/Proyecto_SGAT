@@ -663,6 +663,11 @@ namespace SGAT.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdEquipo"));
 
+                    b.Property<bool>("Activo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -695,10 +700,19 @@ namespace SGAT.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("SerialGenerado")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<byte[]>("Version")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.HasKey("IdEquipo");
 
@@ -709,6 +723,8 @@ namespace SGAT.Infrastructure.Migrations
                     b.HasIndex("IdMarca");
 
                     b.HasIndex("IdUsuario");
+
+                    b.HasIndex("Modelo");
 
                     b.HasIndex("Serial")
                         .IsUnique()

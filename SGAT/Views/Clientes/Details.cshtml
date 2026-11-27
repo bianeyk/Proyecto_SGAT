@@ -41,6 +41,10 @@
                 }
             }
             <a asp-action="Index" class="btn btn-secondary">Volver</a>
+            @if (Model.Activo)
+            {
+                <a asp-controller="Equipos" asp-action="Create" asp-route-idCliente="@Model.IdCliente" class="btn btn-outline-primary">Registrar equipo</a>
+            }
         </div>
     </div>
 </div>

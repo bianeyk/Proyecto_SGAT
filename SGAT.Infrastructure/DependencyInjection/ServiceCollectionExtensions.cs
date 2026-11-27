@@ -40,6 +40,8 @@ namespace SGAT.Infrastructure.DependencyInjection
             services.AddScoped<IEmailService, EmailService>();
 
             services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IEquipoRepository, EquipoRepository>();
+            services.AddScoped<ICategoriaDispositivoRepository, CategoriaDispositivoRepository>();
             services.AddScoped<IProductoRepository, ProductoRepository>();
             services.AddScoped<IMarcaRepository, MarcaRepository>();
             services.AddScoped<ICategoriaProductoRepository, CategoriaProductoRepository>();

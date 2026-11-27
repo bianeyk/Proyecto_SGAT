@@ -15,7 +15,10 @@ namespace SGAT.Domain.Entities
 
         public string Modelo { get; set; } = string.Empty;
         public string? Serial { get; set; }
+        public bool SerialGenerado { get; set; }
         public string? Descripcion { get; set; }
+        public bool Activo { get; set; } = true;
+        public byte[] Version { get; set; } = Array.Empty<byte>();
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;

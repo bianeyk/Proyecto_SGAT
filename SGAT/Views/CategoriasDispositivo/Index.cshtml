@@ -1,0 +1,51 @@
+@model SGAT.Application.DTOs.Paginacion.PagedResult<SGAT.Application.DTOs.Equipo.CategoriaDispositivoDto>
+@{
+    ViewData["Title"] = "Categorías de dispositivos";
+    var termino = ViewData["Termino"] as string;
+    var pagina = (int)(ViewData["Pagina"] ?? 1);
+    var paginas = (int)(ViewData["TotalPaginas"] ?? 1);
+}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div><h1>Categorías de dispositivos</h1><p class="text-muted mb-0">Clasifica los equipos del taller.</p></div>
+        <a asp-action="Create" class="btn btn-primary">Nueva categoría de dispositivo</a>
+    </div>
+    @if (TempData["Success"] is not null) { <div class="alert alert-success">@TempData["Success"]</div> }
+    <form method="get" class="row g-2 mb-3 sg-buscador">
+        <div class="col-md-8">
+            <label for="termino" class="visually-hidden">Buscar categorías de dispositivos</label>
+            <input id="termino" name="termino" value="@termino" maxlength="100" class="form-control" placeholder="Buscar categoría de dispositivo" />
+        </div>
+        <div class="col-auto"><button class="btn btn-primary">Buscar</button><a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a></div>
+    </form>
+    <div class="card shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light"><tr><th>Nombre</th><th>Descripción</th><th>Estado</th><th>Acciones</th></tr></thead>
+                <tbody>
+                @foreach (var categoria in Model.Items)
+                {
+                    <tr>
+                        <td>@categoria.Nombre</td><td>@(categoria.Descripcion ?? "Sin descripción")</td>
+                        <td><span class="badge @(categoria.Activo ? "bg-success" : "bg-secondary")">@(categoria.Activo ? "Activa" : "Inactiva")</span></td>
+                        <td class="text-nowrap">
+                            <a asp-action="Edit" asp-route-id="@categoria.IdCategoriaDispositivo" class="btn btn-sm btn-outline-primary">Editar</a>
+                            <form asp-action="ActivarDesactivar" asp-route-id="@categoria.IdCategoriaDispositivo" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button class="btn btn-sm btn-outline-secondary">@(categoria.Activo ? "Desactivar" : "Activar")</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+                @if (Model.Items.Count == 0) { <tr><td colspan="4" class="text-center text-muted py-4">No hay categorías de dispositivos.</td></tr> }
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer text-muted">@Model.TotalCount categoría(s) de dispositivo</div>
+    </div>
+    <nav class="d-flex justify-content-center align-items-center gap-3 mt-3">
+        @if (pagina > 1) { <a asp-route-termino="@termino" asp-route-pagina="@(pagina - 1)" class="btn btn-outline-secondary">Anterior</a> }
+        <span>Página @pagina de @paginas</span>
+        @if (pagina < paginas) { <a asp-route-termino="@termino" asp-route-pagina="@(pagina + 1)" class="btn btn-outline-secondary">Siguiente</a> }
+    </nav>
+</div>

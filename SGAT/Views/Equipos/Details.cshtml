@@ -1,0 +1,37 @@
+@model SGAT.Application.DTOs.Equipo.EquipoDto
+@{
+    ViewData["Title"] = "Detalle del equipo";
+}
+<div class="container py-4" style="max-width: 800px">
+    <a asp-action="Index" class="text-decoration-none">← Equipos</a>
+    <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+        <h1>@Model.Marca @Model.Modelo</h1>
+        <span class="badge @(Model.Activo ? "bg-success" : "bg-secondary")">@(Model.Activo ? "Activo" : "Inactivo")</span>
+    </div>
+    @if (TempData["Success"] is not null)
+    { <div class="alert alert-success" role="status">@TempData["Success"]</div> }
+    @if (TempData["Error"] is not null)
+    { <div class="alert alert-danger" role="alert">@TempData["Error"]</div> }
+    <div class="card shadow-sm"><div class="card-body p-4">
+        <dl class="row mb-0">
+            <dt class="col-sm-4">Cliente</dt><dd class="col-sm-8"><a asp-controller="Clientes" asp-action="Details" asp-route-id="@Model.IdCliente">@Model.Cliente</a> — @Model.DocumentoCliente</dd>
+            <dt class="col-sm-4">Categoría</dt><dd class="col-sm-8">@Model.Categoria</dd>
+            <dt class="col-sm-4">Serial</dt><dd class="col-sm-8">@Model.Serial @if (Model.SerialGenerado) { <span class="text-muted">(generado por SGAT)</span> }</dd>
+            <dt class="col-sm-4">Descripción</dt><dd class="col-sm-8">@(Model.Descripcion ?? "Sin descripción")</dd>
+            <dt class="col-sm-4">Registro</dt><dd class="col-sm-8">@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</dd>
+            <dt class="col-sm-4">Última modificación</dt><dd class="col-sm-8">@Model.UpdatedAt.ToString("dd/MM/yyyy HH:mm")</dd>
+            <dt class="col-sm-4">Órdenes de servicio</dt><dd class="col-sm-8">@(Model.TieneOrdenes ? "Tiene historial asociado" : "Sin órdenes asociadas")</dd>
+        </dl>
+    </div></div>
+    <div class="d-flex gap-2 mt-3">
+        <a asp-action="Edit" asp-route-id="@Model.IdEquipo" class="btn btn-primary">Editar equipo</a>
+        @if (User.IsInRole("Administrador") || User.IsInRole("Gerente"))
+        {
+            <form asp-action="CambiarEstado" asp-route-id="@Model.IdEquipo" method="post">
+                <input type="hidden" name="version" value="@Model.Version" />
+                <input type="hidden" name="activo" value="@((!Model.Activo).ToString().ToLowerInvariant())" />
+                <button class="btn @(Model.Activo ? "btn-outline-danger" : "btn-outline-success")">@(Model.Activo ? "Dar de baja" : "Activar equipo")</button>
+            </form>
+        }
+    </div>
+</div>
