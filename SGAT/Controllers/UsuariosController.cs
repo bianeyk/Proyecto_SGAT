@@ -5,10 +5,16 @@ using SGAT.Application.DTOs.Usuario;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Web.ViewModels.Usuario;
 using SGAT.Application.DTOs.Paginacion;
+using Microsoft.AspNetCore.RateLimiting;
+using SGAT.Web.Security;
+using SGAT.Application.Validators;
+using SGAT.Domain.Constants;
+using SGAT.Application.DTOs.Rol;
+
 
 namespace SGAT.Web.Controllers
 {
-    [Authorize(Roles = "Administrador")]
+    [Authorize(Roles = RolesSistema.Administrador)]
     public class UsuariosController : Controller
     {
         //Inyectar dependencias
@@ -19,10 +25,10 @@ namespace SGAT.Web.Controllers
             _usuarioService = usuarioService;
             _rolService = rolService;
         }
-        //Index
+        //Get Index
         [HttpGet]
-        public async Task<IActionResult> Index(
-            [FromQuery] UsuarioFiltroDto filtro)
+        [EnableRateLimiting(RateLimitPolicies.Search)]
+        public async Task<IActionResult> Index([FromQuery] UsuarioFiltroDto filtro)
         {
             // 1. Validar el Model Binding.
             if (!ModelState.IsValid)
@@ -68,129 +74,194 @@ namespace SGAT.Web.Controllers
             // 7. Enviar el ViewModel a la vista.
             return View(vm);
         }
-        //Deatils
-        public async Task<IActionResult> Details(string id)
+
+        //Get Details
+        [HttpGet]
+        public async Task<IActionResult> Details([FromRoute] string id)
         {
-            if (string.IsNullOrWhiteSpace(id))
+            if (!IdentityIdValidator.EsValido(id))
             {
-                return NotFound();
+                return BadRequest("El identificador no es válido.");
             }
-
-            var usuarios = await _usuarioService.ObtenerPorIdAsync(id);
-
-            if (usuarios == null)
-            {
-                return NotFound();
-            }
-
-            return View(usuarios);
-        }
-        //Metodo GET Create
-        public async Task<IActionResult> Create()
-        {
-            var vm = new UsuarioCreateViewModel
-            {
-                RolesDisponibles = await _rolService.ObtenerTodosAsync()
-            };
-
-            return View(vm);
-        }
-        //Create POST
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(UsuarioCreateViewModel vm)
-        {
-            //Validar ModelState
-            if (!ModelState.IsValid)
-            {
-                vm.RolesDisponibles = await _rolService.ObtenerTodosAsync();
-
-                return View(vm);
-            }
-            //Llamar al servicio
-            var resultado = await _usuarioService.CrearAsync(vm.Usuario);
-            //errores
-            if (!resultado.Succeeded)
-            {
-                //Agregar los errores al ModelState
-                foreach (var error in resultado.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-                //Volver a cargar los roles
-                vm.RolesDisponibles = await _rolService.ObtenerTodosAsync();
-
-                return View(vm);
-            }
-            //mensaje Todo salió bien
-            TempData["Success"] = "Usuario creado correctamente.";
-
-            return RedirectToAction(nameof(Index));
-        }
-        //GET Edit
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (string.IsNullOrWhiteSpace(id))
-                return NotFound();
 
             var usuario = await _usuarioService.ObtenerPorIdAsync(id);
 
             if (usuario == null)
-                return NotFound();
-
-            var vm = new UsuarioEditViewModel
             {
-                Usuario = new UsuarioEditDto
-                {
-                    Id = usuario.Id,
-                    NombreCompleto = usuario.NombreCompleto,
-                    Activo = usuario.Activo,
-                    Rol = usuario.Roles.FirstOrDefault() ?? string.Empty
-                },
-                RolesDisponibles = await _rolService.ObtenerTodosAsync()
+                return NotFound();
+            }
+
+            return View(usuario);
+        }
+
+        //Metodo GET Create
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            var vm = new UsuarioCreateViewModel
+            {
+                RolesDisponibles =
+                    await ObtenerRolesAsignablesAsync()
             };
 
             return View(vm);
         }
-        //POST Edit
+
+        //Create POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, UsuarioEditViewModel vm)
+        public async Task<IActionResult> Create([FromForm] UsuarioCreateViewModel vm)
         {
-            if (vm?.Usuario == null || string.IsNullOrWhiteSpace(id) || !string.Equals(id, vm.Usuario.Id, StringComparison.Ordinal))
-            {
-                return BadRequest();
-            }
-
+            // 1. Validar los datos del formulario.
             if (!ModelState.IsValid)
             {
-                vm.RolesDisponibles = await _rolService.ObtenerTodosAsync();
+                vm.RolesDisponibles =
+                    await ObtenerRolesAsignablesAsync();
+
                 return View(vm);
             }
 
-            var resultado = await _usuarioService.ActualizarAsync(vm.Usuario);
+            // 2. Mapear ViewModel a DTO.
+            var dto = new UsuarioCreateDto
+            {
+                NombreCompleto = vm.NombreCompleto,
+                Email = vm.Email,
+                Password = vm.Password,
+                ConfirmPassword = vm.ConfirmPassword,
+                Rol = vm.Rol
+            };
 
+            // 3. Llamar al servicio.
+            var resultado = await _usuarioService.CrearAsync(dto);
+
+            // 4. Gestionar errores del servicio.
             if (!resultado.Succeeded)
             {
                 foreach (var error in resultado.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    ModelState.AddModelError(
+                        string.Empty,
+                        error.Description);
                 }
 
-                vm.RolesDisponibles = await _rolService.ObtenerTodosAsync();
+                vm.RolesDisponibles =
+                    await ObtenerRolesAsignablesAsync();
 
                 return View(vm);
             }
 
+            // 5. Confirmar la operación.
+            TempData["Success"] = "Usuario creado correctamente.";
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        //GET Edit
+        [HttpGet]
+        public async Task<IActionResult> Edit([FromRoute] string id)
+        {
+            // 1. Validar identificador.
+            if (!IdentityIdValidator.EsValido(id))
+            {
+                return BadRequest();
+            }
+
+            // 2. Obtener usuario.
+            var usuario =
+                await _usuarioService.ObtenerPorIdAsync(id);
+
+            if (usuario is null)
+            {
+                return NotFound();
+            }
+
+            // 3. Mapear DTO a ViewModel.
+            var vm = new UsuarioEditViewModel
+            {
+                Id = usuario.Id,
+                NombreCompleto = usuario.NombreCompleto,
+                Activo = usuario.Activo,
+                Rol = usuario.Roles.FirstOrDefault()
+                    ?? string.Empty,
+
+                RolesDisponibles =
+                    await ObtenerRolesAsignablesAsync()
+            };
+
+            // 4. Mostrar formulario.
+            return View(vm);
+        }
+
+        //POST Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit([FromRoute] string id,[FromForm] UsuarioEditViewModel vm)
+        {
+            // 1. Validar identificadores.
+            if (vm is null ||
+                !IdentityIdValidator.EsValido(id) ||
+                !IdentityIdValidator.EsValido(vm.Id) ||
+                !string.Equals(
+                    id,
+                    vm.Id,
+                    StringComparison.Ordinal))
+            {
+                return BadRequest();
+            }
+
+            // 2. Validar datos del formulario.
+            if (!ModelState.IsValid)
+            {
+                vm.RolesDisponibles =
+                    await ObtenerRolesAsignablesAsync();
+
+                return View(vm);
+            }
+
+            // 3. Mapear ViewModel a DTO.
+            var dto = new UsuarioEditDto
+            {
+                Id = id,
+                NombreCompleto = vm.NombreCompleto,
+                Activo = vm.Activo,
+                Rol = vm.Rol
+            };
+
+            // 4. Llamar al servicio.
+            var resultado =
+                await _usuarioService.ActualizarAsync(dto);
+
+            // 5. Gestionar errores del servicio.
+            if (!resultado.Succeeded)
+            {
+                foreach (var error in resultado.Errors)
+                {
+                    ModelState.AddModelError(
+                        string.Empty,
+                        error.Description);
+                }
+
+                vm.RolesDisponibles =
+                    await ObtenerRolesAsignablesAsync();
+
+                return View(vm);
+            }
+
+            // 6. Confirmar la operación.
             TempData["Success"] = "Usuario actualizado correctamente.";
 
             return RedirectToAction(nameof(Index));
         }
-        //Inactivar
+
+        //POST Usuarios/Inactivar
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Inactivar(string id)
+        public async Task<IActionResult> Inactivar([FromRoute] string id)
         {
+            if (!IdentityIdValidator.EsValido(id))
+            {
+                return BadRequest("El identificador no es válido.");
+            }
             if (string.IsNullOrWhiteSpace(id))
             {
                 return NotFound();
@@ -208,11 +279,16 @@ namespace SGAT.Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-        //Activar
+
+        //POST Activar
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Activar(string id)
+        public async Task<IActionResult> Activar([FromRoute] string id)
         {
+            if (!IdentityIdValidator.EsValido(id))
+            {
+                return BadRequest("El identificador no es válido.");
+            }
             if (string.IsNullOrWhiteSpace(id))
             {
                 return NotFound();
@@ -229,6 +305,13 @@ namespace SGAT.Web.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+        }
+        private async Task<IReadOnlyList<RolDto>>ObtenerRolesAsignablesAsync()
+        {
+            return (await _rolService.ObtenerTodosAsync())
+                .Where(r => r.Activo &&
+                    RolesSistema.EsRolPermitido(r.Nombre))
+                .ToList();
         }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using SGAT.Application.DTOs.Producto;
 using SGAT.Application.Interfaces.Services;
+using SGAT.Web.Security;
 using SGAT.Web.ViewModels.CategoriaProducto;
 
 namespace SGAT.Web.Controllers
@@ -24,7 +25,7 @@ namespace SGAT.Web.Controllers
 
         // GET: /CategoriasProducto
         [HttpGet]
-        [EnableRateLimiting("SearchPolicy")]
+        [EnableRateLimiting(RateLimitPolicies.Search)]
         public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
             // Se controla el valor recibido desde la URL antes de consultar datos.

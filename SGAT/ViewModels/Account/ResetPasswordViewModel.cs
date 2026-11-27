@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SGAT.Web.ModelBinding;
 
 namespace SGAT.Web.ViewModels.Account
 {
@@ -10,7 +11,9 @@ namespace SGAT.Web.ViewModels.Account
         public string Email { get; set; } = string.Empty;
 
         [Required]
-        [StringLength(2048, ErrorMessage = "El token no puede superar los 256 caracteres.")]
+        [PreserveString]
+        [StringLength(2048,
+    ErrorMessage = "El token no puede superar los 2048 caracteres.")]
         public string Token { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "La nueva contraseña es obligatoria.")]

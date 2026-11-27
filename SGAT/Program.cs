@@ -11,7 +11,7 @@ using SGAT.Infrastructure.Identity;
 using SGAT.Web.ModelBinding;
 using System.Threading.RateLimiting;
 using System.Security.Claims;
-
+using SGAT.Web.Security;
 
 
 var currentDir = Directory.GetCurrentDirectory();
@@ -66,23 +66,10 @@ builder.Services.Configure<DataProtectionTokenProviderOptions>(
 //controla la frecuencia de las solicitudes HTTP
 builder.Services.AddRateLimiter(options =>
 {
-    options.RejectionStatusCode =
-        StatusCodes.Status429TooManyRequests;
-    //funcion personalizada para manejar solicitudes rechazadas por límite de velocidad
-    options.OnRejected = async (context, cancellationToken) =>
-    {
-        context.HttpContext.Response.StatusCode =
-            StatusCodes.Status429TooManyRequests;
-        //texto plano para la respuesta
-        context.HttpContext.Response.ContentType =
-            "text/plain; charset=utf-8";
+    options.RejectionStatusCode =StatusCodes.Status429TooManyRequests;
+    options.OnRejected =RateLimitRejectionHandler.HandleAsync;
 
-        await context.HttpContext.Response.WriteAsync(
-            "Demasiados intentos. Espera unos minutos antes de volver a intentarlo.",
-            cancellationToken);
-    };
-    
-    options.AddPolicy("LoginPolicy", context =>
+    options.AddPolicy(RateLimitPolicies.Login, context =>
         RateLimitPartition.GetFixedWindowLimiter(
             partitionKey:
                 context.Connection.RemoteIpAddress?.ToString()
@@ -96,7 +83,7 @@ builder.Services.AddRateLimiter(options =>
                 AutoReplenishment = true
             }));
     //regla mas estricta para el restablecimiento de contraseña, solo 3 intentos cada 10 minutos
-    options.AddPolicy("ForgotPasswordPolicy", context =>
+    options.AddPolicy(RateLimitPolicies.ForgotPassword, context =>
     RateLimitPartition.GetFixedWindowLimiter(
         partitionKey:
             context.Connection.RemoteIpAddress?.ToString()
@@ -111,8 +98,8 @@ builder.Services.AddRateLimiter(options =>
 
     // Limita el consumo de tokens de restablecimiento de contraseña.
     // 5 intentos cada 10 minutos por IP.
-    options.AddPolicy("ResetPasswordPolicy", context =>
-    RateLimitPartition.GetFixedWindowLimiter(
+    options.AddPolicy(RateLimitPolicies.ResetPassword, context =>
+     RateLimitPartition.GetFixedWindowLimiter(
         partitionKey:
             context.Connection.RemoteIpAddress?.ToString()
             ?? "unknown",
@@ -126,7 +113,7 @@ builder.Services.AddRateLimiter(options =>
 
     // Limita las búsquedas de los módulos de clientes, marcas, categorías y productos.
     // Se particiona por usuario autenticado para no bloquear a todos los usuarios.
-    options.AddPolicy("SearchPolicy", context =>
+    options.AddPolicy(RateLimitPolicies.Search, context =>
         RateLimitPartition.GetFixedWindowLimiter(
             partitionKey:
                 context.User.FindFirstValue(ClaimTypes.NameIdentifier)
@@ -173,18 +160,10 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LoginPath = "/Account/Login";
     options.AccessDeniedPath = "/Account/AccessDenied";
 
-    // Seguridad de la cookie xss
-    //Impide que JavaScript acceda directamente a la cookie.
     options.Cookie.HttpOnly = true;
-    //Solo envía la cookie mediante HTTPS.
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-    //Ayuda a reducir ataques CSRF mediante solicitudes entre sitios.
     options.Cookie.SameSite = SameSiteMode.Lax;
-
-    // Duración de la sesión
-    //	Establece una duración de 30 minutos para el ticket de autenticación.
     options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-    //Renueva la expiración cuando el usuario sigue utilizando la aplicación.
     options.SlidingExpiration = true;
 });
 
@@ -194,7 +173,6 @@ builder.Services.AddControllersWithViews(options =>
     options.ModelBinderProviders.Insert(0, new StringTrimmingModelBinderProvider());
 
     // El runtime de .NET no incluye los mensajes del framework en español,
-    // así que los definimos explícitamente (errores de binding, números, etc.).
     var mensajes = options.ModelBindingMessageProvider;
 
     mensajes.SetAttemptedValueIsInvalidAccessor(

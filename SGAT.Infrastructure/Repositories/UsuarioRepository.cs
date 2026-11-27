@@ -3,16 +3,18 @@ using SGAT.Application.DTOs.Paginacion;
 using SGAT.Application.DTOs.Usuario;
 using SGAT.Application.Interfaces.Repositories;
 using SGAT.Infrastructure.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace SGAT.Infrastructure.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
         private readonly ApplicationDbContext _context;
-
-        public UsuarioRepository(ApplicationDbContext context)
+        private readonly ILookupNormalizer _normalizer;
+        public UsuarioRepository(ApplicationDbContext context,ILookupNormalizer normalizer)
         {
             _context = context;
+            _normalizer = normalizer;
         }
 
         public async Task<PagedResult<UsuarioListDto>>
@@ -52,10 +54,12 @@ namespace SGAT.Infrastructure.Repositories
                         "La búsqueda debe contener entre 2 y 100 caracteres.");
                 }
 
+                var terminoNormalizado =_normalizer.NormalizeEmail(termino) ?? termino;
+
                 query = query.Where(u =>
                     u.NombreCompleto.StartsWith(termino) ||
-                    (u.Email != null &&
-                     u.Email.StartsWith(termino)));
+                    (u.NormalizedEmail != null &&
+                     u.NormalizedEmail.StartsWith(terminoNormalizado)));
             }
 
             // 5. Aplicar filtro por estado.

@@ -1,14 +1,17 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 
 namespace SGAT.Web.ModelBinding
 {
     public sealed class StringTrimmingModelBinder : IModelBinder
     {
-        public Task BindModelAsync(ModelBindingContext bindingContext)
+        public Task BindModelAsync(
+            ModelBindingContext bindingContext)
         {
             ArgumentNullException.ThrowIfNull(bindingContext);
 
-            var valueResult = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
+            var valueResult = bindingContext.ValueProvider
+                .GetValue(bindingContext.ModelName);
 
             if (valueResult == ValueProviderResult.None)
             {
@@ -21,36 +24,67 @@ namespace SGAT.Web.ModelBinding
 
             var value = valueResult.FirstValue;
 
-            if (EsCampoDePassword(bindingContext.ModelName))
+            if (DebePreservarValor(bindingContext))
             {
-                bindingContext.Result = ModelBindingResult.Success(value);
+                bindingContext.Result =
+                    ModelBindingResult.Success(value);
+
                 return Task.CompletedTask;
             }
 
             if (string.IsNullOrEmpty(value))
             {
-                bindingContext.Result = ModelBindingResult.Success(value);
+                bindingContext.Result =
+                    ModelBindingResult.Success(value);
+
                 return Task.CompletedTask;
             }
 
             var valorRecortado = value.Trim();
-            bindingContext.Result = ModelBindingResult.Success(
-                string.IsNullOrEmpty(valorRecortado) ? null : valorRecortado);
+
+            bindingContext.Result =
+                ModelBindingResult.Success(
+                    string.IsNullOrEmpty(valorRecortado)
+                        ? null
+                        : valorRecortado);
 
             return Task.CompletedTask;
         }
 
-        private static bool EsCampoDePassword(string modelName)
+        private static bool DebePreservarValor(
+            ModelBindingContext bindingContext)
         {
-            return modelName.Contains("Password", StringComparison.OrdinalIgnoreCase);
+            var metadata = bindingContext.ModelMetadata;
+
+            if (string.Equals(
+                metadata.DataTypeName,
+                "Password",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            if (metadata is DefaultModelMetadata defaultMetadata &&
+                defaultMetadata.Attributes.Attributes
+                    .OfType<PreserveStringAttribute>()
+                    .Any())
+            {
+                return true;
+            }
+
+            return bindingContext.ModelName.Contains(
+                "Password",
+                StringComparison.OrdinalIgnoreCase);
         }
     }
 
-    public sealed class StringTrimmingModelBinderProvider : IModelBinderProvider
+    public sealed class StringTrimmingModelBinderProvider
+        : IModelBinderProvider
     {
         private readonly StringTrimmingModelBinder _binder = new();
 
-        public IModelBinder? GetBinder(ModelBinderProviderContext context)
+        public IModelBinder? GetBinder(
+            ModelBinderProviderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
 

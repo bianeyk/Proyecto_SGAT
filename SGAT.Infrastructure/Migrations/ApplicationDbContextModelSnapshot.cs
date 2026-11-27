@@ -230,6 +230,9 @@ namespace SGAT.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("NombreCompleto")
+                        .HasDatabaseName("IX_AspNetUsers_NombreCompleto");
+
                     b.HasIndex("NormalizedEmail")
                         .IsUnique()
                         .HasDatabaseName("EmailIndex")

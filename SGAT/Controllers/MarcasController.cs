@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using SGAT.Application.DTOs.Producto;
 using SGAT.Application.Interfaces.Services;
+using SGAT.Web.Security;
 using SGAT.Web.ViewModels.Marca;
 
 namespace SGAT.Web.Controllers
@@ -24,7 +25,7 @@ namespace SGAT.Web.Controllers
 
         // GET: /Marcas
         [HttpGet]
-        [EnableRateLimiting("SearchPolicy")]
+        [EnableRateLimiting(RateLimitPolicies.Search)]
         public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
             // Evita páginas negativas o desplazamientos excesivamente grandes.

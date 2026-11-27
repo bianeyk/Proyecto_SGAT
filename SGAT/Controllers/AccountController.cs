@@ -7,6 +7,8 @@ using SGAT.Application.DTOs.Login;
 using SGAT.Application.Interfaces.Services;
 using SGAT.Domain.Entities;
 using SGAT.Web.ViewModels.Account;
+using SGAT.Web.Security;
+using SGAT.Web.ModelBinding;
 
 
 namespace SGAT.Web.Controllers
@@ -56,7 +58,7 @@ namespace SGAT.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [EnableRateLimiting("LoginPolicy")]
+        [EnableRateLimiting(RateLimitPolicies.Login)]
         public async Task<IActionResult> Login(LoginDto model)
         {
             if (!ModelState.IsValid)
@@ -180,7 +182,7 @@ namespace SGAT.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [EnableRateLimiting("ForgotPasswordPolicy")]
+        [EnableRateLimiting(RateLimitPolicies.ForgotPassword)]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
             if (!ModelState.IsValid)
@@ -261,7 +263,8 @@ namespace SGAT.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult ResetPassword(string email, string token)
+        [HttpGet]
+        public IActionResult ResetPassword(string email,[PreserveString] string token)
         {
             if (string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(token))
@@ -287,7 +290,7 @@ namespace SGAT.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [EnableRateLimiting("ResetPasswordPolicy")]
+        [EnableRateLimiting(RateLimitPolicies.ResetPassword)]
         public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
         {
             // 1. Validar los datos recibidos.

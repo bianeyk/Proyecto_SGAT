@@ -7,6 +7,8 @@ using SGAT.Application.Interfaces.Services;
 using SGAT.Application.Interfaces.Transactions;
 using SGAT.Domain.Entities;
 using System.Text.RegularExpressions;
+using SGAT.Application.Validators;
+using SGAT.Domain.Constants;
 
 namespace SGAT.Application.Services
 {
@@ -21,9 +23,7 @@ namespace SGAT.Application.Services
         // Constantes y expresiones regulares
         private const string RecursoBloqueoAdministradores =
             "SGAT_GESTION_ADMINISTRADORES";
-        private static readonly Regex NombreRolValido =new(@"^[\p{L}\p{M}0-9 _\-]+$",
-        RegexOptions.Compiled,
-        TimeSpan.FromMilliseconds(100));
+        private static readonly Regex NombreRolRegex = new(@"^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9 _-]+$",RegexOptions.Compiled,TimeSpan.FromMilliseconds(100));
 
         // Constructor
         public RolService(
@@ -60,64 +60,34 @@ namespace SGAT.Application.Services
         // 2. Crear un rol.
         public async Task<IdentityResult> CrearAsync(RolCreateDto dto)
         {
-            if (dto == null || string.IsNullOrWhiteSpace(dto.Nombre))
+            // 1. Validar DTO.
+            if (dto is null)
             {
                 return IdentityResult.Failed(
                     new IdentityError
                     {
-                        Code = "NombreRolRequerido",
-                        Description = "El nombre del rol es obligatorio."
+                        Code = "DatosRolInvalidos",
+                        Description = "Los datos del rol no son válidos."
                     });
             }
 
-            // Limpiar espacios.
-            var nombre = TextNormalization.CollapseWhitespace(dto.Nombre);
+            // 2. Normalizar nombre.
+            var nombre = TextNormalization.CollapseOptional(dto.Nombre)
+                ?? string.Empty;
 
-            // Validar longitud.
-            if (nombre.Length > 50)
+            // 3. Validar datos.
+            var resultadoValidacion = ValidarDatos(nombre);
+
+            if (!resultadoValidacion.Succeeded)
             {
-                return IdentityResult.Failed(
-                    new IdentityError
-                    {
-                        Code = "NombreRolMuyLargo",
-                        Description = "El nombre del rol no puede superar los 50 caracteres."
-                    });
+                return resultadoValidacion;
             }
 
-            // Validar los caracteres permitidos.
-            if (!NombreRolValido.IsMatch(nombre) ||
-                !nombre.Any(char.IsLetter))
-            {
-                return IdentityResult.Failed(
-                    new IdentityError
-                    {
-                        Code = "NombreRolInvalido",
-                        Description = "El nombre del rol contiene caracteres no permitidos."
-                    });
-            }
-            // Proteger los nombres reservados.
-            var rolesReservados = new[]
-            {
-                "Administrador",
-                "Gerente",
-                "Tecnico"
-            };
-
-            if (rolesReservados.Contains(
-                nombre,
-                StringComparer.OrdinalIgnoreCase))
-            {
-                return IdentityResult.Failed(
-                    new IdentityError
-                    {
-                        Code = "NombreRolReservado",
-                        Description = "Este nombre está reservado para un rol del sistema."
-                    });
-            }
-
+            // 4. Iniciar transacción.
             await using var transaction =
                 await _transactionManager.BeginTransactionAsync();
 
+            // Aquí continúa el bloque try/catch existente.
             try
             {
                 // Adquirir el bloqueo exclusivo.
@@ -195,7 +165,7 @@ namespace SGAT.Application.Services
         // 3. Activar un rol.
         public async Task<IdentityResult> ActivarAsync(string id)
         {
-            if (string.IsNullOrWhiteSpace(id))
+            if (!IdentityIdValidator.EsValido(id))
             {
                 return IdentityResult.Failed(
                     new IdentityError
@@ -271,7 +241,7 @@ namespace SGAT.Application.Services
         // 4. Inactivar un rol.
         public async Task<IdentityResult> InactivarAsync(string id)
         {
-            if (string.IsNullOrWhiteSpace(id))
+            if (!IdentityIdValidator.EsValido(id))
             {
                 return IdentityResult.Failed(
                     new IdentityError
@@ -308,7 +278,7 @@ namespace SGAT.Application.Services
                 // Proteger el rol Administrador.
                 if (string.Equals(
                     rol.Name,
-                    "Administrador",
+                    RolesSistema.Administrador,
                     StringComparison.OrdinalIgnoreCase))
                 {
                     await transaction.RollbackAsync();
@@ -317,7 +287,8 @@ namespace SGAT.Application.Services
                         new IdentityError
                         {
                             Code = "RolProtegido",
-                            Description = "El rol Administrador no puede inactivarse."
+                            Description =
+                                "El rol Administrador no puede inactivarse."
                         });
                 }
 
@@ -374,6 +345,60 @@ namespace SGAT.Application.Services
 
                 throw;
             }
+        }
+        private static IdentityResult ValidarDatos(string? nombre)
+        {
+            // 1. Validar nombre obligatorio.
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "NombreRolRequerido",
+                        Description = "El nombre del rol es obligatorio."
+                    });
+            }
+
+            // 2. Validar longitud máxima.
+            if (nombre.Length > LimitesValidacion.NombreRolMaximo)
+            {
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "NombreRolMuyLargo",
+                        Description =
+                            $"El nombre del rol no puede superar los " +
+                            $"{LimitesValidacion.NombreRolMaximo} caracteres."
+                    });
+            }
+
+            // 3. Validar caracteres permitidos.
+            if (!NombreRolRegex.IsMatch(nombre) ||
+                !nombre.Any(char.IsLetter))
+            {
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "NombreRolInvalido",
+                        Description =
+                            "El nombre del rol debe contener al menos una letra " +
+                            "y no puede contener caracteres no permitidos."
+                    });
+            }
+
+            // 4. Proteger nombres reservados.
+            if (RolesSistema.EsRolReservado(nombre))
+            {
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "NombreRolReservado",
+                        Description =
+                            "Este nombre está reservado para un rol del sistema."
+                    });
+            }
+
+            return IdentityResult.Success;
         }
     }
 }

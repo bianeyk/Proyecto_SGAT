@@ -1,14 +1,16 @@
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using SGAT.Application.DTOs.Cliente;
 using SGAT.Application.Interfaces.Services;
+using SGAT.Domain.Constants;
+using SGAT.Web.Security;
 using SGAT.Web.ViewModels.Cliente;
+using System.Security.Claims;
 
 namespace SGAT.Web.Controllers
 {
-    [Authorize(Roles = "Administrador,Gerente,Tecnico")]
+    [Authorize(Roles = RolesSistema.Todos)]
     public class ClientesController : Controller
     {
         private readonly IClienteService _clienteService;
@@ -24,7 +26,7 @@ namespace SGAT.Web.Controllers
             _clienteService = clienteService;
         }
 
-        [EnableRateLimiting("SearchPolicy")]
+        [EnableRateLimiting(RateLimitPolicies.Search)]
         public async Task<IActionResult> Index(string? termino, int pagina = 1)
         {
             // Forzar límites de paginación para evitar descargas masivas.

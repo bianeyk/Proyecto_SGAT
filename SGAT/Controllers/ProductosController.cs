@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.RateLimiting;
 using SGAT.Application.DTOs.Producto;
 using SGAT.Application.Interfaces.Services;
 using SGAT.SGAT.Domain.Enums;
+using SGAT.Web.Security;
 using SGAT.Web.ViewModels.Producto;
 
 namespace SGAT.Web.Controllers
@@ -25,7 +26,7 @@ namespace SGAT.Web.Controllers
 
         // GET: /Productos
         [HttpGet]
-        [EnableRateLimiting("SearchPolicy")]
+        [EnableRateLimiting(RateLimitPolicies.Search)]
         public async Task<IActionResult> Index(string? termino, string filtro = "todos", int pagina = 1)
         {
             // Se limita la página para evitar desplazamientos inválidos o costosos.

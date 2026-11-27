@@ -11,6 +11,9 @@ using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
 using SGAT.Application.DTOs.Paginacion;
 using SGAT.Application.Interfaces.Repositories;
+using SGAT.Application.Validators;
+using SGAT.Domain.Constants;
+
 
 //Inyección de Dependencias
 public class UsuarioService : IUsuarioService
@@ -24,6 +27,10 @@ public class UsuarioService : IUsuarioService
     private readonly IAppLockManager _appLockManager;
     private readonly IUsuarioRepository _usuarioRepository;
 
+    private static readonly Regex NombreValido =
+    new(@"^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ '’-]+$",RegexOptions.Compiled,TimeSpan.FromMilliseconds(100));
+
+    //Constructor para inyectar dependencias
     public UsuarioService(
         UserManager<ApplicationUser> userManager,
         RoleManager<ApplicationRole> roleManager,
@@ -45,9 +52,6 @@ public class UsuarioService : IUsuarioService
     private const int LongitudMaximaEmail = 256;
     private const int LongitudMaximaRol = 50;
 
-    private static readonly Regex NombreValido =new(@"^[\p{L}\p{M} '’\-]+$",
-        RegexOptions.Compiled,
-        TimeSpan.FromMilliseconds(100));
     private static readonly Regex TerminoBusquedaValido =new(@"^[\p{L}\p{M}0-9 @._%+'’\-]+$",
         RegexOptions.Compiled,
         TimeSpan.FromMilliseconds(100)
@@ -107,7 +111,7 @@ public class UsuarioService : IUsuarioService
     public async Task<UsuarioDetalleDto?> ObtenerPorIdAsync(string id)
     {
         // 1. Validar el identificador.
-        if (string.IsNullOrWhiteSpace(id))
+        if (!IdentityIdValidator.EsValido(id))
         {
             return null;
         }
@@ -137,71 +141,54 @@ public class UsuarioService : IUsuarioService
 
         return dto;
     }
-
-
-
     public async Task<IdentityResult> CrearAsync(UsuarioCreateDto dto)
     {
-        // 1. Validar que el DTO exista.
-        if (dto == null)
+        // Validar DTO.
+        if (dto is null)
         {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "DatosInvalidos",
-                    Description = "Los datos del usuario son obligatorios."
-                });
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "DatosInvalidos",
+                Description = "Los datos del usuario son obligatorios."
+            });
         }
 
-        // 2. Validar los datos obligatorios.
-        if (string.IsNullOrWhiteSpace(dto.NombreCompleto) ||
-            string.IsNullOrWhiteSpace(dto.Email) ||
-            string.IsNullOrWhiteSpace(dto.Password) ||
-            string.IsNullOrWhiteSpace(dto.Rol))
-        {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "DatosIncompletos",
-                    Description = "Debe completar todos los campos obligatorios."
-                });
-        }
+        // Normalizar datos.
+        var nombreCompleto =
+            TextNormalization.CollapseOptional(dto.NombreCompleto)
+            ?? string.Empty;
 
-        // 3. Normalizar los datos.
-        var nombreCompleto = TextNormalization
-            .CollapseWhitespace(dto.NombreCompleto);
+        var email =
+            TextNormalization.TrimOptional(dto.Email)?.ToLowerInvariant()
+            ?? string.Empty;
 
-        var email = dto.Email.Trim().ToLowerInvariant();
+        var nombreRol =
+            TextNormalization.CollapseOptional(dto.Rol)
+            ?? string.Empty;
 
-        var nombreRol = TextNormalization
-            .CollapseWhitespace(dto.Rol);
+        // Validar datos comunes.
+        var resultadoDatos = ValidarDatos(
+            nombreCompleto,
+            nombreRol);
 
-        // Validar los datos normalizados.
-        var resultadoNombre = ValidarNombreCompleto(nombreCompleto);
+        if (!resultadoDatos.Succeeded)
+            return resultadoDatos;
 
-        if (!resultadoNombre.Succeeded)
-        {
-            return resultadoNombre;
-        }
-
+        // Validar correo.
         var resultadoEmail = ValidarEmail(email);
 
         if (!resultadoEmail.Succeeded)
-        {
             return resultadoEmail;
-        }
 
-        if (nombreRol.Length > LongitudMaximaRol)
-        {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "RolInvalido",
-                    Description = "El rol seleccionado no es válido."
-                });
-        }
+        // Validar contraseña.
+        var resultadoPassword = ValidarPassword(
+            dto.Password,
+            dto.ConfirmPassword);
 
-        // 4. Iniciar la transacción.
+        if (!resultadoPassword.Succeeded)
+            return resultadoPassword;
+
+        // Iniciar transacción.
         await using var transaction =
             await _transactionManager.BeginTransactionAsync();
 
@@ -254,7 +241,19 @@ public class UsuarioService : IUsuarioService
                         Description = "No se puede asignar un rol que está inactivo."
                     });
             }
+            // 9. Verificar que el rol esté permitido en el sistema.
+            if (!RolesSistema.EsRolPermitido(rol.Name))
+            {
+                await transaction.RollbackAsync();
 
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolNoPermitido",
+                        Description =
+                            "El rol seleccionado no tiene permisos definidos en el sistema."
+                    });
+            }
             // 9. Construir la entidad manualmente.
             var usuario = new ApplicationUser
             {
@@ -278,7 +277,7 @@ public class UsuarioService : IUsuarioService
             // 11. Asignar un único rol.
             var resultadoRol = await _userManager.AddToRoleAsync(
                 usuario,
-                nombreRol);
+                rol.Name!);
 
             if (!resultadoRol.Succeeded)
             {
@@ -332,52 +331,48 @@ public class UsuarioService : IUsuarioService
 
     public async Task<IdentityResult> ActualizarAsync(UsuarioEditDto dto)
     {
-        // Validaciones iniciales
-        if (dto == null)
+        // Validar DTO.
+        if (dto is null)
         {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "DatosInvalidos",
-                    Description = "Los datos del usuario son obligatorios."
-                });
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "DatosInvalidos",
+                Description = "Los datos del usuario son obligatorios."
+            });
         }
-        // Validar que se haya seleccionado un rol
-        if (string.IsNullOrWhiteSpace(dto.Id))
-        {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "IdUsuarioInvalido",
-                    Description = "El identificador del usuario no es válido."
-                });
-        }
-        // Validar que se haya ingresado un nombre completo
-        var nombreCompleto = TextNormalization
-        .CollapseOptional(dto.NombreCompleto) ?? string.Empty;
 
-        var resultadoNombre = ValidarNombreCompleto(nombreCompleto);
-
-        if (!resultadoNombre.Succeeded)
+        // Validar identificador.
+        if (!IdentityIdValidator.EsValido(dto.Id))
         {
-            return resultadoNombre;
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "IdUsuarioInvalido",
+                Description = "El identificador del usuario no es válido."
+            });
         }
-        // Validar que se haya ingresado un rol
-        var nombreRol = TextNormalization.CollapseOptional(dto.Rol);
 
-        if (string.IsNullOrWhiteSpace(nombreRol) ||
-            nombreRol.Length > LongitudMaximaRol)
-        {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "RolInvalido",
-                    Description = "Debe seleccionar un rol válido."
-                });
-        }
-        //inicio de transacción para proteger la operación de actualización de usuario y roles
+        // Normalizar datos.
+        var nombreCompleto =
+            TextNormalization.CollapseOptional(dto.NombreCompleto)
+            ?? string.Empty;
+
+        var nombreRol =
+            TextNormalization.CollapseOptional(dto.Rol)
+            ?? string.Empty;
+
+        // Validar datos comunes.
+        var resultadoDatos = ValidarDatos(
+            nombreCompleto,
+            nombreRol);
+
+        if (!resultadoDatos.Succeeded)
+            return resultadoDatos;
+
+        // Iniciar transacción.
         await using var transaction =
-       await _transactionManager.BeginTransactionAsync();
+            await _transactionManager.BeginTransactionAsync();
+
+        // Aquí continúa tu try/catch existente.
 
         try
         {
@@ -426,7 +421,20 @@ public class UsuarioService : IUsuarioService
                         Description = "No se puede asignar un rol que está inactivo."
                     });
             }
+            // 5. Validar que el rol esté permitido en el sistema
+            if (!RolesSistema.EsRolPermitido(rol.Name))
+            {
+                await transaction.RollbackAsync();
 
+                return IdentityResult.Failed(
+                    new IdentityError
+                    {
+                        Code = "RolNoPermitido",
+                        Description =
+                            "El rol seleccionado no tiene permisos definidos en el sistema."
+                    });
+            }
+            nombreRol = rol.Name!;
             // 5. Obtener los roles actuales
             var rolesActuales = await _userManager.GetRolesAsync(usuario);
 
@@ -434,20 +442,20 @@ public class UsuarioService : IUsuarioService
             var esAdministradorActual =
                 usuario.Activo &&
                 rolesActuales.Contains(
-                    "Administrador",
+                    RolesSistema.Administrador,
                     StringComparer.OrdinalIgnoreCase);
 
             var pierdeCondicionAdministrador =
                 !dto.Activo ||
                 !string.Equals(
                     nombreRol,
-                    "Administrador",
+                    RolesSistema.Administrador,
                     StringComparison.OrdinalIgnoreCase);
 
             if (esAdministradorActual && pierdeCondicionAdministrador)
             {
                 var administradores = await _userManager
-                    .GetUsersInRoleAsync("Administrador");
+                    .GetUsersInRoleAsync(RolesSistema.Administrador);
 
                 var administradoresActivos = administradores
                     .Count(a => a.Activo);
@@ -561,7 +569,7 @@ public class UsuarioService : IUsuarioService
     public async Task<IdentityResult> ActivarAsync(string id)
     {
         // 1. Validar el identificador.
-        if (string.IsNullOrWhiteSpace(id))
+        if (!IdentityIdValidator.EsValido(id))
         {
             return IdentityResult.Failed(
                 new IdentityError
@@ -693,11 +701,10 @@ public class UsuarioService : IUsuarioService
         }
     }
 
-
     public async Task<IdentityResult> InactivarAsync(string id)
     {
         // 1. Validar el identificador.
-        if (string.IsNullOrWhiteSpace(id))
+        if (!IdentityIdValidator.EsValido(id))
         {
             return IdentityResult.Failed(
                 new IdentityError
@@ -789,11 +796,11 @@ public class UsuarioService : IUsuarioService
             // 10. Proteger al último administrador activo.
             if (string.Equals(
                 nombreRol,
-                "Administrador",
+                RolesSistema.Administrador,
                 StringComparison.OrdinalIgnoreCase))
             {
                 var administradores = await _userManager
-                    .GetUsersInRoleAsync("Administrador");
+                    .GetUsersInRoleAsync(RolesSistema.Administrador);
 
                 var administradoresActivos = administradores
                     .Count(a => a.Activo);
@@ -890,37 +897,130 @@ public class UsuarioService : IUsuarioService
 
         return IdentityResult.Success;
     }
-    private static IdentityResult ValidarEmail(string email)
+    private static IdentityResult ValidarDatos(
+    string? nombre,
+    string? nombreRol)
+    {
+        // Validar nombre completo.
+        if (string.IsNullOrWhiteSpace(nombre))
+        {
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "NombreRequerido",
+                Description = "El nombre completo es obligatorio."
+            });
+        }
+
+        if (nombre.Length > LimitesValidacion.NombreUsuarioMaximo)
+        {
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "NombreLongitudInvalida",
+                Description = "El nombre completo no puede superar los " +
+                    $"{LimitesValidacion.NombreUsuarioMaximo} caracteres."
+            });
+        }
+
+        if (!NombreValido.IsMatch(nombre) ||
+            !nombre.Any(char.IsLetter))
+        {
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "NombreInvalido",
+                Description = "El nombre contiene caracteres no permitidos."
+            });
+        }
+
+        // Validar rol.
+        if (string.IsNullOrWhiteSpace(nombreRol))
+        {
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "RolRequerido",
+                Description = "Debe seleccionar un rol."
+            });
+        }
+
+        if (nombreRol.Length > LimitesValidacion.NombreRolMaximo)
+        {
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "RolLongitudInvalida",
+                Description = "El rol no puede superar los " +
+                    $"{LimitesValidacion.NombreRolMaximo} caracteres."
+            });
+        }
+
+        return IdentityResult.Success;
+    }
+
+    private static IdentityResult ValidarEmail(string? email)
     {
         if (string.IsNullOrWhiteSpace(email))
         {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "EmailRequerido",
-                    Description = "El correo electrónico es obligatorio."
-                });
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "EmailRequerido",
+                Description = "El correo electrónico es obligatorio."
+            });
         }
 
-        if (email.Length > LongitudMaximaEmail)
+        if (email.Length > LimitesValidacion.EmailMaximo)
         {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "EmailMuyLargo",
-                    Description = "El correo no puede superar los 256 caracteres."
-                });
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "EmailLongitudInvalida",
+                Description = $"El correo no puede superar los " +
+                    $"{LimitesValidacion.EmailMaximo} caracteres."
+            });
         }
 
         if (email.Any(char.IsWhiteSpace) ||
             !new EmailAddressAttribute().IsValid(email))
         {
-            return IdentityResult.Failed(
-                new IdentityError
-                {
-                    Code = "EmailInvalido",
-                    Description = "El formato del correo electrónico no es válido."
-                });
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "EmailInvalido",
+                Description = "El correo electrónico no tiene un formato válido."
+            });
+        }
+
+        return IdentityResult.Success;
+    }
+
+    private static IdentityResult ValidarPassword(
+    string? password,
+    string? confirmPassword)
+    {
+        if (string.IsNullOrWhiteSpace(password))
+        {
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "PasswordRequerido",
+                Description = "La contraseña es obligatoria."
+            });
+        }
+
+        if (password.Length > LimitesValidacion.PasswordMaximo)
+        {
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "PasswordLongitudInvalida",
+                Description = "La contraseña no puede superar los " +
+                    $"{LimitesValidacion.PasswordMaximo} caracteres."
+            });
+        }
+
+        if (!string.Equals(
+            password,
+            confirmPassword,
+            StringComparison.Ordinal))
+        {
+            return IdentityResult.Failed(new IdentityError
+            {
+                Code = "PasswordNoCoincide",
+                Description = "Las contraseñas no coinciden."
+            });
         }
 
         return IdentityResult.Success;
